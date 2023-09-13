@@ -64,17 +64,15 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
                <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-        <a class="nav-link" onclick="refreshPage()">Home</a>
-    </li>
-</ul>
-
-<script>
-    function refreshPage() {
-        window.location.reload(); // Reload the current page
-    }
-</script>
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" onclick="refreshPage()">Home</a>
+                        <script>
+                         function refreshPage() {
+                          window.location.reload(); // Reload the current page
+                            }
+                        </script>
+                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="services.html">services</a>
                      </li>
