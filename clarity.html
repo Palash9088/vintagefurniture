@@ -68,6 +68,15 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
                      <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                      </li>
+                     <script>
+        $(document).ready(function() {
+            // Add a click event handler to the link
+            $(".nav-link").click(function(e) {
+                e.preventDefault(); // Prevent the default link behavior
+                location.reload(); // Reload the current page
+            });
+        });
+    </script>
                      <li class="nav-item">
                         <a class="nav-link" href="services.html">services</a>
                      </li>
