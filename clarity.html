@@ -64,18 +64,16 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
                <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                     </li>
-                     <script>
-        $(document).ready(function() {
-            // Add a click event handler to the link
-            $(".nav-link").click(function(e) {
-                e.preventDefault(); // Prevent the default link behavior
-                location.reload(); // Reload the current page
-            });
-        });
+  <ul class="navbar">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html" onclick="refreshPage()">Home</a>
+        </li>
+    </ul>
+
+    <script>
+        function refreshPage() {
+            location.reload(); // Reload the current page
+        }
     </script>
                      <li class="nav-item">
                         <a class="nav-link" href="services.html">services</a>
