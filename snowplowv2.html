@@ -3,20 +3,43 @@
    <head>
 <script type="text/javascript" async=1>
 ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[]; p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments) };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1; n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","{{URL to sp.js}}","dpg_snowplow"));
-
-   dpg_snowplow('newTracker', 'sp', "https://254d248c-1d32-448d-b717-26140b3d9afb.app.try-snowplow.com", {
-  appId: 'try-snowplow',
+dpg_snowplow('newTracker', 'sp', 'https://254d248c-1d32-448d-b717-26140b3d9afb.app.try-snowplow.com', {
+  appId: 'my-app-id',
+  platform: 'web',
+  cookieDomain: null,
   discoverRootDomain: true,
+  cookieName: '_sp_',
   cookieSameSite: 'Lax', // Recommended
+  cookieSecure: true,
+  encodeBase64: true,
+  respectDoNotTrack: false,
+  pageUnloadTimer: 500,
+  forceSecureTracker: false,
+  eventMethod: 'post',
+  bufferSize: 1,
+  maxPostBytes: 40000,
+  postPath: '/custom/path',
+  crossDomainLinker: function (linkElement) {
+    return (linkElement.href === 'http://acme.de' || linkElement.id === 'crossDomainLink');
+  },
+  cookieLifetime: 63072000,
+  stateStorageStrategy: 'cookieAndLocalStorage',
+  maxLocalStorageQueueSize: 1000,
+  resetActivityTrackingOnPageView: true,
+  connectionTimeout: 5000, // Available from 2.15.0
+  skippedBrowserFeatures: [], // Available from 2.15.0
+  anonymousTracking: false, // Available from 2.15.0
+  // anonymousTracking: { withSessionTracking: true } // Available from 2.15.0
+  // anonymousTracking: { withSessionTracking: true, withServerAnonymisation: true } // Available from 2.17.0
   contexts: {
-    webPage: true
+    webPage: true,
+    performanceTiming: true,
+    gaCookies: true,
+    geolocation: false,
+    clientHints: true, // Available from 2.15.0
+    // clientHints: { includeHighEntropy: true } // Optional
   }
 });
-
-// send first heartbeat after 10 seconds, and every 10 seconds thereafter
-dpg_snowplow("enableActivityTracking", { minimumVisitLength: 10, heartbeatDelay: 10 });
-dpg_snowplow("enableLinkClickTracking"); 
-dpg_snowplow("trackPageView"); 
 </script>
 
       
