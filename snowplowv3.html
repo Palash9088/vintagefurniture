@@ -13,11 +13,11 @@
   document,
   "script",
   "https://254d248c-1d32-448d-b717-26140b3d9afb.app.try-snowplow.com/v3/try.js",
-  "window_snowplow")
+  "!!@@%%_snowplow")
 );
 
 
-snowplow("newTracker", "try", "https://254d248c-1d32-448d-b717-26140b3d9afb.app.try-snowplow.com", {
+!!@@%%_snowplow("newTracker", "try", "https://254d248c-1d32-448d-b717-26140b3d9afb.app.try-snowplow.com", {
   appId: "try-snowplow", // you can specify your own app name here
   platform: "web",
   
@@ -28,9 +28,9 @@ snowplow("newTracker", "try", "https://254d248c-1d32-448d-b717-26140b3d9afb.app.
 });
 
 // send first heartbeat after 10 seconds, and every 10 seconds thereafter
-snowplow("enableActivityTracking", { minimumVisitLength: 10, heartbeatDelay: 10 });
-snowplow("enableLinkClickTracking"); 
-snowplow("trackPageView"); 
+!!@@%%_snowplow("enableActivityTracking", { minimumVisitLength: 10, heartbeatDelay: 10 });
+!!@@%%_snowplow("enableLinkClickTracking"); 
+!!@@%%_snowplow("trackPageView"); 
 
 </script>
       <!-- basic -->
