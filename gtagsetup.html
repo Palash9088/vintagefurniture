@@ -15,10 +15,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-   gtag('set', {
-         referrer: "https://www.sourcecode.com",
-         });
-
   gtag('config', 'G-QFDGX25NC1'); 
 </script> 
       <!-- basic -->
@@ -70,8 +66,8 @@ if(window._vwo_s && window._vwo_s().R()){
          console.log("testing 1")
          console.log(window._vwo_s && window._vwo_s().R())
          console.log("testing 2")
-         gtag('set', {
-         referrer: _vwo_s().R(),
+         gtag('event', 'pageview', {
+        referrer: window._vwo_s().R()
          });
          console.log("event sent")
          console.log("testing 3")
