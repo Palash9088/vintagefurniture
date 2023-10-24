@@ -67,10 +67,12 @@ if(window._vwo_s && window._vwo_s().R()){
          console.log("testing 1")
          console.log(window._vwo_s && window._vwo_s().R())
          console.log("testing 2")
-         gtag('event', 'referal_by_split_1', {
-  referrer: "https://palash9088.github.io/vintagefurniture/gtagsetup.html?id=718597"});}
+         gtag('set', {
+         referrer: _vwo_s().R(),
+         });
          console.log("event sent")
          console.log("testing 3")
+}
 </script>
 <!-- End VWO Async SmartCode -->
    </head>
