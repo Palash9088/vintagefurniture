@@ -11,6 +11,49 @@
           s.parentNode.insertBefore(r, s);
         })(document, 'script', 'serve.albacross.com/reveal.js', '4b19915b-76d8-4c11-bd59-26dae269b18a');
       </script>
+
+<script>
+   // Create an object with the provided data
+   const spotifyData = {
+       "name": "Spotify",
+       "country": "SE",
+       "url": "spotify.com",
+       "number": "5567037485",
+       "description": "Our mission is to unlock the potential of human creativity—by giving a million creative artists the opportunity to live off their art and billions of fans the opportunity to enjoy and be inspired by it. Spotify transformed music listening forever when it launched in Sweden in 2008. Discover, manage and share over 50m tracks for free, or upgrade to Spotify Premium to access exclusive features including offline mode, improved sound quality, and an ad-free music listening experience. Today, Spotify is the most popular global audio streaming service with 286m users, including 130m subscribers across 79 markets. We are the largest driver of revenue to the music business today.",
+       "founded_year": 2006,
+       "address": {
+           "city": "stockholm",
+           "state": "stockholm",
+           "zip_code": "111 53"
+       },
+       "linkedin_url": "https://www.linkedin.com/company/spotify",
+       "employees": {
+           "from": 5001,
+           "to": 10000,
+           "range": "5001-10000"
+       },
+       "financial_report": {
+           "from": 1000000001,
+           "to": 10000000000,
+           "currency": "EUR",
+           "range": "1000000001-10000000000"
+       },
+       "nace_code": {
+           "code": "63.11",
+           "category": "Data processing, hosting and related activities"
+       },
+       "linkedin_industry_code": {
+           "code": "115",
+           "category": "Music"
+       }
+   };
+
+   // Convert the object to a JSON string
+   const spotifyDataString = JSON.stringify(spotifyData);
+
+   // Set the JSON string in local storage
+   localStorage.setItem('window.vwo_albacross_company_details', spotifyDataString);
+</script>
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
