@@ -13,7 +13,8 @@
       </script>
 
  <script>
-window.AlbacrossReveal.company = {
+   if (window.AlbacrossReveal && window.AlbacrossReveal.company) {
+      window.AlbacrossReveal.company = {
     "name": "Albacross",
     "country": "SE",
     "url": "albacross.com",
@@ -40,6 +41,12 @@ window.AlbacrossReveal.company = {
         "category": "Marketing and Advertising"
     }
 }
+    console.log(window.AlbacrossReveal.company.name);
+} else {
+    // Handle the case where the data is not available yet
+    console.log("Data is not available yet.");
+}
+
 </script> 
       <!-- basic -->
       <meta charset="utf-8">
