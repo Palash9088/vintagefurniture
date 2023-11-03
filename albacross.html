@@ -13,8 +13,8 @@
       </script>
 
  <script>
-   if (window.AlbacrossReveal && window.AlbacrossReveal.company) {
-      window.AlbacrossReveal.company = {
+setTimeout(function() {
+   window.AlbacrossReveal.company = {
     "name": "Albacross",
     "country": "SE",
     "url": "albacross.com",
@@ -42,10 +42,7 @@
     }
 }
     console.log(window.AlbacrossReveal.company.name);
-} else {
-    // Handle the case where the data is not available yet
-    console.log("Data is not available yet.");
-}
+}, 4000); // Adjust the timeout value as needed
 
 </script> 
       <!-- basic -->
