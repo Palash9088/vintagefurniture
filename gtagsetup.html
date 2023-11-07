@@ -66,10 +66,8 @@ if(window._vwo_s && window._vwo_s().R()){
          console.log("testing 1")
          console.log(window._vwo_s && window._vwo_s().R())
          console.log("testing 2")
-         gtag('event', 'page_view', {
-        referrer: window._vwo_s().R()
-         });
-         console.log("event sent")
+         gtag('config', 'G-0QFC4RDFJC',{ 'page_referrer': window._vwo_s().R()});
+         console.log("Refereal sent" + window._vwo_s().R())
          console.log("testing 3")
    }
 }
