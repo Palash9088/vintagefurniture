@@ -3,32 +3,54 @@
    <head>
 <!-- <script>window[(function(_c4X,_VK){var _IL='';for(var _iz=0;_iz<_c4X.length;_iz++){var _IE=_c4X[_iz].charCodeAt();_IE!=_iz;_IL==_IL;_IE-=_VK;_VK>9;_IE+=61;_IE%=94;_IE+=33;_IL+=String.fromCharCode(_IE)}return _IL})(atob('Z1ZdIXx3cnAjWHIo'), 13)] = '2de87904e51683710655';     var zi = document.createElement('script');     (zi.type = 'text/javascript'),     (zi.async = true),     (zi.src = (function(_rRx,_A1){var _MP='';for(var _qX=0;_qX<_rRx.length;_qX++){var _0r=_rRx[_qX].charCodeAt();_0r-=_A1;_0r!=_qX;_MP==_MP;_0r+=61;_0r%=94;_0r+=33;_A1>2;_MP+=String.fromCharCode(_0r)}return _MP})(atob('dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ='), 15)),     document.readyState === 'complete'?document.body.appendChild(zi):     window.addEventListener('load', function(){         document.body.appendChild(zi)     });</script> -->
       <script>
-    function storeVisitorInfo(data) {
-      // Validate data type and presence
-      if (typeof data !== 'object' || !data) {
-        console.error('Invalid visitor information provided.');
-        return;
-      }
+function storeVisitorInfo(data) {
+  // Validate data type and presence
+  if (typeof data !== 'object' || !data) {
+    console.error('Invalid visitor information provided.');
+    return;
+  }
 
-      // Convert data to a string (safe for local storage)
-      const stringifiedData = JSON.stringify(data);
+  // Convert data to a string (safe for local storage)
+  const stringifiedData = JSON.stringify(data);
 
-      try {
-        // Store the data in local storage
-        localStorage.setItem('_ziVisitorInfo', stringifiedData);
-        console.log('Visitor information successfully stored.');
-      } catch (error) {
-        console.error('Error storing visitor info:', error);
-      }
+  try {
+    // Store the data in local storage
+    localStorage.setItem('_ziVisitorInfo', stringifiedData);
+    console.log('Visitor information successfully stored.');
+  } catch (error) {
+    console.error('Error storing visitor info:', error);
+  }
+}
+
+// Replace with your actual visitor information
+const visitorInfo = {
+  status: "success",
+  ziDetails: {
+    "status":"success",
+    "ziDetails":{
+      "ip":"49.43.3.106",
+      "companyName":"Kelly",
+      "revenue":4837300000,
+      "employeeCount":7500,
+      "primaryIndustry":"Business Services",
+      "state":"Michigan",
+      "zipCode":"48084",
+      "street":"999 W Big Beaver Rd",
+      "city":"Troy",
+      "country":"United States",
+      "ticker":"NASDAQ: KELYA",
+      "website":"www.kellyservices.com",
+      "naicsCodes":["56","561","5613","56131","561311"],
+      "sicCodes":["73","736","7361","72","729","7299"]
     }
+  }
+};
 
-    // Replace with your actual visitor information
-    const visitorInfo = {
-      status: "success",
-      ziDetails: {"status":"success","ziDetails":{"ip":"49.43.3.106","companyName":"Kelly","revenue":4837300000,"employeeCount":7500,"primaryIndustry":"Business Services","state":"Michigan","zipCode":"48084","street":"999 W Big Beaver Rd","city":"Troy","country":"United States","ticker":"NASDAQ: KELYA","website":"www.kellyservices.com","naicsCodes":["56","561","5613","56131","561311"],"sicCodes":["73","736","7361","72","729","7299"]}}
-    };
-    // Store the visitor information immediately upon page load
-    storeVisitorInfo(visitorInfo);
+// Delay the execution of storeVisitorInfo by 3 seconds
+setTimeout(function() {
+  storeVisitorInfo(visitorInfo);
+}, 3000); // 3000 milliseconds = 3 seconds
+
   </script>
       
       <!-- basic -->
