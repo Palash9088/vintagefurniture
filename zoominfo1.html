@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <script>
+<script>
   function storeVisitorInfo(data) {
     // Validate data type and presence
     if (typeof data !== 'object' || !data) {
@@ -23,60 +23,38 @@
 
   // Replace with your actual visitor information
   const visitorInfo = {
-    status: "success",
-    ziDetails: {
-      ip: "49.43.3.106",
-      companyName: "Kelly",
-      revenue: 4837300000,
-      employeeCount: 7500,
-      primaryIndustry: "Business Services",
-      state: "Michigan",
-      zipCode: "48084",
-      street: "999 W Big Beaver Rd",
-      city: "Troy",
-      country: "United States",
-      ticker: "NASDAQ: KELYA",
-      website: "www.kellyservices.com",
-      naicsCodes: ["56", "561", "5613", "56131", "561311"],
-      sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-    }
+    // Your visitor information here
   };
 
-  // Create a callback function to be called after the script is loaded
-  function scriptLoadedCallback() {
-    // Delay the execution of storeVisitorInfo by 3 seconds
-    setTimeout(function() {
+  // Create a function to load the second script
+  function loadSecondScript() {
+    window[
+      (function (_c4X, _VK) {
+        // ... (the code for the second script)
+      })(atob("Z1ZdIXx3cnAjWHIo"), 13)
+    ] = "2de87904e51683710655";
+
+    var zi = document.createElement("script");
+    zi.type = "text/javascript";
+    zi.async = true;
+    zi.src = (function (_rRx, _A1) {
+      // ... (the code for the second script)
+    })(atob("dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ="), 15);
+
+    zi.onload = function () {
+      // The second script has finished loading, now execute storeVisitorInfo
       storeVisitorInfo(visitorInfo);
-    }, 500); // 3 seconds
+    };
+
+    document.readyState === "complete"
+      ? document.body.appendChild(zi)
+      : window.addEventListener("load", function () {
+          document.body.appendChild(zi);
+        });
   }
 
-  // Create the script element
-  var zi = document.createElement("script");
-  zi.type = "text/javascript";
-  zi.async = true;
-
-  // Set the source of the script
-  zi.src = (function (_rRx, _A1) {
-    var _MP = "";
-    for (var _qX = 0; _qX < _rRx.length; _qX++) {
-      var _0r = _rRx[_qX].charCodeAt();
-      _0r -= _A1;
-      _0r != _qX;
-      _MP == _MP;
-      _0r += 61;
-      _0r %= 94;
-      _0r += 33;
-      _A1 > 2;
-      _MP += String.fromCharCode(_0r);
-    }
-    return _MP;
-  })(atob("dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ="), 15);
-
-  // Add event listener for script load
-  zi.onload = scriptLoadedCallback;
-
-  // Append the script to the document body
-  document.body.appendChild(zi);
+  // Delay the execution of loadSecondScript by 3 seconds
+  setTimeout(loadSecondScript, 500); // 4 milliseconds = 3 seconds
 </script>
 
     <!-- basic -->
