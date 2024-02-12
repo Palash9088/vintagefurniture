@@ -91,7 +91,8 @@ setTimeout(function() {
 
   // Setup a repeating interval to call storeVisitorInfo every 10 milliseconds
   const repeatInterval = setInterval(function() {
-    storeVisitorInfo(visitorInfo);
+    console.log("Trying to save")
+     storeVisitorInfo(visitorInfo);
   }, 10);
 
   // Stop the interval after the given seconds
