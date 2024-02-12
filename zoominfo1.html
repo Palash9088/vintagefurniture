@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-// First script (modified):
 <script>
+   let script1Finished = false;
+   // First script (modified):
           window[
       (function (_c4X, _VK) {
         var _IL = "";
@@ -45,9 +46,8 @@
           });
   window.script1Finished = true;
 </script>
-
-// Second script:
 <script>
+// Second script:
 function storeVisitorInfo(data) {
   // Validate data type and presence
   if (typeof data !== 'object' || !data) {
@@ -89,6 +89,7 @@ const visitorInfo = {
 };
   // Wait for the flag from the first script before executing:
   const checkScriptCompletion = setInterval(() => {
+     console.log(window.script1Finished)
     if (window.script1Finished) {
       clearInterval(checkScriptCompletion);
       storeVisitorInfo(visitorInfo);
