@@ -90,7 +90,6 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
    </head>
    <body>
       <script>
-// Define the storeVisitorInfo function
 function storeVisitorInfo(data) {
   // Validate data type and presence
   if (typeof data !== 'object' || !data) {
@@ -110,9 +109,7 @@ function storeVisitorInfo(data) {
   }
 }
 
-// Function to be executed when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Replace with your actual visitor information
+// Replace with your actual visitor information
 const visitorInfo = {
     status: "success",
     ziDetails: {
@@ -132,9 +129,11 @@ const visitorInfo = {
         sicCodes: ["73", "736", "7361", "72", "729", "7299"]
     }
 };
-  // Store the visitor information when the DOM is fully loaded
+
+// Delay the execution of storeVisitorInfo by 3 seconds
+setTimeout(function() {
   storeVisitorInfo(visitorInfo);
-});
+}, 4000); // 4 milliseconds = 3 seconds
 
 
   </script>
