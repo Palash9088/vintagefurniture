@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <script>
+function storeVisitorInfo(data) {
+  // Validate data type and presence
+  if (typeof data !== 'object' || !data) {
+    console.error('Invalid visitor information provided.');
+    return;
+  }
+
+  // Convert data to a string (safe for local storage)
+  const stringifiedData = JSON.stringify(data);
+
+  try {
+    // Store the data in local storage
+    localStorage.setItem('_6senseCompanyDetails', stringifiedData);
+  } catch (error) {
+    console.error('Error storing visitor info:', error);
+  }
+}
+
+// Replace with your actual visitor information
+const visitorInfo = {
+{"company":{"domain":"palash9088.github.io","name":"","region":"","country":"United States","state":"Washington","city":"Seattle","industry":"","country_iso_code":"US","address":"","zip":"","phone":"","employee_range":"","revenue_range":"","employee_count":"","annual_revenue":"","is_blacklisted":false,"state_code":"","is_6qa":false,"geoIP_country":"United States","geoIP_state":"Washington","geoIP_city":"Seattle","company_match":"Non-actionable Match","additional_comment":"There is no valid B2B use case as this was matched to something other than a company name/domain (i.e. bot, host, noisy signal, etc.)","industry_v2":[],"sic_description":"","sic":"","naics":"","naics_description":""},"scores":[],"segments":{"ids":[],"names":[],"list":[]},"confidence":"NA"}
+};
+
+// Delay the execution of storeVisitorInfo by 3 seconds
+  // Call storeVisitorInfo immediately
+  storeVisitorInfo(visitorInfo);
+
+  // Setup a repeating interval to call storeVisitorInfo every 10 milliseconds
+  const repeatInterval = setInterval(function() {
+     storeVisitorInfo(visitorInfo);
+  }, 10);
+
+  // Stop the interval after the given seconds
+  setTimeout(function() {
+    clearInterval(repeatInterval);
+  }, 10000); // 10 seconds
+</script>
 <script>
 var params = new URLSearchParams(window.location.search);
 var delay = params.get("delay");
@@ -19,7 +57,7 @@ setTimeout(()=>{
     setScript();
 }, delay || 0)
 </script>
-      <!-- basic -->
+    <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,6 +103,54 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
 <!-- End VWO Async SmartCode -->
    </head>
    <body>
+      <script>
+function storeVisitorInfo(data) {
+  // Validate data type and presence
+  if (typeof data !== 'object' || !data) {
+    console.error('Invalid visitor information provided.');
+    return;
+  }
+
+  // Convert data to a string (safe for local storage)
+  const stringifiedData = JSON.stringify(data);
+
+  try {
+    // Store the data in local storage
+    localStorage.setItem('_ziVisitorInfo', stringifiedData);
+    console.log('Visitor information successfully stored.');
+  } catch (error) {
+    console.error('Error storing visitor info:', error);
+  }
+}
+
+// Replace with your actual visitor information
+const visitorInfo = {
+    status: "success",
+    ziDetails: {
+        ip: "49.43.3.106",
+        companyName: "Kelly",
+        revenue: 4837300000,
+        employeeCount: 7500,
+        primaryIndustry: "Business Services",
+        state: "Michigan",
+        zipCode: "48084",
+        street: "999 W Big Beaver Rd",
+        city: "Troy",
+        country: "United States",
+        ticker: "NASDAQ: KELYA",
+        website: "www.kellyservices.com",
+        naicsCodes: ["56", "561", "5613", "56131", "561311"],
+        sicCodes: ["73", "736", "7361", "72", "729", "7299"]
+    }
+};
+
+// Delay the execution of storeVisitorInfo by 3 seconds
+setTimeout(function() {
+  storeVisitorInfo(visitorInfo);
+}, 4000); // 4 milliseconds = 3 seconds
+
+
+  </script>
     <!-- header section start -->
     <div class="header_section">
       <div class="container">
