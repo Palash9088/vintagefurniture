@@ -230,54 +230,6 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
 <!-- End VWO Async SmartCode -->
    </head>
    <body>
-      <script>
-function storeVisitorInfo(data) {
-  // Validate data type and presence
-  if (typeof data !== 'object' || !data) {
-    console.error('Invalid visitor information provided.');
-    return;
-  }
-
-  // Convert data to a string (safe for local storage)
-  const stringifiedData = JSON.stringify(data);
-
-  try {
-    // Store the data in local storage
-    localStorage.setItem('_ziVisitorInfo', stringifiedData);
-    console.log('Visitor information successfully stored.');
-  } catch (error) {
-    console.error('Error storing visitor info:', error);
-  }
-}
-
-// Replace with your actual visitor information
-const visitorInfo = {
-    status: "success",
-    ziDetails: {
-        ip: "49.43.3.106",
-        companyName: "Kelly",
-        revenue: 4837300000,
-        employeeCount: 7500,
-        primaryIndustry: "Business Services",
-        state: "Michigan",
-        zipCode: "48084",
-        street: "999 W Big Beaver Rd",
-        city: "Troy",
-        country: "United States",
-        ticker: "NASDAQ: KELYA",
-        website: "www.kellyservices.com",
-        naicsCodes: ["56", "561", "5613", "56131", "561311"],
-        sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-    }
-};
-
-// Delay the execution of storeVisitorInfo by 3 seconds
-setTimeout(function() {
-  storeVisitorInfo(visitorInfo);
-}, 4000); // 4 milliseconds = 3 seconds
-
-
-  </script>
     <!-- header section start -->
     <div class="header_section">
       <div class="container">
