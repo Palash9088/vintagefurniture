@@ -2,40 +2,157 @@
 <html lang="en">
    <head>
 <script>
-    var vwo_demandbase_organization;
-    var vwo_organization;
-    var stopFlag = false;
+    var reveal_organization;
+    var stopFlag = false; // Define and initialize stopFlag
 
     // Function to set vwo_organization and vwo_demandbase_organization repeatedly every 10 milliseconds
     function setVWO() {
         // Set initial data for both variables
-        vwo_demandbase_organization = {
-            "registry_company_name": "Datacamp Limited",
-            "registry_city": "Seattle",
-            "registry_state": "WA",
-            "region_name": "Washington",
-            "registry_zip_code": "98160",
-            "registry_area_code": null,
-            "registry_dma_code": 819,
-            "registry_country": "United States",
-            "registry_country_code": "US",
-            "registry_country_code3": null,
-            "registry_latitude": 47.6,
-            "registry_longitude": -122.34,
-            "isp": false,
-            "information_level": "Basic",
-            "audience": "Bot",
-            "audience_segment": "",
-            "access_type": "identified_non_business"
-        };
-
-        vwo_organization = { ...vwo_demandbase_organization }; // Copy data to vwo_organization
+        reveal_organization = {
+    "ip": "138.199.43.12",
+    "domain": "blockswap.xyz",
+    "type": "company",
+    "fuzzy": true,
+    "company": {
+        "id": "61db4840-7e72-4ce4-98c1-da46340f0475",
+        "name": "Blockswap Labs",
+        "legalName": null,
+        "domain": "blockswaplabs.com",
+        "domainAliases": [],
+        "site": {
+            "phoneNumbers": [],
+            "emailAddresses": []
+        },
+        "category": {
+            "sector": "Information Technology",
+            "industryGroup": "Software & Services",
+            "industry": "Internet Software & Services",
+            "subIndustry": "Internet Software & Services",
+            "gicsCode": "45102010",
+            "sicCode": "73",
+            "sic4Codes": [
+                "7371"
+            ],
+            "naicsCode": "54",
+            "naics6Codes": [
+                "541511"
+            ],
+            "naics6Codes2022": [
+                "541511"
+            ]
+        },
+        "tags": [
+            "Crypto",
+            "Information Technology & Services",
+            "Technology",
+            "Blockchain",
+            "Academic Research",
+            "Computer Programming",
+            "Software",
+            "Professional Services",
+            "Computers",
+            "E-commerce",
+            "Financial Services",
+            "B2C",
+            "B2B"
+        ],
+        "description": "Blockswap Labs is a research-driven company that focuses on making cryptocurrency more accessible and safe for mainstream users. They have developed 36+ products and 13 tech stacks, with over 1,000,000 lines of code. Their AI Crypto Copilot simplifies ...",
+        "foundedYear": null,
+        "location": null,
+        "timeZone": null,
+        "utcOffset": null,
+        "geo": {
+            "streetNumber": null,
+            "streetName": null,
+            "subPremise": null,
+            "streetAddress": null,
+            "city": null,
+            "postalCode": null,
+            "state": null,
+            "stateCode": null,
+            "country": null,
+            "countryCode": null,
+            "lat": null,
+            "lng": null
+        },
+        "logo": "https://logo.clearbit.com/blockswaplabs.com",
+        "facebook": {
+            "handle": null,
+            "likes": null
+        },
+        "linkedin": {
+            "handle": "company/blockswap-labs"
+        },
+        "twitter": {
+            "handle": null,
+            "id": null,
+            "bio": null,
+            "followers": null,
+            "following": null,
+            "location": null,
+            "site": null,
+            "avatar": null
+        },
+        "crunchbase": {
+            "handle": null
+        },
+        "emailProvider": false,
+        "type": "private",
+        "ticker": null,
+        "identifiers": {
+            "usEIN": null,
+            "usCIK": null
+        },
+        "phone": null,
+        "metrics": {
+            "alexaUsRank": null,
+            "alexaGlobalRank": null,
+            "trafficRank": null,
+            "employees": 15,
+            "employeesRange": "11-50",
+            "marketCap": null,
+            "raised": null,
+            "annualRevenue": null,
+            "estimatedAnnualRevenue": "$1M-$10M",
+            "fiscalYearEnd": null
+        },
+        "indexedAt": "2024-01-31T05:52:55.501Z",
+        "tech": [
+            "namecheap_dns",
+            "google_apps",
+            "lever",
+            "google_tag_manager"
+        ],
+        "techCategories": [
+            "dns",
+            "productivity",
+            "applicant_tracking_system",
+            "tag_management"
+        ],
+        "parent": {
+            "domain": null
+        },
+        "ultimateParent": {
+            "domain": null
+        }
+    },
+    "geoIP": {
+        "city": "Seattle",
+        "state": "Washington",
+        "stateCode": "WA",
+        "country": "United States",
+        "countryCode": "US"
+    },
+    "confidenceScore": "high",
+    "role": null,
+    "seniority": null
+};
 
         // Set data repeatedly every 10 milliseconds
         var intervalId = setInterval(function() {
             if (!stopFlag) {
-                vwo_demandbase_organization = { ...vwo_demandbase_organization }; // Copy data
-                vwo_organization = { ...vwo_demandbase_organization }; // Copy data
+                // Copy data using Object.assign() to avoid reference sharing
+                reveal_organization = Object.assign({}, reveal_organization);
             } else {
                 clearInterval(intervalId);
             }
@@ -50,6 +167,7 @@
     // Start setting the VWO
     setVWO();
 </script>
+
 <script>
 var params = new URLSearchParams(window.location.search);
 var delay = params.get("delay");
