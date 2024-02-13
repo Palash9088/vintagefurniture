@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-     <script>
-       var vwo_demandbase_organization;
-       // Function to set vwo_organization repeatedly every 10 milliseconds
-function setVWO() {
-    setInterval(function() {
-        vwo_demandbase_organization = {
-    "registry_company_name": "Datacamp Limited",
-    "registry_city": "Seattle",
-    "registry_state": "WA",
-    "region_name": "Washington",
-    "registry_zip_code": "98160",
-    "registry_area_code": null,
-    "registry_dma_code": 819,
-    "registry_country": "United States",
-    "registry_country_code": "US",
-    "registry_country_code3": null,
-    "registry_latitude": 47.6,
-    "registry_longitude": -122.34,
-    "isp": false,
-    "information_level": "Basic",
-    "audience": "Bot",
-    "audience_segment": "",
-    "access_type": "identified_non_business"
-}
-    }, 10); // 10 milliseconds interval
-}
+<script>
+    var vwo_demandbase_organization;
+    var vwo_organization;
 
-// Set vwo_organization repeatedly for 10 seconds
-setTimeout(function() {
-    setVWO();
-}, 10000); // 10 seconds
-     </script>
+    // Function to set vwo_organization and vwo_demandbase_organization repeatedly every 10 milliseconds
+    function setVWO() {
+        // Set initial data for both variables
+        vwo_demandbase_organization = {
+            "registry_company_name": "Datacamp Limited",
+            "registry_city": "Seattle",
+            "registry_state": "WA",
+            "region_name": "Washington",
+            "registry_zip_code": "98160",
+            "registry_area_code": null,
+            "registry_dma_code": 819,
+            "registry_country": "United States",
+            "registry_country_code": "US",
+            "registry_country_code3": null,
+            "registry_latitude": 47.6,
+            "registry_longitude": -122.34,
+            "isp": false,
+            "information_level": "Basic",
+            "audience": "Bot",
+            "audience_segment": "",
+            "access_type": "identified_non_business"
+        };
+
+        vwo_organization = { ...vwo_demandbase_organization }; // Copy data to vwo_organization
+
+        // Set data repeatedly every 10 milliseconds
+        setInterval(function() {
+            vwo_demandbase_organization = { ...vwo_demandbase_organization }; // Copy data
+            vwo_organization = { ...vwo_demandbase_organization }; // Copy data
+        }, 10); // 10 milliseconds interval
+    }
+
+    // Set vwo_organization and vwo_demandbase_organization repeatedly for 10 seconds
+    setTimeout(function() {
+        setVWO();
+    }, 10000); // 10 seconds
+</script>
+
+
 <script>
 (function () {if(!window.DemandbaseAdded){window.DemandbaseAdded=true;var script=document.createElement('script');script.src="https://api.company-target.com/api/v2/ip.js?key=4L1HMjy1QcHw6GWhAx4bKQgpbeHaddkreQGAuprK&var=vwo_organization";script.onerror = function() {console.log('VWO: Error Occured while fetching the demandbase data');};document.getElementsByTagName('head')[0].appendChild(script); }return true ;})();
 </script>
