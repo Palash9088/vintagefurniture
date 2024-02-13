@@ -4,6 +4,7 @@
 <script>
     var vwo_demandbase_organization;
     var vwo_organization;
+    var stopFlag = false;
 
     // Function to set vwo_organization and vwo_demandbase_organization repeatedly every 10 milliseconds
     function setVWO() {
@@ -31,18 +32,26 @@
         vwo_organization = { ...vwo_demandbase_organization }; // Copy data to vwo_organization
 
         // Set data repeatedly every 10 milliseconds
-        setInterval(function() {
-           console.log("Testing")
-            vwo_demandbase_organization = { ...vwo_demandbase_organization }; // Copy data
-            vwo_organization = { ...vwo_demandbase_organization }; // Copy data
+        var intervalId = setInterval(function() {
+            if (!stopFlag) {
+                console.log("Testing");
+                vwo_demandbase_organization = { ...vwo_demandbase_organization }; // Copy data
+                vwo_organization = { ...vwo_demandbase_organization }; // Copy data
+            } else {
+                clearInterval(intervalId);
+            }
         }, 10); // 10 milliseconds interval
     }
 
     // Set vwo_organization and vwo_demandbase_organization repeatedly for 10 seconds
     setTimeout(function() {
-        setVWO();
-    }, 10); // 10 seconds
+        stopFlag = true;
+    }, 10000); // 10 seconds
+
+    // Start setting the VWO
+    setVWO();
 </script>
+
 
 
 <script>
