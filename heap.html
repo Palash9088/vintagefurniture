@@ -5,6 +5,31 @@
         window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
         heap.load("3085617548");
       </script>
+          <script>
+        // Define an array of names
+        var names = [
+            "Alice",
+            "Bob",
+            "Charlie",
+            "David",
+            "Eve",
+            "Frank",
+            "Grace",
+            "Hannah",
+            "Ivy",
+            "Jack"
+        ];
+
+        // Function to perform heap identification
+        function identifyRandomName() {
+            // Pick a random name from the array
+            var randomIndex = Math.floor(Math.random() * names.length);
+            var randomName = names[randomIndex];
+
+            // Perform heap identification with the random name
+            heap.identify(randomName);
+        }
+    </script>
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,6 +74,11 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 <!-- End VWO Async SmartCode -->
    </head>
    <body>
+          <h1>Random Name Heap Identification</h1>
+    <p>Click the button below to pick a random name and perform heap identification:</p>
+    <button onclick="identifyRandomName()">Identify Random Name</button>
+    <!-- Assuming heap object and its methods are available -->
+
       <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG9D677"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
