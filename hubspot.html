@@ -53,57 +53,64 @@
 
 <body>
    <script>
- var names = [
-    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy",
-    "Jack", "Kevin", "Lily", "Mike", "Nancy", "Oliver", "Pamela", "Quinn", "Rachel",
-    "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xavier", "Yolanda", "Zach",
-    "Abigail", "Brandon", "Camila", "Daniel"
-];
+      var names = [
+         "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy",
+         "Jack", "Kevin", "Lily", "Mike", "Nancy", "Oliver", "Pamela", "Quinn", "Rachel",
+         "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xavier", "Yolanda", "Zach",
+         "Abigail", "Brandon", "Camila", "Daniel"
+      ];
 
-const lastNames = [
-    "Wood", "Parker", "Stark", "Hogan", "Soni", "Jain", "Shrivastava", "Yadav",
-    "Maharaj", "Emma", "Ethan", "Fiona", "Gabriel", "Harper", "Isabella", "Jacob",
-    "Joseph", "Katherine", "Liam", "Madison", "Mateo", "Nora", "Olivia", "Penelope",
-    "Quentin", "Riley", "Sophia", "Theodore", "Victoria", "William", "Xavier", "Yara",
-    "Zachary"
-];
+      const lastNames = [
+         "Wood", "Parker", "Stark", "Hogan", "Soni", "Jain", "Shrivastava", "Yadav",
+         "Maharaj", "Emma", "Ethan", "Fiona", "Gabriel", "Harper", "Isabella", "Jacob",
+         "Joseph", "Katherine", "Liam", "Madison", "Mateo", "Nora", "Olivia", "Penelope",
+         "Quentin", "Riley", "Sophia", "Theodore", "Victoria", "William", "Xavier", "Yara",
+         "Zachary"
+      ];
 
-// Trim the longer array to match the length of the shorter array
-if (names.length > lastNames.length) {
-    names = names.slice(0, lastNames.length);
-} else if (lastNames.length > names.length) {
-    lastNames = lastNames.slice(0, names.length);
-}
-console.log(names.length); 
-console.log(lastNames.length); 
-
+      // Trim the longer array to match the length of the shorter array
+      if (names.length > lastNames.length) {
+         names = names.slice(0, lastNames.length);
+      } else if (lastNames.length > names.length) {
+         lastNames = lastNames.slice(0, names.length);
+      }
+      console.log(names.length);
+      console.log(lastNames.length);
+      var isIdentified = false;
       function identifyUser() {
-         // Pick a random name from the array
-         var randomIndex = Math.floor(Math.random() * names.length);
-         var randomName = names[randomIndex];
-         var randomLastName = lastNames[randomIndex];
-         var email = randomName + randomLastName + "@hotmail.com";
-         
-         // Perform heap identification with the random name
-         _hsq.push(["identify", {
-            name: randomName + randomLastName,
-            email: email
-         }]);
-         _hsq.push(['trackPageView'])
-         var name = `${randomName + " " +randomLastName}`; 
-         var email = `${email}`;
-         var phone = `654-450-7817`;
+         if (isIdentified) {
+            alert("User already identified");
+            return;
+         }
+         if (!isIdentified) {
+            // Pick a random name from the array
+            var randomIndex = Math.floor(Math.random() * names.length);
+            var randomName = names[randomIndex];
+            var randomLastName = lastNames[randomIndex];
+            var email = randomName + randomLastName + "@hotmail.com";
 
-         // Get the element and set its content
-         document.getElementById("name").textContent = name;
-         document.getElementById("email").textContent = email;
-         document.getElementById("phone").textContent = phone;
+            // Perform heap identification with the random name
+            _hsq.push(["identify", {
+               name: randomName + randomLastName,
+               email: email
+            }]);
+            _hsq.push(['trackPageView'])
+            var name = `${randomName + " " + randomLastName}`;
+            var email = `${email}`;
+            var phone = `654-450-7817`;
 
-         //alert("Identified user: " + randomName + " " + randomLastName);
-         //alert("Identified user Email: " + email);
+            // Get the element and set its content
+            document.getElementById("name").textContent = name;
+            document.getElementById("email").textContent = email;
+            document.getElementById("phone").textContent = phone;
+            isIdentified = true;
+
+            //alert("Identified user: " + randomName + " " + randomLastName);
+            //alert("Identified user Email: " + email);
+         }
       }
    </script>
-   
+
    <!-- header section start -->
    <div class="header_section">
       <div class="container">
@@ -158,12 +165,12 @@ console.log(lastNames.length);
          <p>Click the button to perform user identification:</p>
          <button class="button" onclick="identifyUser()">Click Here</button>
       </div>
-      <div class="identify-user p"> 
+      <div class="identify-user p">
          <div id="name"></div>
          <div id="email"></div>
          <div id="phone"></div>
       </div>
-      
+
    </div>
    <style>
       .identify-user {
