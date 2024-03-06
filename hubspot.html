@@ -74,19 +74,13 @@ window._vwo_pc_custom = {
          "Abigail", "Brandon", "Camila", "Daniel"
       ];
 
-      var lastNames = [
+      const lastNames = [
          "Wood", "Parker", "Stark", "Hogan", "Soni", "Jain", "Shrivastava", "Yadav",
          "Maharaj", "Emma", "Ethan", "Fiona", "Gabriel", "Harper", "Isabella", "Jacob",
          "Joseph", "Katherine", "Liam", "Madison", "Mateo", "Nora", "Olivia", "Penelope",
          "Quentin", "Riley", "Sophia", "Theodore", "Victoria", "William", "Xavier", "Yara",
          "Zachary"
       ];
-   const element = document.getElementById("phone");
-   const phoneNumber = element.textContent;
-   let lastFourDigit = phoneNumber?.split("-")[2] ?? "";
-   let newLastFourDigit = Math.floor(Math.random() * 9000) + 1000;
-   let newNumber =
-    phoneNumber?.replace(lastFourDigit, newLastFourDigit.toString()) ?? "";
 
       // Trim the longer array to match the length of the shorter array
       if (names.length > lastNames.length) {
@@ -112,14 +106,12 @@ window._vwo_pc_custom = {
             // Perform heap identification with the random name
             _hsq.push(["identify", {
                name: randomName + randomLastName,
-               email: email,
-               phone: newNumber
+               email: email
             }]);
             _hsq.push(['trackPageView'])
-            
             var name = `${randomName + " " + randomLastName}`;
             var email = `${email}`;
-            var phone = `${newNumber}`;
+            var phone = `654-450-7817`;
 
             // Get the element and set its content
             document.getElementById("name").textContent = name;
