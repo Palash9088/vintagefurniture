@@ -101,11 +101,10 @@ window._vwo_pc_custom = {
             var randomIndex = Math.floor(Math.random() * names.length);
             var randomName = names[randomIndex];
             var randomLastName = lastNames[randomIndex];
-            var email = randomName + randomLastName + "@hotmail.com";
+            var email = randomName + randomLastName + "@vwo.com";
 
             // Perform heap identification with the random name
             _hsq.push(["identify", {
-               name: randomName + randomLastName,
                email: email
             }]);
             _hsq.push(['trackPageView'])
