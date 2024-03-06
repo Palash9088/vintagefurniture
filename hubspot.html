@@ -81,7 +81,8 @@ window._vwo_pc_custom = {
          "Quentin", "Riley", "Sophia", "Theodore", "Victoria", "William", "Xavier", "Yara",
          "Zachary"
       ];
-   let phoneNumber = await page.locator("#phone").textContent();
+   const element = document.getElementById("phone");
+   const phoneNumber = element.textContent;
    let lastFourDigit = phoneNumber?.split("-")[2] ?? "";
    let newLastFourDigit = Math.floor(Math.random() * 9000) + 1000;
    let newNumber =
