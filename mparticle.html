@@ -64,7 +64,7 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
    </head>
    <body>
       <script>
-         function identifyUser() {
+         function fireEvent() {
             mParticle.logEvent(
   'Video Watched',
   mParticle.EventType.Navigation,
@@ -74,7 +74,7 @@ f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jque
       </script>
       <div class="identify-user">
          <h1>Fire Event</h1>
-         <p>Click the button to perform user identification:</p>
+         <p>Click to fire event</p>
          <button class="button" onclick="fireEvent()">Click Here</button>
       </div>
       <!-- header section start -->
