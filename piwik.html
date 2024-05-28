@@ -21,17 +21,11 @@
  End Matomo Code -->
 
    <script type="text/javascript">
-      window.ppms = window.ppms || [];
-      window.ppms.push(['appendToTrackingUrl', 'new_visit=1']); // forces a new visit the two lines must be above the call to track
-      window.ppms.push(["trackPageView"]);
-      window.ppms.push(['appendToTrackingUrl', '']); // do not force a new visit anymore (only do it once)
-
-      /*
-        var _paq = window._paq = window._paq || [];
+   var _paq = window._paq = window._paq || [];
   window._paq.push(['appendToTrackingUrl', 'new_visit=1']); // forces a new visit 
   window._paq.push(["trackPageView"]);
   window._paq.push(['appendToTrackingUrl', '']); // do not force a new visit anymore (only do it once)
-  _paq.push(['enableLinkTracking']);*/
+  _paq.push(['enableLinkTracking']);
       
          (function(window, document, dataLayerName, id) {
          window[dataLayerName]=window[dataLayerName]||[],window[dataLayerName].push({start:(new Date).getTime(),event:"stg.start"});var scripts=document.getElementsByTagName('script')[0],tags=document.createElement('script');
