@@ -101,7 +101,10 @@ window._vwo_pc_custom = {
             var randomIndex = Math.floor(Math.random() * names.length);
             var randomName = names[randomIndex];
             var randomLastName = lastNames[randomIndex];
-            var email = randomName + randomLastName + "@vercel.com";
+            var timestamp = Date.now(); // Get the current timestamp in milliseconds
+            var email = randomName + randomLastName + timestamp + "@vercel.com";
+
+console.log(email);
 
             // Perform heap identification with the random name
             _hsq.push(["identify", {
