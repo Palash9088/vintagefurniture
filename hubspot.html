@@ -134,12 +134,14 @@ window.addEventListener('message', (event) => {
     event.data.eventName === 'onFormSubmitted'
   ) {
     console.log('Form Submitted! Event data: ${event.data}');
+     console.log(event.data);
   }
   if (
     event.data.type === 'hsFormCallback' &&
     event.data.eventName === 'onBeforeFormSubmit'
   ) {
     console.log('onBeforeFormSubmit Event data: ${event.data}');
+   console.log(event.data);
   }
 });
    </script>
