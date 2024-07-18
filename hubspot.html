@@ -126,6 +126,23 @@ console.log(email);
          }
       }
    </script>
+   <script>
+// Example listener
+window.addEventListener('message', (event) => {
+  if (
+    event.data.type === 'hsFormCallback' &&
+    event.data.eventName === 'onFormSubmitted'
+  ) {
+    console.log('Form Submitted! Event data: ${event.data}');
+  }
+  if (
+    event.data.type === 'hsFormCallback' &&
+    event.data.eventName === 'onBeforeFormSubmit'
+  ) {
+    console.log('onBeforeFormSubmit Event data: ${event.data}');
+  }
+});
+   </script>
 
    <!-- header section start -->
    <div class="header_section">
