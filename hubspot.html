@@ -136,20 +136,22 @@ console.log(email);
    </script>
    <script>
 // Example listener
-window.addEventListener('message', (event) => {
+      window.addEventListener('message', (event) => {
   if (
     event.data.type === 'hsFormCallback' &&
     event.data.eventName === 'onFormSubmitted'
   ) {
+      window._hsq.push(["trackCustomBehavioralEvent",{
+          name: "pe44178869_vwo_uuid",
+          properties: {vwo_uuid : "abcasdadad"}
+      }]);
     console.log('Form Submitted! Event data: ${event.data}');
-     console.log(event.data);
   }
   if (
     event.data.type === 'hsFormCallback' &&
     event.data.eventName === 'onBeforeFormSubmit'
   ) {
-    console.log('onBeforeFormSubmit Event data: ${event.data}');
-   console.log(event.data);
+    console.log('Form Submitted! Event data: ${event.data}');
   }
 });
    </script>
