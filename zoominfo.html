@@ -1,203 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <script>
-function storeVisitorInfo(data) {
-  // Validate data type and presence
-  if (typeof data !== 'object' || !data) {
-    console.error('Invalid visitor information provided.');
-    return;
-  }
 
-  // Convert data to a string (safe for local storage)
-  const stringifiedData = JSON.stringify(data);
+<head>
+   <script>
+      function storeVisitorInfo(data) {
+         // Validate data type and presence
+         if (typeof data !== 'object' || !data) {
+            console.error('Invalid visitor information provided.');
+            return;
+         }
 
-  try {
-    // Store the data in local storage
-    localStorage.setItem('_ziVisitorInfo', stringifiedData);
-  } catch (error) {
-    console.error('Error storing visitor info:', error);
-  }
-}
+         // Convert data to a string (safe for local storage)
+         const stringifiedData = JSON.stringify(data);
 
-// Replace with your actual visitor information
-const visitorInfo = {
-    status: "success",
-    ziDetails: {
-        ip: "49.43.3.106",
-        companyName: "Kelly",
-        revenue: 4837300000,
-        employeeCount: 7500,
-        primaryIndustry: "Business Services",
-        state: "Michigan",
-        zipCode: "48084",
-        street: "999 W Big Beaver Rd",
-        city: "Troy",
-        country: "United States",
-        ticker: "NASDAQ: KELYA",
-        website: "www.kellyservices.com",
-        naicsCodes: ["56", "561", "5613", "56131", "561311"],
-        sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-    }
-};
+         try {
+            // Store the data in local storage
+            localStorage.setItem('_ziVisitorInfo', stringifiedData);
+         } catch (error) {
+            console.error('Error storing visitor info:', error);
+         }
+      }
 
-// Delay the execution of storeVisitorInfo by 3 seconds
-  // Call storeVisitorInfo immediately
-  storeVisitorInfo(visitorInfo);
+      // Delay the execution of storeVisitorInfo by 3 seconds
+      // Call storeVisitorInfo immediately
+      storeVisitorInfo(visitorInfo);
 
-  // Setup a repeating interval to call storeVisitorInfo every 10 milliseconds
-  const repeatInterval = setInterval(function() {
-     storeVisitorInfo(visitorInfo);
-  }, 10);
+      // Setup a repeating interval to call storeVisitorInfo every 10 milliseconds
+      const repeatInterval = setInterval(function () {
+         storeVisitorInfo(visitorInfo);
+      }, 10);
 
-  // Stop the interval after the given seconds
-  setTimeout(function() {
-    clearInterval(repeatInterval);
-  }, 10000); // 10 seconds
-</script>
-         <script>
-          window[
-      (function (_c4X, _VK) {
-        var _IL = "";
-        for (var _iz = 0; _iz < _c4X.length; _iz++) {
-          var _IE = _c4X[_iz].charCodeAt();
-          _IE != _iz;
-          _IL == _IL;
-          _IE -= _VK;
-          _VK > 9;
-          _IE += 61;
-          _IE %= 94;
-          _IE += 33;
-          _IL += String.fromCharCode(_IE);
-        }
-        return _IL;
-      })(atob("Z1ZdIXx3cnAjWHIo"), 13)
-    ] = "2de87904e51683710655";
-    var zi = document.createElement("script");
-    (zi.type = "text/javascript"),
-      (zi.async = true),
-      (zi.src = (function (_rRx, _A1) {
-        var _MP = "";
-        for (var _qX = 0; _qX < _rRx.length; _qX++) {
-          var _0r = _rRx[_qX].charCodeAt();
-          _0r -= _A1;
-          _0r != _qX;
-          _MP == _MP;
-          _0r += 61;
-          _0r %= 94;
-          _0r += 33;
-          _A1 > 2;
-          _MP += String.fromCharCode(_0r);
-        }
-        return _MP;
-      })(atob("dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ="), 15)),
-      document.readyState === "complete"
-        ? document.body.appendChild(zi)
-        : window.addEventListener("load", function () {
-            document.body.appendChild(zi);
-          });
-      </script>
-    <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>Vintage Fur</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<!-- Start VWO Async SmartCode -->
-<script type='text/javascript' id='vwoCode'>
-var account_ids = location.search.split('id=')[1] ? location.search.split('id=')[1] : '706039';
-window._vwo_code=window._vwo_code || (function() {
-var account_id = account_ids,
-version = 1.5,
-settings_tolerance=2000,
-library_tolerance=2500,
-use_existing_jquery=false,
-is_spa=1,
-hide_element='body',
-hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
-/* DO NOT EDIT BELOW THIS LINE */
-f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},hide_element_style:function(){return'{'+hide_element_style+'}'},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},getVersion:function(){return version},getMatchedCookies:function(e){var t=[];if(document.cookie){t=document.cookie.match(e)||[]}return t},getCombinationCookie:function(){var e=code.getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);e=e.map(function(e){try{var t=decodeURIComponent(e);if(!/_vis_opt_exp_\d+_combi=(?:\d+,?)+\s*$/.test(t)){return''}return t}catch(e){return''}});var i=[];e.forEach(function(e){var t=e.match(/([\d,]+)/g);t&&i.push(t.join('-'))});return i.join('|')},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{'+hide_element_style+'}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');vwoCodeEl&&e.setAttribute('nonce',vwoCodeEl.nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);var n=this.getCombinationCookie();this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version+(n?'&c='+n:''));return settings_timer}};window._vwo_settings_timer = code.init();return code;}());
-</script> 
-<!-- End VWO Async SmartCode -->
-   </head>
-   <body>
-      <script>
-function storeVisitorInfo(data) {
-  // Validate data type and presence
-  if (typeof data !== 'object' || !data) {
-    console.error('Invalid visitor information provided.');
-    return;
-  }
+      // Stop the interval after the given seconds
+      setTimeout(function () {
+         clearInterval(repeatInterval);
+      }, 10000); // 10 seconds
+   </script>
+   <script>
+      window[
+         (function (_c4X, _VK) {
+            var _IL = "";
+            for (var _iz = 0; _iz < _c4X.length; _iz++) {
+               var _IE = _c4X[_iz].charCodeAt();
+               _IE != _iz;
+               _IL == _IL;
+               _IE -= _VK;
+               _VK > 9;
+               _IE += 61;
+               _IE %= 94;
+               _IE += 33;
+               _IL += String.fromCharCode(_IE);
+            }
+            return _IL;
+         })(atob("Z1ZdIXx3cnAjWHIo"), 13)
+      ] = "2de87904e51683710655";
+      var zi = document.createElement("script");
+      (zi.type = "text/javascript"),
+         (zi.async = true),
+         (zi.src = (function (_rRx, _A1) {
+            var _MP = "";
+            for (var _qX = 0; _qX < _rRx.length; _qX++) {
+               var _0r = _rRx[_qX].charCodeAt();
+               _0r -= _A1;
+               _0r != _qX;
+               _MP == _MP;
+               _0r += 61;
+               _0r %= 94;
+               _0r += 33;
+               _A1 > 2;
+               _MP += String.fromCharCode(_0r);
+            }
+            return _MP;
+         })(atob("dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ="), 15)),
+         document.readyState === "complete"
+            ? document.body.appendChild(zi)
+            : window.addEventListener("load", function () {
+               document.body.appendChild(zi);
+            });
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Vintage Fur</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="css/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <!-- owl stylesheets -->
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen">
+   <!-- Start VWO Async SmartCode -->
+   <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+   <script type='text/javascript' id='vwoCode'>
+      const params = new URLSearchParams(window.location.search);
+      const accId = parseInt(params.get("id"));
+      const accountId = accId || 706039;
+      console.log("Account-Id ->", accountId);
+      /* eslint-disable no-undef */
+      window._vwo_code || (function () {
+         var account_id = accountId,
+            version = 2.1,
+            settings_tolerance = 2000,
+            hide_element = 'body',
+            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+            /* DO NOT EDIT BELOW THIS LINE */
+            f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
+      })();
+   </script>
+   <!-- End VWO Async SmartCode -->
+</head>
 
-  // Convert data to a string (safe for local storage)
-  const stringifiedData = JSON.stringify(data);
+<body>
+   <script>
+      function storeVisitorInfo(data) {
+         // Validate data type and presence
+         if (typeof data !== 'object' || !data) {
+            console.error('Invalid visitor information provided.');
+            return;
+         }
 
-  try {
-    // Store the data in local storage
-    localStorage.setItem('_ziVisitorInfo', stringifiedData);
-    console.log('Visitor information successfully stored.');
-  } catch (error) {
-    console.error('Error storing visitor info:', error);
-  }
-}
+         // Convert data to a string (safe for local storage)
+         const stringifiedData = JSON.stringify(data);
 
-// Replace with your actual visitor information
-const visitorInfo = {
-    status: "success",
-    ziDetails: {
-        ip: "49.43.3.106",
-        companyName: "Kelly",
-        revenue: 4837300000,
-        employeeCount: 7500,
-        primaryIndustry: "Business Services",
-        state: "Michigan",
-        zipCode: "48084",
-        street: "999 W Big Beaver Rd",
-        city: "Troy",
-        country: "United States",
-        ticker: "NASDAQ: KELYA",
-        website: "www.kellyservices.com",
-        naicsCodes: ["56", "561", "5613", "56131", "561311"],
-        sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-    }
-};
+         try {
+            // Store the data in local storage
+            localStorage.setItem('_ziVisitorInfo', stringifiedData);
+            console.log('Visitor information successfully stored.');
+         } catch (error) {
+            console.error('Error storing visitor info:', error);
+         }
+      }
 
-// Delay the execution of storeVisitorInfo by 3 seconds
-setTimeout(function() {
-  storeVisitorInfo(visitorInfo);
-}, 4000); // 4 milliseconds = 3 seconds
+      // Replace with your actual visitor information
+      const visitorInfo = {
+         status: "success",
+         ziDetails: {
+            ip: "49.43.3.106",
+            companyName: "Kelly",
+            revenue: 4837300000,
+            employeeCount: 7500,
+            primaryIndustry: "Business Services",
+            state: "Michigan",
+            zipCode: "48084",
+            street: "999 W Big Beaver Rd",
+            city: "Troy",
+            country: "United States",
+            ticker: "NASDAQ: KELYA",
+            website: "www.kellyservices.com",
+            naicsCodes: ["56", "561", "5613", "56131", "561311"],
+            sicCodes: ["73", "736", "7361", "72", "729", "7299"]
+         }
+      };
+
+      // Delay the execution of storeVisitorInfo by 3 seconds
+      setTimeout(function () {
+         storeVisitorInfo(visitorInfo);
+      }, 4000); // 4 milliseconds = 3 seconds
 
 
-  </script>
-    <!-- header section start -->
-    <div class="header_section">
+   </script>
+   <!-- header section start -->
+   <div class="header_section">
       <div class="container">
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="logo"><a href="index.html"> <!-- <img src="images/logo.png"> --> </a></div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto">
@@ -228,17 +214,17 @@ setTimeout(function() {
             </div>
          </nav>
       </div>
-   <!-- banner section start -->
-   <div class="banner_section layout_padding">
-      <div class="container">
-         <div id="costum_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-               <div class="carousel-item active">
+      <!-- banner section start -->
+      <div class="banner_section layout_padding">
+         <div class="container">
+            <div id="costum_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                  </div>
                </div>
             </div>
          </div>
       </div>
-   </div> 
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
@@ -248,8 +234,9 @@ setTimeout(function() {
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-      <!-- javascript --> 
+      <!-- javascript -->
       <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>    
-   </body>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
 </html>
