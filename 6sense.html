@@ -81,6 +81,7 @@
          clearInterval(repeatInterval);
       }, 10000); // 10 seconds
    </script>
+   
    <script>
       var params = new URLSearchParams(window.location.search);
       var delay = params.get("delay");
@@ -99,6 +100,8 @@
          setScript();
       }, delay || 0)
    </script>
+   <!-- 6sense Script End -->
+
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -131,8 +134,8 @@
       <!-- Start VWO Async SmartCode -->
       <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
       <script type='text/javascript' id='vwoCode'>
-         const params = new URLSearchParams(window.location.search);
-         const accId = parseInt(params.get("id"));
+         const params_id = new URLSearchParams(window.location.search);
+         const accId = parseInt(params_id.get("id"));
          const accountId = accId || 706039;
          console.log("Account-Id ->", accountId);
          /* eslint-disable no-undef */
