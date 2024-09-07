@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- Start of HubSpot Embed Code -->
+   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/45744434.js"></script>
+   <!-- End of HubSpot Embed Code -->
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- CSS file Included -->
+   <link rel="stylesheet" type="text/css" href="js/tic.css">
+   <!-- JavaScript file included -->
+   <script src="js/tic.js"></script>
+   <!-- site metas -->
+   <title>Palash</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+   <!-- Responsive-->
+   <link rel="stylesheet" href="css/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <!-- owl stylesheets -->
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen">
+   <!-- Start VWO Async SmartCode -->
+   <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+   <script type='text/javascript' id='vwoCode'>
+      const params = new URLSearchParams(window.location.search);
+      const accId = parseInt(params.get("id"));
+      const accountId = accId || 706039;
+      console.log("Account-Id ->", accountId);
+      /* eslint-disable no-undef */
+      window._vwo_code || (function () {
+         var account_id = accountId,
+            version = 2.1,
+            settings_tolerance = 2000,
+            hide_element = 'body',
+            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+            /* DO NOT EDIT BELOW THIS LINE */
+            f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
+      })();
+   </script>
+   <!-- End VWO Async SmartCode -->
+   <script>
+      var a = [1, 2, 3, 4];
+      window._vwo_pc_custom = {
+         't': 100, //track
+         'a': 100 //analyze
+      };
+   </script>
+   <script>
+      __nls.forceSampleAnalyze()
+   </script>
+   <!-- End VWO Async SmartCode -->
+</head>
+
+<body>
+   <script>
+      var names = [
+         "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivy",
+         "Jack", "Kevin", "Lily", "Mike", "Nancy", "Oliver", "Pamela", "Quinn", "Rachel",
+         "Sam", "Tina", "Ursula", "Victor", "Wendy", "Xavier", "Yolanda", "Zach",
+         "Abigail", "Brandon", "Camila", "Daniel", "Eleanor", "Freddie", "Georgia",
+         "Henry", "Isabella", "Jacob", "Katherine", "Leon", "Mason", "Nina", "Oscar",
+         "Penelope", "Quentin", "Riley", "Sophia", "Thomas", "Uma", "Violet", "Wyatt",
+         "Xena", "Yara", "Zane", "Aarav", "Ananya", "Arjun", "Diya", "Ishaan", "Kavya",
+         "Meera", "Neel", "Rohan", "Sanya"
+      ];
+
+      var lastNames = [
+         "Wood", "Parker", "Stark", "Hogan", "Soni", "Jain", "Shrivastava", "Yadav",
+         "Maharaj", "Emma", "Ethan", "Fiona", "Gabriel", "Harper", "Isabella", "Jacob",
+         "Joseph", "Katherine", "Liam", "Madison", "Mateo", "Nora", "Olivia", "Penelope",
+         "Quentin", "Riley", "Sophia", "Theodore", "Victoria", "William", "Xavier", "Yara",
+         "Zachary", "Adams", "Brown", "Clark", "Davis", "Evans", "Green", "Hall", "Johnson",
+         "King", "Lewis", "Miller", "Nelson", "O'Connor", "Peterson", "Quinn", "Roberts",
+         "Stevens", "Turner", "Underwood", "Vargas", "Walker", "Young", "Zimmerman",
+         "Bose", "Chatterjee", "Desai", "Gandhi", "Iyer", "Kapoor", "Malhotra", "Patel",
+         "Reddy", "Sinha"
+      ];
+
+      // Trim the longer array to match the length of the shorter array
+      if (names.length > lastNames.length) {
+         names = names.slice(0, lastNames.length);
+      } else if (lastNames.length > names.length) {
+         lastNames = lastNames.slice(0, names.length);
+      }
+      console.log(names.length);
+      console.log(lastNames.length);
+      var isIdentified = false;
+      function identifyUser() {
+         if (isIdentified) {
+            alert("User already identified");
+            return;
+         }
+         if (!isIdentified) {
+            // Pick a random name from the array
+            var randomIndex = Math.floor(Math.random() * names.length);
+            var randomName = names[randomIndex];
+            var randomLastName = lastNames[randomIndex];
+            var timestamp = Date.now(); // Get the current timestamp in milliseconds
+            var email = randomName + randomLastName + "@apple.com";
+
+            console.log(email);
+
+            // Perform heap identification with the random name
+            _hsq.push(["identify", {
+               email: email
+            }]);
+            _hsq.push(['trackPageView'])
+            var name = `${randomName + " " + randomLastName}`;
+            var email = `${email}`;
+            var phone = `654-450-7817`;
+
+            // Get the element and set its content
+            document.getElementById("name").textContent = name;
+            document.getElementById("email").textContent = email;
+            document.getElementById("phone").textContent = phone;
+            isIdentified = true;
+
+            //alert("Identified user: " + randomName + " " + randomLastName);
+            //alert("Identified user Email: " + email);
+         }
+      }
+   </script>
+   <!-- <script>
+// Example listener
+      window.addEventListener('message', (event) => {
+  if (
+    event.data.type === 'hsFormCallback' &&
+    event.data.eventName === 'onFormSubmitted'
+  ) {
+      window._hsq.push(["trackCustomBehavioralEvent",{
+          name: "pe44178869_vwo_uuid",
+          properties: {vwo_uuid : "abcasdadad"}
+      }]);
+    console.log('Form Submitted! Event data: ${event.data}');
+  }
+  if (
+    event.data.type === 'hsFormCallback' &&
+    event.data.eventName === 'onBeforeFormSubmit'
+  ) {
+    console.log('Form Submitted! Event data: ${event.data}');
+  }
+});
+   </script>  -->
+
+   <!-- header section start -->
+   <div class="header_section">
+      <div class="container">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo"><a href="index.html"> <!-- <img src="images/logo.png"> --> </a></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="services.html">services</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="shop.html">Shop</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="contact.html">Contact</a>
+                  </li>
+               </ul>
+               <form class="form-inline my-2 my-lg-0">
+                  <div class="search_icon">
+                     <ul>
+                        <li><a href="#"><img src="images/search-icon.png"></a></li>
+                        <li><a href="#">LOGIN</a></li>
+                     </ul>
+                  </div>
+               </form>
+            </div>
+         </nav>
+      </div>
+      <!-- banner section start -->
+      <div class="form">
+         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+         <script>
+            hbspt.forms.create({
+               region: "na1",
+               portalId: "44178869",
+               formId: "d913a33a-71c4-4f8d-9e53-baff8487a900"
+            });
+         </script>
+      </div>
+      <div class="identify-user">
+         <h1>Hubspot Identify User</h1>
+         <p>Click the button to perform user identification:</p>
+         <button class="button" onclick="identifyUser()">Click Here</button>
+      </div>
+      <div class="identify-user p">
+         <div id="name"></div>
+         <div id="email"></div>
+         <div id="phone"></div>
+      </div>
+
+   </div>
+   <div id="main">
+      <h1>TIC TAC TOE</h1>
+      <p id="ins">
+         Game starts by just Tap on
+         box<br><br>First Player starts as
+         <b>Player X </b>And Second Player as
+         <b>Player 0</b>
+      </p>
+      <br><br>
+      <div class="ui">
+         <div class="row">
+            <input type="text" id="b1" class="cell" onclick="myfunc_3(); myfunc();" readonly>
+            <input type="text" id="b2" class="cell" onclick="myfunc_4(); myfunc();" readonly>
+            <input type="text" id="b3" class="cell" onclick="myfunc_5(); myfunc();" readonly>
+         </div>
+         <div class="row">
+            <input type="text" id="b4" class="cell" onclick="myfunc_6(); myfunc();" readonly>
+            <input type="text" id="b5" class="cell" onclick="myfunc_7(); myfunc();" readonly>
+            <input type="text" id="b6" class="cell" onclick="myfunc_8(); myfunc();" readonly>
+         </div>
+         <div class="row">
+            <input type="text" id="b7" class="cell" onclick="myfunc_9(); myfunc();" readonly>
+            <input type="text" id="b8" class="cell" onclick="myfunc_10();myfunc();" readonly>
+            <input type="text" id="b9" class="cell" onclick="myfunc_11();myfunc();" readonly>
+         </div>
+      </div>
+      <br><br><br>
+
+      <button id="but" onclick="myfunc_2()">
+         RESET
+      </button>
+      <br><br>
+      <p id="print"></p>
+   </div>
+   <style>
+      .identify-user {
+         text-align: center;
+         margin-top: 20px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      .identify-user h1 {
+         font-size: 24px;
+         font-weight: bold;
+      }
+
+      .identify-user p {
+         font-size: 16px;
+         margin-bottom: 10px;
+      }
+
+      .identify-user button {
+         padding: 12px 20px;
+         font-size: 16px;
+         background-color: #1f6fc5;
+         color: #fff;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      .identify-user button:hover {
+         background-color: #0056b3;
+      }
+
+      /* END: ed8c6549bwf9 */
+   </style>
+   <!-- END: ed8c6549bwf9 -->
+   <!-- Javascript files-->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/jquery-3.0.0.min.js"></script>
+   <script src="js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="js/custom.js"></script>
+   <!-- javascript -->
+   
+   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</style>
+
+</html>
