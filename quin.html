@@ -1,0 +1,262 @@
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title> Quin </title>
+
+      <!-- Start VWO Async SmartCode -->
+      <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+      <script type='text/javascript' id='vwoCode'>
+         const params_id = new URLSearchParams(window.location.search);
+         const accId = parseInt(params_id.get("id"));
+         const accountId = accId || 706039;
+         console.log("Account-Id ->", accountId);
+         /* eslint-disable no-undef */
+         window._vwo_code || (function () {
+            var account_id = accountId,
+               version = 2.1,
+               settings_tolerance = 2000,
+               hide_element = 'body',
+               hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+               /* DO NOT EDIT BELOW THIS LINE */
+               f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
+         })();
+      </script>
+      <!-- End VWO Async SmartCode -->
+<script>
+window._vwo_pc_custom = {
+    't': 100, //track
+    'a': 100 //analyze
+};
+</script>
+
+
+<script>
+    (function () {
+      var g,
+        e,
+        r,
+        a = window,
+        l = document,
+        t = arguments,
+        s = 'script',
+        cx = ['init', 'track', 'subscribe', 'version', 'indentify'],
+        sx,
+        gx = function () {
+          var x,
+            i = this;
+          for (i._q = [], x = 0; cx.length > x; x++)
+            (function (x) {
+              i[x] = function () {
+                return (
+                  i._q.push(
+                    [x].concat(Array.prototype.slice.call(arguments, 0))
+                  ),
+                  i
+                );
+              };
+            })(cx[x]);
+        };
+      for (a._gt = a._gt || {}, g = 0; t.length > g; t++)
+        a._gt[t[g]] = a[t[g]] = a[t[g]] || new gx();
+      (e = l.createElement(s)),
+        (e.async = 1),
+        (e.src = 'https://cdn.quinengine.com/lib/v2/geralt.min.js'),
+        (r = l.getElementsByTagName(s)[0]),
+        r.parentNode.insertBefore(e, r);
+    })('geralt');
+    geralt.init({ debug: true, name: 'wingified.com' });
+    
+   window.vwo_quin_data=JSON.parse('{"type":"popup","id":"bf3bf28c6bc03114","actionName":"VWO - Test Action","avgPrice":0,"category":"women > [","promotionCode":"QWHXYIRZFOGW","categoryId":"","userId":"09677b681b6c98419d75c94adb208d04.ca3b572e74fefa4a56ea8de5.a6a58ad71c01da85","display":{"actionType":"discount","position":"center","title":{"text":"vwo test","color":""},"description":{"text":" ","color":""},"logo":"","background":{"image":"","color":"#FCFCFC"},"image":{"url":"","position":"top"},"actionButton":{"text":" copy","color":"#0065ff","url":""},"dismisssButton":{"text":"","color":"#FCFCFC"},"badge":{"color":"#ffffff"},"properties":null},"audienceId":"d1551a565565b300"}');
+</script>
+
+<script>
+    geralt.track('pageview', {
+        category: 'home',
+        label: 'homepage'
+    });
+</script>
+
+<script>
+  window.geralt.subscribe((detail) => {
+      console.log(detail);
+    // Insert your custom popup script into this function
+    // Access parameters via the 'detail' object
+  });
+</script>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .section {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .image-section {
+            display: flex;
+            gap: 20px;
+        }
+        .image-section img {
+            flex: 1;
+        }
+    </style>
+
+</head>
+<body>
+    
+      <header>
+        <h1>Welcome to Our Interactive Web Page</h1>
+    </header>
+
+    <div class="section">
+        <h2>Sign Up Form</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div> 
+    
+    <div class="section">
+        <h2>Contact Us Form</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="container">
+        <a href="/" class="navbar-brand fw-bold fs-4"><span style="font-weight: 500;">QUINSHOP</span></a>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item mx-2"><a href="/quin-category.html?id=12000060" class="nav-link">Women</a></li>
+             <li class="nav-item mx-2"><a href="/quin-men.html?id=12000060" class="nav-link">Men</a></li>
+            </ul></div>
+    
+     <div class="section image-section">
+        <div>
+            <h2>Our Products</h2>
+            <img src="https://via.placeholder.com/300" alt="Product 1">
+            <a class="cta-button" id="product-1-btn">Buy Now</a>
+        </div>
+        <div>
+            <h2>Our Services</h2>
+            <img src="https://via.placeholder.com/300" alt="Service 1">
+            <a class="cta-button" id="service-1-btn">Learn More</a>
+        </div>
+    </div>
+       <div class="section">
+        <h2>Subscribe to Our Newsletter</h2>
+        <form id="subscribe-form">
+            <div class="form-group">
+                <label for="newsletter-email">Email</label>
+                <input type="email" id="newsletter-email" name="newsletter-email" placeholder="Enter your email">
+            </div>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log('Sign Up form submitted');
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log('Contact Us form submitted');
+        });
+
+        document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log('Subscribe form submitted');
+        });
+
+        document.getElementById('product-1-btn').addEventListener('click', function() {
+            console.log('Product 1 Buy Now button clicked');
+        });
+
+        document.getElementById('service-1-btn').addEventListener('click', function() {
+            console.log('Service 1 Learn More button clicked');
+        });
+    </script>
+ 
+</body>
+</html>
