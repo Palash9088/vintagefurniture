@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    </script>
+    <script type="text/javascript">
+        (function (e, t) {
+            var n = e.amplitude || { _q: [], _iq: {} }; var r = t.createElement("script")
+                ; r.type = "text/javascript"
+                ; r.integrity = "sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M"
+                ; r.crossOrigin = "anonymous"; r.async = true
+                ; r.src = "https://cdn.amplitude.com/libs/amplitude-7.2.1-min.gz.js"
+                ; r.onload = function () {
+                    if (!e.amplitude.runQueuedFunctions) {
+                        console.log("[Amplitude] Error: could not load SDK")
+                    }
+                }
+                ; var i = t.getElementsByTagName("script")[0]; i.parentNode.insertBefore(r, i)
+                ; function s(e, t) {
+                    e.prototype[t] = function () {
+                        this._q.push([t].concat(Array.prototype.slice.call(arguments, 0))); return this
+                    }
+                }
+            var o = function () { this._q = []; return this }
+                ; var a = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset"]
+                ; for (var c = 0; c < a.length; c++) { s(o, a[c]) } n.Identify = o; var u = function () {
+                    this._q = []
+                        ; return this
+                }
+                ; var l = ["setProductId", "setQuantity", "setPrice", "setRevenueType", "setEventProperties"]
+                ; for (var p = 0; p < l.length; p++) { s(u, l[p]) } n.Revenue = u
+                ; var d = ["init", "logEvent", "logRevenue", "setUserId", "setUserProperties", "setOptOut", "setVersionName", "setDomain", "setDeviceId", "enableTracking", "setGlobalUserProperties", "identify", "clearUserProperties", "setGroup", "logRevenueV2", "regenerateDeviceId", "groupIdentify", "onInit", "logEventWithTimestamp", "logEventWithGroups", "setSessionId", "resetSessionId"]
+                ; function v(e) {
+                    function t(t) {
+                        e[t] = function () {
+                            e._q.push([t].concat(Array.prototype.slice.call(arguments, 0)))
+                        }
+                    }
+                    for (var n = 0; n < d.length; n++) { t(d[n]) }
+                } v(n); n.getInstance = function (e) {
+                    e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase()
+                        ; if (!n._iq.hasOwnProperty(e)) { n._iq[e] = { _q: [] }; v(n._iq[e]) } return n._iq[e]
+                }
+                ; e.amplitude = n
+        })(window, document);
+
+        amplitude.getInstance().init("102e52291f64a2ef195aca0a028cd2c1");
+    </script>
+    <script type="text/javascript">
+        +function (a, p, P, b, y) {
+            a.appboy = {}; a.appboyQueue = []; for (var s = "DeviceProperties BrazeSdkMetadata BrazeSdkMetadata.GOOGLE_TAG_MANAGER BrazeSdkMetadata.MPARTICLE BrazeSdkMetadata.SEGMENT BrazeSdkMetadata.TEALIUM BrazeSdkMetadata.NPM BrazeSdkMetadata.CDN BrazeSdkMetadata.MANUAL Card Card.prototype.dismissCard Card.prototype.removeAllSubscriptions Card.prototype.removeSubscription Card.prototype.subscribeToClickedEvent Card.prototype.subscribeToDismissedEvent Card.fromContentCardsJson Banner CaptionedImage ClassicCard ControlCard ContentCards ContentCards.prototype.getUnviewedCardCount Feed Feed.prototype.getUnreadCardCount ControlMessage InAppMessage InAppMessage.SlideFrom InAppMessage.ClickAction InAppMessage.DismissType InAppMessage.OpenTarget InAppMessage.ImageStyle InAppMessage.Orientation InAppMessage.TextAlignment InAppMessage.CropType InAppMessage.prototype.closeMessage InAppMessage.prototype.removeAllSubscriptions InAppMessage.prototype.removeSubscription InAppMessage.prototype.subscribeToClickedEvent InAppMessage.prototype.subscribeToDismissedEvent InAppMessage.fromJson FullScreenMessage ModalMessage HtmlMessage SlideUpMessage User User.Genders User.NotificationSubscriptionTypes User.prototype.addAlias User.prototype.addToCustomAttributeArray User.prototype.addToSubscriptionGroup User.prototype.getUserId User.prototype.incrementCustomUserAttribute User.prototype.removeFromCustomAttributeArray User.prototype.removeFromSubscriptionGroup User.prototype.setAvatarImageUrl User.prototype.setCountry User.prototype.setCustomLocationAttribute User.prototype.setCustomUserAttribute User.prototype.setDateOfBirth User.prototype.setEmail User.prototype.setEmailNotificationSubscriptionType User.prototype.setFirstName User.prototype.setGender User.prototype.setHomeCity User.prototype.setLanguage User.prototype.setLastKnownLocation User.prototype.setLastName User.prototype.setPhoneNumber User.prototype.setPushNotificationSubscriptionType InAppMessageButton InAppMessageButton.prototype.removeAllSubscriptions InAppMessageButton.prototype.removeSubscription InAppMessageButton.prototype.subscribeToClickedEvent display display.automaticallyShowNewInAppMessages display.destroyFeed display.hideContentCards display.showContentCards display.showFeed display.showInAppMessage display.toggleContentCards display.toggleFeed changeUser destroy getDeviceId initialize isPushBlocked isPushGranted isPushPermissionGranted isPushSupported logCardClick logCardDismissal logCardImpressions logContentCardsDisplayed logCustomEvent logFeedDisplayed logInAppMessageButtonClick logInAppMessageClick logInAppMessageHtmlClick logInAppMessageImpression logPurchase openSession registerAppboyPushMessages removeAllSubscriptions removeSubscription requestContentCardsRefresh requestFeedRefresh requestImmediateDataFlush resumeWebTracking enableSDK isDisabled setLogger setSdkAuthenticationSignature addSdkMetadata stopWebTracking disableSDK subscribeToContentCardsUpdates subscribeToFeedUpdates subscribeToInAppMessage subscribeToNewInAppMessages subscribeToSdkAuthenticationFailures toggleAppboyLogging trackLocation unregisterAppboyPushMessages wipeData".split(" "), i = 0; i < s.length; i++) { for (var m = s[i], k = a.appboy, l = m.split("."), j = 0; j < l.length - 1; j++)k = k[l[j]]; k[l[j]] = (new Function("return function " + m.replace(/\./g, "_") + "(){window.appboyQueue.push(arguments); return true}"))() } window.appboy.getCachedContentCards = function () { return new window.appboy.ContentCards }; window.appboy.getCachedFeed = function () { return new window.appboy.Feed }; window.appboy.getUser = function () { return new window.appboy.User }; (y = p.createElement(P)).type = 'text/javascript';
+            y.src = 'https://js.appboycdn.com/web-sdk/3.5/appboy.min.js';
+            y.async = 1; (b = p.getElementsByTagName(P)[0]).parentNode.insertBefore(y, b)
+        }(window, document, 'script');
+    </script>
+    <script type="text/javascript">
+        appboy.initialize('d6559066-2fae-4429-805c-cb09cc630a1f', {
+            "baseUrl": "sdk.fra-01.braze.eu"
+        });
+        appboy.openSession();
+    </script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "iu0bb0vuih");
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+    <!-- End Google Tag Manager -->
+    <!-- FullStory -->
+    <script>
+        window['_fs_host'] = 'fullstory.com';
+        window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+        window['_fs_org'] = 'o-21G6JC-na1';
+        window['_fs_namespace'] = 'FS';
+        !function (m, n, e, t, l, o, g, y) {
+            var s, f, a = function (h) {
+                return !(h in m) || (m.console && m.console.log && m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'), !1)
+            }(e)
+                ; function p(b) {
+                    var h, d = []; function j() {
+                        h && (d.forEach((function (b) {
+                            var d; try { d = b[h[0]] && b[h[0]](h[1]) } catch (h) { return void (b[3] && b[3](h)) }
+                            d && d.then ? d.then(b[2], b[3]) : b[2] && b[2](d)
+                        })), d.length = 0)
+                    } function r(b) { return function (d) { h || (h = [b, d], j()) } } return b(r(0), r(1)), {
+                        then: function (b, h) { return p((function (r, i) { d.push([b, h, r, i]), j() })) }
+                    }
+                } a && (g = m[e] = function () {
+                    var b = function (b, d, j, r) {
+                        function i(i, c) {
+                            h(b, d, j, i, c, r)
+                        } r = r || 2; var c, u = /Async$/; return u.test(b) ? (b = b.replace(u, ""), "function" == typeof Promise ? new Promise(i) : p(i)) : h(b, d, j, c, c, r)
+                    }
+                        ; function h(h, d, j, r, i, c) { return b._api ? b._api(h, d, j, r, i, c) : (b.q && b.q.push([h, d, j, r, i, c]), null) } return b.q = [], b
+                }(), y = function (b) {
+                    function h(h) {
+                        "function" == typeof h[4] && h[4](new Error(b))
+                    } var d = g.q; if (d) { for (var j = 0; j < d.length; j++)h(d[j]); d.length = 0, d.push = h }
+                }, function () {
+                    (o = n.createElement(t)).async = !0, o.crossOrigin = "anonymous", o.src = "https://" + l, o.onerror = function () { y("Error loading " + l) }
+                        ; var b = n.getElementsByTagName(t)[0]; b && b.parentNode ? b.parentNode.insertBefore(o, b) : n.head.appendChild(o)
+                }(), function () {
+                    function b() { }
+                    function h(b, h, d) { g(b, h, d, 1) } function d(b, d, j) { h("setProperties", { type: b, properties: d }, j) } function j(b, h) { d("user", b, h) } function r(b, h, d) {
+                        j({
+                            uid: b
+                        }, d), h && j(h, d)
+                    } g.identify = r, g.setUserVars = j, g.identifyAccount = b, g.clearUserCookie = b, g.setVars = d, g.event = function (b, d, j) {
+                        h("trackEvent", {
+                            name: b, properties: d
+                        }, j)
+                    }, g.anonymize = function () { r(!1) }, g.shutdown = function () { h("shutdown") }, g.restart = function () { h("restart") },
+                        g.log = function (b, d) { h("log", { level: b, msg: d }) }, g.consent = function (b) { h("setIdentity", { consent: !arguments.length || b }) }
+                }(), s = "fetch",
+                    f = "XMLHttpRequest", g._w = {}, g._w[f] = m[f], g._w[s] = m[s], m[s] && (m[s] = function () { return g._w[s].apply(this, arguments) }), g._v = "2.0.0")
+        }(window, document, window._fs_namespace, "script", window._fs_script);
+    </script>
+    <!-- Heap -->
+    <script type="text/javascript">
+        window.heap = window.heap || [], heap.load = function (e, t) { window.heap.appid = e, window.heap.config = t = t || {}; var r = document.createElement("script"); r.type = "text/javascript", r.async = !0, r.src = "https://cdn.heapanalytics.com/js/heap-" + e + ".js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(r, a); for (var n = function (e) { return function () { heap.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "resetIdentity", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], o = 0; o < p.length; o++)heap[p[o]] = n(p[o]) };
+        heap.load("2666231533");
+    </script>
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/44178869.js"></script>
+    <!-- End of HubSpot Embed Code -->
+    <!-- Kissmetrics code -->
+    <script type="text/javascript">var _kmq = _kmq || [];
+        var _kmk = _kmk || '8a62bfe55e6815c5d8f7f5c5954a9cad0e560e37';
+        function _kms(u) {
+            setTimeout(function () {
+                var d = document, f = d.getElementsByTagName('script')[0],
+                    s = d.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = u;
+                f.parentNode.insertBefore(s, f);
+            }, 1);
+        }
+        _kms('//i.kissmetrics.io/i.js');
+        _kms('//scripts.kissmetrics.io/' + _kmk + '.2.js');
+    </script>
+    <script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TSR5n6"> </script>
+    <script>
+        var _learnq = _learnq || [];
+        _learnq.push(['identify', {
+            // Change the line below to dynamically print the user's email.
+            '$email': 'palash.soni@vwo.com'
+        }]);
+
+    </script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        window._paq.push(['appendToTrackingUrl', 'new_visit=1']); // forces a new visit 
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        window._paq.push(['appendToTrackingUrl', '']); // do not force a new visit anymore (only do it once)
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "https://palash.matomo.cloud/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '2']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = '//cdn.matomo.cloud/palash.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- Mixpanel Palash Code -->
+    <script type="text/javascript">
+        (function (f, b) { if (!b.__SV) { var e, g, i, h; window.mixpanel = b; b._i = []; b.init = function (e, f, c) { function g(a, d) { var b = d.split("."); 2 == b.length && ((a = a[b[0]]), (d = b[1])); a[d] = function () { a.push([d].concat(Array.prototype.slice.call(arguments, 0))); }; } var a = b; "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel"); a.people = a.people || []; a.toString = function (a) { var d = "mixpanel"; "mixpanel" !== c && (d += "." + c); a || (d += " (stub)"); return d; }; a.people.toString = function () { return a.toString(1) + ".people (stub)"; }; i = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" "); for (h = 0; h < i.length; h++) g(a, i[h]); var j = "set set_once union unset remove delete".split(" "); a.get_group = function () { function b(c) { d[c] = function () { call2_args = arguments; call2 = [c].concat(Array.prototype.slice.call(call2_args, 0)); a.push([e, call2]); }; } for (var d = {}, e = ["get_group"].concat(Array.prototype.slice.call(arguments, 0)), c = 0; c < j.length; c++) b(j[c]); return d; }; b._i.push([e, f, c]); }; b.__SV = 1.2; e = f.createElement("script"); e.type = "text/javascript"; e.async = !0; e.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === f.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; g = f.getElementsByTagName("script")[0]; g.parentNode.insertBefore(e, g); } })(document, window.mixpanel || []);
+
+        mixpanel.init('4991813710c159f6ee3a41e75732751a', { debug: true, track_pageview: true, persistence: 'localStorage' });
+    </script>
+    <script>
+        setTimeout(function () {
+            mixpanel.identify(window.VWO.data.vin.uuid);
+        }, 5000);
+    </script>
+    <script type="text/javascript">
+        // Configures the SDK. Note the settings below for isDevelopmentMode
+        // and logLevel.
+        window.mParticle = {
+            config: {
+                isDevelopmentMode: true,
+                logLevel: "none"
+
+            },
+        };
+        (
+            function (t) { window.mParticle = window.mParticle || {}; window.mParticle.EventType = { Unknown: 0, Navigation: 1, Location: 2, Search: 3, Transaction: 4, UserContent: 5, UserPreference: 6, Social: 7, Other: 8 }; window.mParticle.eCommerce = { Cart: {} }; window.mParticle.Identity = {}; window.mParticle.config = window.mParticle.config || {}; window.mParticle.config.rq = []; window.mParticle.config.snippetVersion = 2.3; window.mParticle.ready = function (t) { window.mParticle.config.rq.push(t) }; var e = ["endSession", "logError", "logBaseEvent", "logEvent", "logForm", "logLink", "logPageView", "setSessionAttribute", "setAppName", "setAppVersion", "setOptOut", "setPosition", "startNewSession", "startTrackingLocation", "stopTrackingLocation"]; var o = ["setCurrencyCode", "logCheckout"]; var i = ["identify", "login", "logout", "modify"]; e.forEach(function (t) { window.mParticle[t] = n(t) }); o.forEach(function (t) { window.mParticle.eCommerce[t] = n(t, "eCommerce") }); i.forEach(function (t) { window.mParticle.Identity[t] = n(t, "Identity") }); function n(e, o) { return function () { if (o) { e = o + "." + e } var t = Array.prototype.slice.call(arguments); t.unshift(e); window.mParticle.config.rq.push(t) } } var dpId, dpV, config = window.mParticle.config, env = config.isDevelopmentMode ? 1 : 0, dbUrl = "?env=" + env, dataPlan = window.mParticle.config.dataPlan; dataPlan && (dpId = dataPlan.planId, dpV = dataPlan.planVersion, dpId && (dpV && (dpV < 1 || dpV > 1e3) && (dpV = null), dbUrl += "&plan_id=" + dpId + (dpV ? "&plan_version=" + dpV : ""))); var mp = document.createElement("script"); mp.type = "text/javascript"; mp.async = true; mp.src = ("https://jssdkcdns.mparticle.com/js/v2/" + t + "/mparticle.js" + dbUrl); var c = document.getElementsByTagName("script")[0]; c.parentNode.insertBefore(mp, c) }
+        )
+            // Insert your API key below
+            ("us1-4224dcfd02172147be19662ef87125f0");
+    </script>
+    <script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
+    <script>
+        pa.setConfigurations({
+            site: 641722,
+            collectDomain: "fdnlpdp.pa-cd.com"
+        }); 
+    </script>
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        window._paq.push(['appendToTrackingUrl', 'new_visit=1']); // forces a new visit 
+        window._paq.push(["trackPageView"]);
+        window._paq.push(['appendToTrackingUrl', '']); // do not force a new visit anymore (only do it once)
+        _paq.push(['enableLinkTracking']);
+
+        (function (window, document, dataLayerName, id) {
+            window[dataLayerName] = window[dataLayerName] || [], window[dataLayerName].push({ start: (new Date).getTime(), event: "stg.start" }); var scripts = document.getElementsByTagName('script')[0], tags = document.createElement('script');
+            function stgCreateCookie(a, b, c) { var d = ""; if (c) { var e = new Date; e.setTime(e.getTime() + 24 * c * 60 * 60 * 1e3), d = "; expires=" + e.toUTCString(); f = "; SameSite=Strict" } document.cookie = a + "=" + b + d + f + "; path=/" }
+            var isStgDebug = (window.location.href.match("stg_debug") || document.cookie.match("stg_debug")) && !window.location.href.match("stg_disable_debug"); stgCreateCookie("stg_debug", isStgDebug ? 1 : "", isStgDebug ? 14 : -1);
+            var qP = []; dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), isStgDebug && qP.push("stg_debug"); var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
+            tags.async = !0, tags.src = "https://vwotest.containers.piwik.pro/" + id + ".js" + qPString, scripts.parentNode.insertBefore(tags, scripts);
+            !function (a, n, i) { a[n] = a[n] || {}; for (var c = 0; c < i.length; c++)!function (i) { a[n][i] = a[n][i] || {}, a[n][i].api = a[n][i].api || function () { var a = [].slice.call(arguments, 0); "string" == typeof a[0] && window[dataLayerName].push({ event: n + "." + i + ":" + a[0], parameters: [].slice.call(arguments, 1) }) } }(i[c]) }(window, "ppms", ["tm", "cm"]);
+        })(window, document, 'dataLayer', 'c893c4b4-eeca-4d53-9d1c-0380b4564e4e');
+    </script>
+    <script type="text/javascript">
+        !function () {
+            "use strict"; window.RudderSnippetVersion = "3.0.25"; var e = "rudderanalytics"; window[e] || (window[e] = [])
+                ; var rudderanalytics = window[e]; if (Array.isArray(rudderanalytics)) {
+                    if (true === rudderanalytics.snippetExecuted && window.console && console.error) {
+                        console.error("RudderStack JavaScript SDK snippet included more than once.")
+                    } else {
+                        rudderanalytics.snippetExecuted = true,
+                            window.rudderAnalyticsBuildType = "legacy"; var sdkBaseUrl = "https://cdn.rudderlabs.com/v3"; var sdkName = "rsa.min.js"
+                            ; var scriptLoadingMode = "async"
+                            ; var n = ["setDefaultInstanceKey", "load", "ready", "page", "track", "identify", "alias", "group", "reset", "setAnonymousId", "startSession", "endSession", "consent"]
+                            ; for (var r = 0; r < n.length; r++) {
+                                var t = n[r]; rudderanalytics[t] = function (n) {
+                                    return function () {
+                                        var r
+                                            ; Array.isArray(window[e]) ? rudderanalytics.push([n].concat(Array.prototype.slice.call(arguments))) : null === (r = window[e][n]) || void 0 === r || r.apply(window[e], arguments)
+                                    }
+                                }(t)
+                            } try { new Function('return import("")'), window.rudderAnalyticsBuildType = "modern" } catch (o) { }
+                        var d = document.head || document.getElementsByTagName("head")[0]
+                            ; var i = document.body || document.getElementsByTagName("body")[0]; window.rudderAnalyticsAddScript = function (e, n, r) {
+                                var t = document.createElement("script"); t.src = e, t.setAttribute("data-loader", "RS_JS_SDK"), n && r && t.setAttribute(n, r),
+                                    "async" === scriptLoadingMode ? t.async = true : "defer" === scriptLoadingMode && (t.defer = true),
+                                    d ? d.insertBefore(t, d.firstChild) : i.insertBefore(t, i.firstChild)
+                            }, window.rudderAnalyticsMount = function () {
+                                !function () {
+                                    if ("undefined" == typeof globalThis) {
+                                        var e; var n = function getGlobal() {
+                                            return "undefined" != typeof self ? self : "undefined" != typeof window ? window : null
+                                        }(); n && Object.defineProperty(n, "globalThis", {
+                                            value: n, configurable: true
+                                        })
+                                    }
+                                }(), window.rudderAnalyticsAddScript("".concat(sdkBaseUrl, "/").concat(window.rudderAnalyticsBuildType, "/").concat(sdkName), "data-rsa-write-key", "2SqaCFgHpTaoaKzT5dBPWOkqrA9")
+                            },
+                                "undefined" == typeof Promise || "undefined" == typeof globalThis ? window.rudderAnalyticsAddScript("https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=Symbol%2CPromise&callback=rudderAnalyticsMount") : window.rudderAnalyticsMount()
+                            ; var loadOptions = {}
+                            ; rudderanalytics.load("2SqaCFgHpTaoaKzT5dBPWOkqrA9", "https://wingifypamixhh.dataplane.rudderstack.com", loadOptions)
+                    }
+                }
+        }();
+
+        //make a page call explicitly
+        rudderanalytics.page();
+    </script>
+    <!-- Start of Woopra Code -->
+    <script>
+        !function () { var t, o, c, e = window, n = document, r = arguments, a = "script", i = ["call", "cancelAction", "config", "identify", "push", "track", "trackClick", "trackForm", "update", "visit"], s = function () { var t, o = this, c = function (t) { o[t] = function () { return o._e.push([t].concat(Array.prototype.slice.call(arguments, 0))), o } }; for (o._e = [], t = 0; t < i.length; t++)c(i[t]) }; for (e.__woo = e.__woo || {}, t = 0; t < r.length; t++)e.__woo[r[t]] = e[r[t]] = e[r[t]] || new s; (o = n.createElement(a)).async = 1, o.src = "https://static.woopra.com/js/w.js", (c = n.getElementsByTagName(a)[0]).parentNode.insertBefore(o, c) }("woopra");
+
+        woopra.config({
+            domain: "palash9088.github.io",
+            outgoing_tracking: true,
+            download_tracking: true,
+            click_tracking: true
+        });
+
+        woopra.track();
+    </script>
+    <!-- End of Woopra Code -->
+    <script type="text/javascript" async=1>
+
+        ; (function (p, l, o, w, i, n, g) {
+            if (!p[i]) {
+                p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+                p.GlobalSnowplowNamespace.push(i); p[i] = function () {
+                    (p[i].q = p[i].q || []).push(arguments)
+                }; p[i].q = p[i].q || []; n = l.createElement(o); g = l.getElementsByTagName(o)[0]; n.async = 1;
+                n.src = w; g.parentNode.insertBefore(n, g)
+            }
+        }(
+            window,
+            document,
+            "script",
+            "https://19272164-42f6-4845-8e3b-b8f367cc962d.app.try-snowplow.com/v3/try.js",
+            "snowplow")
+        );
+
+
+        snowplow("newTracker", "try", "https://19272164-42f6-4845-8e3b-b8f367cc962d.app.try-snowplow.com", {
+            appId: "try-snowplow", // you can specify your own app name here
+            platform: "web",
+
+            contexts: {
+                webPage: true, // this sets a unique id for each page view
+                performanceTiming: true // this captures performance metrics like load times
+            }
+        });
+
+        // send first heartbeat after 10 seconds, and every 10 seconds thereafter
+        snowplow("enableActivityTracking", { minimumVisitLength: 10, heartbeatDelay: 10 });
+        snowplow("enableLinkClickTracking");
+        snowplow("trackPageView");
+
+    </script>
+    </script>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Vintage Fur</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+    <!-- Start VWO Async SmartCode -->
+    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+    <script type='text/javascript' id='vwoCode'>
+        const params = new URLSearchParams(window.location.search);
+        const accId = parseInt(params.get("id"));
+        const accountId = accId || 706039;
+        console.log("Account-Id ->", accountId);
+        /* eslint-disable no-undef */
+        window._vwo_code || (function () {
+            var account_id = accountId,
+                version = 2.1,
+                settings_tolerance = 2000,
+                hide_element = 'body',
+                hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+                /* DO NOT EDIT BELOW THIS LINE */
+                f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
+        })();
+    </script>
+
+
+    <!-- End VWO Async SmartCode -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG9D677" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <h1> Integrations Available on this page </h1>
+    <h2>1. Amplitude</h2>
+    <h2>2. Braze</h2>
+    <h2>3. Clarity</h2>
+    <h2>4. Google Tag Manager</h2>
+    <h2>5. FullStory</h2>
+    <h2>6. Heap</h2>
+    <h2>7. HubSpot</h2>
+    <h2>8. Kissmetrics</h2>
+    <h2>9. Klaviyo</h2>
+    <h2>10. Matomo</h2>
+    <h2>11. Mixpanel</h2>
+    <h2>12. mParticle</h2>
+    <h2>13. Piano Analytics</h2>
+    <h2>14. Snowplow</h2>
+    <h2>15. Woopra</h2>
+    <h2>16. RudderStack</h2>
+</body>
+
+</html>
