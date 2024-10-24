@@ -23,7 +23,7 @@
    // VWO SmartCode timed out
    const elapsedTime = (performance.now() - vwoGA.startTime) / 1000;
    if (
-     (vwoCode && (vwoCode.sT || vwoCode.lT || vwoCode.finished())) ||
+     (vwoCode && (vwoCode.sT || vwoCode.lT || vwoCode.finish())) ||
      elapsedTime >= 5
    ) {
      triggerGATag();
