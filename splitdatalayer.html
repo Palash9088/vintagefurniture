@@ -13,7 +13,6 @@
  function triggerGATag() {
    if (vwoGA.isTriggered) return;
    window.dataLayer = window.dataLayer || [];
-   debugger
    window.dataLayer.push({ event: "vwoNoRedirect" });
    vwoGA.isTriggered = true;
  }
@@ -38,7 +37,6 @@
  window.VWO.push([
    "onSplitRedirectionDecided",
    function (data) {
-    debugger
      if (data && data.isRedirecting) {
        vwoGA.isRedirecting = true;
        return;
