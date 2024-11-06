@@ -17,12 +17,12 @@
                 "company": {
                     "id": "61db4840-7e72-4ce4-98c1-da46340f0475",
                     "name": "Blockswap Labs",
-                    "legalName": null,
+                    "legalName": "Blockswap Labs Inc.",
                     "domain": "blockswaplabs.com",
-                    "domainAliases": [],
+                    "domainAliases": ["blockswap.io"],
                     "site": {
-                        "phoneNumbers": [],
-                        "emailAddresses": []
+                        "phoneNumbers": ["+1-800-555-0199"],
+                        "emailAddresses": ["info@blockswaplabs.com"]
                     },
                     "category": {
                         "sector": "Information Technology",
@@ -60,62 +60,62 @@
                     "description": "Blockswap Labs is a research-driven company that focuses on making cryptocurrency more accessible and safe for mainstream users. They have developed 36+ products and 13 tech stacks, with over 1,000,000 lines of code. Their AI Crypto Copilot simplifies ...",
                     "foundedYear": "2012",
                     "location": "United States",
-                    "timeZone": null,
-                    "utcOffset": null,
+                    "timeZone": "CST",
+                    "utcOffset": "-0600",
                     "geo": {
-                        "streetNumber": null,
-                        "streetName": null,
-                        "subPremise": null,
-                        "streetAddress": null,
-                        "city": null,
-                        "postalCode": null,
+                        "streetNumber": "123",
+                        "streetName": "Main St",
+                        "subPremise": "Suite 100",
+                        "streetAddress": "123 Main St, Suite 100",
+                        "city": "Austin",
+                        "postalCode": "73301",
                         "state": "Texas",
-                        "stateCode": null,
+                        "stateCode": "TX",
                         "country": "United States",
-                        "countryCode": null,
-                        "lat": null,
-                        "lng": null
+                        "countryCode": "US",
+                        "lat": 30.2672,
+                        "lng": -97.7431
                     },
                     "logo": "https://logo.clearbit.com/blockswaplabs.com",
                     "facebook": {
-                        "handle": null,
-                        "likes": null
+                        "handle": "blockswaplabs",
+                        "likes": 1000
                     },
                     "linkedin": {
                         "handle": "company/blockswap-labs"
                     },
                     "twitter": {
-                        "handle": null,
-                        "id": null,
-                        "bio": null,
-                        "followers": null,
-                        "following": null,
-                        "location": null,
-                        "site": null,
-                        "avatar": null
+                        "handle": "blockswaplabs",
+                        "id": "123456789",
+                        "bio": "Innovating blockchain solutions.",
+                        "followers": 5000,
+                        "following": 100,
+                        "location": "Austin, TX",
+                        "site": "https://twitter.com/blockswaplabs",
+                        "avatar": "https://twitter.com/blockswaplabs/profile_image"
                     },
                     "crunchbase": {
-                        "handle": null
+                        "handle": "organization/blockswap-labs"
                     },
                     "emailProvider": false,
                     "type": "private",
-                    "ticker": null,
+                    "ticker": "BSL",
                     "identifiers": {
-                        "usEIN": null,
-                        "usCIK": null
+                        "usEIN": "12-3456789",
+                        "usCIK": "0001234567"
                     },
-                    "phone": null,
+                    "phone": "+1-800-555-0199",
                     "metrics": {
-                        "alexaUsRank": null,
-                        "alexaGlobalRank": null,
-                        "trafficRank": null,
+                        "alexaUsRank": 12345,
+                        "alexaGlobalRank": 67890,
+                        "trafficRank": 1234567,
                         "employees": 15,
                         "employeesRange": "11-50",
-                        "marketCap": null,
-                        "raised": null,
-                        "annualRevenue": null,
+                        "marketCap": 5000000,
+                        "raised": 2000000,
+                        "annualRevenue": 7500000,
                         "estimatedAnnualRevenue": "$1M-$10M",
-                        "fiscalYearEnd": null
+                        "fiscalYearEnd": "December"
                     },
                     "indexedAt": "2024-01-31T05:52:55.501Z",
                     "tech": [
@@ -131,10 +131,10 @@
                         "tag_management"
                     ],
                     "parent": {
-                        "domain": null
+                        "domain": "parentcompany.com"
                     },
                     "ultimateParent": {
-                        "domain": null
+                        "domain": "ultimateparent.com"
                     }
                 },
                 "geoIP": {
@@ -168,9 +168,9 @@
         // Start setting the VWO
         setVWO();
     </script>
-<!--  <script src="https://tag.clearbitscripts.com/v1/pk_dc61eb5d5cfe266b3c705262030b6bf6/tags.js" referrerpolicy="strict-origin-when-cross-origin"></script> -->
+    <!--  <script src="https://tag.clearbitscripts.com/v1/pk_dc61eb5d5cfe266b3c705262030b6bf6/tags.js" referrerpolicy="strict-origin-when-cross-origin"></script> -->
 
-     <script>
+    <script>
         var params = new URLSearchParams(window.location.search);
         var delay = params.get("delay");
         var script = document.createElement("script");
@@ -189,7 +189,7 @@
             document.getElementsByTagName("head")[0].appendChild(script)
             console.log("for testing in script")
         }, delay || 0)                    
-    </script> 
+    </script>
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -301,7 +301,7 @@
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/custom.js"></script>
         <!-- javascript -->
-        
+
         <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 
