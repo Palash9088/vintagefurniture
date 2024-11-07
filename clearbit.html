@@ -3,13 +3,13 @@
 
 <head>
     <script>
-        var reveal_organization;
+        var reveal_organizations;
         var stopFlag = false; // Define and initialize stopFlag
 
         // Function to set vwo_organization and vwo_demandbase_organization repeatedly every 10 milliseconds
         function setVWO() {
             // Set initial data for both variables
-            reveal_organization = {
+            reveal_organizations = {
                 "ip": "138.199.43.12",
                 "domain": "blockswap.xyz",
                 "type": "company",
@@ -153,14 +153,14 @@
             var intervalId = setInterval(function () {
                 if (!stopFlag) {
                     // Copy data using Object.assign() to avoid reference sharing
-                    reveal_organization = Object.assign({}, reveal_organization);
+                    reveal_organizations = Object.assign({}, reveal_organizations);
                 } else {
                     clearInterval(intervalId);
                 }
             }, 10); // 10 milliseconds interval
         }
 
-        // Set vwo_organization and vwo_demandbase_organization repeatedly for 10 seconds
+        // Set repeatedly for 10 seconds
         setTimeout(function () {
             stopFlag = true;
         }, 10000); // 10 seconds
