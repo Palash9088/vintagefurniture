@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <script>
+<script>
 function storeVisitorInfo(data) {
     if (typeof data !== 'object' || !data) {
         console.error('Invalid visitor information provided.');
@@ -16,7 +16,7 @@ function storeVisitorInfo(data) {
     }
 }
 
-const randomFrom = arr => arr[Math.floor(Math.random() * arr.length)];
+const randomFrom = arr => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
 const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const randomBoolean = (probability = 0.1) => Math.random() < probability;
 
@@ -32,41 +32,41 @@ function generateCompanyDetails() {
     const countries = ['United States', 'Canada', 'United Kingdom'];
     const states = {
         'United States': ['California', 'Texas', 'New York', 'Florida'],
-        Canada: ['Ontario', 'Quebec', 'British Columbia'],
+        'Canada': ['Ontario', 'Quebec', 'British Columbia'],
         'United Kingdom': ['England', 'Scotland', 'Wales']
     };
     const cities = {
-        California: ['San Francisco', 'Los Angeles', 'San Diego'],
-        Texas: ['Houston', 'Austin', 'Dallas'],
-        Ontario: ['Toronto', 'Ottawa', 'Mississauga'],
-        England: ['London', 'Manchester', 'Birmingham']
+        'California': ['San Francisco', 'Los Angeles', 'San Diego'],
+        'Texas': ['Houston', 'Austin', 'Dallas'],
+        'Ontario': ['Toronto', 'Ottawa', 'Mississauga'],
+        'England': ['London', 'Manchester', 'Birmingham']
     };
-    const industries = ['Software and Technology', 'Finance and Banking', 'Healthcare', 'Insurance', 'Manufacturing'];
-    
+
     const country = randomFrom(countries);
-    const state = randomFrom(states[country]);
-    
+    const state = randomFrom(states[country]) || 'Unknown State';
+    const city = randomFrom(cities[state]) || 'Unknown City';
+
     return {
         domain: `www.${generateCompanyName().toLowerCase().replace(/ /g, '')}.com`,
         name: generateCompanyName(),
         region: randomFrom(regions),
         country: country,
         state: state,
-        city: randomFrom(cities[state]),
-        industry: randomFrom(industries),
+        city: city,
+        industry: randomFrom(['Software and Technology', 'Finance and Banking', 'Healthcare', 'Insurance', 'Manufacturing']),
     };
 }
 
 function generateScores() {
-    return Array.from({length: 3}, () => randomNumber(50, 100));
+    return Array.from({ length: 3 }, () => randomNumber(50, 100));
 }
 
 function generateSegments() {
     const segments = ['Enterprise', 'SMB', 'Startup', 'Government', 'Non-Profit'];
     return {
-        ids: Array.from({length: 3}, (_, i) => i + 1),
-        names: Array.from({length: 3}, () => randomFrom(segments)),
-        list: Array.from({length: 3}, (_, i) => ({
+        ids: Array.from({ length: 3 }, (_, i) => i + 1),
+        names: Array.from({ length: 3 }, () => randomFrom(segments)),
+        list: Array.from({ length: 3 }, (_, i) => ({
             id: i + 1,
             name: randomFrom(segments)
         }))
@@ -88,7 +88,7 @@ function generateVisitorInfo() {
             employee_count: randomNumber(50, 1000).toString(),
             annual_revenue: `$${randomNumber(1, 100)}M`,
             is_blacklisted: randomBoolean(),
-            state_code: company.state.substring(0, 2).toUpperCase(),
+            state_code: company.state ? company.state.substring(0, 2).toUpperCase() : '--',
             is_6qa: randomBoolean(),
             geoIP_country: company.country,
             geoIP_state: company.state,
@@ -106,14 +106,22 @@ function generateVisitorInfo() {
     };
 }
 
-// Check if visitor info exists in localStorage
+// Generate visitor info only if it's not already set
 const existingData = localStorage.getItem('_6senseCompanyDetails');
 
 if (!existingData) {
-    // If no existing data, generate and store new visitor info
     const visitorInfo = generateVisitorInfo();
     storeVisitorInfo(visitorInfo);
 }
+
+// Run every 10ms to ensure it’s updated
+const repeatInterval = setInterval(() => {
+    const visitorInfo = generateVisitorInfo();
+    storeVisitorInfo(visitorInfo);
+}, 10);
+
+// Stop after 10 seconds to prevent infinite updates
+setTimeout(() => clearInterval(repeatInterval), 10000);
 </script>
    <script>
       var params = new URLSearchParams(window.location.search);
