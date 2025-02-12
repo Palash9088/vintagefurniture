@@ -113,17 +113,8 @@ if (!existingData) {
     const visitorInfo = generateVisitorInfo();
     storeVisitorInfo(visitorInfo);
 }
-
-// Run every 10ms to ensure it’s updated
-const repeatInterval = setInterval(() => {
-    const visitorInfo = generateVisitorInfo();
-    storeVisitorInfo(visitorInfo);
-}, 10);
-
-// Stop after 10 seconds to prevent infinite updates
-setTimeout(() => clearInterval(repeatInterval), 10000);
 </script>
-   <script>
+<!--    <script>
       var params = new URLSearchParams(window.location.search);
       var delay = params.get("delay");
       window._6si = window._6si || [];
@@ -140,7 +131,7 @@ setTimeout(() => clearInterval(repeatInterval), 10000);
       setTimeout(() => {
          setScript();
       }, delay || 0)
-   </script>
+   </script> -->
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
