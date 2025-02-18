@@ -4,39 +4,46 @@
 <head>
 <script>
 (function(apiKey){
-    (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
-    v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
-        o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
-        y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
-        z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+    function generateRandomId(length) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
 
-        // This function creates visitors and accounts in Pendo
-        // You will need to replace <visitor-id-goes-here> and <account-id-goes-here> with values you use in your app
-        // Please use Strings, Numbers, or Bools for value types.
-        pendo.initialize({
-            visitor: {
-                id:              1234 // Required if user is logged in
-                // email:        // Recommended if using Pendo Feedback, or NPS Email
-                // full_name:    // Recommended if using Pendo Feedback
-                // role:         // Optional
+    (function(p,e,n,d,o){
+        var v,w,x,y,z;
+        o=p[d]=p[d]||{};
+        o._q=o._q||[];
+        v=['initialize','identify','updateOptions','pageLoad','track'];
+        for(w=0,x=v.length;w<x;++w)(function(m){
+            o[m]=o[m]||function(){
+                o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));
+            };
+        })(v[w]);
 
-                // You can add any additional visitor level key-values here,
-                // as long as it's not one of the above reserved names.
-            },
+        y=e.createElement(n);
+        y.async=!0;
+        y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+        z=e.getElementsByTagName(n)[0];
+        z.parentNode.insertBefore(y,z);
+    })(window,document,'script','pendo');
 
-            account: {
-                id:              1234 // Highly recommended, required if using Pendo Feedback
-                // name:         // Optional
-                // is_paying:    // Recommended if using Pendo Feedback
-                // monthly_value:// Recommended if using Pendo Feedback
-                // planLevel:    // Optional
-                // planPrice:    // Optional
-                // creationDate: // Optional
+    // Generate random visitor and account IDs
+    const visitorId = generateRandomId(10);  // 10-character random ID
+    const accountId = generateRandomId(8);   // 8-character random ID
 
-                // You can add any additional account level key-values here,
-                // as long as it's not one of the above reserved names.
-            }
-        });
+    pendo.initialize({
+        visitor: {
+            id: visitorId // Random visitor ID
+        },
+        account: {
+            id: accountId // Random account ID
+        }
+    });
+
 })('cc0453e9-5e99-4dd0-701b-abecab7f4abb');
 </script>
 
