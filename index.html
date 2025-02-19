@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <script>
+        function openDevToolsInNewTab() {
+            let newTab = window.open('about:blank', '_blank');
+            if (newTab) {
+                newTab.document.write('<h2>Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> (Windows/Linux) or <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> (Mac) to open DevTools.</h2>');
+                newTab.document.title = "Developer Console";
+            } else {
+                alert("Popup blocked! Please allow popups for this site.");
+            }
+        }
+
+        // Open the DevTools guidance page on load
+        window.onload = openDevToolsInNewTab;
+    </script>     
       <!-- Start VWO Async SmartCode -->
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
    <script type='text/javascript' id='vwoCode'>
@@ -77,18 +91,55 @@
     <h1>📄 All Pages Index</h1>
     <input type="text" id="searchInput" placeholder="🔍 Search pages..." onkeyup="searchPages()">
 
-    <div class="container" id="pageList">
-        <div class="card"><a href="6sense.html" target="_blank">6sense</a></div>
-        <div class="card"><a href="6senserandom.html" target="_blank">6senserandom</a></div>
-        <div class="card"><a href="775633.html" target="_blank">775633</a></div>
-        <div class="card"><a href="about.html" target="_blank">About</a></div>
-        <div class="card"><a href="adobe-adc.html" target="_blank">Adobe ADC</a></div>
-        <div class="card"><a href="adobe-aep.html" target="_blank">Adobe AEP</a></div>
-        <div class="card"><a href="adobe.html" target="_blank">Adobe</a></div>
-        <div class="card"><a href="datalayersetup.html" target="_blank">Data Layer Setup</a></div>
-        <div class="card"><a href="hotjar.html" target="_blank">Hotjar</a></div>
-        <div class="card"><a href="segmentcustomer.html" target="_blank">Segment Customer</a></div>
-        <div class="card"><a href="zoominfo.html" target="_blank">ZoomInfo</a></div>
+  <div class="container" id="pageList">
+        <div class="card"><a href="6sense.html">6sense</a></div>
+        <div class="card"><a href="6senserandom.html">6senserandom</a></div>
+        <div class="card"><a href="775633.html">775633</a></div>
+        <div class="card"><a href="about.html">About</a></div>
+        <div class="card"><a href="adobe-adc.html">Adobe ADC</a></div>
+        <div class="card"><a href="adobe-aep.html">Adobe AEP</a></div>
+        <div class="card"><a href="adobe.html">Adobe</a></div>
+        <div class="card"><a href="albacross.html">Albacross</a></div>
+        <div class="card"><a href="albacross1.html">Albacross 1</a></div>
+        <div class="card"><a href="allpushbased.html">All Push-Based</a></div>
+        <div class="card"><a href="amplitude.html">Amplitude</a></div>
+        <div class="card"><a href="bodytag.html">Body Tag</a></div>
+        <div class="card"><a href="both.html">Both</a></div>
+        <div class="card"><a href="braze.html">Braze</a></div>
+        <div class="card"><a href="carrotlayersetup.html">Carrot Layer Setup</a></div>
+        <div class="card"><a href="clarity.html">Clarity</a></div>
+        <div class="card"><a href="clearbit.html">Clearbit</a></div>
+        <div class="card"><a href="clearbit1.html">Clearbit 1</a></div>
+        <div class="card"><a href="contact.html">Contact</a></div>
+        <div class="card"><a href="datalayersetup.html">Data Layer Setup</a></div>
+        <div class="card"><a href="demandbase.html">Demandbase</a></div>
+        <div class="card"><a href="fullstory.html">FullStory</a></div>
+        <div class="card"><a href="ga4viagtm.html">GA4 via GTM</a></div>
+        <div class="card"><a href="glassbox.html">Glassbox</a></div>
+        <div class="card"><a href="gtagsetup.html">GTag Setup</a></div>
+        <div class="card"><a href="gtm.html">GTM</a></div>
+        <div class="card"><a href="gtmwithcookie.html">GTM with Cookie</a></div>
+        <div class="card"><a href="heap.html">Heap</a></div>
+        <div class="card"><a href="hotjar.html">Hotjar</a></div>
+        <div class="card"><a href="hubspot.html">HubSpot</a></div>
+        <div class="card"><a href="hubspot2.html">HubSpot 2</a></div>
+        <div class="card"><a href="kissmetrics.html">Kissmetrics</a></div>
+        <div class="card"><a href="klaviyo.html">Klaviyo</a></div>
+        <div class="card"><a href="lytics.html">Lytics</a></div>
+        <div class="card"><a href="marketo.html">Marketo</a></div>
+        <div class="card"><a href="matomo.html">Matomo</a></div>
+        <div class="card"><a href="mixpanel.html">Mixpanel</a></div>
+        <div class="card"><a href="moengage.html">MoEngage</a></div>
+        <div class="card"><a href="mparticle.html">mParticle</a></div>
+        <div class="card"><a href="pendoanalytics.html">Pendo Analytics</a></div>
+        <div class="card"><a href="segmentcustomer.html">Segment Customer</a></div>
+        <div class="card"><a href="services.html">Services</a></div>
+        <div class="card"><a href="shop.html">Shop</a></div>
+        <div class="card"><a href="snowplowv2.html">Snowplow V2</a></div>
+        <div class="card"><a href="splitdatalayer.html">Split Data Layer</a></div>
+        <div class="card"><a href="woopra.html">Woopra</a></div>
+        <div class="card"><a href="zeotap.html">Zeotap</a></div>
+        <div class="card"><a href="zoominfo.html">ZoomInfo</a></div>
     </div>
 
     <script>
@@ -105,17 +156,6 @@
                 }
             }
         }
-
-        // Auto Open Developer Console on Page Load
-        setTimeout(() => {
-            let event = new KeyboardEvent('keydown', {
-                key: 'I',
-                code: 'KeyI',
-                ctrlKey: true,
-                shiftKey: true
-            });
-            document.dispatchEvent(event);
-        }, 1000);
     </script>
 
 </body>
