@@ -88,7 +88,7 @@
             const toDateInput = document.getElementById("toDate").value;
 
             if (!fromDateInput || !toDateInput) {
-                alert("⚠️ Please select both From and To dates.");
+                alert("🚨 Please select both From and To dates. 🚨");
                 return;
             }
 
@@ -97,7 +97,7 @@
 
             // 🚨 NEW: Prevent "To Date" from being before "From Date"
             if (toDate < fromDate) {
-                alert("⚠️ 'To Date' cannot be before 'From Date'!");
+                alert("🚨 To Date cannot be before From Date! 🚨");
                 return;
             }
 
