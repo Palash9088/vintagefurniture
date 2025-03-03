@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VWO Timezone to UTC Converter</title>
-    
+
     <!-- Bootstrap CSS for styling -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    
+
     <!-- Luxon for date-time handling -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
-    
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -19,6 +20,7 @@
             align-items: center;
             height: 100vh;
         }
+
         .container {
             background: white;
             padding: 20px;
@@ -28,80 +30,91 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2 class="text-center">Timezone to UTC Converter</h2>
-    
-    <!-- Timezone Selection -->
-    <div class="mb-3">
-        <label for="timezoneSelect" class="form-label">Select a Timezone:</label>
-        <select id="timezoneSelect" class="form-select">
-            <option value="-12">Baker Island (-12:00)</option>
-            <option value="-11">Samoa (-11:00)</option>
-            <option value="-10">Hawaii (-10:00)</option>
-            <option value="-8">Pacific Time (-8:00)</option>
-            <option value="-5">Eastern Time (-5:00)</option>
-            <option value="-3">Brazil (-3:00)</option>
-            <option value="0">UTC (0:00)</option>
-            <option value="1">Berlin (+1:00)</option>
-            <option value="3">Moscow (+3:00)</option>
-            <option value="4">Dubai (+4:00)</option>  <!-- ADDED -->
-            <option value="5">Pakistan (+5:00)</option>  <!-- ADDED -->
-            <option value="5.5">India (+5:30)</option>
-            <option value="5.75">Nepal (+5:45)</option>  <!-- ADDED -->
-            <option value="6">Bangladesh (+6:00)</option>  <!-- ADDED -->
-            <option value="6.5">Myanmar (+6:30)</option>  <!-- ADDED -->
-            <option value="8">China (+8:00)</option>
-            <option value="10">Sydney (+10:00)</option>
-            <option value="12">New Zealand (+12:00)</option>
-            <option value="14">Line Islands (+14:00)</option>
-        </select>
+    <div class="container">
+        <h2 class="text-center">Timezone to UTC Converter</h2>
+
+        <!-- Timezone Selection -->
+        <div class="mb-3">
+            <label for="timezoneSelect" class="form-label">Select a Timezone:</label>
+            <select id="timezoneSelect" class="form-select">
+                <option value="-12">Baker Island (-12:00)</option>
+                <option value="-11">Samoa (-11:00)</option>
+                <option value="-10">Hawaii (-10:00)</option>
+                <option value="-8">Pacific Time (-8:00)</option>
+                <option value="-5">Eastern Time (-5:00)</option>
+                <option value="-3">Brazil (-3:00)</option>
+                <option value="0">UTC (0:00)</option>
+                <option value="1">Berlin (+1:00)</option>
+                <option value="3">Moscow (+3:00)</option>
+                <option value="4">Dubai (+4:00)</option> <!-- ADDED -->
+                <option value="5">Pakistan (+5:00)</option> <!-- ADDED -->
+                <option value="5.5">India (+5:30)</option>
+                <option value="5.75">Nepal (+5:45)</option> <!-- ADDED -->
+                <option value="6">Bangladesh (+6:00)</option> <!-- ADDED -->
+                <option value="6.5">Myanmar (+6:30)</option> <!-- ADDED -->
+                <option value="8">China (+8:00)</option>
+                <option value="10">Sydney (+10:00)</option>
+                <option value="12">New Zealand (+12:00)</option>
+                <option value="14">Line Islands (+14:00)</option>
+            </select>
+        </div>
+
+        <!-- Date Pickers -->
+        <div class="mb-3">
+            <label for="fromDate" class="form-label">From Date:</label>
+            <input type="date" id="fromDate" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="toDate" class="form-label">To Date:</label>
+            <input type="date" id="toDate" class="form-control">
+        </div>
+
+        <!-- Convert Button -->
+        <button onclick="convertToUTC()" class="btn btn-primary w-100">Convert</button>
+
+        <!-- Results -->
+        <h4 class="text-center mt-3" id="utcFromTime">UTC From: --</h4>
+        <h4 class="text-center mt-2" id="utcToTime">UTC To: --</h4>
     </div>
 
-    <!-- Date Pickers -->
-    <div class="mb-3">
-        <label for="fromDate" class="form-label">From Date:</label>
-        <input type="date" id="fromDate" class="form-control">
-    </div>
-    
-    <div class="mb-3">
-        <label for="toDate" class="form-label">To Date:</label>
-        <input type="date" id="toDate" class="form-control">
-    </div>
+    <script>
+        function convertToUTC() {
+            const timezoneOffset = parseFloat(document.getElementById("timezoneSelect").value);
+            const fromDateInput = document.getElementById("fromDate").value;
+            const toDateInput = document.getElementById("toDate").value;
 
-    <!-- Convert Button -->
-    <button onclick="convertToUTC()" class="btn btn-primary w-100">Convert</button>
+            if (!fromDateInput || !toDateInput) {
+                alert("⚠️ Please select both From and To dates.");
+                return;
+            }
 
-    <!-- Results -->
-    <h4 class="text-center mt-3" id="utcFromTime">UTC From: --</h4>
-    <h4 class="text-center mt-2" id="utcToTime">UTC To: --</h4>
-</div>
+            const fromDate = luxon.DateTime.fromISO(fromDateInput);
+            const toDate = luxon.DateTime.fromISO(toDateInput);
 
-<script>
-    function convertToUTC() {
-        const timezoneOffset = parseFloat(document.getElementById("timezoneSelect").value);
-        const fromDateInput = document.getElementById("fromDate").value;
-        const toDateInput = document.getElementById("toDate").value;
+            // 🚨 NEW: Prevent "To Date" from being before "From Date"
+            if (toDate < fromDate) {
+                alert("⚠️ 'To Date' cannot be before 'From Date'!");
+                return;
+            }
 
-        if (!fromDateInput || !toDateInput) {
-            alert("Please select both From and To dates.");
-            return;
+            // Create full datetime strings with default times
+            const fromDateTimeStr = `${fromDateInput}T00:00:00`;
+            const toDateTimeStr = `${toDateInput}T23:59:59`;
+
+            // Convert local time to UTC using correct offset
+            const fromUTC = luxon.DateTime.fromISO(fromDateTimeStr).minus({ hours: timezoneOffset });
+            const toUTC = luxon.DateTime.fromISO(toDateTimeStr).minus({ hours: timezoneOffset });
+
+            // Format and display UTC results
+            document.getElementById("utcFromTime").innerText = `UTC From: ${fromUTC.toFormat('yyyy-MM-dd HH:mm:ss')}`;
+            document.getElementById("utcToTime").innerText = `UTC To: ${toUTC.toFormat('yyyy-MM-dd HH:mm:ss')}`;
         }
-
-        // Create full datetime strings with default times
-        const fromDateTimeStr = `${fromDateInput}T00:00:00`;
-        const toDateTimeStr = `${toDateInput}T23:59:59`;
-
-        // Convert local time to UTC using correct offset
-        const fromDate = luxon.DateTime.fromISO(fromDateTimeStr).minus({ hours: timezoneOffset });
-        const toDate = luxon.DateTime.fromISO(toDateTimeStr).minus({ hours: timezoneOffset });
-
-        // Format and display UTC results
-        document.getElementById("utcFromTime").innerText = `UTC From: ${fromDate.toFormat('yyyy-MM-dd HH:mm:ss')}`;
-        document.getElementById("utcToTime").innerText = `UTC To: ${toDate.toFormat('yyyy-MM-dd HH:mm:ss')}`;
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
