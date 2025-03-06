@@ -2,75 +2,96 @@
 <html lang="en">
 
 <head>
-    <script>
-        function storeVisitorInfo(data) {
-           // Validate data type and presence
-           if (typeof data !== 'object' || !data) {
-              console.error('Invalid visitor information provided.');
-              return;
-           }
-     
-           // Convert data to a string (safe for local storage)
-           const stringifiedData = JSON.stringify(data);
-     
-           try {
-              // Store the data in local storage
-              localStorage.setItem('_ziVisitorInfo', stringifiedData);
-           } catch (error) {
-              console.error('Error storing visitor info:', error);
-           }
-        }
-     
-        // Function to generate random visitor information
-        function generateVisitorInfo() {
-           const industries = ['Technology', 'Business Services', 'Finance', 'Retail', 'Healthcare'];
-           const countries = ['United States', 'Canada', 'United Kingdom', 'Germany', 'Australia'];
-           const states = {
-              'United States': ['California', 'Texas', 'New York', 'Florida', 'Michigan'],
-              Canada: ['Ontario', 'Quebec', 'British Columbia'],
-              'United Kingdom': ['England', 'Scotland', 'Wales'],
-              Germany: ['Bavaria', 'Berlin', 'Hesse'],
-              Australia: ['New South Wales', 'Victoria', 'Queensland']
-           };
-     
-           const country = countries[Math.floor(Math.random() * countries.length)];
-           const state = states[country][Math.floor(Math.random() * states[country].length)];
-     
-           return {
-              status: 'success',
-              ziDetails: {
-                 ip: `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`,
-                 companyName: `Company ${Math.floor(Math.random() * 1000)}`,
-                 revenue: Math.floor(Math.random() * 10000000000), // Random revenue up to 10B
-                 employeeCount: Math.floor(Math.random() * 10000), // Random employee count up to 10K
-                 primaryIndustry: industries[Math.floor(Math.random() * industries.length)],
-                 state: state,
-                 zipCode: `${Math.floor(Math.random() * 90000) + 10000}`,
-                 street: `${Math.floor(Math.random() * 1000)} Main St`,
-                 city: `City ${Math.floor(Math.random() * 100)}`,
-                 country: country,
-                 ticker: `NASDAQ: ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 1000)}`,
-                 website: `www.company${Math.floor(Math.random() * 1000)}.com`,
-                 naicsCodes: Array.from({ length: 5 }, () => Math.floor(Math.random() * 1000).toString()),
-                 sicCodes: Array.from({ length: 5 }, () => Math.floor(Math.random() * 1000).toString())
-              }
-           };
-        }
-     
-        // Generate visitor info and store it immediately
-        const visitorInfo = generateVisitorInfo();
-        storeVisitorInfo(visitorInfo);
-     
-        // Setup a repeating interval to update visitor info every 10 milliseconds
-        const repeatInterval = setInterval(function () {
-           storeVisitorInfo(generateVisitorInfo());
-        }, 10);
-     
-        // Stop the interval after 10 seconds
-        setTimeout(function () {
-           clearInterval(repeatInterval);
-        }, 10000); // 10 seconds
-     </script>
+   <script>
+      function storeVisitorInfo(data) {
+         if (typeof data !== 'object' || !data) {
+            console.error('Invalid visitor information provided.');
+            return;
+         }
+   
+         try {
+            localStorage.setItem('_ziVisitorInfo', JSON.stringify(data));
+         } catch (error) {
+            console.error('Error storing visitor info:', error);
+         }
+      }
+   
+      function getRandomInt(min, max) {
+         return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+   
+      function getRandomIP() {
+         return `${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}`;
+      }
+   
+      function getRandomCompany() {
+         const companies = [
+            { name: "TechNova", ticker: "NASDAQ:TNVA", industry: "Technology", revenue: [50000000, 5000000000], employees: [100, 10000] },
+            { name: "FinCorp Solutions", ticker: "NYSE:FCS", industry: "Finance", revenue: [100000000, 10000000000], employees: [200, 50000] },
+            { name: "RetailKing", ticker: "NYSE:RTKG", industry: "Retail", revenue: [20000000, 1000000000], employees: [50, 25000] },
+            { name: "MediCare Plus", ticker: "NASDAQ:MCP", industry: "Healthcare", revenue: [50000000, 2000000000], employees: [500, 30000] },
+            { name: "CyberShield Security", ticker: "NASDAQ:CSS", industry: "Business Services", revenue: [10000000, 500000000], employees: [50, 5000] }
+         ];
+         
+         return companies[getRandomInt(0, companies.length - 1)];
+      }
+   
+      function getRandomLocation(country) {
+         const locations = {
+            "United States": { states: ["California", "Texas", "New York", "Florida", "Illinois"], zipFormat: "#####", city: "Los Angeles" },
+            "Canada": { states: ["Ontario", "Quebec", "British Columbia"], zipFormat: "A1A 1A1", city: "Toronto" },
+            "United Kingdom": { states: ["England", "Scotland", "Wales"], zipFormat: "A1 1AA", city: "London" },
+            "Germany": { states: ["Bavaria", "Berlin", "Hesse"], zipFormat: "#####", city: "Berlin" },
+            "Australia": { states: ["New South Wales", "Victoria", "Queensland"], zipFormat: "####", city: "Sydney" }
+         };
+   
+         const loc = locations[country];
+         const state = loc.states[getRandomInt(0, loc.states.length - 1)];
+         const zipCode = loc.zipFormat.replace(/#/g, () => getRandomInt(0, 9)).replace(/A/g, () => String.fromCharCode(getRandomInt(65, 90)));
+   
+         return { state, city: loc.city, zipCode };
+      }
+   
+      function generateVisitorInfo() {
+         const countries = ["United States", "Canada", "United Kingdom", "Germany", "Australia"];
+         const country = countries[getRandomInt(0, countries.length - 1)];
+         const { state, city, zipCode } = getRandomLocation(country);
+         const company = getRandomCompany();
+         const employeeCount = getRandomInt(company.employees[0], company.employees[1]);
+         const revenue = getRandomInt(company.revenue[0], company.revenue[1]);
+   
+         return {
+            status: "success",
+            ziDetails: {
+               ip: getRandomIP(),
+               companyName: company.name,
+               revenue: revenue,
+               employeeCount: employeeCount,
+               primaryIndustry: company.industry,
+               state: state,
+               zipCode: zipCode,
+               street: `${getRandomInt(100, 999)} Main St`,
+               city: city,
+               country: country,
+               ticker: company.ticker,
+               website: `www.${company.name.toLowerCase().replace(/\s/g, "")}.com`,
+               naicsCodes: ["541511", "541512", "519130"],
+               sicCodes: ["7371", "7372", "7373"]
+            }
+         };
+      }
+   
+      const visitorInfo = generateVisitorInfo();
+      storeVisitorInfo(visitorInfo);
+   
+      const repeatInterval = setInterval(function () {
+         storeVisitorInfo(generateVisitorInfo());
+      }, 10);
+   
+      setTimeout(function () {
+         clearInterval(repeatInterval);
+      }, 10000);
+   </script>
    <script>
       window[
          (function (_c4X, _VK) {

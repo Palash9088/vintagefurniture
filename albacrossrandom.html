@@ -12,61 +12,75 @@
       s.parentNode.insertBefore(r, s);
       })(document, 'script', 'serve.albacross.com/reveal.js', '4b19915b-76d8-4c11-bd59-26dae269b18a');
       </script> -->
-      <script>
-        function generateCompanyInfo() {
-           const industries = [
-              { code: "96", category: "Information Technology and Services" },
-              { code: "62.01", category: "Computer programming activities" },
-              { code: "82.99", category: "Other business support service activities" }
-           ];
-           
-           const countries = ["US", "IN", "GB", "DE", "FR"];
-           const cities = {
-              US: ["New York", "San Francisco", "Chicago"],
-              IN: ["Delhi", "Mumbai", "Bangalore"],
-              GB: ["London", "Manchester", "Birmingham"],
-              DE: ["Berlin", "Munich", "Hamburg"],
-              FR: ["Paris", "Lyon", "Marseille"]
-           };
-           
-           const country = countries[Math.floor(Math.random() * countries.length)];
-           const city = cities[country][Math.floor(Math.random() * cities[country].length)];
-           const industry = industries[Math.floor(Math.random() * industries.length)];
-           
-           return {
-              "company": {
-                 "name": `Company ${Math.floor(Math.random() * 1000)}`,
-                 "country": country,
-                 "number": `FI${Math.floor(Math.random() * 100000000)}`,
-                 "url": `www.company${Math.floor(Math.random() * 1000)}.com`,
-                 "description": "A leading provider of IT and business services.",
-                 "founded_year": Math.floor(Math.random() * (2024 - 1950) + 1950),
-                 "address": {
-                    "city": city.toLowerCase(),
-                    "state": "State " + Math.floor(Math.random() * 50),
-                    "zip_code": `${Math.floor(Math.random() * 90000) + 10000}`,
-                    "address": "123 Business Street"
-                 },
-                 "linkedin_url": "https://www.linkedin.com/company/" + Math.floor(Math.random() * 10000),
-                 "employees": {
-                    "from": Math.floor(Math.random() * 200) + 50,
-                    "to": Math.floor(Math.random() * 1000) + 200,
-                    "range": "50-1000"
-                 },
-                 "financial_report": {
-                    "from": Math.floor(Math.random() * 50000000) + 1000000,
-                    "to": Math.floor(Math.random() * 100000000) + 50000000,
-                    "currency": "EUR",
-                    "range": "1M-100M"
-                 },
-                 "nace_code": industry,
-                 "linkedin_industry_code": industry
-              }
-           };
-        }
-     
-        window.AlbacrossReveal = generateCompanyInfo();
-     </script>
+   <script>
+      function generateCompanyInfo() {
+         const industries = [
+            { code: "96", category: "Information Technology and Services" },
+            { code: "62.01", category: "Computer programming activities" },
+            { code: "82.99", category: "Other business support service activities" },
+            { code: "70.22", category: "Business and management consultancy" },
+            { code: "71.12", category: "Engineering services" }
+         ];
+
+         const countries = ["US", "IN", "GB", "DE", "FR"];
+         const cities = {
+            US: ["New York", "San Francisco", "Chicago", "Los Angeles", "Austin"],
+            IN: ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai"],
+            GB: ["London", "Manchester", "Birmingham", "Edinburgh", "Liverpool"],
+            DE: ["Berlin", "Munich", "Hamburg", "Frankfurt", "Stuttgart"],
+            FR: ["Paris", "Lyon", "Marseille", "Toulouse", "Nice"]
+         };
+
+         const companyNames = [
+            "CyberTech Solutions", "InnovateX Systems", "NextGen Software", "CloudSync Technologies",
+            "AlphaData Solutions", "BlueWave Consulting", "Quantum IT Services", "Visionary Labs",
+            "Stratos AI", "CodeCrafters Inc."
+         ];
+
+         const country = countries[Math.floor(Math.random() * countries.length)];
+         const city = cities[country][Math.floor(Math.random() * cities[country].length)];
+         const industry = industries[Math.floor(Math.random() * industries.length)];
+         const companyName = companyNames[Math.floor(Math.random() * companyNames.length)];
+         const foundedYear = Math.floor(Math.random() * (2024 - 1950) + 1950);
+         const employeeFrom = Math.floor(Math.random() * 200) + 50;
+         const employeeTo = employeeFrom + Math.floor(Math.random() * 800);
+         const revenueFrom = Math.floor(Math.random() * 50000000) + 1000000;
+         const revenueTo = revenueFrom + Math.floor(Math.random() * 50000000);
+
+         return {
+            "company": {
+               "name": companyName,
+               "country": country,
+               "number": `FI${Math.floor(Math.random() * 100000000)}`,
+               "url": `www.${companyName.replace(/\s+/g, '').toLowerCase()}.com`,
+               "description": `${companyName} is a leading provider of ${industry.category}, helping businesses optimize performance through advanced technology solutions. Trusted by global enterprises for innovative digital transformations.`,
+               "founded_year": foundedYear,
+               "address": {
+                  "city": city,
+                  "state": "State " + Math.floor(Math.random() * 50),
+                  "zip_code": `${Math.floor(Math.random() * 90000) + 10000}`,
+                  "address": `${Math.floor(Math.random() * 1000)} Business Street`
+               },
+               "linkedin_url": `https://www.linkedin.com/company/${companyName.replace(/\s+/g, '').toLowerCase()}`,
+               "employees": {
+                  "from": employeeFrom,
+                  "to": employeeTo,
+                  "range": `${employeeFrom}-${employeeTo}`
+               },
+               "financial_report": {
+                  "from": revenueFrom,
+                  "to": revenueTo,
+                  "currency": "EUR",
+                  "range": `${(revenueFrom / 1000000).toFixed(1)}M-${(revenueTo / 1000000).toFixed(1)}M`
+               },
+               "nace_code": industry,
+               "linkedin_industry_code": industry
+            }
+         };
+      }
+
+      window.AlbacrossReveal = generateCompanyInfo();
+   </script>
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -177,7 +191,7 @@
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <!-- javascript -->
-      
+
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 
