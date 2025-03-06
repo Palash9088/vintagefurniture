@@ -87,60 +87,86 @@
     <h1>📄 All Pages Index</h1>
     <input type="text" id="searchInput" placeholder="🔍 Search pages..." onkeyup="searchPages()">
 
-  <div class="container" id="pageList">
-        <div class="card"><a href="6sense.html">6sense</a></div>
-        <div class="card"><a href="6senserandom.html">6senserandom</a></div>
-        <div class="card"><a href="775633.html">775633</a></div>
-        <div class="card"><a href="about.html">About</a></div>
-        <div class="card"><a href="adobe-adc.html">Adobe ADC</a></div>
-        <div class="card"><a href="adobe-aep.html">Adobe AEP</a></div>
-        <div class="card"><a href="adobe.html">Adobe</a></div>
-        <div class="card"><a href="albacross.html">Albacross</a></div>
-        <div class="card"><a href="albacross1.html">Albacross 1</a></div>
-        <div class="card"><a href="allpushbased.html">All Push-Based</a></div>
-        <div class="card"><a href="amplitude.html">Amplitude</a></div>
-        <div class="card"><a href="bodytag.html">Body Tag</a></div>
-        <div class="card"><a href="both.html">Both</a></div>
-        <div class="card"><a href="braze.html">Braze</a></div>
-        <div class="card"><a href="carrotlayersetup.html">Carrot Layer Setup</a></div>
-        <div class="card"><a href="clarity.html">Clarity</a></div>
-        <div class="card"><a href="clearbit.html">Clearbit</a></div>
-        <div class="card"><a href="clearbit1.html">Clearbit 1</a></div>
-        <div class="card"><a href="contact.html">Contact</a></div>
-        <div class="card"><a href="datalayersetup.html">Data Layer Setup</a></div>
-        <div class="card"><a href="demandbase.html">Demandbase</a></div>
-        <div class="card"><a href="fullstory.html">FullStory</a></div>
-        <div class="card"><a href="ga4viagtm.html">GA4 via GTM</a></div>
-        <div class="card"><a href="glassbox.html">Glassbox</a></div>
-        <div class="card"><a href="gtagsetup.html">GTag Setup</a></div>
-        <div class="card"><a href="gtm.html">GTM</a></div>
-        <div class="card"><a href="gtmwithcookie.html">GTM with Cookie</a></div>
-        <div class="card"><a href="heap.html">Heap</a></div>
-        <div class="card"><a href="hotjar.html">Hotjar</a></div>
-        <div class="card"><a href="hubspot.html">HubSpot</a></div>
-        <div class="card"><a href="hubspot2.html">HubSpot 2</a></div>
-        <div class="card"><a href="kissmetrics.html">Kissmetrics</a></div>
-        <div class="card"><a href="klaviyo.html">Klaviyo</a></div>
-        <div class="card"><a href="lytics.html">Lytics</a></div>
-        <div class="card"><a href="marketo.html">Marketo</a></div>
-        <div class="card"><a href="matomo.html">Matomo</a></div>
-        <div class="card"><a href="mixpanel.html">Mixpanel</a></div>
-        <div class="card"><a href="moengage.html">MoEngage</a></div>
-        <div class="card"><a href="mparticle.html">mParticle</a></div>
-        <div class="card"><a href="pendoanalytics.html">Pendo Analytics</a></div>
-        <div class="card"><a href="segmentcustomer.html">Segment Customer</a></div>
-        <div class="card"><a href="services.html">Services</a></div>
-        <div class="card"><a href="shop.html">Shop</a></div>
-        <div class="card"><a href="snowplowv2.html">Snowplow V2</a></div>
-        <div class="card"><a href="splitdatalayer.html">Split Data Layer</a></div>
-        <div class="card"><a href="woopra.html">Woopra</a></div>
-        <div class="card"><a href="zeotap.html">Zeotap</a></div>
-        <div class="card"><a href="zoominfo.html">ZoomInfo</a></div>
-        <div class="card"><a href="timezonecalc.html">Timezone Calc</a></div>
-        <div class="card"><a href="eulerian.html">Eulerian</a></div>
+    <div class="container" id="pageList">
+        <!-- Links will be inserted dynamically -->
     </div>
 
     <script>
+        // List of pages
+        let pages = [
+            { url: "6sense.html", name: "6sense" },
+            { url: "6senserandom.html", name: "6senserandom" },
+            { url: "775633.html", name: "775633" },
+            { url: "about.html", name: "About" },
+            { url: "adobe-adc.html", name: "Adobe ADC" },
+            { url: "adobe-aep.html", name: "Adobe AEP" },
+            { url: "adobe.html", name: "Adobe" },
+            { url: "albacross.html", name: "Albacross" },
+            { url: "albacross1.html", name: "Albacross 1" },
+            { url: "allpushbased.html", name: "All Push-Based" },
+            { url: "amplitude.html", name: "Amplitude" },
+            { url: "bodytag.html", name: "Body Tag" },
+            { url: "both.html", name: "Both" },
+            { url: "braze.html", name: "Braze" },
+            { url: "carrotlayersetup.html", name: "Carrot Layer Setup" },
+            { url: "clarity.html", name: "Clarity" },
+            { url: "clearbit.html", name: "Clearbit" },
+            { url: "clearbit1.html", name: "Clearbit 1" },
+            { url: "contact.html", name: "Contact" },
+            { url: "datalayersetup.html", name: "Data Layer Setup" },
+            { url: "demandbase.html", name: "Demandbase" },
+            { url: "fullstory.html", name: "FullStory" },
+            { url: "ga4viagtm.html", name: "GA4 via GTM" },
+            { url: "glassbox.html", name: "Glassbox" },
+            { url: "gtagsetup.html", name: "GTag Setup" },
+            { url: "gtm.html", name: "GTM" },
+            { url: "gtmwithcookie.html", name: "GTM with Cookie" },
+            { url: "heap.html", name: "Heap" },
+            { url: "hotjar.html", name: "Hotjar" },
+            { url: "hubspot.html", name: "HubSpot" },
+            { url: "hubspot2.html", name: "HubSpot 2" },
+            { url: "kissmetrics.html", name: "Kissmetrics" },
+            { url: "klaviyo.html", name: "Klaviyo" },
+            { url: "lytics.html", name: "Lytics" },
+            { url: "marketo.html", name: "Marketo" },
+            { url: "matomo.html", name: "Matomo" },
+            { url: "mixpanel.html", name: "Mixpanel" },
+            { url: "moengage.html", name: "MoEngage" },
+            { url: "mparticle.html", name: "mParticle" },
+            { url: "pendoanalytics.html", name: "Pendo Analytics" },
+            { url: "segmentcustomer.html", name: "Segment Customer" },
+            { url: "services.html", name: "Services" },
+            { url: "shop.html", name: "Shop" },
+            { url: "snowplowv2.html", name: "Snowplow V2" },
+            { url: "splitdatalayer.html", name: "Split Data Layer" },
+            { url: "woopra.html", name: "Woopra" },
+            { url: "zeotap.html", name: "Zeotap" },
+            { url: "zoominfo.html", name: "ZoomInfo" },
+            { url: "timezonecalc.html", name: "Timezone Calc" },
+            { url: "eulerian.html", name: "Eulerian" },
+            { url: "clearbitrandom.html", name: "Clearbit Random" },
+            { url: "demandbaserandom.html", name: "Demandbase Random" },
+            { url: "zoominforandom.html", name: "ZoomInfo Random" },
+            { url: "albacrossrandom.html", name: "Albacross Random" }
+        ];
+
+        // Sort pages alphabetically by name
+        pages.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Generate HTML dynamically
+        function generatePageList() {
+            let container = document.getElementById("pageList");
+            container.innerHTML = ""; // Clear previous content
+
+            pages.forEach(page => {
+                let div = document.createElement("div");
+                div.classList.add("card");
+                div.innerHTML = `<a href="${page.url}" target="_blank">${page.name}</a>`; // Opens in new tab
+                container.appendChild(div);
+            });
+        }
+
+        // Search filter function
         function searchPages() {
             let input = document.getElementById("searchInput").value.toLowerCase();
             let cards = document.getElementsByClassName("card");
@@ -148,12 +174,15 @@
             for (let i = 0; i < cards.length; i++) {
                 let text = cards[i].textContent.toLowerCase();
                 if (text.includes(input)) {
-                    cards[i].classList.remove("hidden");
+                    cards[i].style.display = "block";
                 } else {
-                    cards[i].classList.add("hidden");
+                    cards[i].style.display = "none";
                 }
             }
         }
+
+        // Call function on page load
+        window.onload = generatePageList;
     </script>
 
 </body>
