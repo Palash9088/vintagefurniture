@@ -4,7 +4,8 @@
 <head>
    <script>
 const urlParams = new URLSearchParams(window.location.search);
-const fsId = parseInt(urlParams.get("fsid"));
+const fsIdParam = urlParams.get("fsid");
+const fsId = fsIdParam ? parseInt(fsIdParam) : null;
 console.log("Params fsId ->", fsId);
 window['_fs_host'] = 'fullstory.com';
 window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
