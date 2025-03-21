@@ -2,22 +2,13 @@
 <html lang="en">
 
 <head>
-<!-- start : Eulerian Analytics - vwo-com -->
+<!-- Eulerian Analytics - tag init -->
 <script type="text/javascript">
-    var EA_data=  [];
-    var params = new URLSearchParams(window.location.search);
-    var delay = params.get("delay");
-    function setScript(){var
-    td='io1.eulerian.net',d=document,l=d.location,o,a,cn,cdr,cdh,cdr,acdr,i,cj='';if(!l.protocol.indexOf('http')){o=d.createElement('script');a=d.getElementsByTagName('script')[0];cn=parseInt((new
-    Date()).getTime()/3600000);cj='';cdh=(l.host+td).replace(/[^a-z]/g,'');cdr=cdh+cdh.toUpperCase();acdr=cdr.split('');for(i=-1;i<cn%7;i++){cj+=acdr[(cn+i)%acdr.length];}o.type='text/javascript';o.async='async';o.defer='defer';o.src='//'+td+'/'+cj+(cn%8760)+'.js';a.parentNode.insertBefore(o,a);}};
-    setTimeout(()=>{
-        setScript();
-    }, delay || 0)
-    </script>
-    <noscript>
-    <iframe width="2" height="2" border="0" src="//io1.eulerian.net/col1/-/CACHEBUSTER.html?eemail=EmailID&url=https%3A%2F%2rohitgupta.wingified.com%2Feulerian.html&rf="></iframe>
-    </noscript>
-    <!-- stop : Eulerian Analytics - vwo-com -->
+   (function(e,a){var i=e.length,y=5381,k='script',s=window,v=document,o=v.createElement(k);for(;i;){i-=1;y=(y*33)^e.charCodeAt(i)}y='_EA_'+(y>>>=0);(function(e,a,s,y){s[a]=s[a]||function(){(s[y]=s[y]||[]).push(arguments);s[y].eah=e;};}(e,a,s,y));i=new Date/1E7|0;o.ea=y;y=i%26;o.async=1;o.src='//'+e+'/'+String.fromCharCode(97+y,122-y,65+y)+(i%1E3)+'.js?2';s=v.getElementsByTagName(k)[0];s.parentNode.insertBefore(o,s);})
+   ('palash9088.github.io','EA_call');
+   EA_call("profile","visitor");
+   </script>
+   <!-- /Eulerian Analytics - tag init -->
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,54 +60,6 @@
 </head>
 
 <body>
-   <script>
-      function storeVisitorInfo(data) {
-         // Validate data type and presence
-         if (typeof data !== 'object' || !data) {
-            console.error('Invalid visitor information provided.');
-            return;
-         }
-
-         // Convert data to a string (safe for local storage)
-         const stringifiedData = JSON.stringify(data);
-
-         try {
-            // Store the data in local storage
-            localStorage.setItem('_ziVisitorInfo', stringifiedData);
-            console.log('Visitor information successfully stored.');
-         } catch (error) {
-            console.error('Error storing visitor info:', error);
-         }
-      }
-
-      // Replace with your actual visitor information
-      const visitorInfo = {
-         status: "success",
-         ziDetails: {
-            ip: "49.43.3.106",
-            companyName: "Kelly",
-            revenue: 4837300000,
-            employeeCount: 7500,
-            primaryIndustry: "Business Services",
-            state: "Michigan",
-            zipCode: "48084",
-            street: "999 W Big Beaver Rd",
-            city: "Troy",
-            country: "United States",
-            ticker: "NASDAQ: KELYA",
-            website: "www.kellyservices.com",
-            naicsCodes: ["56", "561", "5613", "56131", "561311"],
-            sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-         }
-      };
-
-      // Delay the execution of storeVisitorInfo by 3 seconds
-      setTimeout(function () {
-         storeVisitorInfo(visitorInfo);
-      }, 4000); // 4 milliseconds = 3 seconds
-
-
-   </script>
    <!-- header section start -->
    <div class="header_section">
       <div class="container">
