@@ -72,19 +72,58 @@
    <style>
       .banner_section {
          width: 100%;
-         padding: 20px 0;
+         padding: 40px 0;
+         background-color: #f8f9fa;
       }
 
       .container {
          max-width: 1200px;
          margin: 0 auto;
          padding: 0 15px;
+         display: flex;
+         align-items: center;
+         gap: 30px;
+      }
+
+      .form-section {
+         flex: 2;
+         min-width: 0;
+      }
+
+      .image-section {
+         flex: 2;
+         min-width: 0;
       }
 
       img {
          max-width: 100%;
          height: auto;
          display: block;
+         border-radius: 8px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* HubSpot Form Styling */
+      .hs-form-frame {
+         padding: 30px;
+         background: white;
+         border-radius: 10px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+         .container {
+            flex-direction: column;
+         }
+         
+         .banner_section {
+            padding: 20px 0;
+         }
+         
+         .hs-form-frame {
+            padding: 20px;
+         }
       }
    </style>
 </head>
@@ -92,7 +131,13 @@
 <body>
    <div class="banner_section">
       <div class="container">
-         <img src="images/banner-bg.png" alt="Banner">
+         <div class="form-section">
+            <script src="https://js.hsforms.net/forms/embed/44178869.js" defer></script>
+            <div class="hs-form-frame" data-region="na1" data-form-id="da1db081-dfbb-432f-a8b4-e9e87a3368fa" data-portal-id="44178869"></div>
+         </div>
+         <div class="image-section">
+            <img src="images/banner-bg.png" alt="Banner">
+         </div>
       </div>
    </div>
    <!-- Only keep essential JavaScript -->
