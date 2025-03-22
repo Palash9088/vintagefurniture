@@ -2,142 +2,178 @@
 <html lang="en">
 
 <head>
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-<!-- Eulerian Analytics - tag init -->
-<script type="text/javascript">
-    var EA_data=  [];
-    var params = new URLSearchParams(window.location.search);
-    var delay = params.get("delay");
-    function setScript(){var
-    td='io1.eulerian.net',d=document,l=d.location,o,a,cn,cdr,cdh,cdr,acdr,i,cj='';if(!l.protocol.indexOf('http')){o=d.createElement('script');a=d.getElementsByTagName('script')[0];cn=parseInt((new
-    Date()).getTime()/3600000);cj='';cdh=(l.host+td).replace(/[^a-z]/g,'');cdr=cdh+cdh.toUpperCase();acdr=cdr.split('');for(i=-1;i<cn%7;i++){cj+=acdr[(cn+i)%acdr.length];}o.type='text/javascript';o.async='async';o.defer='defer';o.src='//'+td+'/'+cj+(cn%8760)+'.js';a.parentNode.insertBefore(o,a);}};
-    setTimeout(()=>{
-        setScript();
-    }, delay || 0)
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+    <!-- Eulerian Analytics - tag init -->
+    <!-- Initialize eulerianToVWO variable -->
+    <script>
+        let eulerianToVWO = null;
+        // Function to check and update Eulerian data
+        function checkEulerianData() {
+
+            eulerianToVWO = {
+                audiences: {
+                    "Vwotesting": "Vwotesting - segment",
+                    "First visit": "First visit - segment",
+                    "VWO-Palash-Test": "VWO-Palash-Test - segment",
+                    "Device": "Desktop - segment"
+                }
+            };
+            console.log('Eulerian data updated:', eulerianToVWO);
+            return true;
+        }
+
+        // Set up polling mechanism
+        const pollInterval = 10; // 10ms
+        const pollDuration = 10000; // 10 seconds
+        const startTime = Date.now();
+
+        const pollTimer = setInterval(() => {
+            if (checkEulerianData() || Date.now() - startTime >= pollDuration) {
+                clearInterval(pollTimer);
+                console.log('Polling completed');
+            }
+        }, pollInterval);
+    </script>
+    <script type="text/javascript">
+        var EA_data = [];
+        var params = new URLSearchParams(window.location.search);
+        var delay = params.get("delay");
+        function setScript() {
+            var
+            td = 'io1.eulerian.net', d = document, l = d.location, o, a, cn, cdr, cdh, cdr, acdr, i, cj = ''; if (!l.protocol.indexOf('http')) {
+                o = d.createElement('script'); a = d.getElementsByTagName('script')[0]; cn = parseInt((new
+                    Date()).getTime() / 3600000); cj = ''; cdh = (l.host + td).replace(/[^a-z]/g, ''); cdr = cdh + cdh.toUpperCase(); acdr = cdr.split(''); for (i = -1; i < cn % 7; i++) { cj += acdr[(cn + i) % acdr.length]; } o.type = 'text/javascript'; o.async = 'async'; o.defer = 'defer'; o.src = '//' + td + '/' + cj + (cn % 8760) + '.js'; a.parentNode.insertBefore(o, a);
+            }
+        };
+        setTimeout(() => {
+            setScript();
+        }, delay || 0)
     </script>
     <noscript>
-    <iframe width="2" height="2" border="0" src="//io1.eulerian.net/col1/-/CACHEBUSTER.html?eemail=EmailID&url=https%3A%2F%2rohitgupta.wingified.com%2Feulerian.html&rf="></iframe>
+        <iframe width="2" height="2" border="0"
+            src="//io1.eulerian.net/col1/-/CACHEBUSTER.html?eemail=EmailID&url=https%3A%2F%2rohitgupta.wingified.com%2Feulerian.html&rf="></iframe>
     </noscript>
     <!-- stop : Eulerian Analytics - vwo-com -->
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-   <!-- site metas -->
-   <title>Eulerian Analytics Legacy | VWO</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
- 
-   <!-- fevicon -->
-   <link rel="icon" href="images/fevicon.png" type="image/gif" />
- 
-   <!-- Start VWO Async SmartCode -->
-   <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-   <script type='text/javascript' id='vwoCode'>
-      const params1 = new URLSearchParams(window.location.search);
-      const accId = parseInt(params1.get("id"));
-      const accountId = accId || 736554;
-      console.log("Account-Id ->", accountId);
-      /* eslint-disable no-undef */
-      window._vwo_code || (function () {
-         var account_id = accountId,
-            version = 2.1,
-            settings_tolerance = 2000,
-            hide_element = 'body',
-            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
-            /* DO NOT EDIT BELOW THIS LINE */
-            f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
-      })();
-   </script>
-   <!-- End VWO Async SmartCode -->
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Eulerian Analytics Legacy | VWO</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+
+    <!-- Start VWO Async SmartCode -->
+    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+    <script type='text/javascript' id='vwoCode'>
+        const params1 = new URLSearchParams(window.location.search);
+        const accId = parseInt(params1.get("id"));
+        const accountId = accId || 736554;
+        console.log("Account-Id ->", accountId);
+        /* eslint-disable no-undef */
+        window._vwo_code || (function () {
+            var account_id = accountId,
+                version = 2.1,
+                settings_tolerance = 2000,
+                hide_element = 'body',
+                hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+                /* DO NOT EDIT BELOW THIS LINE */
+                f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
+        })();
+    </script>
+    <!-- End VWO Async SmartCode -->
 </head>
 
 <body>
-   <style>
-      .banner_section {
-         width: 100%;
-         padding: 40px 0;
-         background-color: #f8f9fa;
-      }
+    <style>
+        .banner_section {
+            width: 100%;
+            padding: 40px 0;
+            background-color: #f8f9fa;
+        }
 
-      .container {
-         max-width: 1200px;
-         margin: 0 auto;
-         padding: 0 15px;
-         display: flex;
-         align-items: center;
-         gap: 30px;
-      }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
-      .form-section {
-         flex: 2;
-         min-width: 0;
-      }
+        .form-section {
+            flex: 2;
+            min-width: 0;
+        }
 
-      .image-section {
-         flex: 2;
-         min-width: 0;
-      }
+        .image-section {
+            flex: 2;
+            min-width: 0;
+        }
 
-      img {
-         max-width: 100%;
-         height: auto;
-         display: block;
-         border-radius: 8px;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-      /* HubSpot Form Styling */
-      .hs-form-frame {
-         padding: 30px;
-         background: white;
-         border-radius: 10px;
-         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
+        /* HubSpot Form Styling */
+        .hs-form-frame {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-      /* Responsive Design */
-      @media (max-width: 768px) {
-         .container {
-            flex-direction: column;
-         }
-         
-         .banner_section {
-            padding: 20px 0;
-         }
-         
-         .hs-form-frame {
-            padding: 20px;
-         }
-      }
-   </style>
-</head>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
 
-<body>
-   <div class="banner_section">
-      <div class="container">
-         <div class="form-section">
-            <script src="https://js.hsforms.net/forms/embed/44178869.js" defer></script>
-            <div class="hs-form-frame" data-region="na1" data-form-id="da1db081-dfbb-432f-a8b4-e9e87a3368fa" data-portal-id="44178869"></div>
-         </div>
-         <div class="image-section">
-            <img src="images/banner-bg.png" alt="Banner">
-         </div>
-      </div>
-   </div>
-   <!-- Only keep essential JavaScript -->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-</body>
+            .banner_section {
+                padding: 20px 0;
+            }
+
+            .hs-form-frame {
+                padding: 20px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="banner_section">
+            <div class="container">
+                <div class="form-section">
+                    <script src="https://js.hsforms.net/forms/embed/44178869.js" defer></script>
+                    <div class="hs-form-frame" data-region="na1" data-form-id="da1db081-dfbb-432f-a8b4-e9e87a3368fa"
+                        data-portal-id="44178869"></div>
+                </div>
+                <div class="image-section">
+                    <img src="images/banner-bg.png" alt="Banner">
+                </div>
+            </div>
+        </div>
+        <!-- Only keep essential JavaScript -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
 
 </html>
