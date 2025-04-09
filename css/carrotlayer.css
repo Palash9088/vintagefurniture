@@ -1,7 +1,9 @@
+/* Performance Optimized Styles */
 .banner_section {
     width: 100%;
     padding: 40px 0;
     background-color: #f8f9fa;
+    will-change: transform;
 }
 
 .container {
@@ -12,17 +14,20 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    will-change: transform;
 }
 
 .form-section {
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
+    will-change: transform;
 }
 
 .image-section {
     width: 100%;
     max-width: 800px;
+    will-change: transform;
 }
 
 img {
@@ -40,6 +45,7 @@ img {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
+    will-change: transform;
 }
 
 /* Responsive Design */

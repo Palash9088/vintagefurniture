@@ -1,3 +1,6 @@
+/* Preload critical resources */
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+
 /* Main Styles */
 body {
     font-family: Arial, sans-serif;
@@ -5,6 +8,23 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+}
+
+/* Optimize image loading */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    content-visibility: auto;
+}
+
+/* Optimize iframe loading */
+iframe {
+    content-visibility: auto;
+    loading: eager;
 }
 
 /* Banner Section */
