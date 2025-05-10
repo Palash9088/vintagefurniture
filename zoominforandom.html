@@ -16,22 +16,22 @@
             console.error('Invalid visitor information provided.');
             return;
          }
-   
+
          try {
             localStorage.setItem('_ziVisitorInfo', JSON.stringify(data));
          } catch (error) {
             console.error('Error storing visitor info:', error);
          }
       }
-   
+
       function getRandomInt(min, max) {
          return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-   
+
       function getRandomIP() {
          return `${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}`;
       }
-   
+
       function getRandomCompany() {
          const companies = [
             { name: "TechNova", ticker: "NASDAQ:TNVA", industry: "Technology", revenue: [50000000, 5000000000], employees: [100, 10000] },
@@ -40,10 +40,10 @@
             { name: "MediCare Plus", ticker: "NASDAQ:MCP", industry: "Healthcare", revenue: [50000000, 2000000000], employees: [500, 30000] },
             { name: "CyberShield Security", ticker: "NASDAQ:CSS", industry: "Business Services", revenue: [10000000, 500000000], employees: [50, 5000] }
          ];
-         
+
          return companies[getRandomInt(0, companies.length - 1)];
       }
-   
+
       function getRandomLocation(country) {
          const locations = {
             "United States": { states: ["California", "Texas", "New York", "Florida", "Illinois"], zipFormat: "#####", city: "Los Angeles" },
@@ -52,14 +52,14 @@
             "Germany": { states: ["Bavaria", "Berlin", "Hesse"], zipFormat: "#####", city: "Berlin" },
             "Australia": { states: ["New South Wales", "Victoria", "Queensland"], zipFormat: "####", city: "Sydney" }
          };
-   
+
          const loc = locations[country];
          const state = loc.states[getRandomInt(0, loc.states.length - 1)];
          const zipCode = loc.zipFormat.replace(/#/g, () => getRandomInt(0, 9)).replace(/A/g, () => String.fromCharCode(getRandomInt(65, 90)));
-   
+
          return { state, city: loc.city, zipCode };
       }
-   
+
       function generateVisitorInfo() {
          const countries = ["United States", "Canada", "United Kingdom", "Germany", "Australia"];
          const country = countries[getRandomInt(0, countries.length - 1)];
@@ -67,7 +67,7 @@
          const company = getRandomCompany();
          const employeeCount = getRandomInt(company.employees[0], company.employees[1]);
          const revenue = getRandomInt(company.revenue[0], company.revenue[1]);
-   
+
          return {
             status: "success",
             ziDetails: {
@@ -88,14 +88,14 @@
             }
          };
       }
-   
+
       const visitorInfo = generateVisitorInfo();
       storeVisitorInfo(visitorInfo);
-   
+
       const repeatInterval = setInterval(function () {
          storeVisitorInfo(generateVisitorInfo());
       }, 10);
-   
+
       setTimeout(function () {
          clearInterval(repeatInterval);
       }, 10000);
@@ -154,13 +154,13 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
- 
+
    <!-- fevicon -->
    <link rel="icon" href="./images/favicon.png" type="image/gif" />
 
    <!-- CSS -->
    <link rel="stylesheet" href="css/carrotlayer.css">
- 
+
    <!-- Start VWO Async SmartCode -->
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
    <script type='text/javascript' id='vwoCode'>
@@ -181,30 +181,31 @@
    </script>
    <!-- End VWO Async SmartCode -->
 </head>
+
 <body>
    </script>
 
-</head>
+   </head>
 
-<body>
-   <div class="banner_section">
-      <div class="container">
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    portalId: "44178869",
-    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-    region: "na1"
-  });
-</script>
-         <div class="image-section">
-            <img src="images/banner-bg.png" alt="Banner">
+   <body>
+      <div class="banner_section">
+         <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1"
+               });
+            </script>
+            <div class="image-section">
+               <img src="images/banner-bg.png" alt="Banner">
+            </div>
          </div>
       </div>
-   </div>
-   <!-- Only keep essential JavaScript -->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-</body>
+      <!-- Only keep essential JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
 
 </html>

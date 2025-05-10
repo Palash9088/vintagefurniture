@@ -11,7 +11,25 @@
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
     <!-- Anil's Script Adobe Exp Manager -->
-    <script src="https://assets.adobedtm.com/67625a62a47b/ed1afc4a8360/launch-e5d122b529ff.min.js"></script>
+    <script>
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000); 
+      }
+   
+      var delay = getDelayFromURL();
+      console.log("[Adobe] Using delay of", delay, "ms");
+   
+      setTimeout(function () {
+         console.log("[Adobe] Starting script load after", delay, "ms delay");
+         // Anil's Script Adobe Exp Manager
+         var script = document.createElement('script');
+         script.src = "https://assets.adobedtm.com/67625a62a47b/ed1afc4a8360/launch-e5d122b529ff.min.js";
+         document.head.appendChild(script);
+      }, delay);
+    </script>
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

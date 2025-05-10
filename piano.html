@@ -10,12 +10,33 @@
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
    <script>
-      pa.setConfigurations({
-         site: 641722,
-         collectDomain: "fdnlpdp.pa-cd.com"
-      }); 
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+   
+      var delay = getDelayFromURL();
+      console.log("[Piano] Using delay of", delay, "ms");
+   
+      setTimeout(function () {
+         console.log("[Piano] Starting script load after", delay, "ms delay");
+         // Piano Analytics Script
+         var script = document.createElement('script');
+         script.type = 'text/javascript';
+         script.crossOrigin = 'anonymous';
+         script.src = 'https://tag.aticdn.net/piano-analytics.js';
+         document.head.appendChild(script);
+         
+         script.onload = function() {
+            pa.setConfigurations({
+               site: 641722,
+               collectDomain: "fdnlpdp.pa-cd.com"
+            });
+         };
+      }, delay);
    </script>
    <!-- basic -->
    <meta charset="utf-8">

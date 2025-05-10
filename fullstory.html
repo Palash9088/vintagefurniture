@@ -12,27 +12,53 @@
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
    <script>
-window['_fs_host'] = 'fullstory.com';
-window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
-window['_fs_org'] = 'o-21G6JC-na1';
-window['_fs_namespace'] = 'FS';
-!function(m,n,e,t,l,o,g,y){var s,f,a=function(h){
-return!(h in m)||(m.console&&m.console.log&&m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'),!1)}(e)
-;function p(b){var h,d=[];function j(){h&&(d.forEach((function(b){var d;try{d=b[h[0]]&&b[h[0]](h[1])}catch(h){return void(b[3]&&b[3](h))}
-d&&d.then?d.then(b[2],b[3]):b[2]&&b[2](d)})),d.length=0)}function r(b){return function(d){h||(h=[b,d],j())}}return b(r(0),r(1)),{
-then:function(b,h){return p((function(r,i){d.push([b,h,r,i]),j()}))}}}a&&(g=m[e]=function(){var b=function(b,d,j,r){function i(i,c){
-h(b,d,j,i,c,r)}r=r||2;var c,u=/Async$/;return u.test(b)?(b=b.replace(u,""),"function"==typeof Promise?new Promise(i):p(i)):h(b,d,j,c,c,r)}
-;function h(h,d,j,r,i,c){return b._api?b._api(h,d,j,r,i,c):(b.q&&b.q.push([h,d,j,r,i,c]),null)}return b.q=[],b}(),y=function(b){function h(h){
-"function"==typeof h[4]&&h[4](new Error(b))}var d=g.q;if(d){for(var j=0;j<d.length;j++)h(d[j]);d.length=0,d.push=h}},function(){
-(o=n.createElement(t)).async=!0,o.crossOrigin="anonymous",o.src="https://"+l,o.onerror=function(){y("Error loading "+l)}
-;var b=n.getElementsByTagName(t)[0];b&&b.parentNode?b.parentNode.insertBefore(o,b):n.head.appendChild(o)}(),function(){function b(){}
-function h(b,h,d){g(b,h,d,1)}function d(b,d,j){h("setProperties",{type:b,properties:d},j)}function j(b,h){d("user",b,h)}function r(b,h,d){j({
-uid:b},d),h&&j(h,d)}g.identify=r,g.setUserVars=j,g.identifyAccount=b,g.clearUserCookie=b,g.setVars=d,g.event=function(b,d,j){h("trackEvent",{
-name:b,properties:d},j)},g.anonymize=function(){r(!1)},g.shutdown=function(){h("shutdown")},g.restart=function(){h("restart")},
-g.log=function(b,d){h("log",{level:b,msg:d})},g.consent=function(b){h("setIdentity",{consent:!arguments.length||b})}}(),s="fetch",
-f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){return g._w[s].apply(this,arguments)}),g._v="2.0.0")
-}(window,document,window._fs_namespace,"script",window._fs_script);
-</script>
+      window['_fs_host'] = 'fullstory.com';
+      window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+      window['_fs_org'] = 'o-21G6JC-na1';
+      window['_fs_namespace'] = 'FS';
+      !function (m, n, e, t, l, o, g, y) {
+         var s, f, a = function (h) {
+            return !(h in m) || (m.console && m.console.log && m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'), !1)
+         }(e)
+         ; function p(b) {
+            var h, d = []; function j() {
+               h && (d.forEach((function (b) {
+                  var d; try { d = b[h[0]] && b[h[0]](h[1]) } catch (h) { return void (b[3] && b[3](h)) }
+                  d && d.then ? d.then(b[2], b[3]) : b[2] && b[2](d)
+               })), d.length = 0)
+            } function r(b) { return function (d) { h || (h = [b, d], j()) } } return b(r(0), r(1)), {
+               then: function (b, h) { return p((function (r, i) { d.push([b, h, r, i]), j() })) }
+            }
+         } a && (g = m[e] = function () {
+            var b = function (b, d, j, r) {
+               function i(i, c) {
+                  h(b, d, j, i, c, r)
+               } r = r || 2; var c, u = /Async$/; return u.test(b) ? (b = b.replace(u, ""), "function" == typeof Promise ? new Promise(i) : p(i)) : h(b, d, j, c, c, r)
+            }
+            ; function h(h, d, j, r, i, c) { return b._api ? b._api(h, d, j, r, i, c) : (b.q && b.q.push([h, d, j, r, i, c]), null) } return b.q = [], b
+         }(), y = function (b) {
+            function h(h) {
+               "function" == typeof h[4] && h[4](new Error(b))
+            } var d = g.q; if (d) { for (var j = 0; j < d.length; j++)h(d[j]); d.length = 0, d.push = h }
+         }, function () {
+            (o = n.createElement(t)).async = !0, o.crossOrigin = "anonymous", o.src = "https://" + l, o.onerror = function () { y("Error loading " + l) }
+               ; var b = n.getElementsByTagName(t)[0]; b && b.parentNode ? b.parentNode.insertBefore(o, b) : n.head.appendChild(o)
+         }(), function () {
+            function b() { }
+            function h(b, h, d) { g(b, h, d, 1) } function d(b, d, j) { h("setProperties", { type: b, properties: d }, j) } function j(b, h) { d("user", b, h) } function r(b, h, d) {
+               j({
+                  uid: b
+               }, d), h && j(h, d)
+            } g.identify = r, g.setUserVars = j, g.identifyAccount = b, g.clearUserCookie = b, g.setVars = d, g.event = function (b, d, j) {
+               h("trackEvent", {
+                  name: b, properties: d
+               }, j)
+            }, g.anonymize = function () { r(!1) }, g.shutdown = function () { h("shutdown") }, g.restart = function () { h("restart") },
+               g.log = function (b, d) { h("log", { level: b, msg: d }) }, g.consent = function (b) { h("setIdentity", { consent: !arguments.length || b }) }
+         }(), s = "fetch",
+            f = "XMLHttpRequest", g._w = {}, g._w[f] = m[f], g._w[s] = m[s], m[s] && (m[s] = function () { return g._w[s].apply(this, arguments) }), g._v = "2.0.0")
+      }(window, document, window._fs_namespace, "script", window._fs_script);
+   </script>
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,12 +71,12 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
    <!-- JavaScript file included -->
    <script src="js/tic.js"></script>
    <!-- site metas -->
-   
+
    <title>Palash</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   
+
    <!-- bootstrap css -->
    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
    <!-- style css -->
@@ -62,8 +88,8 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
 
    <!-- CSS -->
    <link rel="stylesheet" href="css/carrotlayer.css">
- 
-   
+
+
    <!-- Start VWO Async SmartCode -->
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
    <script type='text/javascript' id='vwoCode'>
@@ -82,7 +108,7 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
             f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = '_vwo_' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { if (performance.getEntriesByName('first-contentful-paint')[0]) { return '' } return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { if (!f) { f = true; var t = d.getElementById('_vis_opt_path_hides'); if (t) t.parentNode.removeChild(t); if (e) (new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e } }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript'; if (e.src) { t.src = e.src } else { t.text = e.text } d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { var i = this.getSettings(), n = d.createElement('script'), r = this; t = t || {}; if (i) { n.textContent = i; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); r.load(e) } } else { var o = new XMLHttpRequest; o.open('GET', e, true); o.withCredentials = !t.dSC; o.responseType = t.responseType || 'text'; o.onload = function () { if (t.onloadCb) { return t.onloadCb(o, e) } if (o.status === 200 || o.status === 304) { _vwo_code.addScript({ text: o.responseText }) } else { _vwo_code.finish('&e=loading_failure:' + e) } }; o.onerror = function () { if (t.onerrorCb) { return t.onerrorCb(e) } _vwo_code.finish('&e=loading_failure:' + e) }; o.send() } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('__vwo_disable__') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t; if (this.hide_element() !== 'body') { t = d.createElement('style'); var i = this.hide_element(), n = i ? i + this.hide_element_style() : '', r = d.getElementsByTagName('head')[0]; t.setAttribute('id', '_vis_opt_path_hides'); v && t.setAttribute('nonce', v.nonce); t.setAttribute('type', 'text/css'); if (t.styleSheet) t.styleSheet.cssText = n; else t.appendChild(d.createTextNode(n)); r.appendChild(t) } else { t = d.getElementsByTagName('head')[0]; var n = d.createElement('div'); n.style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;'; n.setAttribute('id', '_vis_opt_path_hides'); n.classList.add('_vis_hide_layer'); t.parentNode.insertBefore(n, t.nextSibling) } var o = window._vis_opt_url || d.URL, s = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(o) + '&vn=' + version; if (w.location.search.indexOf('_vwo_xhr') !== -1) { this.addScript({ src: s }) } else { this.load(s + '&x=true') } } }; w._vwo_code = code; code.init();
       })();
    </script>
-   
+
    <!-- End VWO Async SmartCode -->
    <script>
       var a = [1, 2, 3, 4];
@@ -98,7 +124,7 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
 </head>
 
 <body>
- 
+
    <div id="main">
       <h1>TIC TAC TOE</h1>
       <p id="ins">
@@ -169,14 +195,14 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
       /* END: ed8c6549bwf9 */
    </style>
 
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    portalId: "44178869",
-    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-    region: "na1"
-  });
-</script>
+   <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+   <script>
+      hbspt.forms.create({
+         portalId: "44178869",
+         formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+         region: "na1"
+      });
+   </script>
    <!-- END: ed8c6549bwf9 -->
    <!-- Only keep essential JavaScript -->
    <script src="js/jquery.min.js"></script>

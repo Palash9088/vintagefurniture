@@ -2,27 +2,42 @@
 <html lang="en">
 
 <head>
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <!-- Eulerian Analytics - tag init -->
-   <script type="text/javascript">
-      (function (e, a) { var i = e.length, y = 5381, k = 'script', s = window, v = document, o = v.createElement(k); for (; i;) { i -= 1; y = (y * 33) ^ e.charCodeAt(i) } y = '_EA_' + (y >>>= 0); (function (e, a, s, y) { s[a] = s[a] || function () { (s[y] = s[y] || []).push(arguments); s[y].eah = e; }; }(e, a, s, y)); i = new Date / 1E7 | 0; o.ea = y; y = i % 26; o.async = 1; o.src = '//' + e + '/' + String.fromCharCode(97 + y, 122 - y, 65 + y) + (i % 1E3) + '.js?2'; s = v.getElementsByTagName(k)[0]; s.parentNode.insertBefore(o, s); })
-         ('io1.eulerian.net', 'EA_call');
-      EA_call("profile", "visitor");
+   <script>
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[Eulerian] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[Eulerian] Starting script load after", delay, "ms delay");
+         // GTM Script
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+               'gtm.start':
+                  new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');
+
+         // Eulerian Analytics Script
+         (function (e, a) { var i = e.length, y = 5381, k = 'script', s = window, v = document, o = v.createElement(k); for (; i;) { i -= 1; y = (y * 33) ^ e.charCodeAt(i) } y = '_EA_' + (y >>>= 0); (function (e, a, s, y) { s[a] = s[a] || function () { (s[y] = s[y] || []).push(arguments); s[y].eah = e; }; }(e, a, s, y)); i = new Date / 1E7 | 0; o.ea = y; y = i % 26; o.async = 1; o.src = '//' + e + '/' + String.fromCharCode(97 + y, 122 - y, 65 + y) + (i % 1E3) + '.js?2'; s = v.getElementsByTagName(k)[0]; s.parentNode.insertBefore(o, s); })
+            ('io1.eulerian.net', 'EA_call');
+         EA_call("profile", "visitor");
+      }, delay);
    </script>
 
    <!-- Initialize eulerianToVWO variable -->
    <script>
       window.eulerianToVWO = null; // Attach to the global scope
-   
+
       function checkEulerianData() {
-         if (!window.eulerianToVWO) { 
+         if (!window.eulerianToVWO) {
             window.eulerianToVWO = {
                audiences: {
                   "Vwotesting": "Vwotesting - segment",
@@ -36,11 +51,11 @@
          }
          return false;
       }
-   
+
       const pollInterval = 10; // 10ms
       const pollDuration = 10000; // 10 seconds
       const startTime = Date.now();
-   
+
       const pollTimer = setInterval(() => {
          if (checkEulerianData() || Date.now() - startTime >= pollDuration) {
             clearInterval(pollTimer);
@@ -156,20 +171,20 @@
                <script src="https://js.hsforms.net/forms/embed/44178869.js" defer></script>
                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
                <script>
-                 hbspt.forms.create({
-                   portalId: "44178869",
-                   formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-                   region: "na1"
-                 });
+                  hbspt.forms.create({
+                     portalId: "44178869",
+                     formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                     region: "na1"
+                  });
                </script>
                <div class="image-section">
-               <img src="images/banner-bg.png" alt="Banner">
+                  <img src="images/banner-bg.png" alt="Banner">
+               </div>
             </div>
          </div>
-      </div>
-      <!-- Only keep essential JavaScript -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
+         <!-- Only keep essential JavaScript -->
+         <script src="js/jquery.min.js"></script>
+         <script src="js/bootstrap.bundle.min.js"></script>
    </body>
 
 </html>

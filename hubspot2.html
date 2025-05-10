@@ -2,17 +2,40 @@
 <html lang="en">
 
 <head>
-   <script>(function (w, d, s, l, i) {
+   <script>
+      // GTM Script
+      (function (w, d, s, l, i) {
          w[l] = w[l] || []; w[l].push({
             'gtm.start':
                new Date().getTime(), event: 'gtm.js'
          }); var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <!-- Start of HubSpot Code -->
-   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/45744434.js"></script>
-   <!-- End of HubSpot Code -->
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');
+   </script>
+   <script>
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[HubSpot2] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[HubSpot2] Starting script load after", delay, "ms delay");
+         // HubSpot Script
+         var script = document.createElement('script');
+         script.type = 'text/javascript';
+         script.id = 'hs-script-loader';
+         script.async = true;
+         script.defer = true;
+         script.src = '//js.hs-scripts.com/45744434.js';
+         document.head.appendChild(script);
+      }, delay);
+   </script>
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +63,7 @@
 
    <!-- CSS -->
    <link rel="stylesheet" href="css/carrotlayer.css">
- 
+
    <!-- Start VWO Async SmartCode -->
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
    <script type='text/javascript' id='vwoCode'>
@@ -165,24 +188,24 @@
    </script>  -->
    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
    <script>
-     hbspt.forms.create({
-       portalId: "44178869",
-       formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-       region: "na1"
-     });
+      hbspt.forms.create({
+         portalId: "44178869",
+         formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+         region: "na1"
+      });
    </script>
    <!-- End of HubSpot Embed Code -->
-      </div>
-      <div class="identify-user">
-         <h1>Hubspot Identify User</h1>
-         <p>Click the button to perform user identification:</p>
-         <button class="button" onclick="identifyUser()">Click Here</button>
-      </div>
-      <div class="identify-user p">
-         <div id="name"></div>
-         <div id="email"></div>
-         <div id="phone"></div>
-      </div>
+   </div>
+   <div class="identify-user">
+      <h1>Hubspot Identify User</h1>
+      <p>Click the button to perform user identification:</p>
+      <button class="button" onclick="identifyUser()">Click Here</button>
+   </div>
+   <div class="identify-user p">
+      <div id="name"></div>
+      <div id="email"></div>
+      <div id="phone"></div>
+   </div>
 
    </div>
    <div id="main">

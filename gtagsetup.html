@@ -2,29 +2,30 @@
 <html lang="en">
 
 <head>
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <!-- Google Tag Manager 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','carrotLayer','GTM-KG9D677');</script>
- End Google Tag Manager -->
-
-   <!-- Google tag (gtag.js) -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1"></script>
    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-QFDGX25NC1');
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000); 
+      }
+   
+      var delay = getDelayFromURL();
+      console.log("[GTAG] Using delay of", delay, "ms");
+   
+      setTimeout(function () {
+         console.log("[GTAG] Starting script load after", delay, "ms delay");
+         // Google tag (gtag.js)
+         var script = document.createElement('script');
+         script.async = true;
+         script.src = "https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1";
+         document.head.appendChild(script);
+
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+         gtag('config', 'G-QFDGX25NC1');
+      }, delay);
    </script>
    <!-- basic -->
    <meta charset="utf-8">
@@ -80,6 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
    </script>
    <!-- End VWO Async SmartCode -->
+
 </head>
 
 <body onload=myScript()>

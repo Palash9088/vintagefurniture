@@ -14,44 +14,44 @@
     <!-- Initialize eulerianToVWO variable -->
     <script>
         window.eulerianToVWO = null; // Attach to the global scope
-     
+
         function checkEulerianData() {
-           if (!window.eulerianToVWO) { 
-              window.eulerianToVWO = {
-                 audiences: {
-                    "Vwotesting": "Vwotesting - segment",
-                    "First visit": "First visit - segment",
-                    "VWO-Palash-Test": "VWO-Palash-Test - segment",
-                    "Device": "Desktop - segment"
-                 }
-              };
-              console.log('Eulerian data updated:', window.eulerianToVWO);
-              return true;
-           }
-           return false;
+            if (!window.eulerianToVWO) {
+                window.eulerianToVWO = {
+                    audiences: {
+                        "Vwotesting": "Vwotesting - segment",
+                        "First visit": "First visit - segment",
+                        "VWO-Palash-Test": "VWO-Palash-Test - segment",
+                        "Device": "Desktop - segment"
+                    }
+                };
+                console.log('Eulerian data updated:', window.eulerianToVWO);
+                return true;
+            }
+            return false;
         }
-     
+
         const pollInterval = 10; // 10ms
         const pollDuration = 10000; // 10 seconds
         const startTime = Date.now();
-     
+
         const pollTimer = setInterval(() => {
-           if (checkEulerianData() || Date.now() - startTime >= pollDuration) {
-              clearInterval(pollTimer);
-              console.log('Polling completed');
-           }
+            if (checkEulerianData() || Date.now() - startTime >= pollDuration) {
+                clearInterval(pollTimer);
+                console.log('Polling completed');
+            }
         }, pollInterval);
-     </script>
+    </script>
     <script type="text/javascript">
         var EA_data = [];
         var params = new URLSearchParams(window.location.search);
         var delay = params.get("delay");
         function setScript() {
             var
-            td = 'io1.eulerian.net', d = document, l = d.location, o, a, cn, cdr, cdh, cdr, acdr, i, cj = ''; if (!l.protocol.indexOf('http')) {
-                o = d.createElement('script'); a = d.getElementsByTagName('script')[0]; cn = parseInt((new
-                    Date()).getTime() / 3600000); cj = ''; cdh = (l.host + td).replace(/[^a-z]/g, ''); cdr = cdh + cdh.toUpperCase(); acdr = cdr.split(''); for (i = -1; i < cn % 7; i++) { cj += acdr[(cn + i) % acdr.length]; } o.type = 'text/javascript'; o.async = 'async'; o.defer = 'defer'; o.src = '//' + td + '/' + cj + (cn % 8760) + '.js'; a.parentNode.insertBefore(o, a);
-            }
+                td = 'io1.eulerian.net', d = document, l = d.location, o, a, cn, cdr, cdh, cdr, acdr, i, cj = ''; if (!l.protocol.indexOf('http')) {
+                    o = d.createElement('script'); a = d.getElementsByTagName('script')[0]; cn = parseInt((new
+                        Date()).getTime() / 3600000); cj = ''; cdh = (l.host + td).replace(/[^a-z]/g, ''); cdr = cdh + cdh.toUpperCase(); acdr = cdr.split(''); for (i = -1; i < cn % 7; i++) { cj += acdr[(cn + i) % acdr.length]; } o.type = 'text/javascript'; o.async = 'async'; o.defer = 'defer'; o.src = '//' + td + '/' + cj + (cn % 8760) + '.js'; a.parentNode.insertBefore(o, a);
+                }
         };
         setTimeout(() => {
             setScript();
@@ -165,11 +165,11 @@
                 <div class="form-section">
                     <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
                     <script>
-                      hbspt.forms.create({
-                        portalId: "44178869",
-                        formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-                        region: "na1"
-                      });
+                        hbspt.forms.create({
+                            portalId: "44178869",
+                            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                            region: "na1"
+                        });
                     </script>
                 </div>
                 <div class="image-section">
