@@ -3,14 +3,29 @@
 
 <head>
    Google Tag Manager GTM-KG9D677
-   <script>(function (w, d, s, l, i) {
-         w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-               new Date().getTime(), event: 'gtm.js'
-         }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script>
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000); 
+      }
+   
+      var delay = getDelayFromURL();
+      console.log("[GTM] Using delay of", delay, "ms");
+   
+      setTimeout(function () {
+         console.log("[GTM] Starting script load after", delay, "ms delay");
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+               'gtm.start':
+                  new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');
+      }, delay);
+   </script>
 
    <!-- Google Tag Manager NOT IN USE -->
 <!-- <script>
