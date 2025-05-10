@@ -12,49 +12,94 @@
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
    </script>
    <script type="text/javascript">
-      (function (e, t) {
-         var n = e.amplitude || { _q: [], _iq: {} }; var r = t.createElement("script")
-            ; r.type = "text/javascript"
-            ; r.integrity = "sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M"
-            ; r.crossOrigin = "anonymous"; r.async = true
-            ; r.src = "https://cdn.amplitude.com/libs/amplitude-7.2.1-min.gz.js"
-            ; r.onload = function () {
-               if (!e.amplitude.runQueuedFunctions) {
-                  console.log("[Amplitude] Error: could not load SDK")
-               }
+      function getDelayFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const delayParam = params.get("delay");
+        const delay = parseInt(delayParam, 10);
+        return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+    
+      var delay = getDelayFromURL();
+      console.log("[Amplitude] Using delay of", delay, "ms");
+    
+      setTimeout(function () {
+        console.log("[Amplitude] Starting script load after", delay, "ms delay");
+    
+        (function (e, t) {
+         var n = e.amplitude || { _q: [] };
+         n._iq = n._iq || {};
+          var r = t.createElement("script");
+          r.type = "text/javascript";
+          r.integrity = "sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M";
+          r.crossOrigin = "anonymous";
+          r.async = true;
+          r.src = "https://cdn.amplitude.com/libs/amplitude-7.2.1-min.gz.js";
+          r.onload = function () {
+            if (!e.amplitude.runQueuedFunctions) {
+              console.log("[Amplitude] Error: could not load SDK");
             }
-            ; var i = t.getElementsByTagName("script")[0]; i.parentNode.insertBefore(r, i)
-            ; function s(e, t) {
-               e.prototype[t] = function () {
-                  this._q.push([t].concat(Array.prototype.slice.call(arguments, 0))); return this
-               }
+          };
+          var i = t.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(r, i);
+    
+          function s(obj, method) {
+            obj.prototype[method] = function () {
+              this._q.push([method].concat(Array.prototype.slice.call(arguments, 0)));
+              return this;
+            };
+          }
+    
+          var Identify = function () { this._q = []; return this; };
+          var identifyMethods = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset"];
+          for (var j = 0; j < identifyMethods.length; j++) {
+            s(Identify, identifyMethods[j]);
+          }
+          n.Identify = Identify;
+    
+          var Revenue = function () { this._q = []; return this; };
+          var revenueMethods = ["setProductId", "setQuantity", "setPrice", "setRevenueType", "setEventProperties"];
+          for (var k = 0; k < revenueMethods.length; k++) {
+            s(Revenue, revenueMethods[k]);
+          }
+          n.Revenue = Revenue;
+    
+          var mainMethods = [
+            "init", "logEvent", "logRevenue", "setUserId", "setUserProperties", "setOptOut",
+            "setVersionName", "setDomain", "setDeviceId", "enableTracking", "setGlobalUserProperties",
+            "identify", "clearUserProperties", "setGroup", "logRevenueV2", "regenerateDeviceId",
+            "groupIdentify", "onInit", "logEventWithTimestamp", "logEventWithGroups",
+            "setSessionId", "resetSessionId"
+          ];
+    
+          function assignMethods(target) {
+            function proxy(method) {
+              target[method] = function () {
+                target._q.push([method].concat(Array.prototype.slice.call(arguments, 0)));
+              };
             }
-         var o = function () { this._q = []; return this }
-            ; var a = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset"]
-            ; for (var c = 0; c < a.length; c++) { s(o, a[c]) } n.Identify = o; var u = function () {
-               this._q = []
-               ; return this
+            for (var m = 0; m < mainMethods.length; m++) {
+              proxy(mainMethods[m]);
             }
-            ; var l = ["setProductId", "setQuantity", "setPrice", "setRevenueType", "setEventProperties"]
-            ; for (var p = 0; p < l.length; p++) { s(u, l[p]) } n.Revenue = u
-            ; var d = ["init", "logEvent", "logRevenue", "setUserId", "setUserProperties", "setOptOut", "setVersionName", "setDomain", "setDeviceId", "enableTracking", "setGlobalUserProperties", "identify", "clearUserProperties", "setGroup", "logRevenueV2", "regenerateDeviceId", "groupIdentify", "onInit", "logEventWithTimestamp", "logEventWithGroups", "setSessionId", "resetSessionId"]
-            ; function v(e) {
-               function t(t) {
-                  e[t] = function () {
-                     e._q.push([t].concat(Array.prototype.slice.call(arguments, 0)))
-                  }
-               }
-               for (var n = 0; n < d.length; n++) { t(d[n]) }
-            } v(n); n.getInstance = function (e) {
-               e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase()
-                  ; if (!n._iq.hasOwnProperty(e)) { n._iq[e] = { _q: [] }; v(n._iq[e]) } return n._iq[e]
+          }
+    
+          assignMethods(n);
+    
+          n.getInstance = function (instanceName) {
+            instanceName = (!instanceName || instanceName.length === 0 ? "$default_instance" : instanceName).toLowerCase();
+            if (!n._iq.hasOwnProperty(instanceName)) {
+              n._iq[instanceName] = { _q: [] };
+              assignMethods(n._iq[instanceName]);
             }
-            ; e.amplitude = n
-      })(window, document);
-
-      amplitude.getInstance().init("bdc42d3a8e801d435045d1c7bf73257f");
-   </script>
-
+            return n._iq[instanceName];
+          };
+    
+          e.amplitude = n;
+    
+          amplitude.getInstance().init("bdc42d3a8e801d435045d1c7bf73257f");
+        })(window, document);
+      }, delay);
+    </script>
+       
    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.9.0-min.js.gz"></script>
    <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.4.0-min.js.gz"></script>
    <script>
