@@ -49,48 +49,53 @@
    </script>
    <!-- End VWO Async SmartCode -->
    <!-- Kissmetrics code -->
-   <script>
+   <script type="text/javascript">
       function getDelayFromURL() {
          const params = new URLSearchParams(window.location.search);
          const delayParam = params.get("delay");
          const delay = parseInt(delayParam, 10);
          return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
       }
-   
+
       var delay = getDelayFromURL();
       console.log("[Kissmetrics] Using delay of", delay, "ms");
-   
+
       setTimeout(function () {
          console.log("[Kissmetrics] Starting script load after", delay, "ms delay");
-         // Kissmetrics code
-         var _kmq = _kmq || [];
-         var _kmk = _kmk || '8a62bfe55e6815c5d8f7f5c5954a9cad0e560e37';
+
+         // Kissmetrics initialization
+         var _kmq = window._kmq = window._kmq || [];
+         var _kmk = window._kmk = window._kmk || '8a62bfe55e6815c5d8f7f5c5954a9cad0e560e37';
+
          function _kms(u) {
-            setTimeout(function () {
-               var d = document, f = d.getElementsByTagName('script')[0],
-                  s = d.createElement('script');
-               s.type = 'text/javascript'; s.async = true; s.src = u;
-               f.parentNode.insertBefore(s, f);
-            }, 1);
+            var d = document, f = d.getElementsByTagName('script')[0],
+               s = d.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = u;
+            f.parentNode.insertBefore(s, f);
          }
+
          _kms('//i.kissmetrics.io/i.js');
          _kms('//scripts.kissmetrics.io/' + _kmk + '.2.js');
+
       }, delay);
    </script>
+
 </head>
 
 <body>
 
    <div class="banner_section">
       <div class="container">
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    portalId: "44178869",
-    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-    region: "na1"
-  });
-</script>
+         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+         <script>
+            hbspt.forms.create({
+               portalId: "44178869",
+               formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+               region: "na1"
+            });
+         </script>
          <div class="image-section">
             <img src="images/banner-bg.png" alt="Banner">
          </div>

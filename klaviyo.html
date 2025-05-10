@@ -27,20 +27,21 @@
       setTimeout(function () {
          console.log("[Klaviyo] Starting script load after", delay, "ms delay");
 
-         // Klaviyo Script
+         // Inject Klaviyo script
          var script = document.createElement('script');
          script.type = 'text/javascript';
          script.async = true;
          script.src = 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VrcMRY';
          document.head.appendChild(script);
 
-         // Klaviyo Identify
-         var _learnq = _learnq || [];
-         _learnq.push(['identify', {
+         // Identify user
+         window._learnq = window._learnq || [];
+         window._learnq.push(['identify', {
             '$email': 'palash.soni@vwo.com'
          }]);
       }, delay);
    </script>
+
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
