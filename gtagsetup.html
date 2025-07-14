@@ -2,33 +2,35 @@
 <html lang="en">
 
 <head>
-   <script>
-      function getDelayFromURL() {
-         const params = new URLSearchParams(window.location.search);
-         const delayParam = params.get("delay");
-         const delay = parseInt(delayParam, 10);
-         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
-      }
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1"></script>
 
-      var delay = getDelayFromURL();
-      console.log("[GTAG] Using delay of", delay, "ms");
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
 
-      setTimeout(function () {
-         console.log("[GTAG] Starting script load after", delay, "ms delay");
+  // Load base gtag timestamp immediately
+  gtag('js', new Date());
 
-         (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-            var f = d.getElementsByTagName(s)[0],
-               j = d.createElement(s),
-               dl = l !== 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-         })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');
+  // Delay configuration
+  function getDelayFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const delayParam = params.get("delay");
+    const delay = parseInt(delayParam, 10);
+    return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+  }
 
-      }, delay);
-   </script>
+  var delay = getDelayFromURL();
+  console.log("[GTAG] Using delay of", delay, "ms");
+
+  setTimeout(function () {
+    console.log("[GTAG] Running config after", delay, "ms delay");
+    gtag('config', 'G-QFDGX25NC1');
+  }, delay);
+</script>
+
 
    <!-- basic -->
    <meta charset="utf-8">
