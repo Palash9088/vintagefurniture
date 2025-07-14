@@ -12,9 +12,6 @@
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
    <script>
       document.addEventListener("DOMContentLoaded", function () {
-         var reveal_organizations;
-         var stopFlag = false;
-
          function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
          }
@@ -58,7 +55,7 @@
             let randomEmployees = getRandomEmployeeCount();
             let randomRevenue = getRandomRevenue();
 
-            reveal_organizations = {
+            window.reveal_organization = {
                "ip": randomIP,
                "domain": randomDomain,
                "type": "company",
@@ -118,23 +115,22 @@
                "role": "engineering",
                "seniority": "director"
             };
-
-            var intervalId = setInterval(function () {
-               if (!stopFlag) {
-                  reveal_organizations = structuredClone
-                     ? structuredClone(reveal_organizations)
-                     : JSON.parse(JSON.stringify(reveal_organizations));
-               } else {
-                  clearInterval(intervalId);
-               }
-            }, 10);
          }
+
+         let stopFlag = false;
+         let intervalId = setInterval(function () {
+            if (!stopFlag) {
+               setVWO(); // Update with new random data
+            } else {
+               clearInterval(intervalId);
+            }
+         }, 10);
 
          setTimeout(function () {
             stopFlag = true;
          }, 10000);
 
-         setVWO();
+         setVWO(); // Set once immediately
       });
    </script>
 
