@@ -12,19 +12,23 @@
   }
 
   const delay = getDelayFromURL();
-  console.log("[GTAG] Using delay of", delay, "ms");
+  console.log("[GTAG] Will load after", delay, "ms");
 
   setTimeout(() => {
-    console.log("[GTAG] Injecting gtag.js script after", delay, "ms");
+    console.log("[GTAG] Injecting gtag.js...");
 
-    // Inject the script tag dynamically
-    const script = document.createElement('script');
+    // Create and inject the script tag
+    const script = document.createElement("script");
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1";
     script.async = true;
-    script.onload = () => {
-      console.log("[GTAG] gtag.js loaded, initializing...");
+
+    script.onload = function () {
+      console.log("[GTAG] gtag.js loaded. Initializing gtag...");
+
       window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
 
       gtag('js', new Date());
       gtag('config', 'G-QFDGX25NC1');
@@ -33,7 +37,6 @@
     document.head.appendChild(script);
   }, delay);
 </script>
-
 
 
    <!-- basic -->
