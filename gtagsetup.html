@@ -4,31 +4,12 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1"></script>
-
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-
-  // Load base gtag timestamp immediately
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  // Delay configuration
-  function getDelayFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    const delayParam = params.get("delay");
-    const delay = parseInt(delayParam, 10);
-    return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
-  }
-
-  var delay = getDelayFromURL();
-  console.log("[GTAG] Using delay of", delay, "ms");
-
-  setTimeout(function () {
-    console.log("[GTAG] Running config after", delay, "ms delay");
-    gtag('config', 'G-QFDGX25NC1');
-  }, delay);
+  gtag('config', 'G-QFDGX25NC1');
 </script>
 
 
