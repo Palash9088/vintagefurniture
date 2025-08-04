@@ -10,129 +10,263 @@
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <script>
-      document.addEventListener("DOMContentLoaded", function () {
-         function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-         }
 
-         function getRandomIP() {
-            return `${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}`;
-         }
+   <script> 
+document.addEventListener("DOMContentLoaded", function () {
+    // Enhanced data arrays for more realistic generation
+    const companyNames = [
+        "TechFlow", "DataSync", "CloudCore", "NetSecure", "CodeCraft", "WebForge", 
+        "InnovateLab", "QuantumSoft", "ByteForce", "CyberEdge", "AlphaTech", "NexusData",
+        "StreamLine", "PixelPro", "LogicWave", "InfoBridge", "SmartGrid", "FlexiCode"
+    ];
 
-         function getRandomDomain() {
-            const companies = ["Blockswap", "CryptoNet", "SecureChain", "WebTech", "CloudSecure"];
-            const tlds = [".com", ".io", ".xyz", ".tech", ".ai"];
-            const name = companies[getRandomInt(0, companies.length - 1)];
-            return name.toLowerCase() + tlds[getRandomInt(0, tlds.length - 1)];
-         }
+    const tlds = [".com", ".io", ".tech", ".ai", ".co", ".net", ".org", ".xyz"];
 
-         function getRandomPhone() {
-            return `+1-800-${getRandomInt(100, 999)}-${getRandomInt(1000, 9999)}`;
-         }
+    const sectors = [
+        "Information Technology", "Financials", "Health Care", "Communication Services",
+        "Consumer Discretionary", "Industrials", "Consumer Staples", "Energy"
+    ];
 
-         function getRandomCoordinates() {
-            return {
-               lat: (Math.random() * 180 - 90).toFixed(6),
-               lng: (Math.random() * 360 - 180).toFixed(6)
-            };
-         }
+    const industryGroups = {
+        "Information Technology": ["Software & Services", "Technology Hardware & Equipment", "Semiconductors & Semiconductor Equipment"],
+        "Financials": ["Banks", "Diversified Financials", "Insurance"],
+        "Health Care": ["Health Care Equipment & Services", "Pharmaceuticals, Biotechnology & Life Sciences"]
+    };
 
-         function getRandomEmployeeCount() {
-            const ranges = ["1-10", "11-50", "51-200", "201-500", "501-1000"];
-            return ranges[getRandomInt(0, ranges.length - 1)];
-         }
+    const industries = {
+        "Software & Services": ["Internet Software & Services", "IT Services", "Software"],
+        "Technology Hardware & Equipment": ["Communications Equipment", "Computers & Peripherals", "Electronic Equipment, Instruments & Components"]
+    };
 
-         function getRandomRevenue() {
-            return getRandomInt(1, 100) * 1000000; // Revenue in millions
-         }
+    const cities = [
+        { name: "San Francisco", state: "California", code: "CA", country: "United States", countryCode: "US", timezone: "America/Los_Angeles", utcOffset: -8 },
+        { name: "New York", state: "New York", code: "NY", country: "United States", countryCode: "US", timezone: "America/New_York", utcOffset: -5 },
+        { name: "Austin", state: "Texas", code: "TX", country: "United States", countryCode: "US", timezone: "America/Chicago", utcOffset: -6 },
+        { name: "Seattle", state: "Washington", code: "WA", country: "United States", countryCode: "US", timezone: "America/Los_Angeles", utcOffset: -8 },
+        { name: "Boston", state: "Massachusetts", code: "MA", country: "United States", countryCode: "US", timezone: "America/New_York", utcOffset: -5 },
+        { name: "Denver", state: "Colorado", code: "CO", country: "United States", countryCode: "US", timezone: "America/Denver", utcOffset: -7 }
+    ];
 
-         function setVWO() {
-            let randomDomain = getRandomDomain();
-            let randomIP = getRandomIP();
-            let randomCoords = getRandomCoordinates();
-            let randomPhone = getRandomPhone();
-            let randomEmployees = getRandomEmployeeCount();
-            let randomRevenue = getRandomRevenue();
+    const tags = [
+        ["Technology", "SaaS", "B2B"], ["Fintech", "Banking", "Finance"], 
+        ["Healthcare", "Medical", "Biotechnology"], ["E-commerce", "Retail", "Consumer"],
+        ["AI", "Machine Learning", "Data Science"], ["Cybersecurity", "Security", "Privacy"],
+        ["Blockchain", "Crypto", "Web3"], ["IoT", "Hardware", "Sensors"]
+    ];
 
-            window.reveal_organizations = {
-               "ip": randomIP,
-               "domain": randomDomain,
-               "type": "company",
-               "fuzzy": true,
-               "company": {
-                  "id": crypto.randomUUID(),
-                  "name": randomDomain.split(".")[0] + " Labs",
-                  "legalName": randomDomain.split(".")[0] + " Inc.",
-                  "domain": randomDomain,
-                  "domainAliases": [randomDomain.replace(".com", ".io")],
-                  "site": {
-                     "phoneNumbers": [randomPhone],
-                     "emailAddresses": ["info@" + randomDomain]
-                  },
-                  "category": {
-                     "sector": "Information Technology",
-                     "industryGroup": "Software & Services",
-                     "industry": "Internet Software & Services",
-                     "subIndustry": "Blockchain & Web3",
-                     "gicsCode": "45102010",
-                     "sicCode": "73",
-                     "naicsCode": "54"
-                  },
-                  "tags": ["Crypto", "Blockchain", "Web3", "Software", "E-commerce"],
-                  "description": "A leading innovator in blockchain technology...",
-                  "foundedYear": getRandomInt(2000, 2023),
-                  "location": "United States",
-                  "geo": {
-                     "city": "Austin",
-                     "postalCode": getRandomInt(10000, 99999).toString(),
-                     "state": "Texas",
-                     "stateCode": "TX",
-                     "country": "United States",
-                     "countryCode": "US",
-                     "lat": randomCoords.lat,
-                     "lng": randomCoords.lng
-                  },
-                  "logo": "https://logo.clearbit.com/" + randomDomain,
-                  "twitter": {
-                     "handle": randomDomain.split(".")[0],
-                     "followers": getRandomInt(100, 10000),
-                     "site": "https://twitter.com/" + randomDomain.split(".")[0]
-                  },
-                  "phone": randomPhone,
-                  "metrics": {
-                     "employeesRange": randomEmployees,
-                     "annualRevenue": randomRevenue,
-                     "estimatedAnnualRevenue": `$${randomRevenue / 1000000}M`
-                  }
-               },
-               "geoIP": {
-                  "city": "Seattle",
-                  "state": "Washington",
-                  "country": "United States"
-               },
-               "confidenceScore": "high",
-               "role": "engineering",
-               "seniority": "director"
-            };
-         }
+    const techStacks = [
+        ["google_apps", "salesforce", "hubspot"], ["aws", "docker", "kubernetes"],
+        ["react", "nodejs", "mongodb"], ["python", "tensorflow", "jupyter"],
+        ["slack", "zoom", "notion"], ["stripe", "paypal", "quickbooks"]
+    ];
 
-         let stopFlag = false;
-         let intervalId = setInterval(function () {
-            if (!stopFlag) {
-               setVWO(); // Update with new random data
-            } else {
-               clearInterval(intervalId);
-            }
-         }, 10);
+    const techCategories = [
+        ["productivity", "customer_support", "sales"], ["cloud_computing", "devops", "containers"],
+        ["web_development", "databases", "frontend"], ["ai_ml", "data_science", "analytics"],
+        ["communication", "collaboration", "productivity"], ["payments", "accounting", "finance"]
+    ];
 
-         setTimeout(function () {
-            stopFlag = true;
-         }, 10000);
+    const companyTypes = ["private", "public", "non-profit", "government"];
+    const trafficRanks = ["very_high", "high", "medium", "low", "very_low"];
+    const employeeRanges = ["1-10", "11-50", "51-250", "251-1000", "1001-5000", "5001+"];
 
-         setVWO(); // Set once immediately
-      });
-   </script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomElement(array) {
+        return array[getRandomInt(0, array.length - 1)];
+    }
+
+    function getRandomIP() {
+        return `${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}`;
+    }
+
+    function generateCompanyName() {
+        const baseName = getRandomElement(companyNames);
+        const suffixes = ["", " Labs", " Inc", " Corp", " Technologies", " Solutions", " Systems"];
+        return baseName + getRandomElement(suffixes);
+    }
+
+    function generateDomain(companyName) {
+        const cleanName = companyName.toLowerCase()
+            .replace(/[^a-z0-9]/g, '')
+            .substring(0, 15);
+        return cleanName + getRandomElement(tlds);
+    }
+
+    function generatePhone() {
+        const areaCodes = ["415", "212", "512", "206", "617", "303", "404", "713"];
+        return `+1 ${getRandomElement(areaCodes)}-${getRandomInt(100, 999)}-${getRandomInt(1000, 9999)}`;
+    }
+
+    function generateEmail(domain) {
+        const prefixes = ["info", "contact", "hello", "support", "sales", "admin"];
+        return getRandomElement(prefixes) + "@" + domain;
+    }
+
+    function generateCoordinates(city) {
+        // Generate coordinates near the city (simplified)
+        const baseCoords = {
+            "San Francisco": { lat: 37.7749, lng: -122.4194 },
+            "New York": { lat: 40.7128, lng: -74.0060 },
+            "Austin": { lat: 30.2672, lng: -97.7431 },
+            "Seattle": { lat: 47.6062, lng: -122.3321 },
+            "Boston": { lat: 42.3601, lng: -71.0589 },
+            "Denver": { lat: 39.7392, lng: -104.9903 }
+        };
+        
+        const base = baseCoords[city.name] || { lat: 39.8283, lng: -98.5795 };
+        return {
+            lat: (base.lat + (Math.random() - 0.5) * 0.1).toFixed(6),
+            lng: (base.lng + (Math.random() - 0.5) * 0.1).toFixed(6)
+        };
+    }
+
+    function generateRevenue() {
+        const base = getRandomInt(1, 100);
+        return base * 1000000; // Revenue in dollars
+    }
+
+    function generateMarketCap() {
+        const base = getRandomInt(10, 1000);
+        return `$${base}M`;
+    }
+
+    function generateSocialHandle(companyName) {
+        return companyName.toLowerCase()
+            .replace(/[^a-z0-9]/g, '')
+            .substring(0, 15);
+    }
+
+    function setVWO() {
+        const companyName = generateCompanyName();
+        const domain = generateDomain(companyName);
+        const city = getRandomElement(cities);
+        const coordinates = generateCoordinates(city);
+        const sector = getRandomElement(sectors);
+        const industryGroup = getRandomElement(industryGroups[sector] || industryGroups["Information Technology"]);
+        const industry = getRandomElement(industries[industryGroup] || industries["Software & Services"]);
+        const tagSet = getRandomElement(tags);
+        const techStack = getRandomElement(techStacks);
+        const techCats = getRandomElement(techCategories);
+        const isPublic = getRandomElement(companyTypes) === "public";
+        
+        window.reveal_organizations = {
+            "ip": getRandomIP(),
+            "domain": domain,
+            "type": "company",
+            "fuzzy": true,
+            "company": {
+                "id": crypto.randomUUID(),
+                "name": companyName,
+                "legalName": companyName.replace(/ (Labs|Inc|Corp|Technologies|Solutions|Systems)$/, "") + " Inc.",
+                "domain": domain,
+                "domainAliases": [domain.replace(tlds[0], getRandomElement(tlds.slice(1)))],
+                "site": {
+                    "phoneNumbers": [generatePhone(), generatePhone()],
+                    "emailAddresses": [generateEmail(domain), "privacy@" + domain]
+                },
+                "category": {
+                    "sector": sector,
+                    "industryGroup": industryGroup,
+                    "industry": industry,
+                    "subIndustry": industry,
+                    "gicsCode": getRandomInt(10000000, 99999999).toString(),
+                    "sicCode": getRandomInt(10, 99).toString(),
+                    "sicCodes": [getRandomInt(1000, 9999).toString(), getRandomInt(1000, 9999).toString()],
+                    "naicsCode": getRandomInt(10, 99).toString(),
+                    "naicsCodes": [getRandomInt(100000, 999999).toString(), getRandomInt(100000, 999999).toString()],
+                    "naics2022Codes": [getRandomInt(100000, 999999).toString()]
+                },
+                "tags": tagSet,
+                "description": `${companyName} is a leading provider of innovative ${industry.toLowerCase()} solutions, helping businesses transform their digital operations...`,
+                "foundedYear": getRandomInt(1995, 2023),
+                "location": `${getRandomInt(100, 9999)} ${getRandomElement(["Main", "Broadway", "First", "Second", "Oak", "Pine"])} Street, ${city.name}, ${city.code} ${getRandomInt(10000, 99999)}, ${city.country}`,
+                "timeZone": city.timezone,
+                "utcOffset": city.utcOffset,
+                "geo": {
+                    "streetNumber": getRandomInt(100, 9999).toString(),
+                    "streetName": getRandomElement(["Main", "Broadway", "First", "Second", "Oak", "Pine"]) + " Street",
+                    "streetAddress": `${getRandomInt(100, 9999)} ${getRandomElement(["Main", "Broadway", "First", "Second", "Oak", "Pine"])} Street`,
+                    "city": city.name,
+                    "postalCode": getRandomInt(10000, 99999).toString(),
+                    "state": city.state,
+                    "stateCode": city.code,
+                    "country": city.country,
+                    "countryCode": city.countryCode,
+                    "lat": parseFloat(coordinates.lat),
+                    "lng": parseFloat(coordinates.lng)
+                },
+                "logo": `https://logo.clearbit.com/${domain}`,
+                "facebook": {
+                    "handle": generateSocialHandle(companyName),
+                    "likes": getRandomInt(100, 50000)
+                },
+                "linkedin": {
+                    "handle": "company/" + generateSocialHandle(companyName)
+                },
+                "twitter": {
+                    "handle": generateSocialHandle(companyName),
+                    "id": getRandomInt(1000000, 9999999999).toString(),
+                    "bio": `${companyName} - Transforming businesses through technology. Contact us at support@${domain}`,
+                    "followers": getRandomInt(100, 100000),
+                    "following": getRandomInt(50, 5000),
+                    "location": city.name,
+                    "site": `https://t.co/${getRandomInt(100000, 999999)}`,
+                    "avatar": `https://pbs.twimg.com/profile_images/${getRandomInt(100000000000000000, 999999999999999999)}/avatar_normal.jpg`
+                },
+                "crunchbase": {
+                    "handle": "organization/" + generateSocialHandle(companyName)
+                },
+                "emailProvider": false,
+                "type": getRandomElement(companyTypes),
+                "ticker": isPublic ? generateSocialHandle(companyName).substring(0, 4).toUpperCase() : null,
+                "usEIN": getRandomInt(100000000, 999999999).toString(),
+                "phone": generatePhone(),
+                "trafficRank": getRandomElement(trafficRanks),
+                "metrics": {
+                    "employees": getRandomInt(5, 10000),
+                    "employeesRange": getRandomElement(employeeRanges),
+                    "marketCap": isPublic ? generateMarketCap() : null,
+                    "raised": getRandomInt(100000, 100000000),
+                    "annualRevenue": isPublic ? generateRevenue() : null,
+                    "estimatedAnnualRevenue": `$${getRandomInt(1, 500)}M`,
+                    "fiscalYearEnd": getRandomInt(1, 12)
+                },
+                "indexedAt": new Date().toISOString(),
+                "tech": techStack,
+                "techCategories": techCats,
+                "parentDomain": Math.random() > 0.8 ? "parent-" + domain : null,
+                "ultimateParentDomain": Math.random() > 0.9 ? "ultimate-" + domain : null
+            },
+            "geoIP": {
+                "city": getRandomElement(cities).name,
+                "state": getRandomElement(cities).state,
+                "country": "United States"
+            },
+            "confidenceScore": getRandomElement(["very_high", "high", "medium", "low"]),
+            "role": getRandomElement(["engineering", "sales", "marketing", "operations", "executive"]),
+            "seniority": getRandomElement(["junior", "senior", "manager", "director", "vp", "c_level"])
+        };
+    }
+
+    let stopFlag = false;
+    let intervalId = setInterval(function () {
+        if (!stopFlag) {
+            setVWO(); // Update with new random data
+        } else {
+            clearInterval(intervalId);
+        }
+    }, 10);
+
+    setTimeout(function () {
+        stopFlag = true;
+    }, 10000);
+
+    setVWO(); // Set once immediately
+});
+</script>
 
    <!-- OLD SCRIPT
     <script src="https://tag.clearbitscripts.com/v1/pk_dc61eb5d5cfe266b3c705262030b6bf6/tags.js" referrerpolicy="strict-origin-when-cross-origin"></script> 
