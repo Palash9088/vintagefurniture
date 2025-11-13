@@ -33,14 +33,36 @@
          script.async = true;
          script.src = 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VrcMRY';
          document.head.appendChild(script);
-
-         // Identify user
-         window._learnq = window._learnq || [];
-         window._learnq.push(['identify', {
-            '$email': 'palash.soni@vwo.com'
-         }]);
       }, delay);
    </script>
+
+   <button id="identifyUserBtn">Identify User with random email</button>
+
+<script>
+// Utility: create a random email using current time
+function generateRandomEmail() {
+  const timestamp = Date.now(); // current time (ms)
+  return "KlaviyoUser" + timestamp + "@vwo.com";
+}
+
+// Identify function
+function identifyRandomUser() {
+  // Ensure Klaviyo (_learnq) exists
+  window._learnq = window._learnq || [];
+
+  const randomEmail = generateRandomEmail();
+
+  // Klaviyo identify call - NO uuid now
+  window._learnq.push(['identify', {
+    '$email': randomEmail
+  }]);
+
+  console.log("Identified user:", { email: randomEmail, time: new Date().toISOString() });
+}
+
+// Bind click event
+document.getElementById("identifyUserBtn").addEventListener("click", identifyRandomUser);
+</script>
 
    <!-- basic -->
    <meta charset="utf-8">
