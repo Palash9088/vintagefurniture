@@ -66,51 +66,100 @@
         }
 
         function generateScores() {
-            return Array.from({ length: 3 }, () => randomNumber(50, 100));
+            const products = ['databricks', 'salesforce', 'vwo', 'hubspot', 'marketo', 'adobe'];
+            const numProducts = randomNumber(1, 3);
+            return Array.from({ length: numProducts }, () => {
+                const product = randomFrom(products);
+                return {
+                    product: product.toLowerCase(),
+                    intent_score: randomNumber(0, 100),
+                    buying_stage: randomFrom(['Purchase', 'Decision', 'Consideration', 'Awareness', 'Target']),
+                    profile_score: randomNumber(0, 100),
+                    profile_fit: randomFrom(['Strong', 'Moderate', 'Weak']),
+                    is_6qa: randomBoolean(),
+                    product_display_name: product.charAt(0).toUpperCase() + product.slice(1)
+                };
+            });
         }
 
         function generateSegments() {
             const segments = ['Enterprise', 'SMB', 'Startup', 'Government', 'Non-Profit'];
+            const numSegments = randomNumber(0, 4);
+            if (numSegments === 0) {
+                return { ids: [], names: [], list: [] };
+            }
             return {
-                ids: Array.from({ length: 3 }, (_, i) => i + 1),
-                names: Array.from({ length: 3 }, () => randomFrom(segments)),
-                list: Array.from({ length: 3 }, (_, i) => ({
+                ids: Array.from({ length: numSegments }, (_, i) => i + 1),
+                names: Array.from({ length: numSegments }, () => randomFrom(segments)),
+                list: Array.from({ length: numSegments }, (_, i) => ({
                     id: i + 1,
                     name: randomFrom(segments)
                 }))
             };
         }
 
+        function generateIndustryV2(industry) {
+            const subindustries = {
+                'Software and Technology': ['Enterprise Software', 'SaaS', 'IT Services', 'Cloud Computing'],
+                'Finance and Banking': ['Investment Banking', 'Retail Banking', 'Fintech', 'Insurance'],
+                'Healthcare': ['Pharmaceuticals', 'Medical Devices', 'Healthcare Services', 'Biotechnology'],
+                'Insurance': ['Life Insurance', 'Property & Casualty', 'Health Insurance', 'Reinsurance'],
+                'Manufacturing': ['Automotive', 'Electronics', 'Machinery', 'Consumer Goods']
+            };
+            return [{
+                industry: industry,
+                subindustry: randomFrom(subindustries[industry] || ['General'])
+            }];
+        }
+
         function generateVisitorInfo() {
             const company = generateCompanyDetails();
+            const generateCompanyId = () => {
+                return Array.from({ length: 15 }, () => 
+                    randomFrom('0123456789abcdef'.split(''))
+                ).join('');
+            };
+            
             return {
                 company: {
                     ...company,
+                    companyId: generateCompanyId(),
                     country_iso_code: company.country === 'United States' ? 'US' :
                         company.country === 'Canada' ? 'CA' : 'GB',
                     address: `${randomNumber(100, 999)} ${randomFrom(['Main', 'Oak', 'Pine'])} St`,
                     zip: randomNumber(10000, 99999).toString(),
                     phone: `${randomNumber(100, 999)}-${randomNumber(100, 999)}-${randomNumber(1000, 9999)}`,
-                    employee_range: randomFrom(['50-100', '100-500', '500-1000', '1000+']),
-                    revenue_range: randomFrom(['$1M-$10M', '$10M-$50M', '$50M-$100M', '$100M+']),
-                    employee_count: randomNumber(50, 1000).toString(),
-                    annual_revenue: `$${randomNumber(1, 100)}M`,
+                    employee_range: randomFrom(['0-9', '10-49', '50-100', '100-500', '500-1000', '1000+']),
+                    revenue_range: randomFrom(['$1-$1M', '$1M-$10M', '$10M-$50M', '$50M-$100M', '$100M+']),
+                    employee_count: randomNumber(5, 1000).toString(),
+                    annual_revenue: randomNumber(1, 100).toString(),
                     is_blacklisted: randomBoolean(),
-                    state_code: company.state ? company.state.substring(0, 2).toUpperCase() : '--',
+                    state_code: randomNumber(1, 50).toString(),
                     is_6qa: randomBoolean(),
                     geoIP_country: company.country,
                     geoIP_state: company.state,
                     geoIP_city: company.city,
-                    company_match: randomFrom(['Exact Match', 'Partial Match', 'Fuzzy Match']),
-                    industry_v2: [company.industry],
+                    company_match: randomFrom(['Match', 'Exact Match', 'Partial Match', 'Fuzzy Match']),
+                    additional_comment: randomFrom([
+                        'Company name or domain match was found',
+                        'Domain match was found',
+                        'IP-based match',
+                        ''
+                    ]),
+                    sic_description: randomFrom(['Computer Programming Services', 'Software Publishers', 'IT Services', '']),
                     sic: randomNumber(1000, 9999).toString(),
-                    naics: randomNumber(100000, 999999).toString(),
-                    sic_description: `${company.industry} Services`,
-                    naics_description: `${company.industry} Services`
+                    naics: randomNumber(100, 999).toString(),
+                    naics_description: randomFrom([
+                        'Custom Computer Programming Services',
+                        'Software Publishers',
+                        'Executive, Legislative, and Other General Government Support',
+                        'Computer Systems Design Services'
+                    ]),
+                    industry_v2: generateIndustryV2(company.industry)
                 },
                 scores: generateScores(),
                 segments: generateSegments(),
-                confidence: randomFrom(['High', 'Medium', 'Low'])
+                confidence: randomFrom(['High', 'Moderate', 'Low'])
             };
         }
 
