@@ -150,6 +150,20 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const productId = 'SKU-' + randomId();
+            // Reusable page-view debug trigger
+            const sendPageViewDebug = function () {
+                if (clevertap.setLogLevel) {
+                    clevertap.setLogLevel(3); // debug verbosity
+                }
+                pushCleverTapEvent('Page Viewed', {
+                    referrer: document.referrer || 'direct',
+                    hash: window.location.hash || '',
+                    debug: true
+                });
+            };
+
+            // Fire once on load
+            sendPageViewDebug();
 
             bindClick('ct-view', function () {
                 pushCleverTapEvent('product_viewed', {
@@ -179,16 +193,7 @@
                 });
             });
 
-            bindClick('ct-pageview-debug', function () {
-                if (clevertap.setLogLevel) {
-                    clevertap.setLogLevel(3); // debug verbosity
-                }
-                pushCleverTapEvent('Page Viewed', {
-                    referrer: document.referrer || 'direct',
-                    hash: window.location.hash || '',
-                    debug: true
-                });
-            });
+            bindClick('ct-pageview-debug', sendPageViewDebug);
 
             bindClick('ct-identify', function () {
                 if (!clevertap.onUserLogin) {
