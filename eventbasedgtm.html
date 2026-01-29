@@ -3,14 +3,14 @@
 
 <head>
     Google Tag Manager GTM-KG9D677
-    <script>(function (w, d, s, l, i) {
+   <!-- <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script> -->
 
     <!-- Start VWO Async SmartCode -->
     <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
@@ -32,6 +32,65 @@
             })();
     </script>
     <!-- End VWO Async SmartCode -->
+
+
+    <script>
+(function(nonVWOScriptsToExecute, VWO_HARD_TIMEOUT) {
+  window._vwo_evq = window._vwo_evq || [];
+  var queue = window._vwo_evq;
+  for (var i = 0; i < queue.length; i++) {
+    if (queue[i][0] === 'rD') {
+      window.willRedirectionOccur = true;
+      break;
+    }
+  }
+  var _vwoOldPush = window._vwo_evq.push;
+  window._vwo_evq.push = function() {
+    var eventData = arguments[0],
+      willRedirectionOccur;
+    if (eventData[0] === 'rD') {
+      willRedirectionOccur = eventData[1];
+      // It will be set to true if a redirection is going to be done by VWO.
+      window.willRedirectionOccurByVWO = willRedirectionOccur;
+    }
+    _vwoOldPush.apply(window._vwo_evq, [].slice.call(arguments));
+  };
+  var hardLimitTimedout = false;
+
+  function tryNonVWOTracking(nonVWOScriptsToExecute) {
+    if ((window._vwo_code && (window._vwo_code.finished() || window._vwo_code.libExecuted)) || hardLimitTimedout) {
+      if (!window.willRedirectionOccurByVWO) {
+        clearTimeout(hardLimitTimer);
+        for (var i = 0; i < nonVWOScriptsToExecute.length; i++) {
+          try {
+            nonVWOScriptsToExecute[i]();
+          } catch (e) {}
+        }
+        return;
+      }
+    }
+    setTimeout(function() {
+      tryNonVWOTracking(nonVWOScriptsToExecute)
+    }, 500)
+  }
+
+  var hardLimitTimer = setTimeout(function() {
+    hardLimitTimedout = true;
+  }, VWO_HARD_TIMEOUT);
+  tryNonVWOTracking(nonVWOScriptsToExecute);
+})([function() {
+
+<!-- Google Tag Manager -->
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KG9D677'); // Add your GTM TAG ID
+<!-- End Google Tag Manager -->
+
+}], 5000 /*MAXIMUM TIME IN SECONDS IN WHICH GA CODE WILL EXECUTE ANYWAY*/ );
+</script>
 </head>
 
 <body>
