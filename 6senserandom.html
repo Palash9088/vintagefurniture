@@ -61,7 +61,16 @@
                 country: country,
                 state: state,
                 city: city,
-                industry: randomFrom(['Software and Technology', 'Finance and Banking', 'Healthcare', 'Insurance', 'Manufacturing']),
+                industry: randomFrom([
+                    'Aerospace and Defense', 'Agriculture', 'Apparel', 'Associations', 'Automotive',
+                    'Biotech', 'Business Services', 'Construction', 'Consumer Goods and Services',
+                    'Education', 'Energy and Utilities', 'Financial Services', 'Food and Beverage',
+                    'Furniture', 'Government', 'Hardware', 'Healthcare and Medical', 'Home and Garden',
+                    'Hospitality and Travel', 'Manufacturing', 'Media and Entertainment', 'Mining',
+                    'Pharmaceuticals', 'Printing and Publishing', 'Real Estate', 'Recreation',
+                    'Retail and Distribution', 'Software and Technology', 'Telecommunications',
+                    'Textiles', 'Transportation and Logistics'
+                ]),
             };
         }
 
@@ -99,16 +108,12 @@
         }
 
         function generateIndustryV2(industry) {
-            const subindustries = {
-                'Software and Technology': ['Enterprise Software', 'SaaS', 'IT Services', 'Cloud Computing'],
-                'Finance and Banking': ['Investment Banking', 'Retail Banking', 'Fintech', 'Insurance'],
-                'Healthcare': ['Pharmaceuticals', 'Medical Devices', 'Healthcare Services', 'Biotechnology'],
-                'Insurance': ['Life Insurance', 'Property & Casualty', 'Health Insurance', 'Reinsurance'],
-                'Manufacturing': ['Automotive', 'Electronics', 'Machinery', 'Consumer Goods']
-            };
+            const subindustries = [
+                "Animals & Aquaculture", "Crops", "Auto Manufacturers", "Auto Parts & Service", "Dealerships", "Consulting", "Human Resources", "Legal", "Marketing & Advertising", "Security", "Tax, Accounting, and Audit", "Architecture & Design", "Buildings", "Contractors", "Heavy & Civil Engineering", "Apparel & Fashion", "Beauty, Health, and Wellness", "Electronics", "Food, Beverage, and Tobacco", "Manufacturing", "Retailing", "Colleges & Universities", "Schools", "Coal", "Oil & Gas", "Renewable", "Utilities", "Waste Management", "Banking", "Insurance", "Investments", "Payments", "Hospitals", "Medical Devices & Equipment", "Nursing and Care", "Lodging", "Restaurants & Bars", "Chemicals", "Containers & Packaging", "Electrical Equipment", "Industrial Machinery", "Metals & Minerals", "Textiles", "Wood & Paper", "Art & Design", "Broadcasting", "Gaming", "Movies & Music", "Printing & Publishing", "Sports", "Air Freight & Logistics", "Airlines", "Marine", "Road & Rail"
+            ];
             return [{
                 industry: industry,
-                subindustry: randomFrom(subindustries[industry] || ['General'])
+                subindustry: randomFrom(subindustries)
             }];
         }
 
