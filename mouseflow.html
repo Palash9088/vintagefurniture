@@ -11,15 +11,32 @@
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-<script type="text/javascript">
-  window._mfq = window._mfq || [];
-  (function() {
-    var mf = document.createElement("script");
-    mf.type = "text/javascript"; mf.defer = true;
-    mf.src = "//cdn.mouseflow.com/projects/b39925a2-d1e0-4857-a4c0-ac29ef492705.js";
-    document.getElementsByTagName("head")[0].appendChild(mf);
-  })();
-</script>
+
+   <script>
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[Mouseflow] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[Mouseflow] Starting script load after", delay, "ms delay");
+         // Google Tag Manager
+        window._mfq = window._mfq || [];
+        (function() {
+          var mf = document.createElement("script"); mf.type = "text/javascript";
+          mf.type = "text/javascript"; mf.defer = true;
+          mf.src = "//cdn.mouseflow.com/projects/b39925a2-d1e0-4857-a4c0-ac29ef492705.js";
+          document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+      }, delay);
+   </script>
+
+
    <!-- basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
