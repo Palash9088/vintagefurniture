@@ -81,43 +81,76 @@
   <script src="js/bootstrap.bundle.min.js"></script>
  
   <!-- Klaviyo identify utility and autorun -->
-  <script>
-    // Utility: create a random email using current time
-    function generateRandomEmail() {
-      const timestamp = Date.now(); // current time (ms)
-      return "KlaviyoUser" + timestamp + "@vwo.com";
+<script>
+  // Utility: create a random email using current time
+  function generateRandomEmail() {
+    const timestamp = Date.now();
+    return "KlaviyoUser" + timestamp + "@vwo.com";
+  }
+
+  // Identify function
+  function identifyRandomUser() {
+    const randomEmail = generateRandomEmail();
+
+    // Ensure Klaviyo queues exist
+    window._learnq = window._learnq || [];
+    window.klaviyo = window.klaviyo || [];
+
+    // Get VWO UUID if available
+    var vwo_uuid = null;
+
+    if (window.VWO && typeof window.VWO.getVisitorId === "function") {
+      try {
+        vwo_uuid = window.VWO.getVisitorId();
+      } catch (e) {
+        console.warn("Unable to fetch VWO UUID", e);
+      }
     }
 
-    // Identify function
-    function identifyRandomUser() {
-      // Ensure Klaviyo (_learnq) exists
-      window._learnq = window._learnq || [];
-
-      const randomEmail = generateRandomEmail();
-
-      // Klaviyo identify call - NO uuid now
-      window._learnq.push(['identify', {
-        '$email': randomEmail
-      }]);
-
-      console.log("Identified user:", { email: randomEmail, time: new Date().toISOString() });
+    // Store globally (like your valuesSetter)
+    if (vwo_uuid) {
+      window.vwo_klaviyo_uuid = vwo_uuid;
     }
 
-    // Run when DOM is ready: bind click and autorun (once per session)
-    document.addEventListener('DOMContentLoaded', function () {
-      var btn = document.getElementById("identifyUserBtn");
-      if (btn) {
-        btn.addEventListener("click", identifyRandomUser);
-      }
+    // Prepare identify payload
+    var identifyPayload = {
+      '$email': randomEmail
+    };
 
-      // Autorun once per session (remove this guard if you want it on every load)
-      if (!sessionStorage.getItem('kl_identified')) {
-        identifyRandomUser();
-        sessionStorage.setItem('kl_identified', '1');
-      }
+    if (vwo_uuid) {
+      identifyPayload['vwo_uuid'] = vwo_uuid;
+    }
+
+    // Push to Klaviyo (_learnq standard)
+    window._learnq.push(['identify', identifyPayload]);
+
+    // Also support new Klaviyo SDK if available
+    if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
+      window.klaviyo.push(["identify", identifyPayload]);
+    }
+
+    console.log("Identified user:", {
+      email: randomEmail,
+      vwo_uuid: vwo_uuid,
+      time: new Date().toISOString()
     });
-  </script> 
+  }
 
+  // Run when DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById("identifyUserBtn");
+
+    if (btn) {
+      btn.addEventListener("click", identifyRandomUser);
+    }
+
+    // Autorun once per session
+    if (!sessionStorage.getItem('kl_identified')) {
+      identifyRandomUser();
+      sessionStorage.setItem('kl_identified', '1');
+    }
+  });
+</script>
 </body>
 
 </html>
