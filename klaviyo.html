@@ -88,51 +88,101 @@
     return "KlaviyoUser" + timestamp + "@vwo.com";
   }
 
+  // Persist/reuse identity to avoid re-identification
+  function getStoredIdentity() {
+    return sessionStorage.getItem('kl_identified_email') ||
+      localStorage.getItem('kl_identified_email') ||
+      null;
+  }
+
+  function rememberIdentity(email) {
+    sessionStorage.setItem('kl_identified_email', email);
+    localStorage.setItem('kl_identified_email', email);
+  }
+
+  // Quick check for Klaviyo cookie (__kla_id is set after identify)
+  function hasKlaviyoCookie() {
+    return document.cookie.indexOf('__kla_id=') !== -1;
+  }
+
+  // Fetch VWO UUID safely (VWO loads async)
+  function getVwoUUID(callback) {
+    // If already available, return immediately
+    if (window.VWO && typeof window.VWO.getVisitorId === "function") {
+      try {
+        callback(window.VWO.getVisitorId());
+        return;
+      } catch (e) {
+        console.warn("Unable to fetch VWO UUID", e);
+        callback(null);
+        return;
+      }
+    }
+
+    // Defer until VWO queue runs (if present)
+    if (Array.isArray(window._vis_opt_queue)) {
+      window._vis_opt_queue.push(function () {
+        try {
+          if (window.VWO && typeof window.VWO.getVisitorId === "function") {
+            callback(window.VWO.getVisitorId());
+          } else {
+            callback(null);
+          }
+        } catch (e) {
+          console.warn("Unable to fetch VWO UUID (async)", e);
+          callback(null);
+        }
+      });
+      return;
+    }
+
+    // Fallback if nothing is available
+    callback(null);
+  }
+
   // Identify function
-  function identifyRandomUser() {
-    const randomEmail = generateRandomEmail();
+  function identifyRandomUser(options) {
+    const opts = options || {};
+    const existingEmail = getStoredIdentity();
+
+    // Skip if we already identified this browser and no force flag
+    if (!opts.force && (existingEmail || hasKlaviyoCookie())) {
+      console.log("[Klaviyo] Skip identify; already identified", existingEmail);
+      return;
+    }
+
+    const emailToUse = existingEmail || generateRandomEmail();
 
     // Ensure Klaviyo queues exist
     window._learnq = window._learnq || [];
     window.klaviyo = window.klaviyo || [];
 
-    // Get VWO UUID if available
-    var vwo_uuid = null;
-
-    if (window.VWO && typeof window.VWO.getVisitorId === "function") {
-      try {
-        vwo_uuid = window.VWO.getVisitorId();
-      } catch (e) {
-        console.warn("Unable to fetch VWO UUID", e);
+    // Wait for VWO UUID (async safe)
+    getVwoUUID(function (vwo_uuid) {
+      if (vwo_uuid) {
+        window.vwo_klaviyo_uuid = vwo_uuid;
       }
-    }
 
-    // Store globally (like your valuesSetter)
-    if (vwo_uuid) {
-      window.vwo_klaviyo_uuid = vwo_uuid;
-    }
+      var identifyPayload = { '$email': emailToUse };
+      if (vwo_uuid) {
+        identifyPayload['vwo_uuid'] = vwo_uuid;
+      }
 
-    // Prepare identify payload
-    var identifyPayload = {
-      '$email': randomEmail
-    };
+      // Queue identify for legacy Klaviyo
+      window._learnq.push(['identify', identifyPayload]);
 
-    if (vwo_uuid) {
-      identifyPayload['vwo_uuid'] = vwo_uuid;
-    }
+      // Queue identify for new Klaviyo SDK if present
+      if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
+        window.klaviyo.push(["identify", identifyPayload]);
+      }
 
-    // Push to Klaviyo (_learnq standard)
-    window._learnq.push(['identify', identifyPayload]);
+      rememberIdentity(emailToUse);
 
-    // Also support new Klaviyo SDK if available
-    if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
-      window.klaviyo.push(["identify", identifyPayload]);
-    }
-
-    console.log("Identified user:", {
-      email: randomEmail,
-      vwo_uuid: vwo_uuid,
-      time: new Date().toISOString()
+      console.log("[Klaviyo] Identified user:", {
+        email: emailToUse,
+        vwo_uuid: vwo_uuid || 'not available',
+        time: new Date().toISOString()
+      });
     });
   }
 
@@ -144,11 +194,8 @@
       btn.addEventListener("click", identifyRandomUser);
     }
 
-    // Autorun once per session
-    if (!sessionStorage.getItem('kl_identified')) {
-      identifyRandomUser();
-      sessionStorage.setItem('kl_identified', '1');
-    }
+    // Autorun once per browser (reuses stored email if present)
+    identifyRandomUser();
   });
 </script>
 </body>
