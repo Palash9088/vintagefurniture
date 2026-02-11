@@ -107,6 +107,14 @@
 
   // Fetch VWO UUID safely (VWO loads async)
   function getVwoUUID(callback) {
+    // 1) Try cookie first (_vwo_uuid is set after VWO loads)
+    var cookieMatch = document.cookie.match(/(?:^|;\s*)_vwo_uuid=([^;]+)/);
+    if (cookieMatch) {
+      callback(decodeURIComponent(cookieMatch[1]));
+      return;
+    }
+
+    // 2) Then try live API if available immediately
     // If already available, return immediately
     if (window.VWO && typeof window.VWO.getVisitorId === "function") {
       try {
