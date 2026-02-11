@@ -82,115 +82,105 @@
  
   <!-- Klaviyo identify utility and autorun -->
 <script>
-  // Utility: create a random email using current time
-  function generateRandomEmail() {
-    const timestamp = Date.now();
-    return "KlaviyoUser" + timestamp + "@vwo.com";
+  // ------------ Random profile + VWO UUID helpers ------------
+  const FIRST_NAMES = ['Ava', 'Ben', 'Chloe', 'Drew', 'Ella', 'Finn', 'Gia', 'Hank'];
+  const LAST_NAMES = ['Stone', 'Lee', 'Patel', 'Garcia', 'Kim', 'Nguyen', 'Lopez', 'Wright'];
+  const INDIAN_CITIES = ['Mumbai', 'Delhi', 'Bengaluru', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad'];
+
+  function randomFrom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
   }
 
-  // Persist/reuse identity to avoid re-identification
-  function getStoredIdentity() {
-    return sessionStorage.getItem('kl_identified_email') ||
-      localStorage.getItem('kl_identified_email') ||
-      null;
+  function buildRandomProfile() {
+    const first = randomFrom(FIRST_NAMES);
+    const last = randomFrom(LAST_NAMES);
+    const ts = Date.now();
+    const email = `${first}.${last}.${ts}@example.com`.toLowerCase();
+    const phone = '+91' + Math.floor(6000000000 + Math.random() * 3000000000);
+    const city = randomFrom(INDIAN_CITIES);
+    return {
+      $email: email,
+      $first_name: first,
+      $last_name: last,
+      phone: phone,
+      title: 'Vintage Furniture Fan',
+      city: city,
+      country: 'India'
+    };
   }
 
-  function rememberIdentity(email) {
-    sessionStorage.setItem('kl_identified_email', email);
-    localStorage.setItem('kl_identified_email', email);
+  function getVwoUuidFromCookie() {
+    const match = document.cookie.match(/(?:^|;\s*)_vwo_uuid=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
   }
 
-  // Quick check for Klaviyo cookie (__kla_id is set after identify)
-  function hasKlaviyoCookie() {
-    return document.cookie.indexOf('__kla_id=') !== -1;
+  function getVwoUuidFromDataStore() {
+    try {
+      return window.VWO && window.VWO._ && window.VWO._.allSettings &&
+        window.VWO._.allSettings.dataStore &&
+        window.VWO._.allSettings.dataStore.uuid
+        ? window.VWO._.allSettings.dataStore.uuid
+        : null;
+    } catch (e) {
+      console.warn('Error reading VWO dataStore uuid', e);
+      return null;
+    }
   }
 
-  // Fetch VWO UUID safely (VWO loads async)
-  function getVwoUUID(callback) {
-    // 1) Try cookie first (_vwo_uuid is set after VWO loads)
-    var cookieMatch = document.cookie.match(/(?:^|;\s*)_vwo_uuid=([^;]+)/);
-    if (cookieMatch) {
-      callback(decodeURIComponent(cookieMatch[1]));
+  function resolveVwoUUID() {
+    return getVwoUuidFromCookie() || getVwoUuidFromDataStore() || null;
+  }
+
+  function alreadyIdentified(uuid) {
+    const stored = sessionStorage.getItem('kl_identified_uuid');
+    return stored && stored === uuid;
+  }
+
+  function rememberIdentification(uuid, email) {
+    if (uuid) sessionStorage.setItem('kl_identified_uuid', uuid);
+    if (email) sessionStorage.setItem('kl_identified_email', email);
+  }
+
+  // ------------ Identify flow ------------
+  function identifyRandomUser(opts) {
+    const options = opts || {};
+    const vwoUuid = resolveVwoUUID();
+
+    // If we require a VWO UUID but it's missing, log and skip unless forced
+    if (!vwoUuid && !options.force) {
+      console.warn('[Klaviyo] No VWO UUID found in cookie or dataStore; identification skipped.');
       return;
     }
 
-    // 2) Then try live API if available immediately
-    // If already available, return immediately
-    if (window.VWO && typeof window.VWO.getVisitorId === "function") {
-      try {
-        callback(window.VWO.getVisitorId());
-        return;
-      } catch (e) {
-        console.warn("Unable to fetch VWO UUID", e);
-        callback(null);
-        return;
-      }
-    }
-
-    // Defer until VWO queue runs (if present)
-    if (Array.isArray(window._vis_opt_queue)) {
-      window._vis_opt_queue.push(function () {
-        try {
-          if (window.VWO && typeof window.VWO.getVisitorId === "function") {
-            callback(window.VWO.getVisitorId());
-          } else {
-            callback(null);
-          }
-        } catch (e) {
-          console.warn("Unable to fetch VWO UUID (async)", e);
-          callback(null);
-        }
-      });
+    // Avoid duplicate identify with the same UUID
+    if (!options.force && vwoUuid && alreadyIdentified(vwoUuid)) {
+      console.log('[Klaviyo] Skip identify; UUID already identified', vwoUuid);
       return;
     }
 
-    // Fallback if nothing is available
-    callback(null);
-  }
-
-  // Identify function
-  function identifyRandomUser(options) {
-    const opts = options || {};
-    const existingEmail = getStoredIdentity();
-
-    // Skip if we already identified this browser and no force flag
-    if (!opts.force && (existingEmail || hasKlaviyoCookie())) {
-      console.log("[Klaviyo] Skip identify; already identified", existingEmail);
-      return;
+    const profile = buildRandomProfile();
+    if (vwoUuid) {
+      profile.vwo_uuid = vwoUuid;
     }
-
-    const emailToUse = existingEmail || generateRandomEmail();
 
     // Ensure Klaviyo queues exist
     window._learnq = window._learnq || [];
     window.klaviyo = window.klaviyo || [];
 
-    // Wait for VWO UUID (async safe)
-    getVwoUUID(function (vwo_uuid) {
-      if (vwo_uuid) {
-        window.vwo_klaviyo_uuid = vwo_uuid;
-      }
+    // Legacy Klaviyo queue
+    window._learnq.push(['identify', profile]);
 
-      var identifyPayload = { '$email': emailToUse };
-      if (vwo_uuid) {
-        identifyPayload['vwo_uuid'] = vwo_uuid;
-      }
+    // New Klaviyo SDK if present
+    if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
+      window.klaviyo.push(['identify', profile]);
+    }
 
-      // Queue identify for legacy Klaviyo
-      window._learnq.push(['identify', identifyPayload]);
+    rememberIdentification(vwoUuid || 'no-uuid', profile.$email);
 
-      // Queue identify for new Klaviyo SDK if present
-      if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
-        window.klaviyo.push(["identify", identifyPayload]);
-      }
-
-      rememberIdentity(emailToUse);
-
-      console.log("[Klaviyo] Identified user:", {
-        email: emailToUse,
-        vwo_uuid: vwo_uuid || 'not available',
-        time: new Date().toISOString()
-      });
+    console.log('[Klaviyo] Identified user', {
+      email: profile.$email,
+      vwo_uuid: vwoUuid || 'not available',
+      time: new Date().toISOString()
     });
   }
 
@@ -202,7 +192,7 @@
       btn.addEventListener("click", identifyRandomUser);
     }
 
-    // Autorun once per browser (reuses stored email if present)
+    // Autorun once per browser (only if we have a UUID)
     identifyRandomUser();
   });
 </script>
