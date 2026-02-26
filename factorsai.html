@@ -10,100 +10,83 @@
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
-   <script>
-      function storeVisitorInfo(data) {
-         // Validate data type and presence
-         if (typeof data !== 'object' || !data) {
-            console.error('Invalid visitor information provided.');
-            return;
-         }
 
-         // Convert data to a string (safe for local storage)
-         const stringifiedData = JSON.stringify(data);
+<script>
+(function () {
 
-         try {
-            // Store the data in local storage
-            localStorage.setItem('_6senseCompanyDetails', stringifiedData);
-         } catch (error) {
-            console.error('Error storing visitor info:', error);
-         }
+  var retryCount = 0;
+  var maxRetries = 50; // 5 seconds total (50 × 100ms)
+  var intervalId;
+
+  function setFactorsData() {
+
+    window.FactorsDataLayer = window.FactorsDataLayer || {};
+
+    // -----------------------------
+    // Main Metadata
+    // -----------------------------
+    window.FactorsDataLayer.last_updated_at = 1772093654;
+
+    // -----------------------------
+    // IP Derived Info (Exact Dummy You Shared)
+    // -----------------------------
+    window.FactorsDataLayer.ip_derived_info = {
+      company_industry: "Professional Services",
+      company_naics_code: "54",
+      company_sector: "Industrials",
+      company_sic_code: "87",
+      company_sub_industry: "Consulting"
+    };
+
+    // -----------------------------
+    // Segments (List of JSON format)
+    // -----------------------------
+    window.FactorsDataLayer.segments = [
+      {
+        name: "All Users",
+        id: "123e4567-e89b-12d3-a456-426614174000"
+      },
+      {
+        name: "Industrial Sectors",
+        id: "223e4567-e89b-12d3-a456-426614174001"
+      },
+      {
+        name: "Consulting Companies",
+        id: "323e4567-e89b-12d3-a456-426614174002"
       }
+    ];
 
-      // Replace with your actual visitor information
-      const visitorInfo = {
-         "company": {
-            "domain": "www.abbottinsurance.com",
-            "name": "abbott",
-            "region": "North",
-            "country": "United States",
-            "state": "California",
-            "city": "San Francisco",
-            "industry": "Consumer Goods and Services",
-            "companyId": "abc123def456",
-            "country_iso_code": "US",
-            "address": "123 Main St",
-            "zip": "94111",
-            "phone": "123-456-7890",
-            "employee_range": "100-500",
-            "revenue_range": "$10M-$50M",
-            "employee_count": "250",
-            "annual_revenue": "$30M",
-            "is_blacklisted": false,
-            "state_code": "CA",
-            "is_6qa": false,
-            "geoIP_country": "United States",
-            "geoIP_state": "California",
-            "geoIP_city": "San Francisco",
-            "company_match": "Match",
-            "additional_comment": "Company name or domain match was found",
-            "sic_description": "Computer Programming Services",
-            "sic": "7371",
-            "naics": "541511",
-            "naics_description": "Custom Computer Programming Services",
-            "industry_v2": [
-               {
-                  "industry": "Consumer Goods and Services",
-                  "subindustry": "Beauty, Health, and Wellness"
-               }
-            ]
-         },
-         "scores": [
-            {
-               "product": "vwo",
-               "intent_score": 85,
-               "buying_stage": "Decision",
-               "profile_score": 92,
-               "profile_fit": "Strong",
-               "is_6qa": false,
-               "product_display_name": "VWO"
-            }
-         ],
-         "segments": {
-            "ids": [1, 2, 3],
-            "names": ["Segment 1", "Segment 2", "Segment 3"],
-            "list": [
-               { "id": 1, "name": "Segment 1" },
-               { "id": 2, "name": "Segment 2" },
-               { "id": 3, "name": "Segment 3" }
-            ]
-         },
-         "confidence": "High"
-      };
-      // Delay the execution of storeVisitorInfo by 3 seconds
-      // Call storeVisitorInfo immediately
-      storeVisitorInfo(visitorInfo);
+    console.log("FactorsDataLayer initialized:", window.FactorsDataLayer);
 
-      // Setup a repeating interval to call storeVisitorInfo every 10 milliseconds
-      const repeatInterval = setInterval(function () {
-         storeVisitorInfo(visitorInfo);
-      }, 10);
+    return true;
+  }
 
-      // Stop the interval after the given seconds
-      setTimeout(function () {
-         clearInterval(repeatInterval);
-      }, 10000); // 10 seconds
-   </script>
+  function retryUntilSet() {
+    retryCount++;
 
+    try {
+      var success = setFactorsData();
+      if (success || retryCount >= maxRetries) {
+        clearInterval(intervalId);
+      }
+    } catch (e) {
+      if (retryCount >= maxRetries) {
+        clearInterval(intervalId);
+        console.error("Failed to set FactorsDataLayer:", e);
+      }
+    }
+  }
+
+  // First attempt
+  retryUntilSet();
+
+  // Retry every 100ms
+  intervalId = setInterval(retryUntilSet, 100);
+
+})();
+</script>
+
+   
    <script type="text/javascript">
       function getDelayFromURL() {
          const params = new URLSearchParams(window.location.search);
