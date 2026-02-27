@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Ab Tasty Async -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i["abtiming"] = 1 * new Date();
+    a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, "script", "//try.abtasty.com/81677aa3dd7b49d4a23ac9870dfee7ce.js");
+  </script>
+
+  <!-- Google Tag Manager GTM-TX3P729R -->
+  <script>
+    function getDelayFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const delayParam = params.get("delay");
+      const delay = parseInt(delayParam, 10);
+      return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+    }
+
+    var delay = getDelayFromURL();
+    console.log("[GTM] Using delay of", delay, "ms");
+
+    setTimeout(function () {
+      console.log("[GTM] Starting script load after", delay, "ms delay");
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start': new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TX3P729R');
+    }, delay);
+  </script>
+
+  <!-- Piano Analytics Script -->
+  <script>
+    console.log("[Piano Analytics] Using delay of", delay, "ms");
+    setTimeout(function () {
+      console.log("[Piano Analytics] Starting script load after", delay, "ms delay");
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.crossOrigin = 'anonymous';
+      script.src = 'https://tag.aticdn.net/piano-analytics.js';
+      document.head.appendChild(script);
+
+      script.onload = function () {
+        pa.setConfigurations({
+          site: 641722,
+          collectDomain: "fdnlpdp.pa-cd.com"
+        });
+      };
+    }, delay);
+  </script>
+
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Piano Analytics | AB Tasty</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- fevicon -->
+  <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/carrotlayer.css">
+
+  <!-- VWO SmartCode not included (AB Tasty page) -->
+</head>
+
+<body>
+  <div class="banner_section">
+    <div class="container">
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+        hbspt.forms.create({
+          portalId: "44178869",
+          formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+          region: "na1"
+        });
+      </script>
+      <div class="image-section">
+        <img src="images/banner-bg.png" alt="Banner">
+      </div>
+    </div>
+  </div>
+
+  <!-- DataLayer Demo Section -->
+  <div class="datalayer-demo-section" style="padding: 20px; text-align: center; background-color: #f9f9f9; margin-top: 20px;">
+    <h2>DataLayer Demo Events</h2>
+    <div style="margin-bottom: 20px;">
+      <button onclick="pushDemoEvent('add_to_cart')" class="btn btn-primary" style="margin: 5px;">Add to Cart</button>
+      <button onclick="pushDemoEvent('purchase')" class="btn btn-success" style="margin: 5px;">Purchase</button>
+      <button onclick="pushDemoEvent('view_item')" class="btn btn-info" style="margin: 5px;">View Item</button>
+      <button onclick="pushDemoEvent('sign_up')" class="btn btn-warning" style="margin: 5px;">Sign Up</button>
+      <button onclick="pushDemoEvent('login')" class="btn btn-secondary" style="margin: 5px;">Login</button>
+    </div>
+    <div style="margin-top: 20px; padding: 20px; border-top: 1px solid #ddd;">
+      <h3>Custom Event</h3>
+      <input type="text" id="customEventInput" placeholder="Enter event name" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+      <button onclick="pushCustomEvent()" class="btn btn-dark" style="margin-left: 10px;">Push Custom Event</button>
+    </div>
+  </div>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function pushDemoEvent(eventName) {
+      var eventData = {
+        'event': eventName,
+        'timestamp': new Date().toISOString()
+      };
+      if (eventName === 'add_to_cart') {
+        eventData.ecommerce = {
+          currency: "USD", value: 30.00,
+          items: [{ item_id: "SKU_12345", item_name: "Vintage Chair", price: 30.00, quantity: 1 }]
+        };
+      } else if (eventName === 'purchase') {
+        eventData.ecommerce = {
+          transaction_id: "T_" + Math.floor(Math.random() * 10000), value: 55.00, currency: "USD",
+          items: [
+            { item_id: "SKU_12345", item_name: "Vintage Chair", price: 30.00, quantity: 1 },
+            { item_id: "SKU_67890", item_name: "Antique Lamp", price: 25.00, quantity: 1 }
+          ]
+        };
+      } else if (eventName === 'view_item') {
+        eventData.ecommerce = {
+          items: [{ item_id: "SKU_12345", item_name: "Vintage Chair", price: 30.00, category: "Furniture" }]
+        };
+      } else if (eventName === 'sign_up') {
+        eventData.method = "email";
+      } else if (eventName === 'login') {
+        eventData.method = "google";
+      }
+      window.dataLayer.push(eventData);
+      if (window.pa) { pa.sendEvent('click.action', { click: eventName }); }
+      console.log('Pushed event to dataLayer:', eventData);
+      alert('Event "' + eventName + '" pushed to dataLayer!');
+    }
+
+    function pushCustomEvent() {
+      var eventName = document.getElementById('customEventInput').value;
+      if (eventName) {
+        window.dataLayer.push({ 'event': eventName, 'timestamp': new Date().toISOString(), 'custom': true });
+        if (window.pa) { pa.sendEvent('click.action', { click: eventName }); }
+        console.log('Pushed custom event to dataLayer:', eventName);
+        alert('Custom event "' + eventName + '" pushed to dataLayer!');
+      } else {
+        alert('Please enter an event name.');
+      }
+    }
+  </script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
