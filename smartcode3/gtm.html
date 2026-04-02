@@ -43,98 +43,97 @@
    <link rel="icon" href="./images/favicon.png" type="image/gif" />
 
    <!-- CSS -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/carrotlayer.css">
 
-   <!-- Start VWO Async V3.0 SmartCode -->
-<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-<script type="text/javascript" id="vwoCode">
-    const params_id = new URLSearchParams(window.location.search);
-      const accId = parseInt(params_id.get("id"));
-      const accountId = accId || 4001465;
-window._vwo_code || (function() {        
-    var account_id = accountId;
-        version = 3.0,
-        settings_tolerance = 2000,
-        hide_element = 'body',
-        hide_element_style =
-        'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
-    /* DO NOT EDIT BELOW THIS LINE */
-    var w = window,
-        d = document;
-    if (d.URL.indexOf('__vwo_disable__') > -1 || w._vwo_code) return;
-    var f = false,
-        v = d.currentScript,
-		cc = {sT: settings_tolerance, hES: hide_element_style, hE: hide_element};
-
-	try {
-		cc = Object.assign(JSON.parse( localStorage.getItem('_vwo_' + account_id + '_config')), cc);
-	} catch (e) {} 
-    var code = {
-        nonce: v && v.nonce,
-
-        settings_tolerance: function() {
-            return cc.sT;
-        },
-
-        hide_element: function() {
-            return performance.getEntriesByName('first-contentful-paint')[0] ? '' : cc.hE;
-        },
-
-        hide_element_style: function() {
-            return '{' + cc.hES + '}';
-        },
-
-        getVersion: function() {
-            return version;
-        },
-
-        finish: function() {
-            if (f) return;
-            f = true;
-            var el = d.getElementById('_vis_opt_path_hides');
-            if (el && el.parentNode) el.parentNode.removeChild(el);
-        },
-
-        finished: function() {
-            return f;
-        },
-
-        addScript: function(src) {
-            var s = d.createElement('script');
-            s.type = 'text/javascript';
-            s.src = src;
-            if (v && v.nonce) s.setAttribute('nonce', v.nonce);
-            d.getElementsByTagName('head')[0].appendChild(s);
-        },
-
-        init: function() {
-            w._vwo_settings_timer = setTimeout(function() {
-                code.finish();
-            }, this.settings_tolerance());
-
-            var styleEl = d.createElement('style');
-              styleEl.setAttribute('id', '_vis_opt_path_hides');
-              styleEl.type = 'text/css';
-              if (code && code.nonce) styleEl.setAttribute('nonce', code.nonce);
-              styleEl.appendChild(
-                    d.createTextNode(this.hide_element() + this.hide_element_style())
-                );
-              d.head.appendChild(styleEl);
-
-            // Keep only script loading
-            this.addScript(
-                'https://dev.visualwebsiteoptimizer.com/cloud-run-test/final/' +
-                account_id +
-                '.js'
-            );
-        }
-    };
-
-    w._vwo_code = code;
-    code.init();
-})();
-</script> 
-<!--End VWO Async SmartCode -->
+ <!-- Start VWO Async V3.0 SmartCode -->
+ <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+ <script type="text/javascript" id="vwoCode">
+     const params_id = new URLSearchParams(window.location.search);
+       const accId = parseInt(params_id.get("id"));
+       const accountId = accId || 4001465;
+ window._vwo_code || (function() {        
+     var account_id = accountId;
+         version = 3.0,
+         settings_tolerance = 2000,
+         hide_element = 'body',
+         hide_element_style =
+         'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+     /* DO NOT EDIT BELOW THIS LINE */
+     var w = window,
+         d = document;
+     if (d.URL.indexOf('__vwo_disable__') > -1 || w._vwo_code) return;
+     var f = false,
+         v = d.currentScript,
+         cc = {sT: settings_tolerance, hES: hide_element_style, hE: hide_element};
+ 
+     try {
+         cc = Object.assign(JSON.parse( localStorage.getItem('_vwo_' + account_id + '_config')), cc);
+     } catch (e) {} 
+     var code = {
+         nonce: v && v.nonce,
+ 
+         settings_tolerance: function() {
+             return cc.sT;
+         },
+ 
+         hide_element: function() {
+             return performance.getEntriesByName('first-contentful-paint')[0] ? '' : cc.hE;
+         },
+ 
+         hide_element_style: function() {
+             return '{' + cc.hES + '}';
+         },
+ 
+         getVersion: function() {
+             return version;
+         },
+ 
+         finish: function() {
+             if (f) return;
+             f = true;
+             var el = d.getElementById('_vis_opt_path_hides');
+             if (el && el.parentNode) el.parentNode.removeChild(el);
+         },
+ 
+         finished: function() {
+             return f;
+         },
+ 
+         addScript: function(src) {
+             var s = d.createElement('script');
+             s.type = 'text/javascript';
+             s.src = src;
+             if (v && v.nonce) s.setAttribute('nonce', v.nonce);
+             d.getElementsByTagName('head')[0].appendChild(s);
+         },
+ 
+         init: function() {
+             w._vwo_settings_timer = setTimeout(function() {
+                 code.finish();
+             }, this.settings_tolerance());
+ 
+             var styleEl = d.createElement('style');
+               styleEl.setAttribute('id', '_vis_opt_path_hides');
+               styleEl.type = 'text/css';
+               if (code && code.nonce) styleEl.setAttribute('nonce', code.nonce);
+               styleEl.appendChild(
+                     d.createTextNode(this.hide_element() + this.hide_element_style())
+                 );
+               d.head.appendChild(styleEl);
+ 
+             // Keep only script loading
+             this.addScript(
+                 'https://dev.visualwebsiteoptimizer.com/cloud-run-test/final/' +
+                 account_id +
+                 '.js'
+             );
+         }
+     };
+ 
+     w._vwo_code = code;
+     code.init();
+ })();
+ </script> 
 </head>
 
 <body>
@@ -148,10 +147,14 @@ window._vwo_code || (function() {
                region: "na1"
             });
          </script>
+         <div class="image-section">
+            <img src="images/banner-bg.png" alt="Banner">
+         </div>
       </div>
    </div>
    <!-- Only keep essential JavaScript -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
