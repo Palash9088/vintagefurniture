@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+
+   <script type="text/javascript">
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[RudderStack] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[RudderStack] Starting script load after", delay, "ms delay");
+         // RudderStack Script
+         !function () {
+            "use strict"; window.RudderSnippetVersion = "3.0.25"; var e = "rudderanalytics"; window[e] || (window[e] = [])
+               ; var rudderanalytics = window[e]; if (Array.isArray(rudderanalytics)) {
+                  if (true === rudderanalytics.snippetExecuted && window.console && console.error) {
+                     console.error("RudderStack JavaScript SDK snippet included more than once.")
+                  } else {
+                     rudderanalytics.snippetExecuted = true,
+                        window.rudderAnalyticsBuildType = "legacy"; var sdkBaseUrl = "https://cdn.rudderlabs.com/v3"; var sdkName = "rsa.min.js"
+                        ; var scriptLoadingMode = "async"
+                        ; var n = ["setDefaultInstanceKey", "load", "ready", "page", "track", "identify", "alias", "group", "reset", "setAnonymousId", "startSession", "endSession", "consent"]
+                        ; for (var r = 0; r < n.length; r++) {
+                           var t = n[r]; rudderanalytics[t] = function (n) {
+                              return function () {
+                                 var r
+                                    ; Array.isArray(window[e]) ? rudderanalytics.push([n].concat(Array.prototype.slice.call(arguments))) : null === (r = window[e][n]) || void 0 === r || r.apply(window[e], arguments)
+                              }
+                           }(t)
+                        } try { new Function('return import("")'), window.rudderAnalyticsBuildType = "modern" } catch (o) { }
+                     var d = document.head || document.getElementsByTagName("head")[0]
+                        ; var i = document.body || document.getElementsByTagName("body")[0]; window.rudderAnalyticsAddScript = function (e, n, r) {
+                           var t = document.createElement("script"); t.src = e, t.setAttribute("data-loader", "RS_JS_SDK"), n && r && t.setAttribute(n, r),
+                              "async" === scriptLoadingMode ? t.async = true : "defer" === scriptLoadingMode && (t.defer = true),
+                              d ? d.insertBefore(t, d.firstChild) : i.insertBefore(t, i.firstChild)
+                        }, window.rudderAnalyticsMount = function () {
+                           !function () {
+                              if ("undefined" == typeof globalThis) {
+                                 var e; var n = function getGlobal() {
+                                    return "undefined" != typeof self ? self : "undefined" != typeof window ? window : null
+                                 }(); n && Object.defineProperty(n, "globalThis", {
+                                    value: n, configurable: true
+                                 })
+                              }
+                           }(), window.rudderAnalyticsAddScript("".concat(sdkBaseUrl, "/").concat(window.rudderAnalyticsBuildType, "/").concat(sdkName), "data-rsa-write-key", "2SqaCFgHpTaoaKzT5dBPWOkqrA9")
+                        },
+                           "undefined" == typeof Promise || "undefined" == typeof globalThis ? window.rudderAnalyticsAddScript("https://polyfill-fastly.io/v3/polyfill.min.js?version=3.111.0&features=Symbol%2CPromise&callback=rudderAnalyticsMount") : window.rudderAnalyticsMount()
+                        ; var loadOptions = {}
+                        ; rudderanalytics.load("2SqaCFgHpTaoaKzT5dBPWOkqrA9", "https://wingifypamixhh.dataplane.rudderstack.com", loadOptions)
+                  }
+               }
+         }();
+
+         //make a page call explicitly
+         rudderanalytics.page();
+      }, delay);
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>RudderStack Integration | VWO</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+   <!-- Start VWO Async V3.0 SmartCode -->
+<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+<script type="text/javascript" id="vwoCode">
+    const params_id = new URLSearchParams(window.location.search);
+      const accId = parseInt(params_id.get("id"));
+      const accountId = accId || 4001465;
+window._vwo_code || (function() {        
+    var account_id = accountId;
+        version = 3.0,
+        settings_tolerance = 2000,
+        hide_element = 'body',
+        hide_element_style =
+        'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+    /* DO NOT EDIT BELOW THIS LINE */
+    var w = window,
+        d = document;
+    if (d.URL.indexOf('__vwo_disable__') > -1 || w._vwo_code) return;
+    var f = false,
+        v = d.currentScript,
+		cc = {sT: settings_tolerance, hES: hide_element_style, hE: hide_element};
+
+	try {
+		cc = Object.assign(JSON.parse( localStorage.getItem('_vwo_' + account_id + '_config')), cc);
+	} catch (e) {} 
+    var code = {
+        nonce: v && v.nonce,
+
+        settings_tolerance: function() {
+            return cc.sT;
+        },
+
+        hide_element: function() {
+            return performance.getEntriesByName('first-contentful-paint')[0] ? '' : cc.hE;
+        },
+
+        hide_element_style: function() {
+            return '{' + cc.hES + '}';
+        },
+
+        getVersion: function() {
+            return version;
+        },
+
+        finish: function() {
+            if (f) return;
+            f = true;
+            var el = d.getElementById('_vis_opt_path_hides');
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+        },
+
+        finished: function() {
+            return f;
+        },
+
+        addScript: function(src) {
+            var s = d.createElement('script');
+            s.type = 'text/javascript';
+            s.src = src;
+            if (v && v.nonce) s.setAttribute('nonce', v.nonce);
+            d.getElementsByTagName('head')[0].appendChild(s);
+        },
+
+        init: function() {
+            w._vwo_settings_timer = setTimeout(function() {
+                code.finish();
+            }, this.settings_tolerance());
+
+            var styleEl = d.createElement('style');
+              styleEl.setAttribute('id', '_vis_opt_path_hides');
+              styleEl.type = 'text/css';
+              if (code && code.nonce) styleEl.setAttribute('nonce', code.nonce);
+              styleEl.appendChild(
+                    d.createTextNode(this.hide_element() + this.hide_element_style())
+                );
+              d.head.appendChild(styleEl);
+
+            // Keep only script loading
+            this.addScript(
+                'https://dev.visualwebsiteoptimizer.com/cloud-run-test/final/' +
+                account_id +
+                '.js'
+            );
+        }
+    };
+
+    w._vwo_code = code;
+    code.init();
+})();
+</script> 
+<!--End VWO Async SmartCode -->
+</head>
+
+<body>
+   <!-- header section start -->
+
+   </head>
+
+   <body>
+
+      <body>
+         <div class="banner_section">
+            <div class="container">
+               <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+               <script>
+                  hbspt.forms.create({
+                     portalId: "44178869",
+                     formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                     region: "na1"
+                  });
+               </script>
+               <div class="image-section">
+                  <img src="images/banner-bg.png" alt="Banner">
+               </div>
+            </div>
+         </div>
+         <!-- Only keep essential JavaScript -->
+         <script src="js/jquery.min.js"></script>
+         <script src="js/bootstrap.bundle.min.js"></script>
+      </body>
+      <!-- Javascript files-->
+      <!-- Only keep essential JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
+
+</html>
