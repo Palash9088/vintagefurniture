@@ -1,116 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Ab Tasty Async -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["abtiming"] = 1 * new Date();
+        a = s.createElement(o);
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(window, document, "script", "//try.abtasty.com/81677aa3dd7b49d4a23ac9870dfee7ce.js");
+    </script>
 
-<head>
-     <!-- Ab Tasty Async -->
-<script>
-   (function (i, s, o, g, r, a, m) {
-   i["abtiming"] = 1 * new Date();
-   a = s.createElement(o),
-   m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-   })(window, document, "script", "//try.abtasty.com/81677aa3dd7b49d4a23ac9870dfee7ce.js");
- </script>
-   <!-- Google tag (gtag.js) -->
+   <!-- VWO Campaign Script -->
    <script>
+   window.VWO = window.VWO || [];
+   VWO.event = VWO.event || function () { VWO.push(["event"].concat([].slice.call(arguments))) };
+   VWO.event("abTastyCampaign", {
+      "abTastyCampaign": "[CampaignID] Campaign name",
+      "abTastyVariation": "[VariationID] Variation name"
+   });
+   </script>
+   
+   <!-- Google tag (gtag.js) -->
+    <script>
       function getDelayFromURL() {
-         const params = new URLSearchParams(window.location.search);
-         const delayParam = params.get("delay");
-         const delay = parseInt(delayParam, 10);
-         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+        const params = new URLSearchParams(window.location.search);
+        const delayParam = params.get("delay");
+        const delay = parseInt(delayParam, 10);
+        return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
       }
 
       const delay = getDelayFromURL();
       console.log("[GTAG] Will load after", delay, "ms");
 
       setTimeout(() => {
-         console.log("[GTAG] Injecting gtag.js...");
+        console.log("[GTAG] Injecting gtag.js...");
 
-         // Create and inject the script tag
-         const script = document.createElement("script");
-         script.src = "https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1";
-         script.async = true;
+        const script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-QFDGX25NC1";
+        script.async = true;
 
-         script.onload = function () {
-            console.log("[GTAG] gtag.js loaded. Initializing gtag...");
+        script.onload = function () {
+          console.log("[GTAG] gtag.js loaded. Initializing gtag...");
 
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function () {
-               window.dataLayer.push(arguments);
-            };
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () {
+            window.dataLayer.push(arguments);
+          };
 
-            gtag('js', new Date());
-            gtag('config', 'G-QFDGX25NC1');
-         };
+          gtag("js", new Date());
+          gtag("config", "G-QFDGX25NC1");
+        };
 
-         document.head.appendChild(script);
+        document.head.appendChild(script);
       }, delay);
-   </script>
+    </script>
 
-
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-   <!-- site metas -->
-   <title>Google Tag Setup | VWO</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
-
-   <!-- fevicon -->
-   <link rel="icon" href="../images/favicon.png" type="image/gif" />
-
-   <!-- CSS -->
-   <link rel="stylesheet" href="css/carrotlayer.css">
-
-   <script>
-      function myScript() {
-         window.VWO = window.VWO || [];
-         if (window._vwo_s && window._vwo_s().R()) {
-            console.log("testing 1")
-            console.log(window._vwo_s && window._vwo_s().R())
-            console.log("testing 2")
-            gtag('config', 'G-QFDGX25NC1', { 'page_referrer': window._vwo_s().R() });
-            console.log("Refereal sent" + window._vwo_s().R())
-            console.log("testing 3")
-         }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Talha - Chess Game</title>
+    <link rel="icon" href="https://i.ibb.co/M6KTWnf/pic.jpg" />
+    <link rel="icon" href="../images/favicon.png" type="image/gif" />
+    <link rel="stylesheet" href="css/carrotlayer.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      .banner_section .image-section {
+        text-align: center;
+        margin-top: 12px;
       }
-   </script>
-   <!-- End VWO Async SmartCode -->
 
-</head>
+      .banner_section .image-section img {
+        width: 300px;
+        max-width: 60vw;
+        height: auto;
+        display: inline-block;
+      }
+    </style>
+    <script>
+      function myScript() {
+        window.VWO = window.VWO || [];
+        if (window._vwo_s && window._vwo_s().R()) {
+          gtag("config", "G-QFDGX25NC1", { page_referrer: window._vwo_s().R() });
+        }
+      }
+    </script>
+  </head>
+  <body onload="myScript()">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KG9D677"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<body onload=myScript()>
-
-   <!-- Google Tag Manager (noscript) -->
-   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG9D677" height="0" width="0"
-         style="display:none;visibility:hidden"></iframe></noscript>
-   <!-- End Google Tag Manager (noscript) -->
-
-   </head>
-
-   <body>
-      <div class="banner_section">
-         <div class="container">
-            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-            <script>
-               hbspt.forms.create({
-                  portalId: "44178869",
-                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-                  region: "na1"
-               });
-            </script>
-            <div class="image-section">
-               <img src="../images/banner-bg.png" alt="Banner">
-            </div>
-         </div>
+    <div class="wrapper">
+      <div id="modeScreen" class="mode-screen">
+        <h1>Chess</h1>
+        <p>Choose game mode</p>
+        <div class="mode-buttons">
+          <button type="button" id="vsFriendBtn" class="mode-btn">
+            <span class="mode-icon">👥</span>
+            Vs Friend
+          </button>
+          <button type="button" id="vsAiBtn" class="mode-btn">
+            <span class="mode-icon">🤖</span>
+            Vs AI
+          </button>
+        </div>
       </div>
-      <!-- Only keep essential JavaScript -->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-   </body>
 
+      <div id="gameScreen" class="game-screen hidden">
+        <header class="header">
+          <h1>Chess</h1>
+          <div class="game-info">
+            <span class="turn-label" id="turnLabel">White to move</span>
+            <span class="mode-badge" id="modeBadge">Vs Friend</span>
+            <button type="button" id="newGameBtn" class="btn">New Game</button>
+            <button type="button" id="changeModeBtn" class="btn btn-ghost">Change Mode</button>
+          </div>
+        </header>
+
+        <main class="game-container">
+          <div id="board" class="board"></div>
+          <div class="promotion-overlay hidden" id="promotionOverlay">
+            <p>Promote pawn to:</p>
+            <div class="promotion-pieces" id="promotionPieces"></div>
+          </div>
+        </main>
+
+        <div id="gameOverOverlay" class="game-over-overlay hidden">
+          <div class="game-over-box">
+            <h2 id="gameOverTitle">Checkmate!</h2>
+            <p id="gameOverMessage"></p>
+            <button type="button" id="playAgainBtn" class="btn btn-large">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner_section">
+      <div class="container">
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            portalId: "44178869",
+            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+            region: "na1",
+          });
+        </script>
+        <div class="image-section">
+          <img src="../images/banner-bg.png" alt="Banner" />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
