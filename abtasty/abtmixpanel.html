@@ -70,42 +70,141 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/carrotlayer.css">
 
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      flex-direction: column;
+    }
+
+    .hero-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .banner_section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .banner_section .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: nowrap;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .banner_section .image-section {
+      order: 1;
+      flex: 0 0 300px;
+      align-self: center;
+      text-align: center;
+    }
+
+    .banner_section .container > :not(.image-section) {
+      order: 2;
+    }
+
+    .banner_section .image-section img {
+      width: 300px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .banner_section .container {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .banner_section .container > .image-section,
+      .banner_section .container > :not(.image-section) {
+        order: initial;
+        width: 100%;
+      }
+
+      .banner_section .image-section img {
+        margin: 0 auto;
+      }
+    }
+  </style>
   <!-- VWO SmartCode not included (AB Tasty page) -->
 </head>
 
 <body>
-  <div class="banner_section">
-    <div class="container">
-      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-      <script>
-        hbspt.forms.create({
-          portalId: "44178869",
-          formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-          region: "na1"
-        });
-      </script>
-      <div class="image-section">
-        <img src="../images/banner-bg.png" alt="Banner">
+  <div class="hero-row">
+    <div class="wrapper">
+      <div id="modeScreen" class="mode-screen">
+        <h1>Chess</h1>
+        <p>Choose game mode</p>
+        <div class="mode-buttons">
+          <button type="button" id="vsFriendBtn" class="mode-btn">
+            <span class="mode-icon">👥</span>
+            Vs Friend
+          </button>
+          <button type="button" id="vsAiBtn" class="mode-btn">
+            <span class="mode-icon">🤖</span>
+            Vs AI
+          </button>
+        </div>
+      </div>
+
+      <div id="gameScreen" class="game-screen hidden">
+        <header class="header">
+          <h1>Chess</h1>
+          <div class="game-info">
+            <span class="turn-label" id="turnLabel">White to move</span>
+            <span class="mode-badge" id="modeBadge">Vs Friend</span>
+            <button type="button" id="newGameBtn" class="btn">New Game</button>
+            <button type="button" id="changeModeBtn" class="btn btn-ghost">Change Mode</button>
+          </div>
+        </header>
+
+        <main class="game-container">
+          <div id="board" class="board"></div>
+          <div class="promotion-overlay hidden" id="promotionOverlay">
+            <p>Promote pawn to:</p>
+            <div class="promotion-pieces" id="promotionPieces"></div>
+          </div>
+        </main>
+
+        <div id="gameOverOverlay" class="game-over-overlay hidden">
+          <div class="game-over-box">
+            <h2 id="gameOverTitle">Checkmate!</h2>
+            <p id="gameOverMessage"></p>
+            <button type="button" id="playAgainBtn" class="btn btn-large">Play Again</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- DataLayer Demo Section -->
-  <div class="datalayer-demo-section" style="padding: 20px; text-align: center; background-color: #f9f9f9; margin-top: 20px;">
-    <h2>DataLayer Demo Events</h2>
-    <div style="margin-bottom: 20px;">
-      <button onclick="pushDemoEvent('add_to_cart')" class="btn btn-primary" style="margin: 5px;">Add to Cart</button>
-      <button onclick="pushDemoEvent('purchase')" class="btn btn-success" style="margin: 5px;">Purchase</button>
-      <button onclick="pushDemoEvent('view_item')" class="btn btn-info" style="margin: 5px;">View Item</button>
-      <button onclick="pushDemoEvent('sign_up')" class="btn btn-warning" style="margin: 5px;">Sign Up</button>
-      <button onclick="pushDemoEvent('login')" class="btn btn-secondary" style="margin: 5px;">Login</button>
+    <div class="banner_section">
+      <div class="container">
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            portalId: "44178869",
+            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+            region: "na1"
+          });
+        </script>
+        <div class="image-section">
+          <img src="../images/banner-bg.png" alt="Banner" />
+        </div>
+      </div>
     </div>
-    <div style="margin-top: 20px; padding: 20px; border-top: 1px solid #ddd;">
-      <h3>Custom Event</h3>
-      <input type="text" id="customEventInput" placeholder="Enter event name" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
-      <button onclick="pushCustomEvent()" class="btn btn-dark" style="margin-left: 10px;">Push Custom Event</button>
-    </div>
-  </div>
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -141,6 +240,7 @@
       }
     }
   </script>
+  <script src="script.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
