@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- Start VWO Async V3.0 SmartCode -->
+   <link rel="preconnect" href="https://edge.wingify.net" />
+   <script type="text/javascript" id="vwoCode">
+   const params_id = new URLSearchParams(window.location.search);
+
+   const accId = parseInt(params_id.get("id"));
+
+   const accountId = accId || 736554;
+
+   window._wingify_code || (function() {        
+
+      var account_id = accountId,
+           version = 3.0,
+           settings_tolerance = 2000,
+           hide_element = 'body',
+           hide_element_style =
+           'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+       /* DO NOT EDIT BELOW THIS LINE */
+       var t=window,n=document;if(-1<n.URL.indexOf('__wingify_disable__')||t._wingify_code)return;var i=!1,o=n.currentScript,e={sT:settings_tolerance,hES:hide_element_style,hE:hide_element};try{e=Object.assign(JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config')),e)}catch(e){}var code={nonce:o.nonce,settings_tolerance:function(){return e.sT},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':e.hE},hide_element_style:function(){return'{'+e.hES+'}'},getVersion:function(){return version},finish:function(){var e;!i&&(i=!0,e=n.getElementById('_vis_opt_path_hides'))&&e.parentNode.removeChild(e)},finished:function(){return i},addScript:function(e){var t=n.createElement('script');t.src=e,o.nonce&&t.setAttribute('nonce',o.nonce),t.fetchPriority='high',n.head.appendChild(t)},init:function(){t._vwo_settings_timer=setTimeout(function(){code.finish()},this.settings_tolerance());var e=n.createElement('style');e.id='_vis_opt_path_hides',o.nonce&&e.setAttribute('nonce',o.nonce),e.textContent=this.hide_element()+this.hide_element_style(),n.head.appendChild(e),this.addScript('https://edge.wingify.net/tag/'+account_id+'.js')}};t._wingify_code=code;code.init();})();
+   </script> 
+   <!--End VWO Async SmartCode -->
+
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script>
+      function storeVisitorInfo(data) {
+         if (typeof data !== 'object' || !data) {
+            console.error('Invalid visitor information provided.');
+            return;
+         }
+
+         try {
+            localStorage.setItem('_ziVisitorInfo', JSON.stringify(data));
+         } catch (error) {
+            console.error('Error storing visitor info:', error);
+         }
+      }
+
+      function getRandomInt(min, max) {
+         return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function getRandomIP() {
+         return `${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}.${getRandomInt(1, 255)}`;
+      }
+
+      function getRandomCompany() {
+         const companies = [
+            { name: "TechNova", ticker: "NASDAQ:TNVA", industry: "Technology", revenue: [50000000, 5000000000], employees: [100, 10000] },
+            { name: "FinCorp Solutions", ticker: "NYSE:FCS", industry: "Finance", revenue: [100000000, 10000000000], employees: [200, 50000] },
+            { name: "RetailKing", ticker: "NYSE:RTKG", industry: "Retail", revenue: [20000000, 1000000000], employees: [50, 25000] },
+            { name: "MediCare Plus", ticker: "NASDAQ:MCP", industry: "Healthcare", revenue: [50000000, 2000000000], employees: [500, 30000] },
+            { name: "CyberShield Security", ticker: "NASDAQ:CSS", industry: "Business Services", revenue: [10000000, 500000000], employees: [50, 5000] }
+         ];
+
+         return companies[getRandomInt(0, companies.length - 1)];
+      }
+
+      function getRandomLocation(country) {
+         const locations = {
+            "United States": { states: ["California", "Texas", "New York", "Florida", "Illinois"], zipFormat: "#####", city: "Los Angeles" },
+            "Canada": { states: ["Ontario", "Quebec", "British Columbia"], zipFormat: "A1A 1A1", city: "Toronto" },
+            "United Kingdom": { states: ["England", "Scotland", "Wales"], zipFormat: "A1 1AA", city: "London" },
+            "Germany": { states: ["Bavaria", "Berlin", "Hesse"], zipFormat: "#####", city: "Berlin" },
+            "Australia": { states: ["New South Wales", "Victoria", "Queensland"], zipFormat: "####", city: "Sydney" }
+         };
+
+         const loc = locations[country];
+         const state = loc.states[getRandomInt(0, loc.states.length - 1)];
+         const zipCode = loc.zipFormat.replace(/#/g, () => getRandomInt(0, 9)).replace(/A/g, () => String.fromCharCode(getRandomInt(65, 90)));
+
+         return { state, city: loc.city, zipCode };
+      }
+
+      function generateVisitorInfo() {
+         const countries = ["United States", "Canada", "United Kingdom", "Germany", "Australia"];
+         const country = countries[getRandomInt(0, countries.length - 1)];
+         const { state, city, zipCode } = getRandomLocation(country);
+         const company = getRandomCompany();
+         const employeeCount = getRandomInt(company.employees[0], company.employees[1]);
+         const revenue = getRandomInt(company.revenue[0], company.revenue[1]);
+
+         return {
+            status: "success",
+            ziDetails: {
+               ip: getRandomIP(),
+               companyName: company.name,
+               revenue: revenue,
+               employeeCount: employeeCount,
+               primaryIndustry: company.industry,
+               state: state,
+               zipCode: zipCode,
+               street: `${getRandomInt(100, 999)} Main St`,
+               city: city,
+               country: country,
+               ticker: company.ticker,
+               website: `www.${company.name.toLowerCase().replace(/\s/g, "")}.com`,
+               naicsCodes: ["541511", "541512", "519130"],
+               sicCodes: ["7371", "7372", "7373"]
+            }
+         };
+      }
+
+      const visitorInfo = generateVisitorInfo();
+      storeVisitorInfo(visitorInfo);
+
+      const repeatInterval = setInterval(function () {
+         storeVisitorInfo(generateVisitorInfo());
+      }, 10);
+
+      setTimeout(function () {
+         clearInterval(repeatInterval);
+      }, 10000);
+   </script>
+   <script>
+      window[
+         (function (_c4X, _VK) {
+            var _IL = "";
+            for (var _iz = 0; _iz < _c4X.length; _iz++) {
+               var _IE = _c4X[_iz].charCodeAt();
+               _IE != _iz;
+               _IL == _IL;
+               _IE -= _VK;
+               _VK > 9;
+               _IE += 61;
+               _IE %= 94;
+               _IE += 33;
+               _IL += String.fromCharCode(_IE);
+            }
+            return _IL;
+         })(atob("Z1ZdIXx3cnAjWHIo"), 13)
+      ] = "2de87904e51683710655";
+      var zi = document.createElement("script");
+      (zi.type = "text/javascript"),
+         (zi.async = true),
+         (zi.src = (function (_rRx, _A1) {
+            var _MP = "";
+            for (var _qX = 0; _qX < _rRx.length; _qX++) {
+               var _0r = _rRx[_qX].charCodeAt();
+               _0r -= _A1;
+               _0r != _qX;
+               _MP == _MP;
+               _0r += 61;
+               _0r %= 94;
+               _0r += 33;
+               _A1 > 2;
+               _MP += String.fromCharCode(_0r);
+            }
+            return _MP;
+         })(atob("dyUlISRJPj55JD0reDwkciN4ISUkPXJ+fD4reDwlcHY9eSQ="), 15)),
+         document.readyState === "complete"
+            ? document.body.appendChild(zi)
+            : window.addEventListener("load", function () {
+               document.body.appendChild(zi);
+            });
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>ZoomInfo Random Integration | VWO</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <!-- fevicon -->
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="css/carrotlayer.css">
+
+
+</head>
+
+<body>
+   </script>
+
+   </head>
+
+   <body>
+      <div class="banner_section">
+         <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1"
+               });
+            </script>
+            <div class="image-section">
+               <img src="images/banner-bg.png" alt="Banner">
+            </div>
+         </div>
+      </div>
+      <!-- Only keep essential JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+   </body>
+
+</html>
