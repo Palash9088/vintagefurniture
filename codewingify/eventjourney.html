@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Event Journey Visualizer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0b0f;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #1f2535;
+    --border2: #2a3148;
+    --text: #e8ecf4;
+    --text-muted: #6b7694;
+    --text-dim: #3d4664;
+    --accent: #4f6ef7;
+    --accent-glow: rgba(79,110,247,0.18);
+    --green: #22d07a;
+    --orange: #f97316;
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --teal: #14b8a6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  header h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+  header span { font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+
+  /* ── Layout ── */
+  .app { display: flex; flex: 1; overflow: hidden; height: calc(100vh - 61px); }
+
+  /* ── Left Panel ── */
+  .left-panel {
+    width: 360px;
+    min-width: 360px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+  }
+  .panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .input-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+    overflow: hidden;
+  }
+  textarea {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.6;
+    padding: 14px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  textarea:focus { border-color: var(--accent); }
+  textarea::placeholder { color: var(--text-dim); }
+
+  .btn-visualize {
+    padding: 13px;
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .btn-visualize:hover { opacity: 0.88; }
+  .btn-visualize:active { transform: scale(0.98); }
+
+  .error-msg {
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #fca5a5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    display: none;
+  }
+
+  /* ── Main Content ── */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Visitor Props Bar ── */
+  .visitor-bar {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .visitor-bar.visible { display: flex; }
+  .visitor-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+  .visitor-chip .chip-icon { font-size: 13px; }
+  .visitor-chip .chip-label { color: var(--text-muted); font-size: 11px; }
+  .visitor-chip .chip-val { color: var(--text); font-weight: 600; }
+  .uuid-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-glow);
+    border: 1px solid rgba(79,110,247,0.3);
+    border-radius: 6px;
+    padding: 3px 10px;
+  }
+
+  /* ── Stats Row ── */
+  .stats-row {
+    display: none;
+    gap: 12px;
+    padding: 16px 24px 0;
+    flex-wrap: wrap;
+  }
+  .stats-row.visible { display: flex; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    min-width: 120px;
+  }
+  .stat-card .s-num { font-size: 24px; font-weight: 800; }
+  .stat-card .s-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── Timeline ── */
+  .timeline-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 24px 40px;
+    display: none;
+  }
+  .timeline-container.visible { display: block; }
+  .timeline-container::-webkit-scrollbar { width: 6px; }
+  .timeline-container::-webkit-scrollbar-track { background: transparent; }
+  .timeline-container::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  .timeline-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 20px 0 10px 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .timeline-group-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .timeline-track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .event-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+  }
+
+  /* vertical line */
+  .event-row:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 32px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .event-dot-col {
+    width: 44px;
+    min-width: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 14px;
+  }
+  .event-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    border: 2px solid;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .event-card {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 6px 0 6px 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .event-card:hover { border-color: var(--border2); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .event-card.expanded { border-color: var(--border2); }
+
+  .event-card-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .event-type-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+  .event-name { font-size: 13px; font-weight: 600; flex: 1; }
+  .event-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .expand-arrow {
+    color: var(--text-dim);
+    font-size: 12px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .event-card.expanded .expand-arrow { transform: rotate(180deg); }
+
+  .event-card-body {
+    display: none;
+    padding: 0 16px 14px;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .event-card.expanded .event-card-body { display: block; }
+
+  .prop-section { margin-top: 12px; }
+  .prop-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .prop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .prop-item {
+    background: var(--surface2);
+    border-radius: 7px;
+    padding: 7px 10px;
+    min-width: 0;
+  }
+  .prop-item.full { grid-column: 1 / -1; }
+  .prop-key {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .prop-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text);
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .desc-text {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: var(--surface2);
+    border-radius: 7px;
+    border-left: 3px solid var(--border2);
+  }
+
+  /* ── Empty / Placeholder ── */
+  .placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    gap: 12px;
+    font-size: 14px;
+  }
+  .placeholder-icon { font-size: 48px; opacity: 0.4; }
+  .placeholder p { text-align: center; max-width: 240px; line-height: 1.6; font-size: 13px; color: var(--text-muted); }
+
+  /* ── Event type color map ── */
+  .type-pageViewed       { --c: var(--cyan);   }
+  .type-productViewed    { --c: var(--green);  }
+  .type-collectionViewed { --c: var(--purple); }
+  .type-productAddedToCart { --c: var(--orange); }
+  .type-purchase         { --c: var(--yellow); }
+  .type-newSessionCreated { --c: var(--pink);  }
+  .type-variationShown   { --c: var(--teal);   }
+  .type-other            { --c: var(--text-muted); }
+
+  .event-dot.type-pageViewed       { background: rgba(6,182,212,0.15);  border-color: var(--cyan);   color: var(--cyan); }
+  .event-dot.type-productViewed    { background: rgba(34,208,122,0.15); border-color: var(--green);  color: var(--green); }
+  .event-dot.type-collectionViewed { background: rgba(168,85,247,0.15); border-color: var(--purple); color: var(--purple); }
+  .event-dot.type-productAddedToCart { background: rgba(249,115,22,0.15); border-color: var(--orange); color: var(--orange); }
+  .event-dot.type-purchase         { background: rgba(234,179,8,0.15);  border-color: var(--yellow); color: var(--yellow); }
+  .event-dot.type-newSessionCreated { background: rgba(236,72,153,0.15); border-color: var(--pink);  color: var(--pink); }
+  .event-dot.type-variationShown   { background: rgba(20,184,166,0.15); border-color: var(--teal);  color: var(--teal); }
+  .event-dot.type-other            { background: rgba(107,118,148,0.15); border-color: var(--text-muted); color: var(--text-muted); }
+
+  .event-type-badge.type-pageViewed       { color: var(--cyan);   background: rgba(6,182,212,0.1);   border-color: rgba(6,182,212,0.3); }
+  .event-type-badge.type-productViewed    { color: var(--green);  background: rgba(34,208,122,0.1);  border-color: rgba(34,208,122,0.3); }
+  .event-type-badge.type-collectionViewed { color: var(--purple); background: rgba(168,85,247,0.1);  border-color: rgba(168,85,247,0.3); }
+  .event-type-badge.type-productAddedToCart { color: var(--orange); background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.3); }
+  .event-type-badge.type-purchase         { color: var(--yellow); background: rgba(234,179,8,0.1);   border-color: rgba(234,179,8,0.3); }
+  .event-type-badge.type-newSessionCreated { color: var(--pink);  background: rgba(236,72,153,0.1);  border-color: rgba(236,72,153,0.3); }
+  .event-type-badge.type-variationShown   { color: var(--teal);  background: rgba(20,184,166,0.1);   border-color: rgba(20,184,166,0.3); }
+  .event-type-badge.type-other            { color: var(--text-muted); background: rgba(107,118,148,0.1); border-color: rgba(107,118,148,0.3); }
+
+  /* ── Legend ── */
+  .legend {
+    display: none;
+    padding: 10px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .legend.visible { display: flex; }
+  .legend-title { font-size: 11px; color: var(--text-dim); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 11px; color: var(--text-muted);
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  @media (max-width: 768px) {
+    .app { flex-direction: column; height: auto; }
+    .left-panel { width: 100%; min-width: unset; border-right: none; border-bottom: 1px solid var(--border); max-height: 300px; }
+    .prop-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">⚡</div>
+  <h1>Event Journey Visualizer</h1>
+  <span id="header-uuid"></span>
+</header>
+
+<div class="app">
+  <!-- Left: JSON input -->
+  <div class="left-panel">
+    <div class="panel-header">JSON Input</div>
+    <div class="input-area">
+      <textarea id="json-input" placeholder='Paste your visitor event JSON here...&#10;&#10;{&#10;  "uuid": "...",&#10;  "events": [...],&#10;  "properties": {...}&#10;}'></textarea>
+      <div class="error-msg" id="error-msg"></div>
+      <button class="btn-visualize" onclick="visualize()">Visualize Journey →</button>
+    </div>
+  </div>
+
+  <!-- Right: Visualization -->
+  <div class="main-content">
+    <!-- Visitor info bar -->
+    <div class="visitor-bar" id="visitor-bar"></div>
+
+    <!-- Stats -->
+    <div class="stats-row" id="stats-row"></div>
+
+    <!-- Timeline -->
+    <div class="timeline-container" id="timeline-container"></div>
+
+    <!-- Legend -->
+    <div class="legend" id="legend"></div>
+
+    <!-- Placeholder -->
+    <div class="placeholder" id="placeholder">
+      <div class="placeholder-icon">🗺️</div>
+      <p>Paste a visitor event JSON on the left and click <strong>Visualize Journey</strong> to explore the user's journey.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const EVENT_TYPE_MAP = {
+    'shopify.pageViewed':           { key: 'pageViewed',        icon: '👁', label: 'Page Viewed' },
+    'shopify.productViewed':        { key: 'productViewed',     icon: '📦', label: 'Product Viewed' },
+    'shopify.collectionViewed':     { key: 'collectionViewed',  icon: '🗂', label: 'Collection Viewed' },
+    'shopify.productAddedToCart':   { key: 'productAddedToCart',icon: '🛒', label: 'Added to Cart' },
+    'shopify.purchase':             { key: 'purchase',          icon: '💳', label: 'Purchase' },
+    'vwo_newSessionCreated':        { key: 'newSessionCreated', icon: '🌱', label: 'New Session' },
+    'vwo_variationShown':           { key: 'variationShown',    icon: '🧪', label: 'Variation Shown' },
+  };
+
+  function getEventMeta(apiName) {
+    return EVENT_TYPE_MAP[apiName] || { key: 'other', icon: '•', label: apiName };
+  }
+
+  function formatTime(ts) {
+    const d = new Date(ts * 1000);
+    return d.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+  }
+
+  function formatDate(ts) {
+    const d = new Date(ts * 1000);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function getDateKey(ts) {
+    const d = new Date(ts * 1000);
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  }
+
+  function truncateUrl(url, max = 60) {
+    if (!url) return '—';
+    try {
+      const u = new URL(url);
+      const short = u.hostname + u.pathname;
+      return short.length > max ? short.slice(0, max) + '…' : short;
+    } catch { return url.length > max ? url.slice(0, max) + '…' : url; }
+  }
+
+  function visualize() {
+    const raw = document.getElementById('json-input').value.trim();
+    const errorEl = document.getElementById('error-msg');
+    errorEl.style.display = 'none';
+
+    let data;
+    try { data = JSON.parse(raw); }
+    catch(e) {
+      errorEl.textContent = 'Invalid JSON: ' + e.message;
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    if (!data.events || !Array.isArray(data.events)) {
+      errorEl.textContent = 'JSON must have an "events" array.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    document.getElementById('placeholder').style.display = 'none';
+    renderVisitorBar(data);
+    renderStats(data);
+    renderTimeline(data);
+    renderLegend(data);
+  }
+
+  function renderVisitorBar(data) {
+    const bar = document.getElementById('visitor-bar');
+    const props = data.properties?.standard || {};
+    const chips = [];
+
+    if (data.uuid) chips.push(`<span class="uuid-badge">${data.uuid}</span>`);
+
+    const fields = [
+      { icon: '📍', key: 'city',    label: 'City' },
+      { icon: '🌐', key: 'region',  label: 'Region' },
+      { icon: '🏴', key: 'country', label: 'Country' },
+      { icon: '💻', key: 'deviceType', label: 'Device' },
+      { icon: '🌍', key: 'browser', label: 'Browser' },
+      { icon: '⚙️', key: 'operatingSystem', label: 'OS' },
+      { icon: '📡', key: 'traffic', label: 'Traffic' },
+      { icon: '👤', key: 'visitorType', label: 'Visitor' },
+      { icon: '🗣', key: 'language', label: 'Lang' },
+      { icon: '🕐', key: 'timezone', label: 'TZ' },
+    ];
+
+    for (const f of fields) {
+      const v = props[f.key]?.value;
+      if (v) chips.push(`<div class="visitor-chip"><span class="chip-icon">${f.icon}</span><span class="chip-label">${f.label}</span><span class="chip-val">${v}</span></div>`);
+    }
+
+    bar.innerHTML = chips.join('');
+    bar.classList.add('visible');
+
+    document.getElementById('header-uuid').textContent = data.uuid ? `UUID: ${data.uuid.slice(0,8)}…` : '';
+  }
+
+  function renderStats(data) {
+    const statsEl = document.getElementById('stats-row');
+    const events = data.events;
+
+    const typeCounts = {};
+    for (const e of events) {
+      const meta = getEventMeta(e.apiName);
+      typeCounts[meta.key] = (typeCounts[meta.key] || 0) + 1;
+    }
+
+    const hasPurchase = events.some(e => e.apiName === 'shopify.purchase');
+    const addToCart = events.filter(e => e.apiName === 'shopify.productAddedToCart').length;
+    const sessions = events.filter(e => e.apiName === 'vwo_newSessionCreated').length;
+    const duration = events.length > 1
+      ? Math.round((Math.max(...events.map(e=>e.triggeredOn)) - Math.min(...events.map(e=>e.triggeredOn))) / 60)
+      : 0;
+
+    const stats = [
+      { num: events.length, label: 'Total Events', color: 'var(--accent)' },
+      { num: sessions, label: 'Sessions', color: 'var(--pink)' },
+      { num: addToCart, label: 'Add to Cart', color: 'var(--orange)' },
+      { num: hasPurchase ? '✓' : '✗', label: 'Purchase', color: hasPurchase ? 'var(--yellow)' : 'var(--text-dim)' },
+      { num: duration + 'm', label: 'Journey Duration', color: 'var(--cyan)' },
+    ];
+
+    statsEl.innerHTML = stats.map(s => `
+      <div class="stat-card">
+        <div class="s-num" style="color:${s.color}">${s.num}</div>
+        <div class="s-label">${s.label}</div>
+      </div>`).join('');
+    statsEl.classList.add('visible');
+  }
+
+  function renderTimeline(data) {
+    const container = document.getElementById('timeline-container');
+    const events = [...data.events].sort((a, b) => a.triggeredOn - b.triggeredOn);
+
+    const groups = {};
+    for (const e of events) {
+      const dk = getDateKey(e.triggeredOn);
+      if (!groups[dk]) groups[dk] = { label: formatDate(e.triggeredOn), events: [] };
+      groups[dk].events.push(e);
+    }
+
+    let html = '';
+    for (const dk of Object.keys(groups)) {
+      const g = groups[dk];
+      html += `<div class="timeline-group-label">${g.label}</div><div class="timeline-track">`;
+      g.events.forEach((e, i) => {
+        const meta = getEventMeta(e.apiName);
+        const id = `evt-${dk}-${i}`;
+        html += buildEventRow(e, meta, id);
+      });
+      html += '</div>';
+    }
+
+    container.innerHTML = html;
+    container.classList.add('visible');
+
+    container.querySelectorAll('.event-card').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('expanded'));
+    });
+  }
+
+  function buildEventRow(e, meta, id) {
+    const pageProps = e.pageProperties || {};
+    const props = e.properties || {};
+
+    const propsHtml = Object.keys(props).length > 0 ? `
+      <div class="prop-section">
+        <div class="prop-section-title">Event Properties</div>
+        <div class="prop-grid">
+          ${Object.entries(props).map(([k,v]) => {
+            const isLong = String(v).length > 40;
+            return `<div class="prop-item${isLong ? ' full' : ''}"><div class="prop-key">${k}</div><div class="prop-val">${v}</div></div>`;
+          }).join('')}
+        </div>
+      </div>` : '';
+
+    const pageHtml = `
+      <div class="prop-section">
+        <div class="prop-section-title">Page Properties</div>
+        <div class="prop-grid">
+          <div class="prop-item full"><div class="prop-key">URL</div><div class="prop-val">${truncateUrl(pageProps.url, 90)}</div></div>
+          ${pageProps.referrerUrl ? `<div class="prop-item full"><div class="prop-key">Referrer</div><div class="prop-val">${truncateUrl(pageProps.referrerUrl, 90)}</div></div>` : ''}
+        </div>
+      </div>`;
+
+    const descHtml = e.description ? `<div class="desc-text">${e.description}</div>` : '';
+
+    return `
+    <div class="event-row">
+      <div class="event-dot-col">
+        <div class="event-dot type-${meta.key}">${meta.icon}</div>
+      </div>
+      <div class="event-card" id="${id}">
+        <div class="event-card-header">
+          <span class="event-type-badge type-${meta.key}">${meta.label}</span>
+          <span class="event-name">${e.name}</span>
+          <span class="event-time">${formatTime(e.triggeredOn)}</span>
+          <span class="expand-arrow">▾</span>
+        </div>
+        <div class="event-card-body">
+          ${descHtml}
+          ${pageHtml}
+          ${propsHtml}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderLegend(data) {
+    const legendEl = document.getElementById('legend');
+    const used = new Set(data.events.map(e => getEventMeta(e.apiName).key));
+
+    const colors = {
+      pageViewed: 'var(--cyan)',
+      productViewed: 'var(--green)',
+      collectionViewed: 'var(--purple)',
+      productAddedToCart: 'var(--orange)',
+      purchase: 'var(--yellow)',
+      newSessionCreated: 'var(--pink)',
+      variationShown: 'var(--teal)',
+      other: 'var(--text-muted)',
+    };
+
+    const labels = {
+      pageViewed: 'Page Viewed',
+      productViewed: 'Product Viewed',
+      collectionViewed: 'Collection Viewed',
+      productAddedToCart: 'Added to Cart',
+      purchase: 'Purchase',
+      newSessionCreated: 'New Session',
+      variationShown: 'Variation Shown',
+      other: 'Other',
+    };
+
+    let html = '<span class="legend-title">Legend</span>';
+    for (const key of used) {
+      html += `<div class="legend-item"><div class="legend-dot" style="background:${colors[key]}"></div>${labels[key] || key}</div>`;
+    }
+    legendEl.innerHTML = html;
+    legendEl.classList.add('visible');
+  }
+</script>
+</body>
+</html>

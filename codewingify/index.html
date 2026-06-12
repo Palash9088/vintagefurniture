@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Start VWO Async SmartCode -->
+    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+    <script type='text/javascript' id='vwoCode'>
+        const params_id = new URLSearchParams(window.location.search);
+        const accId = parseInt(params_id.get("id"));
+        const accountId = accId || 736554;
+        window._vwo_code ||
+            (function () {
+                var w = window,
+                    d = document;
+                var account_id = accountId,
+                    version = 2.2,
+                    settings_tolerance = 2000,
+                    hide_element = 'body',
+                    hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+                /* DO NOT EDIT BELOW THIS LINE */
+                if (f = !1, v = d.querySelector('#vwoCode'), cc = {}, -1 < d.URL.indexOf('__vwo_disable__') || w._vwo_code) return; try { var e = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config')); cc = e && 'object' == typeof e ? e : {} } catch (e) { } function r(t) { try { return decodeURIComponent(t) } catch (e) { return t } } var s = function () { var e = { combination: [], combinationChoose: [], split: [], exclude: [], uuid: null, consent: null, optOut: null }, t = d.cookie || ''; if (!t) return e; for (var n, i, o = /(?:^|;\s*)(?:(_vis_opt_exp_(\d+)_combi=([^;]*))|(_vis_opt_exp_(\d+)_combi_choose=([^;]*))|(_vis_opt_exp_(\d+)_split=([^:;]*))|(_vis_opt_exp_(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]*))|(_vwo_global_opt_out=[^;]*)|(_vwo_uuid=([^;]*))|(_vwo_consent=([^;]*)))/g; null !== (n = o.exec(t));)try { n[1] ? e.combination.push({ id: n[2], value: r(n[3]) }) : n[4] ? e.combinationChoose.push({ id: n[5], value: r(n[6]) }) : n[7] ? e.split.push({ id: n[8], value: r(n[9]) }) : n[10] ? e.exclude.push({ id: n[11] }) : n[12] ? e.optOut = r(n[13]) : n[14] ? e.optOut = !0 : n[15] ? e.uuid = r(n[16]) : n[17] && (i = r(n[18]), e.consent = i && 3 <= i.length ? i.substring(0, 3) : null) } catch (e) { } return e }(); function i() { var e = function () { if (w.VWO && Array.isArray(w.VWO)) for (var e = 0; e < w.VWO.length; e++) { var t = w.VWO[e]; if (Array.isArray(t) && ('setVisitorId' === t[0] || 'setSessionId' === t[0])) return !0 } return !1 }(), t = 'a=' + account_id + '&u=' + encodeURIComponent(w._vis_opt_url || d.URL) + '&vn=' + version + '&ph=1' + ('undefined' != typeof platform ? '&p=' + platform : '') + '&st=' + w.performance.now(); e || ((n = function () { var e, t = [], n = {}, i = w.VWO && w.VWO.appliedCampaigns || {}; for (e in i) { var o = i[e] && i[e].v; o && (t.push(e + '-' + o + '-1'), n[e] = !0) } if (s && s.combination) for (var r = 0; r < s.combination.length; r++) { var a = s.combination[r]; n[a.id] || t.push(a.id + '-' + a.value) } return t.join('|') }()) && (t += '&c=' + n), (n = function () { var e = [], t = {}; if (s && s.combinationChoose) for (var n = 0; n < s.combinationChoose.length; n++) { var i = s.combinationChoose[n]; e.push(i.id + '-' + i.value), t[i.id] = !0 } if (s && s.split) for (var o = 0; o < s.split.length; o++)t[(i = s.split[o]).id] || e.push(i.id + '-' + i.value); return e.join('|') }()) && (t += '&cc=' + n), (n = function () { var e = {}, t = []; if (w.VWO && Array.isArray(w.VWO)) for (var n = 0; n < w.VWO.length; n++) { var i = w.VWO[n]; if (Array.isArray(i) && 'setVariation' === i[0] && i[1] && Array.isArray(i[1])) for (var o = 0; o < i[1].length; o++) { var r, a = i[1][o]; a && 'object' == typeof a && (r = a.e, a = a.v, r && a && (e[r] = a)) } } for (r in e) t.push(r + '-' + e[r]); return t.join('|') }()) && (t += '&sv=' + n)), s && s.optOut && (t += '&o=' + s.optOut); var n = function () { var e = [], t = {}; if (s && s.exclude) for (var n = 0; n < s.exclude.length; n++) { var i = s.exclude[n]; t[i.id] || (e.push(i.id), t[i.id] = !0) } return e.join('|') }(); return n && (t += '&e=' + n), s && s.uuid && (t += '&id=' + s.uuid), s && s.consent && (t += '&consent=' + s.consent), w.name && -1 < w.name.indexOf('_vis_preview') && (t += '&pM=true'), w.VWO && w.VWO.ed && (t += '&ed=' + w.VWO.ed), t } code = { nonce: v && v.nonce, library_tolerance: function () { return 'undefined' != typeof library_tolerance ? library_tolerance : void 0 }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { return performance.getEntriesByName('first-contentful-paint')[0] ? '' : 'string' == typeof cc.hE ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function (e) { var t; f || (f = !0, (t = d.getElementById('_vis_opt_path_hides')) && t.parentNode.removeChild(t), e && ((new Image).src = 'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + e)) }, finished: function () { return f }, addScript: function (e) { var t = d.createElement('script'); t.type = 'text/javascript', e.src ? t.src = e.src : t.text = e.text, v && t.setAttribute('nonce', v.nonce), d.getElementsByTagName('head')[0].appendChild(t) }, load: function (e, t) { t = t || {}; var n = new XMLHttpRequest; n.open('GET', e, !0), n.withCredentials = !t.dSC, n.responseType = t.responseType || 'text', n.onload = function () { if (t.onloadCb) return t.onloadCb(n, e); 200 === n.status ? _vwo_code.addScript({ text: n.responseText }) : _vwo_code.finish('&e=loading_failure:' + e) }, n.onerror = function () { if (t.onerrorCb) return t.onerrorCb(e); _vwo_code.finish('&e=loading_failure:' + e) }, n.send() }, init: function () { var e, t = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish() }, t), 'body' !== this.hide_element() ? (n = d.createElement('style'), e = (t = this.hide_element()) ? t + this.hide_element_style() : '', t = d.getElementsByTagName('head')[0], n.setAttribute('id', '_vis_opt_path_hides'), v && n.setAttribute('nonce', v.nonce), n.setAttribute('type', 'text/css'), n.styleSheet ? n.styleSheet.cssText = e : n.appendChild(d.createTextNode(e)), t.appendChild(n)) : (n = d.getElementsByTagName('head')[0], (e = d.createElement('div')).style.cssText = 'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;', e.setAttribute('id', '_vis_opt_path_hides'), e.classList.add('_vis_hide_layer'), n.parentNode.insertBefore(e, n.nextSibling)); var n = 'https://dev.visualwebsiteoptimizer.com/j.php?' + i(); -1 !== w.location.search.indexOf('_vwo_xhr') ? this.addScript({ src: n }) : this.load(n + '&x=true', { l: 1 }) } }; w._vwo_code = code; code.init();
+            })();
+    </script>
+    <!-- End VWO Async SmartCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of All Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📄 All Pages Index</h1>
+    <input type="text" id="searchInput" placeholder="🔍 Search pages..." onkeyup="searchPages()">
+
+    <div class="container" id="pageList">
+        <!-- Links will be inserted dynamically -->
+    </div>
+
+    <script>
+        // List of pages - all HTML files in project
+        let pages = [
+            { url: "6sense.html", name: "6sense" },
+            { url: "6senserandom.html", name: "6senserandom" },
+            { url: "abtasty.html", name: "abtasty" },
+            { url: "abtasty/abtadvalo.html", name: "abtasty / abtadvalo" },
+            { url: "abtasty/abtair360.html", name: "abtasty / abtair360" },
+            { url: "abtasty/abtamplitude.html", name: "abtasty / abtamplitude" },
+            { url: "abtasty/abtanil.html", name: "abtasty / abtanil" },
+            { url: "abtasty/abtclarity.html", name: "abtasty / abtclarity" },
+            { url: "abtasty/abtcontentsquare.html", name: "abtasty / abtcontentsquare" },
+            { url: "abtasty/abtdatalayersetup.html", name: "abtasty / abtdatalayersetup" },
+            { url: "abtasty/abteulerian.html", name: "abtasty / abteulerian" },
+            { url: "abtasty/abtfullstory.html", name: "abtasty / abtfullstory" },
+            { url: "abtasty/abtglassbox.html", name: "abtasty / abtglassbox" },
+            { url: "abtasty/abtgtagsetup.html", name: "abtasty / abtgtagsetup" },
+            { url: "abtasty/abtheap.html", name: "abtasty / abtheap" },
+            { url: "abtasty/abthotjar.html", name: "abtasty / abthotjar" },
+            { url: "abtasty/abthubspot.html", name: "abtasty / abthubspot" },
+            { url: "abtasty/abtklaviyo.html", name: "abtasty / abtklaviyo" },
+            { url: "abtasty/abtmatomo.html", name: "abtasty / abtmatomo" },
+            { url: "abtasty/abtmixpanel.html", name: "abtasty / abtmixpanel" },
+            { url: "abtasty/abtmparticle.html", name: "abtasty / abtmparticle" },
+            { url: "abtasty/abtpiano.html", name: "abtasty / abtpiano" },
+            { url: "abtasty/abtpiwik.html", name: "abtasty / abtpiwik" },
+            { url: "abtasty/abtquantummetrics.html", name: "abtasty / abtquantummetrics" },
+            { url: "abtasty/abtsegmentpush.html", name: "abtasty / abtsegmentpush" },
+            { url: "abtasty/abtsfmc.html", name: "abtasty / abtsfmc" },
+            { url: "abtasty/abttealium.html", name: "abtasty / abttealium" },
+            { url: "abtasty/abtysance.html", name: "abtasty / abtysance" },
+            { url: "adobe.html", name: "adobe" },
+            { url: "adobe-adc.html", name: "adobe-adc" },
+            { url: "adobe-aep.html", name: "adobe-aep" },
+            { url: "albacross.html", name: "albacross" },
+            { url: "albacross1.html", name: "albacross1" },
+            { url: "albacrossrandom.html", name: "albacrossrandom" },
+            { url: "amplitude.html", name: "amplitude" },
+            { url: "bodytag.html", name: "bodytag" },
+            { url: "both.html", name: "both" },
+            { url: "braze.html", name: "braze" },
+            { url: "carrotlayersetup.html", name: "carrotlayersetup" },
+            { url: "clarity.html", name: "clarity" },
+            { url: "clearbit.html", name: "clearbit" },
+            { url: "clearbit1.html", name: "clearbit1" },
+            { url: "clearbitrandom.html", name: "clearbitrandom" },
+            { url: "clevertap.html", name: "clevertap" },
+            { url: "contact.html", name: "contact" },
+            { url: "contentsquare.html", name: "contentsquare" },
+            { url: "datalayersetup.html", name: "datalayersetup" },
+            { url: "demandbase.html", name: "demandbase" },
+            { url: "demandbaserandom.html", name: "demandbaserandom" },
+            { url: "eulerian.html", name: "eulerian" },
+            { url: "eulerianold.html", name: "eulerianold" },
+            { url: "eventbasedgtm.html", name: "eventbasedgtm" },
+            { url: "factorsai.html", name: "factorsai" },
+            { url: "fullstory.html", name: "fullstory" },
+            { url: "fullstorycargo.html", name: "fullstorycargo" },
+            { url: "fullstorysandbox.html", name: "fullstorysandbox" },
+            { url: "ga4viagtm.html", name: "ga4viagtm" },
+            { url: "glassbox.html", name: "glassbox" },
+            { url: "gtagecom.html", name: "gtagecom" },
+            { url: "gtagsetup.html", name: "gtagsetup" },
+            { url: "gtm.html", name: "gtm" },
+            { url: "gtmwithcookie.html", name: "gtmwithcookie" },
+            { url: "gtmwithoutsmartcode.html", name: "gtmwithoutsmartcode" },
+            { url: "heap.html", name: "heap" },
+            { url: "hotjar.html", name: "hotjar" },
+            { url: "hubspot.html", name: "hubspot" },
+            { url: "hubspot2.html", name: "hubspot2" },
+            { url: "index.html", name: "index" },
+            { url: "kissmetrics.html", name: "kissmetrics" },
+            { url: "klaviyo.html", name: "klaviyo" },
+            { url: "klaviyoautomation.html", name: "klaviyoautomation" },
+            { url: "lytics.html", name: "lytics" },
+            { url: "marketo.html", name: "marketo" },
+            { url: "matomo.html", name: "matomo" },
+            { url: "matomocloudfree.html", name: "matomocloudfree" },
+            { url: "matomovwo.html", name: "matomovwo" },
+            { url: "mixpanel.html", name: "mixpanel" },
+            { url: "mixpanelintegrations.html", name: "mixpanelintegrations" },
+            { url: "moengage.html", name: "moengage" },
+            { url: "mouseflow.html", name: "mouseflow" },
+            { url: "mparticle.html", name: "mparticle" },
+            { url: "mparticlewithoutvwo.html", name: "mparticlewithoutvwo" },
+            { url: "pendoanalytics.html", name: "pendoanalytics" },
+            { url: "piano.html", name: "piano" },
+            { url: "piwik.html", name: "piwik" },
+            { url: "quin.html", name: "quin" },
+            { url: "rudderstack.html", name: "rudderstack" },
+            { url: "rudderstackwithoutvwo.html", name: "rudderstackwithoutvwo" },
+            { url: "segmentpush.html", name: "segmentpush" },
+            { url: "segmentpush2.html", name: "segmentpush2" },
+            { url: "segmentvwotesting.html", name: "segmentvwotesting" },
+            { url: "smartcode3/6sense.html", name: "smartcode3 / 6sense" },
+            { url: "smartcode3/adobe-adc.html", name: "smartcode3 / adobe-adc" },
+            { url: "smartcode3/albacross.html", name: "smartcode3 / albacross" },
+            { url: "smartcode3/amplitude.html", name: "smartcode3 / amplitude" },
+            { url: "smartcode3/braze.html", name: "smartcode3 / braze" },
+            { url: "smartcode3/clearbit.html", name: "smartcode3 / clearbit" },
+            { url: "smartcode3/datalayersetup.html", name: "smartcode3 / datalayersetup" },
+            { url: "smartcode3/demandbase.html", name: "smartcode3 / demandbase" },
+            { url: "smartcode3/eulerian.html", name: "smartcode3 / eulerian" },
+            { url: "smartcode3/gtagsetup.html", name: "smartcode3 / gtagsetup" },
+            { url: "smartcode3/gtm.html", name: "smartcode3 / gtm" },
+            { url: "smartcode3/heap.html", name: "smartcode3 / heap" },
+            { url: "smartcode3/hubspot.html", name: "smartcode3 / hubspot" },
+            { url: "smartcode3/kissmetrics.html", name: "smartcode3 / kissmetrics" },
+            { url: "smartcode3/klaviyo.html", name: "smartcode3 / klaviyo" },
+            { url: "smartcode3/lytics.html", name: "smartcode3 / lytics" },
+            { url: "smartcode3/mixpanel.html", name: "smartcode3 / mixpanel" },
+            { url: "smartcode3/moengage.html", name: "smartcode3 / moengage" },
+            { url: "smartcode3/mparticle.html", name: "smartcode3 / mparticle" },
+            { url: "smartcode3/piano.html", name: "smartcode3 / piano" },
+            { url: "smartcode3/rudderstack.html", name: "smartcode3 / rudderstack" },
+            { url: "smartcode3/segmentpush.html", name: "smartcode3 / segmentpush" },
+            { url: "smartcode3/tealium.html", name: "smartcode3 / tealium" },
+            { url: "smartcode3/woopra.html", name: "smartcode3 / woopra" },
+            { url: "smartcode3/zoominfo.html", name: "smartcode3 / zoominfo" },
+            { url: "snowplowv2.html", name: "snowplowv2" },
+            { url: "snowplowv3.html", name: "snowplowv3" },
+            { url: "tealium.html", name: "tealium" },
+            { url: "tealiumtag.html", name: "tealiumtag" },
+            { url: "tealiumwithoutvwo.html", name: "tealiumwithoutvwo" },
+            { url: "timezonecalc.html", name: "timezonecalc" },
+            { url: "vwosupporthubspot.html", name: "vwosupporthubspot" },
+            { url: "woopra.html", name: "woopra" },
+            { url: "zeotap.html", name: "zeotap" },
+            { url: "zoominfo.html", name: "zoominfo" },
+            { url: "zoominfo1.html", name: "zoominfo1" },
+            { url: "zoominforandom.html", name: "zoominforandom" }
+        ];
+
+        // Sort pages alphabetically by name
+        pages.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Generate HTML dynamically
+        function generatePageList() {
+            let container = document.getElementById("pageList");
+            container.innerHTML = ""; // Clear previous content
+
+            pages.forEach(page => {
+                let div = document.createElement("div");
+                div.classList.add("card");
+                div.innerHTML = `<a href="${page.url}" target="_blank">${page.name}</a>`; // Opens in new tab
+                container.appendChild(div);
+            });
+        }
+
+        // Search filter function
+        function searchPages() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let cards = document.getElementsByClassName("card");
+
+            for (let i = 0; i < cards.length; i++) {
+                let text = cards[i].textContent.toLowerCase();
+                if (text.includes(input)) {
+                    cards[i].style.display = "block";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        // Call function on page load
+        window.onload = generatePageList;
+    </script>
+
+</body>
+
+</html>
