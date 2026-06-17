@@ -166,16 +166,13 @@
       });
     }
 
-    // Run when DOM is ready
+    // Bind identify only to manual button click
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById("identifyUserBtn");
 
       if (btn) {
         btn.addEventListener("click", identifyRandomUser);
       }
-
-      // Autorun once on page load
-      identifyRandomUser();
     });
   </script>
 </body>
