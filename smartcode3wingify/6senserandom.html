@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+    <script>
+        function storeVisitorInfo(data) {
+            if (typeof data !== 'object' || !data) {
+                console.error('Invalid visitor information provided.');
+                return;
+            }
+
+            try {
+                localStorage.setItem('_6senseCompanyDetails', JSON.stringify(data));
+            } catch (error) {
+                console.error('Error storing visitor info:', error);
+            }
+        }
+
+        const randomFrom = arr => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+        const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+        const randomBoolean = (probability = 0.1) => Math.random() < probability;
+
+        function generateCompanyName() {
+            const prefixes = ['Global', 'Tech', 'Innovative', 'Future', 'Smart'];
+            const suffixes = ['Solutions', 'Labs', 'Enterprises', 'Technologies', 'Group'];
+            const industries = ['Insurance', 'Software', 'Finance', 'Healthcare', 'Manufacturing'];
+            return `${randomFrom(prefixes)} ${randomFrom(suffixes)} ${randomFrom(industries)}`;
+        }
+
+        function generateCompanyDetails() {
+            const regions = ['North', 'South', 'East', 'West', 'Central'];
+            const countries = ['United States', 'Canada', 'United Kingdom'];
+            const states = {
+                'United States': ['California', 'Texas', 'New York', 'Florida'],
+                'Canada': ['Ontario', 'Quebec', 'British Columbia'],
+                'United Kingdom': ['England', 'Scotland', 'Wales']
+            };
+            const cities = {
+                'California': ['San Francisco', 'Los Angeles', 'San Diego'],
+                'Texas': ['Houston', 'Austin', 'Dallas'],
+                'Ontario': ['Toronto', 'Ottawa', 'Mississauga'],
+                'England': ['London', 'Manchester', 'Birmingham']
+            };
+
+            const country = randomFrom(countries);
+            const state = randomFrom(states[country]) || 'Unknown State';
+            const city = randomFrom(cities[state]) || 'Unknown City';
+
+            return {
+                domain: `www.${generateCompanyName().toLowerCase().replace(/ /g, '')}.com`,
+                name: generateCompanyName(),
+                region: randomFrom(regions),
+                country: country,
+                state: state,
+                city: city,
+                industry: randomFrom([
+                    'Aerospace and Defense', 'Agriculture', 'Apparel', 'Associations', 'Automotive',
+                    'Biotech', 'Business Services', 'Construction', 'Consumer Goods and Services',
+                    'Education', 'Energy and Utilities', 'Financial Services', 'Food and Beverage',
+                    'Furniture', 'Government', 'Hardware', 'Healthcare and Medical', 'Home and Garden',
+                    'Hospitality and Travel', 'Manufacturing', 'Media and Entertainment', 'Mining',
+                    'Pharmaceuticals', 'Printing and Publishing', 'Real Estate', 'Recreation',
+                    'Retail and Distribution', 'Software and Technology', 'Telecommunications',
+                    'Textiles', 'Transportation and Logistics'
+                ]),
+            };
+        }
+
+        function generateScores() {
+            const products = ['databricks', 'salesforce', 'vwo', 'hubspot', 'marketo', 'adobe'];
+            const numProducts = randomNumber(1, 3);
+            return Array.from({ length: numProducts }, () => {
+                const product = randomFrom(products);
+                return {
+                    product: product.toLowerCase(),
+                    intent_score: randomNumber(0, 100),
+                    buying_stage: randomFrom(['Purchase', 'Decision', 'Consideration', 'Awareness', 'Target']),
+                    profile_score: randomNumber(0, 100),
+                    profile_fit: randomFrom(['Strong', 'Moderate', 'Weak']),
+                    is_6qa: randomBoolean(),
+                    product_display_name: product.charAt(0).toUpperCase() + product.slice(1)
+                };
+            });
+        }
+
+        function generateSegments() {
+            const segments = ['Enterprise', 'SMB', 'Startup', 'Government', 'Non-Profit'];
+            const numSegments = randomNumber(0, 4);
+            if (numSegments === 0) {
+                return { ids: [], names: [], list: [] };
+            }
+            return {
+                ids: Array.from({ length: numSegments }, (_, i) => i + 1),
+                names: Array.from({ length: numSegments }, () => randomFrom(segments)),
+                list: Array.from({ length: numSegments }, (_, i) => ({
+                    id: i + 1,
+                    name: randomFrom(segments)
+                }))
+            };
+        }
+
+        function generateIndustryV2(industry) {
+            const subindustries = [
+                "Animals & Aquaculture", "Crops", "Auto Manufacturers", "Auto Parts & Service", "Dealerships", "Consulting", "Human Resources", "Legal", "Marketing & Advertising", "Security", "Tax, Accounting, and Audit", "Architecture & Design", "Buildings", "Contractors", "Heavy & Civil Engineering", "Apparel & Fashion", "Beauty, Health, and Wellness", "Electronics", "Food, Beverage, and Tobacco", "Manufacturing", "Retailing", "Colleges & Universities", "Schools", "Coal", "Oil & Gas", "Renewable", "Utilities", "Waste Management", "Banking", "Insurance", "Investments", "Payments", "Hospitals", "Medical Devices & Equipment", "Nursing and Care", "Lodging", "Restaurants & Bars", "Chemicals", "Containers & Packaging", "Electrical Equipment", "Industrial Machinery", "Metals & Minerals", "Textiles", "Wood & Paper", "Art & Design", "Broadcasting", "Gaming", "Movies & Music", "Printing & Publishing", "Sports", "Air Freight & Logistics", "Airlines", "Marine", "Road & Rail"
+            ];
+            return [{
+                industry: industry,
+                subindustry: randomFrom(subindustries)
+            }];
+        }
+
+        function generateVisitorInfo() {
+            const company = generateCompanyDetails();
+            const generateCompanyId = () => {
+                return Array.from({ length: 15 }, () => 
+                    randomFrom('0123456789abcdef'.split(''))
+                ).join('');
+            };
+            
+            return {
+                company: {
+                    ...company,
+                    companyId: generateCompanyId(),
+                    country_iso_code: company.country === 'United States' ? 'US' :
+                        company.country === 'Canada' ? 'CA' : 'GB',
+                    address: `${randomNumber(100, 999)} ${randomFrom(['Main', 'Oak', 'Pine'])} St`,
+                    zip: randomNumber(10000, 99999).toString(),
+                    phone: `${randomNumber(100, 999)}-${randomNumber(100, 999)}-${randomNumber(1000, 9999)}`,
+                    employee_range: randomFrom(['0-9', '10-49', '50-100', '100-500', '500-1000', '1000+']),
+                    revenue_range: randomFrom(['$1-$1M', '$1M-$10M', '$10M-$50M', '$50M-$100M', '$100M+']),
+                    employee_count: randomNumber(5, 1000).toString(),
+                    annual_revenue: randomNumber(1, 100).toString(),
+                    is_blacklisted: randomBoolean(),
+                    state_code: randomNumber(1, 50).toString(),
+                    is_6qa: randomBoolean(),
+                    geoIP_country: company.country,
+                    geoIP_state: company.state,
+                    geoIP_city: company.city,
+                    company_match: randomFrom(['Match', 'Exact Match', 'Partial Match', 'Fuzzy Match']),
+                    additional_comment: randomFrom([
+                        'Company name or domain match was found',
+                        'Domain match was found',
+                        'IP-based match',
+                        ''
+                    ]),
+                    sic_description: randomFrom(['Computer Programming Services', 'Software Publishers', 'IT Services', '']),
+                    sic: randomNumber(1000, 9999).toString(),
+                    naics: randomNumber(100, 999).toString(),
+                    naics_description: randomFrom([
+                        'Custom Computer Programming Services',
+                        'Software Publishers',
+                        'Executive, Legislative, and Other General Government Support',
+                        'Computer Systems Design Services'
+                    ]),
+                    industry_v2: generateIndustryV2(company.industry)
+                },
+                scores: generateScores(),
+                segments: generateSegments(),
+                confidence: randomFrom(['High', 'Moderate', 'Low'])
+            };
+        }
+
+        // Generate visitor info only if it's not already set
+        const existingData = localStorage.getItem('_6senseCompanyDetails');
+
+        if (!existingData) {
+            const visitorInfo = generateVisitorInfo();
+            storeVisitorInfo(visitorInfo);
+        }
+    </script>
+    <!--    <script>
+      var params = new URLSearchParams(window.location.search);
+      var delay = params.get("delay");
+      window._6si = window._6si || [];
+      window._6si.push(['enableCompanyDetails', true]);
+      window._6si.push(['setEpsilonKey', '473d1d40ce2cd18aed2fb86dc0ab36b9e8f3675e']);
+      function setScript() {
+         var gd = document.createElement('script');
+         gd.type = 'text/javascript';
+         gd.async = true;
+         gd.src = '//j.6sc.co/6si.min.js';
+         var s = document.getElementsByTagName('script')[0];
+         s.parentNode.insertBefore(gd, s);
+      };
+      setTimeout(() => {
+         setScript();
+      }, delay || 0)
+   </script> -->
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>6sense Random Integration | VWO</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- fevicon -->
+    <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/carrotlayer.css">
+
+    <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<link rel="preconnect" href="https://edge.wingify.net"/>
+<script type="text/javascript" id="wingifyCode">
+const params_id = new URLSearchParams(window.location.search);
+const accId = parseInt(params_id.get("id"), 10);
+const accountId = Number.isFinite(accId) ? accId : 736554;
+window._wingify_code || (function() {        
+    var account_id = accountId,
+        version = 3.0,
+        settings_tolerance = 2000,
+        hide_element = 'body',
+        hide_element_style =
+        'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+    /* DO NOT EDIT BELOW THIS LINE */
+    var t=window,n=document;if(-1<n.URL.indexOf('__wingify_disable__')||t._wingify_code)return;var i=!1,o=n.currentScript,e={sT:settings_tolerance,hES:hide_element_style,hE:hide_element};try{e=Object.assign(e,JSON.parse(localStorage.getItem('_wingify_'+account_id+'_config')))}catch(e){}var code={script:o,nonce:o&&o.nonce,settings_tolerance:function(){return e.sT},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':e.hE},hide_element_style:function(){return'{'+e.hES+'}'},getVersion:function(){return version},finish:function(){var e;!i&&(i=!0,e=n.getElementById('_vis_opt_path_hides'))&&e.parentNode.removeChild(e)},finished:function(){return i},addScript:function(e){var t=n.createElement('script');t.src=e,o&&o.nonce&&t.setAttribute('nonce',o.nonce),t.fetchPriority='high',n.head.appendChild(t)},init:function(){t._settings_timer=setTimeout(function(){code.finish()},this.settings_tolerance());var e=n.createElement('style');e.id='_vis_opt_path_hides',o&&o.nonce&&e.setAttribute('nonce',o.nonce),e.textContent=this.hide_element()+this.hide_element_style(),n.head.appendChild(e),this.addScript('https://edge.wingify.net/tag/'+account_id+'.js')}};t._wingify_code=code;code.init();})();
+</script>
+<!--End Wingify Async SmartCode --></head>
+
+
+</head>
+
+<body>
+    <div class="banner_section">
+        <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "44178869",
+                    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                    region: "na1"
+                });
+            </script>
+            <div class="image-section">
+                <img src="images/banner-bg.png" alt="Banner">
+            </div>
+        </div>
+    </div>
+    <!-- Only keep essential JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

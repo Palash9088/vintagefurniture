@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+    <script>
+        function getDelayFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const delayParam = params.get("delay");
+            const delay = parseInt(delayParam, 10);
+            return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+        }
+
+        var delay = getDelayFromURL();
+        console.log("[Pendo] Using delay of", delay, "ms");
+
+        setTimeout(function () {
+            console.log("[Pendo] Starting script load after", delay, "ms delay");
+            (function (apiKey) {
+                function generateRandomId(length) {
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    let result = '';
+                    for (let i = 0; i < length; i++) {
+                        result += chars.charAt(Math.floor(Math.random() * chars.length));
+                    }
+                    return result;
+                }
+
+                (function (p, e, n, d, o) {
+                    var v, w, x, y, z;
+                    o = p[d] = p[d] || {};
+                    o._q = o._q || [];
+                    v = ['initialize', 'identify', 'updateOptions', 'pageLoad', 'track'];
+                    for (w = 0, x = v.length; w < x; ++w)(function (m) {
+                        o[m] = o[m] || function () {
+                            o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0)));
+                        };
+                    })(v[w]);
+
+                    y = e.createElement(n);
+                    y.async = !0;
+                    y.src = 'https://cdn.pendo.io/agent/static/' + apiKey + '/pendo.js';
+                    z = e.getElementsByTagName(n)[0];
+                    z.parentNode.insertBefore(y, z);
+                })(window, document, 'script', 'pendo');
+
+                // Generate random visitor and account IDs
+                const visitorId = generateRandomId(10);  // 10-character random ID
+                const accountId = generateRandomId(8);   // 8-character random ID
+
+                pendo.initialize({
+                    visitor: {
+                        id: visitorId // Random visitor ID
+                    },
+                    account: {
+                        id: accountId // Random account ID
+                    }
+                });
+
+            })('cc0453e9-5e99-4dd0-701b-abecab7f4abb');
+        }, delay);
+    </script>
+
+
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Pendo Analytics Integration | VWO</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- fevicon -->
+    <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/carrotlayer.css">
+
+    <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<link rel="preconnect" href="https://edge.wingify.net"/>
+<script type="text/javascript" id="wingifyCode">
+const params_id = new URLSearchParams(window.location.search);
+const accId = parseInt(params_id.get("id"), 10);
+const accountId = Number.isFinite(accId) ? accId : 736554;
+window._wingify_code || (function() {        
+    var account_id = accountId,
+        version = 3.0,
+        settings_tolerance = 2000,
+        hide_element = 'body',
+        hide_element_style =
+        'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+    /* DO NOT EDIT BELOW THIS LINE */
+    var t=window,n=document;if(-1<n.URL.indexOf('__wingify_disable__')||t._wingify_code)return;var i=!1,o=n.currentScript,e={sT:settings_tolerance,hES:hide_element_style,hE:hide_element};try{e=Object.assign(e,JSON.parse(localStorage.getItem('_wingify_'+account_id+'_config')))}catch(e){}var code={script:o,nonce:o&&o.nonce,settings_tolerance:function(){return e.sT},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':e.hE},hide_element_style:function(){return'{'+e.hES+'}'},getVersion:function(){return version},finish:function(){var e;!i&&(i=!0,e=n.getElementById('_vis_opt_path_hides'))&&e.parentNode.removeChild(e)},finished:function(){return i},addScript:function(e){var t=n.createElement('script');t.src=e,o&&o.nonce&&t.setAttribute('nonce',o.nonce),t.fetchPriority='high',n.head.appendChild(t)},init:function(){t._settings_timer=setTimeout(function(){code.finish()},this.settings_tolerance());var e=n.createElement('style');e.id='_vis_opt_path_hides',o&&o.nonce&&e.setAttribute('nonce',o.nonce),e.textContent=this.hide_element()+this.hide_element_style(),n.head.appendChild(e),this.addScript('https://edge.wingify.net/tag/'+account_id+'.js')}};t._wingify_code=code;code.init();})();
+</script>
+<!--End Wingify Async SmartCode --></head>
+
+
+</head>
+
+<body>
+    <div class="banner_section">
+        <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "44178869",
+                    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                    region: "na1"
+                });
+            </script>
+            <div class="image-section">
+                <img src="images/banner-bg.png" alt="Banner">
+            </div>
+        </div>
+    </div>
+    <!-- Only keep essential JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

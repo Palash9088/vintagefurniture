@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script type="text/javascript">
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[Braze] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[Braze] Starting script load after", delay, "ms delay");
+         // Braze SDK initialization
+         +function (a, p, P, b, y) {
+            a.appboy = {}; a.appboyQueue = []; for (var s = "DeviceProperties BrazeSdkMetadata BrazeSdkMetadata.GOOGLE_TAG_MANAGER BrazeSdkMetadata.MPARTICLE BrazeSdkMetadata.SEGMENT BrazeSdkMetadata.TEALIUM BrazeSdkMetadata.NPM BrazeSdkMetadata.CDN BrazeSdkMetadata.MANUAL Card Card.prototype.dismissCard Card.prototype.removeAllSubscriptions Card.prototype.removeSubscription Card.prototype.subscribeToClickedEvent Card.prototype.subscribeToDismissedEvent Card.fromContentCardsJson Banner CaptionedImage ClassicCard ControlCard ContentCards ContentCards.prototype.getUnviewedCardCount Feed Feed.prototype.getUnreadCardCount ControlMessage InAppMessage InAppMessage.SlideFrom InAppMessage.ClickAction InAppMessage.DismissType InAppMessage.OpenTarget InAppMessage.ImageStyle InAppMessage.Orientation InAppMessage.TextAlignment InAppMessage.CropType InAppMessage.prototype.closeMessage InAppMessage.prototype.removeAllSubscriptions InAppMessage.prototype.removeSubscription InAppMessage.prototype.subscribeToClickedEvent InAppMessage.prototype.subscribeToDismissedEvent InAppMessage.fromJson FullScreenMessage ModalMessage HtmlMessage SlideUpMessage User User.Genders User.NotificationSubscriptionTypes User.prototype.addAlias User.prototype.addToCustomAttributeArray User.prototype.addToSubscriptionGroup User.prototype.getUserId User.prototype.incrementCustomUserAttribute User.prototype.removeFromCustomAttributeArray User.prototype.removeFromSubscriptionGroup User.prototype.setAvatarImageUrl User.prototype.setCountry User.prototype.setCustomLocationAttribute User.prototype.setCustomUserAttribute User.prototype.setDateOfBirth User.prototype.setEmail User.prototype.setEmailNotificationSubscriptionType User.prototype.setFirstName User.prototype.setGender User.prototype.setHomeCity User.prototype.setLanguage User.prototype.setLastKnownLocation User.prototype.setLastName User.prototype.setPhoneNumber User.prototype.setPushNotificationSubscriptionType InAppMessageButton InAppMessageButton.prototype.removeAllSubscriptions InAppMessageButton.prototype.removeSubscription InAppMessageButton.prototype.subscribeToClickedEvent display display.automaticallyShowNewInAppMessages display.destroyFeed display.hideContentCards display.showContentCards display.showFeed display.showInAppMessage display.toggleContentCards display.toggleFeed changeUser destroy getDeviceId initialize isPushBlocked isPushGranted isPushPermissionGranted isPushSupported logCardClick logCardDismissal logCardImpressions logContentCardsDisplayed logCustomEvent logFeedDisplayed logInAppMessageButtonClick logInAppMessageClick logInAppMessageHtmlClick logInAppMessageImpression logPurchase openSession registerAppboyPushMessages removeAllSubscriptions removeSubscription requestContentCardsRefresh requestFeedRefresh requestImmediateDataFlush resumeWebTracking enableSDK isDisabled setLogger setSdkAuthenticationSignature addSdkMetadata stopWebTracking disableSDK subscribeToContentCardsUpdates subscribeToFeedUpdates subscribeToInAppMessage subscribeToNewInAppMessages subscribeToSdkAuthenticationFailures toggleAppboyLogging trackLocation unregisterAppboyPushMessages wipeData".split(" "), i = 0; i < s.length; i++) { for (var m = s[i], k = a.appboy, l = m.split("."), j = 0; j < l.length - 1; j++)k = k[l[j]]; k[l[j]] = (new Function("return function " + m.replace(/\./g, "_") + "(){window.appboyQueue.push(arguments); return true}"))() } window.appboy.getCachedContentCards = function () { return new window.appboy.ContentCards }; window.appboy.getCachedFeed = function () { return new window.appboy.Feed }; window.appboy.getUser = function () { return new window.appboy.User }; (y = p.createElement(P)).type = 'text/javascript';
+            y.src = 'https://js.appboycdn.com/web-sdk/3.5/appboy.min.js';
+            y.async = 1; (b = p.getElementsByTagName(P)[0]).parentNode.insertBefore(y, b)
+         }(window, document, 'script');
+
+         // Initialize Braze after SDK loads
+         appboy.initialize('d6559066-2fae-4429-805c-cb09cc630a1f', {
+            "baseUrl": "sdk.fra-01.braze.eu"
+         });
+         appboy.openSession();
+      }, delay);
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Braze Integration Setup | VWO</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <!-- fevicon -->
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+   <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<link rel="preconnect" href="https://edge.wingify.net"/>
+<script type="text/javascript" id="wingifyCode">
+const params_id = new URLSearchParams(window.location.search);
+const accId = parseInt(params_id.get("id"), 10);
+const accountId = Number.isFinite(accId) ? accId : 736554;
+window._wingify_code || (function() {        
+    var account_id = accountId,
+        version = 3.0,
+        settings_tolerance = 2000,
+        hide_element = 'body',
+        hide_element_style =
+        'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important';
+    /* DO NOT EDIT BELOW THIS LINE */
+    var t=window,n=document;if(-1<n.URL.indexOf('__wingify_disable__')||t._wingify_code)return;var i=!1,o=n.currentScript,e={sT:settings_tolerance,hES:hide_element_style,hE:hide_element};try{e=Object.assign(e,JSON.parse(localStorage.getItem('_wingify_'+account_id+'_config')))}catch(e){}var code={script:o,nonce:o&&o.nonce,settings_tolerance:function(){return e.sT},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':e.hE},hide_element_style:function(){return'{'+e.hES+'}'},getVersion:function(){return version},finish:function(){var e;!i&&(i=!0,e=n.getElementById('_vis_opt_path_hides'))&&e.parentNode.removeChild(e)},finished:function(){return i},addScript:function(e){var t=n.createElement('script');t.src=e,o&&o.nonce&&t.setAttribute('nonce',o.nonce),t.fetchPriority='high',n.head.appendChild(t)},init:function(){t._settings_timer=setTimeout(function(){code.finish()},this.settings_tolerance());var e=n.createElement('style');e.id='_vis_opt_path_hides',o&&o.nonce&&e.setAttribute('nonce',o.nonce),e.textContent=this.hide_element()+this.hide_element_style(),n.head.appendChild(e),this.addScript('https://edge.wingify.net/tag/'+account_id+'.js')}};t._wingify_code=code;code.init();})();
+</script>
+<!--End Wingify Async SmartCode --><style>
+      .site-banner { width: 100%; height: 320px; overflow: hidden; line-height: 0; }
+      .site-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
+   </style>
+</head>
+
+<body>
+      <!-- Banner -->
+   <div class="site-banner" style="width:100%;height:320px;overflow:hidden;line-height:0;">
+      <img src="images/banner-bg.png" alt="Vintage Furniture" style="width:100%;height:100%;object-fit:cover;display:block;">
+   </div>
+
+   <!-- HubSpot Form -->
+   <div class="hs-form-wrap">
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+         hbspt.forms.create({
+            portalId: "44178869",
+            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+            region: "na1"
+         });
+      </script>
+   </div>
+   <!-- Only keep essential JavaScript -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
