@@ -110,68 +110,75 @@
   <script>
     // ------------ Random profile helpers ------------
     const FIRST_NAMES = ['Ava', 'Ben', 'Chloe', 'Drew', 'Ella', 'Finn', 'Gia', 'Hank'];
-    const LAST_NAMES = ['Stone', 'Lee', 'Patel', 'Garcia', 'Kim', 'Nguyen', 'Lopez', 'Wright'];
+    const LAST_NAMES  = ['Stone', 'Lee', 'Patel', 'Garcia', 'Kim', 'Nguyen', 'Lopez', 'Wright'];
     const INDIAN_CITIES = ['Mumbai', 'Delhi', 'Bengaluru', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad'];
-
+  
     function randomFrom(arr) {
       return arr[Math.floor(Math.random() * arr.length)];
     }
-
+  
     function buildRandomProfile() {
       const first = randomFrom(FIRST_NAMES);
-      const last = randomFrom(LAST_NAMES);
-      const ts = Date.now();
+      const last  = randomFrom(LAST_NAMES);
+      const ts    = Date.now();
       const email = `${first}.${last}.${ts}@example.com`.toLowerCase();
-      const phone = '+91' + Math.floor(6000000000 + Math.random() * 3000000000);
-      const city = randomFrom(INDIAN_CITIES);
+      // ✅ Valid Indian mobile range, always 10 digits
+      const phone = '+91' + Math.floor(7000000000 + Math.random() * 2000000000);
+      const city  = randomFrom(INDIAN_CITIES);
+  
       return {
-        email: email,
-        first_name: first,
-        last_name: last,
-        phone: phone,
-        title: 'Vintage Furniture Fan',
-        city: city,
-        country: 'India'
+        '$email'        : email,          // ✅ $ prefix required
+        '$first_name'   : first,
+        '$last_name'    : last,
+        '$phone_number' : phone,          // ✅ correct key name
+        '$title'        : 'Vintage Furniture Fan',
+        '$city'         : city,
+        '$country'      : 'India'
       };
     }
-
+  
     function sendIdentify(profile) {
       if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
         return Promise.resolve(window.klaviyo.identify(profile));
       }
-
       if (window.klaviyo && typeof window.klaviyo.push === 'function') {
         window.klaviyo.push(['identify', profile]);
         return Promise.resolve(null);
       }
-
       return Promise.reject(new Error('Klaviyo object is unavailable'));
     }
-
+  
     // ------------ Identify flow ------------
     function identifyRandomUser(opts) {
       const options = opts || {};
+  
+      // ✅ Actually use the sessionStorage guard
+      if (!options.force && sessionStorage.getItem('kl_identified_email')) {
+        console.log('[Klaviyo] already identified this session, skipping');
+        return;
+      }
+  
       const profile = buildRandomProfile();
-      sendIdentify(profile).then(function (result) {
-        if (!options.force) {
-          sessionStorage.setItem('kl_identified_email', profile.email);
-        }
-        console.log('[Klaviyo] identify completed', {
-          email: profile.email,
-          result: result,
-          time: new Date().toISOString()
+  
+      sendIdentify(profile)
+        .then(function (result) {
+          sessionStorage.setItem('kl_identified_email', profile['$email']);
+          console.log('[Klaviyo] identify completed', {
+            email : profile['$email'],
+            result: result,
+            time  : new Date().toISOString()
+          });
+        })
+        .catch(function (err) {
+          console.warn('[Klaviyo] identify failed', err);
         });
-      }).catch(function (err) {
-        console.warn('[Klaviyo] identify failed', err);
-      });
     }
-
-    // Bind identify only to manual button click
+  
+    // ✅ Wrap listener so click Event isn't passed as opts
     document.addEventListener('DOMContentLoaded', function () {
-      var btn = document.getElementById("identifyUserBtn");
-
+      var btn = document.getElementById('identifyUserBtn');
       if (btn) {
-        btn.addEventListener("click", identifyRandomUser);
+        btn.addEventListener('click', function () { identifyRandomUser(); });
       }
     });
   </script>
