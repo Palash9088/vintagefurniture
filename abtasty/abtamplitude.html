@@ -271,7 +271,7 @@
     function identifyAmplitudeUser() {
       var idx = Math.floor(Math.random() * names.length);
       var userId = names[idx] + lastNames[idx] + '_' + Date.now();
-      var email = names[idx] + '.' + lastNames[idx] + '@example.com';
+      var email = names[idx] + '.' + lastNames[idx] + '@wingify.com';
       if (window.amplitude) {
         amplitude.getInstance().setUserId(userId);
         var identify = new amplitude.Identify();
