@@ -212,7 +212,7 @@
         background: var(--hub-surface);
         border: 1px solid #e8eaed;
         border-radius: 10px;
-        padding: 0.875rem 1rem;
+        padding: 1rem 1.125rem;
         box-shadow: var(--hub-shadow);
         transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
       }
@@ -224,23 +224,13 @@
       .hub-card a {
         color: var(--hub-text);
         text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 1.35;
         display: block;
         word-break: break-word;
       }
       .hub-card a:hover { color: var(--hub-accent); }
-      .hub-card .hub-card-badge {
-        display: inline-block;
-        margin-top: 0.35rem;
-        font-size: 0.6875rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        padding: 0.15rem 0.4rem;
-        border-radius: 4px;
-        color: #fff;
-      }
       .hub-no-results {
         text-align: center;
         padding: 3rem 1rem;
@@ -290,16 +280,17 @@
     return { envMap, catLabels };
   }
 
+  function getPageDisplayName(page) {
+    const parts = page.name.split(' / ');
+    return parts.length > 1 ? parts[parts.length - 1] : page.name;
+  }
+
   function renderCard(page, options) {
     const url = resolveUrl(page, options);
-    const colors = ENV_COLORS[page.environment] || ENV_COLORS.vwo;
-    const displayName = options.scope
-      ? page.name.replace(/^[^/]+\s\/\s/, '')
-      : page.name;
+    const displayName = getPageDisplayName(page);
     return `
-      <article class="hub-card" data-search="${page.name.toLowerCase()} ${page.category}">
+      <article class="hub-card" data-search="${displayName.toLowerCase()} ${page.name.toLowerCase()} ${page.category}">
         <a href="${url}">${displayName}</a>
-        ${options.scope ? '' : `<span class="hub-card-badge" style="background:${colors.badge}">${page.environment}</span>`}
       </article>`;
   }
 

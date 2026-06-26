@@ -1,0 +1,109 @@
+.sc3-banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a2e 0%, #3d2b1f 50%, #0f3460 100%);
+}
+
+.sc3-banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sc3-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(15, 23, 42, 0.75) 0%,
+    rgba(15, 23, 42, 0.35) 45%,
+    rgba(26, 115, 232, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+.sc3-banner__content {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.sc3-banner__badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(46, 125, 50, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.5rem;
+}
+
+.sc3-banner__title {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sc3-banner__hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.sc3-banner__score {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.sc3-target {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  background: radial-gradient(circle at 35% 35%, #ffeb3b, #ff9800 55%, #e65100);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35), 0 4px 20px rgba(255, 152, 0, 0.6);
+  transition: transform 0.1s ease;
+  padding: 0;
+}
+
+.sc3-target:hover {
+  transform: scale(1.12);
+}
+
+.sc3-target:active,
+.sc3-target.sc3-target--hit {
+  transform: scale(0.85);
+}
+
+.sc3-target.sc3-target--hit {
+  box-shadow: 0 0 0 6px rgba(76, 175, 80, 0.8), 0 0 24px rgba(76, 175, 80, 0.6);
+}
+
+@media (max-width: 600px) {
+  .sc3-banner { height: 260px; }
+  .sc3-banner__content { left: 1rem; bottom: 1rem; }
+  .sc3-target { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+}
