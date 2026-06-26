@@ -12,6 +12,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -106,4 +107,32 @@
   .sc3-banner { height: 260px; }
   .sc3-banner__content { left: 1rem; bottom: 1rem; }
   .sc3-target { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+}
+
+/* Photo banner (e.g. Hanushree Jewelers) — lighter overlay, no duplicate title */
+.sc3-banner--hanu .sc3-banner__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(15, 23, 42, 0.15) 55%,
+    rgba(15, 23, 42, 0.5) 100%
+  );
+}
+
+.sc3-banner--hanu .sc3-banner__img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.sc3-banner--hanu .sc3-banner__title {
+  display: none;
+}
+
+.sc3-banner--hanu .sc3-banner__hint {
+  font-size: 0.8125rem;
+  opacity: 0.95;
+}
+
+.sc3-banner--hanu .sc3-banner__content {
+  bottom: 1.25rem;
 }

@@ -6,8 +6,8 @@ const ROOT = path.join(__dirname, '..');
 const DIR = path.join(ROOT, 'smartcode3wingify');
 const BADGE = 'SmartCode 3.0 with Wingify';
 
-const BANNER = `      <div class="sc3-banner" id="sc3Banner">
-         <img src="../images/banner-bg.png" alt="Vintage Furniture" class="sc3-banner__img" width="1920" height="400" decoding="async">
+const BANNER = `      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
          <div class="sc3-banner__overlay"></div>
          <div class="sc3-banner__content">
             <span class="sc3-banner__badge">${BADGE}</span>
