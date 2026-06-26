@@ -104,35 +104,48 @@
 }
 
 @media (max-width: 600px) {
-  .sc3-banner { height: 260px; }
-  .sc3-banner__content { left: 1rem; bottom: 1rem; }
+  .sc3-banner:not(.sc3-banner--hanu) { height: 260px; }
+  .sc3-banner--hanu .sc3-banner__content { left: 1rem; bottom: 1rem; }
   .sc3-target { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
 }
 
-/* Photo banner (e.g. Hanushree Jewelers) — lighter overlay, no duplicate title */
-.sc3-banner--hanu .sc3-banner__overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(15, 23, 42, 0.15) 55%,
-    rgba(15, 23, 42, 0.5) 100%
-  );
+/* Hanu photo banner — full image (16:9, no crop) */
+.sc3-banner--hanu {
+  height: auto;
+  aspect-ratio: 2048 / 1152;
+  max-height: none;
+  background: #f0eeeb;
 }
 
 .sc3-banner--hanu .sc3-banner__img {
-  object-fit: cover;
-  object-position: center 42%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.sc3-banner--hanu .sc3-banner__overlay {
+  background: linear-gradient(180deg, transparent 50%, rgba(15, 23, 42, 0.42) 100%);
 }
 
 .sc3-banner--hanu .sc3-banner__title {
   display: none;
 }
 
-.sc3-banner--hanu .sc3-banner__hint {
-  font-size: 0.8125rem;
-  opacity: 0.95;
+.sc3-banner--hanu .sc3-banner__content {
+  left: 2rem;
+  right: auto;
+  top: auto;
+  bottom: 1rem;
+  text-align: left;
 }
 
-.sc3-banner--hanu .sc3-banner__content {
-  bottom: 1.25rem;
+/* Tight spacing below banner on wingify pages */
+.sc3-page-body .hs-form-wrap,
+.sc3-page-body .banner_section,
+.sc3-page-body .form {
+  margin-top: 0 !important;
+  padding-top: 1.25rem;
+}
+
+.sc3-page-body .banner_section .container {
+  padding-top: 0;
 }
