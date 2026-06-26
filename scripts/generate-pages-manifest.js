@@ -10,11 +10,11 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
 const ENV_CONFIG = {
-  vwo: { id: 'vwo', label: 'VWO (Root)', order: 1 },
-  smartcode3: { id: 'smartcode3', label: 'SmartCode 3', order: 2 },
-  abtasty: { id: 'abtasty', label: 'AB Tasty', order: 3 },
-  codewingify: { id: 'codewingify', label: 'Wingify', order: 4 },
-  smartcode3wingify: { id: 'smartcode3wingify', label: 'Wingify V3', order: 5 },
+  vwo: { id: 'vwo', label: 'VWO (Root)', order: 1, smartCode: 'SmartCode 2.2 with VWO' },
+  smartcode3: { id: 'smartcode3', label: 'SmartCode 3', order: 2, smartCode: 'SmartCode 3.0' },
+  abtasty: { id: 'abtasty', label: 'AB Tasty', order: 3, smartCode: 'AB Tasty + VWO' },
+  codewingify: { id: 'codewingify', label: 'Wingify', order: 4, smartCode: 'Wingify SmartCode 2.2' },
+  smartcode3wingify: { id: 'smartcode3wingify', label: 'Wingify V3', order: 5, smartCode: 'SmartCode 3.0 with Wingify' },
 };
 
 const CATEGORY_RULES = [

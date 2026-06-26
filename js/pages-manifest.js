@@ -1,33 +1,38 @@
 /**
  * Shared page manifest for integration test fixtures.
- * Regenerate: find . -name '*.html' | grep -v index.html | node scripts/generate-pages-manifest.js
+ * Regenerate: node scripts/generate-pages-manifest.js
  */
 window.PAGE_MANIFEST = {
   environments: [
   {
     "id": "vwo",
     "label": "VWO (Root)",
-    "order": 1
+    "order": 1,
+    "smartCode": "SmartCode 2.2 with VWO"
   },
   {
     "id": "smartcode3",
     "label": "SmartCode 3",
-    "order": 2
+    "order": 2,
+    "smartCode": "SmartCode 3.0"
   },
   {
     "id": "abtasty",
     "label": "AB Tasty",
-    "order": 3
+    "order": 3,
+    "smartCode": "AB Tasty + VWO"
   },
   {
     "id": "codewingify",
     "label": "Wingify",
-    "order": 4
+    "order": 4,
+    "smartCode": "Wingify SmartCode 2.2"
   },
   {
     "id": "smartcode3wingify",
     "label": "Wingify V3",
-    "order": 5
+    "order": 5,
+    "smartCode": "SmartCode 3.0 with Wingify"
   }
 ],
   categories: [

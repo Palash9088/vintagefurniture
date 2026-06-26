@@ -166,6 +166,24 @@
         border-radius: 999px;
         background: rgba(0,0,0,0.06);
       }
+      .hub-env-smartcode {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        padding: 0.25rem 0.625rem;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.08);
+        white-space: nowrap;
+      }
+      .hub-smartcode-pill {
+        display: inline-block;
+        margin-top: 0.75rem;
+        padding: 0.35rem 0.875rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.35);
+      }
       .hub-category {
         margin-bottom: 1.25rem;
       }
@@ -308,7 +326,8 @@
         .filter((env) => envMap.has(env.id))
         .map((env) => {
           const colors = ENV_COLORS[env.id] || ENV_COLORS.vwo;
-          return `<a class="hub-jump-link" href="#env-${env.id}" style="color:${colors.badge};border-color:${colors.badge};background:${colors.bg}">${env.label}</a>`;
+          const versionHint = env.smartCode ? ` title="${env.smartCode}"` : '';
+          return `<a class="hub-jump-link" href="#env-${env.id}"${versionHint} style="color:${colors.badge};border-color:${colors.badge};background:${colors.bg}">${env.label}</a>`;
         })
         .join('');
     }
@@ -335,10 +354,15 @@
           </details>`;
       });
 
+      const smartCodeBadge = env.smartCode
+        ? `<span class="hub-env-smartcode">${env.smartCode}</span>`
+        : '';
+
       sections += `
         <section class="hub-env-section" id="env-${env.id}">
           <div class="hub-env-header" style="background:${colors.bg};border-color:${colors.border}">
             <h2>${env.label}</h2>
+            ${smartCodeBadge}
             <span class="hub-env-count">${envPageCount} pages</span>
           </div>
           ${categoriesHtml}
@@ -349,10 +373,15 @@
       ? `<a class="hub-master-link" href="${options.masterIndexUrl}">View Master Index</a>`
       : '';
 
+    const smartCodePill = options.smartCode
+      ? `<div class="hub-smartcode-pill">${options.smartCode}</div>`
+      : '';
+
     document.body.innerHTML = `
       <header class="hub-header">
         <h1>${options.title || 'Integration Test Hub'}</h1>
         <p>${headerSubtitle}</p>
+        ${smartCodePill}
         <div class="hub-stats">
           <div class="hub-stat"><strong>${totalPages}</strong> fixtures</div>
           <div class="hub-stat"><strong>${envCount}</strong> environments</div>
