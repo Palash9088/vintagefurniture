@@ -93,61 +93,23 @@
   document.head.appendChild(script);
 })();
 </script>
-<!--End Wingify Async SmartCode --></head>
+<!--End Wingify Async SmartCode -->   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css">
+</head>
 
 <body>
-   <script>
-      function storeVisitorInfo(data) {
-         // Validate data type and presence
-         if (typeof data !== 'object' || !data) {
-            console.error('Invalid visitor information provided.');
-            return;
-         }
+      <div class="sc3-banner" id="sc3Banner">
+         <img src="../images/banner-bg.png" alt="Vintage Furniture" class="sc3-banner__img" width="1920" height="400" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
 
-         // Convert data to a string (safe for local storage)
-         const stringifiedData = JSON.stringify(data);
-
-         try {
-            // Store the data in local storage
-            localStorage.setItem('_ziVisitorInfo', stringifiedData);
-            console.log('Visitor information successfully stored.');
-         } catch (error) {
-            console.error('Error storing visitor info:', error);
-         }
-      }
-
-      // Replace with your actual visitor information
-      const visitorInfo = {
-         status: "success",
-         ziDetails: {
-            ip: "49.43.3.106",
-            companyName: "Kelly",
-            revenue: 4837300000,
-            employeeCount: 7500,
-            primaryIndustry: "Business Services",
-            state: "Michigan",
-            zipCode: "48084",
-            street: "999 W Big Beaver Rd",
-            city: "Troy",
-            country: "United States",
-            ticker: "NASDAQ: KELYA",
-            website: "www.kellyservices.com",
-            naicsCodes: ["56", "561", "5613", "56131", "561311"],
-            sicCodes: ["73", "736", "7361", "72", "729", "7299"]
-         }
-      };
-
-      // Delay the execution of storeVisitorInfo by 3 seconds
-      setTimeout(function () {
-         storeVisitorInfo(visitorInfo);
-      }, 4000); // 4 milliseconds = 3 seconds
-
-
-   </script>
-
-   </head>
-
-   <body>
       <div class="banner_section">
          <div class="container">
             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
@@ -158,14 +120,12 @@
                   region: "na1"
                });
             </script>
-            <div class="image-section">
-               <img src="images/banner-bg.png" alt="Banner">
             </div>
-         </div>
       </div>
       <!-- Only keep essential JavaScript -->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-   </body>
+         <script src="../js/smartcode3-banner.js" defer></script>
+</body>
 
 </html>

@@ -99,69 +99,23 @@
   document.head.appendChild(script);
 })();
 </script>
-<!--End Wingify Async SmartCode --></head>
+<!--End Wingify Async SmartCode -->
+   <link rel="stylesheet" href="../css/smartcode3-banner.css">
+</head>
 
 <body>
-    <style>
-        .banner_section {
-            width: 100%;
-            padding: 40px 0;
-            background-color: #f8f9fa;
-        }
+      <div class="sc3-banner" id="sc3Banner">
+         <img src="../images/banner-bg.png" alt="Vintage Furniture" class="sc3-banner__img" width="1920" height="400" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .form-section {
-            flex: 2;
-            min-width: 0;
-        }
-
-        .image-section {
-            flex: 2;
-            min-width: 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* HubSpot Form Styling */
-        .hs-form-frame {
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .banner_section {
-                padding: 20px 0;
-            }
-
-            .hs-form-frame {
-                padding: 20px;
-            }
-        }
-    </style>
-    </head>
-
-    <body>
         <div class="banner_section">
             <div class="container">
                 <div class="form-section">
@@ -174,14 +128,12 @@
                         });
                     </script>
                 </div>
-                <div class="image-section">
-                    <img src="images/banner-bg.png" alt="Banner">
                 </div>
-            </div>
         </div>
         <!-- Only keep essential JavaScript -->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
-    </body>
+          <script src="../js/smartcode3-banner.js" defer></script>
+</body>
 
 </html>

@@ -191,10 +191,28 @@
             flex: 1;
         }
     </style>
-
+   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css">
 </head>
 
 <body>
+      <div class="sc3-banner" id="sc3Banner">
+         <img src="../images/banner-bg.png" alt="Vintage Furniture" class="sc3-banner__img" width="1920" height="400" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+
+            </div>
+         </div>
+         </div>
+         </div>
+
 
     <header>
         <h1>Welcome to Our Interactive Web Page</h1>
@@ -300,6 +318,7 @@
         });
     </script>
 
+      <script src="../js/smartcode3-banner.js" defer></script>
 </body>
 
 </html>
