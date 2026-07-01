@@ -94,7 +94,7 @@
  
   <!-- Klaviyo identify utility and autorun -->
 <script>
-  // ------------ Random profile + VWO UUID helpers ------------
+  // ------------ Random profile + Wingify UUID helpers ------------
   const FIRST_NAMES = ['Ava', 'Ben', 'Chloe', 'Drew', 'Ella', 'Finn', 'Gia', 'Hank'];
   const LAST_NAMES = ['Stone', 'Lee', 'Patel', 'Garcia', 'Kim', 'Nguyen', 'Lopez', 'Wright'];
   const INDIAN_CITIES = ['Mumbai', 'Delhi', 'Bengaluru', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad'];
@@ -121,26 +121,16 @@
     };
   }
 
-  function getVwoUuidFromCookie() {
-    const match = document.cookie.match(/(?:^|;\s*)_vwo_uuid=([^;]+)/);
-    return match ? decodeURIComponent(match[1]) : null;
-  }
-
-  function getVwoUuidFromDataStore() {
+  function resolveWingifyUUID() {
     try {
-      return window.VWO && window.VWO._ && window.VWO._.allSettings &&
-        window.VWO._.allSettings.dataStore &&
-        window.VWO._.allSettings.dataStore.uuid
-        ? window.VWO._.allSettings.dataStore.uuid
+      return window.Wingify && window.Wingify._ && window.Wingify._.libUtils &&
+        window.Wingify._.libUtils.uuid
+        ? window.Wingify._.libUtils.uuid
         : null;
     } catch (e) {
-      console.warn('Error reading VWO dataStore uuid', e);
+      console.warn('[Klaviyo] Error reading Wingify UUID', e);
       return null;
     }
-  }
-
-  function resolveVwoUUID() {
-    return getVwoUuidFromCookie() || getVwoUuidFromDataStore() || null;
   }
 
   function alreadyIdentified(uuid) {
@@ -156,56 +146,67 @@
   // ------------ Identify flow ------------
   function identifyRandomUser(opts) {
     const options = opts || {};
-    const vwoUuid = resolveVwoUUID();
+    const wingifyUuid = resolveWingifyUUID();
 
-    // If we require a VWO UUID but it's missing, log and skip unless forced
-    if (!vwoUuid && !options.force) {
-      console.warn('[Klaviyo] No VWO UUID found in cookie or dataStore; identification skipped.');
-      return;
+    if (!wingifyUuid && !options.force) {
+      console.warn('[Klaviyo] No Wingify UUID found (Wingify._.libUtils.uuid); identification skipped.');
+      return false;
     }
 
-    // Avoid duplicate identify with the same UUID
-    if (!options.force && vwoUuid && alreadyIdentified(vwoUuid)) {
-      console.log('[Klaviyo] Skip identify; UUID already identified', vwoUuid);
-      return;
+    if (!options.force && wingifyUuid && alreadyIdentified(wingifyUuid)) {
+      console.log('[Klaviyo] Skip identify; UUID already identified', wingifyUuid);
+      return false;
     }
 
     const profile = buildRandomProfile();
-    if (vwoUuid) {
-      profile.vwo_uuid = vwoUuid;
+    if (wingifyUuid) {
+      profile.wingify_uuid = wingifyUuid;
     }
 
-    // Ensure Klaviyo queues exist
     window._learnq = window._learnq || [];
     window.klaviyo = window.klaviyo || [];
 
-    // Legacy Klaviyo queue
     window._learnq.push(['identify', profile]);
 
-    // New Klaviyo SDK if present
     if (typeof window.klaviyo !== 'undefined' && window.klaviyo.push) {
       window.klaviyo.push(['identify', profile]);
     }
 
-    rememberIdentification(vwoUuid || 'no-uuid', profile.$email);
+    rememberIdentification(wingifyUuid || 'no-uuid', profile.$email);
 
     console.log('[Klaviyo] Identified user', {
       email: profile.$email,
-      vwo_uuid: vwoUuid || 'not available',
+      wingify_uuid: wingifyUuid || 'not available',
       time: new Date().toISOString()
     });
+    return true;
   }
 
-  // Run when DOM is ready
-  document.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById("identifyUserBtn");
-
-    if (btn) {
-      btn.addEventListener("click", identifyRandomUser);
+  function autorunIdentifyWhenReady() {
+    if (identifyRandomUser()) {
+      return;
     }
 
-    // Autorun once per browser (only if we have a UUID)
-    identifyRandomUser();
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts++;
+      if (identifyRandomUser()) {
+        clearInterval(timer);
+      } else if (attempts >= 50) {
+        clearInterval(timer);
+        console.warn('[Klaviyo] Wingify UUID not available after waiting; identification skipped.');
+      }
+    }, 100);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('identifyUserBtn');
+
+    if (btn) {
+      btn.addEventListener('click', identifyRandomUser);
+    }
+
+    autorunIdentifyWhenReady();
   });
 </script>
       <script src="../js/smartcode3-banner.js" defer></script>
