@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+<!-- Commanders Act: random tc_vars data layer (runs before VWO) -->
+    <script>
+        const CA_STORAGE_KEY = '_commandersActVars_v6';
+
+        const SEGMENT_POOL = [
+            { name: 'VIP_Prospects', id: '27ADB1DB' },
+            { name: 'New_Customers', id: '8D7C4F70' },
+            { name: 'Enterprise_Buyers', id: 'F92C4F26' },
+            { name: 'SMB_Users', id: 'BBFAC450' },
+            { name: 'Returning_Visitors', id: '3DCC6A0A' }
+        ];
+
+        const randomFrom = arr => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+        const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+        function toSegmentJsonString(value) {
+            if (typeof value === 'string') {
+                try {
+                    const parsed = JSON.parse(value);
+                    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+                        return JSON.stringify(parsed);
+                    }
+                } catch (error) {
+                    return null;
+                }
+            }
+
+            if (value && typeof value === 'object' && !Array.isArray(value)) {
+                return JSON.stringify(value);
+            }
+
+            return null;
+        }
+
+        function isValidSegmentJsonString(value) {
+            return typeof toSegmentJsonString(value) === 'string';
+        }
+
+
+        function randomUserId() {
+            return 'usr_' + Array.from({ length: 12 }, () =>
+                randomFrom('0123456789abcdef'.split(''))
+            ).join('');
+        }
+
+        function generateSegments() {
+            const numSegments = randomNumber(1, 3);
+            const shuffled = SEGMENT_POOL.slice().sort(function () { return Math.random() - 0.5; });
+            const selected = shuffled.slice(0, numSegments);
+            const segmentMap = {};
+
+            selected.forEach(function (segment) {
+                segmentMap[segment.name] = segment.id;
+            });
+
+            return {
+                tc_data_segmentID: JSON.stringify(segmentMap)
+            };
+        }
+
+        function generateTcVars() {
+            const pageNames = [
+                'Vintage Furniture Shop',
+                'Antique Chairs Collection',
+                'Classic Tables Gallery',
+                'Heritage Home Decor',
+                'Retro Living Essentials'
+            ];
+            const productNames = ['Vintage Chair', 'Antique Lamp', 'Classic Table', 'Retro Sofa', 'Heritage Cabinet'];
+            const segments = generateSegments();
+            const productName = randomFrom(productNames);
+            const productPrice = randomNumber(49, 999);
+
+            return {
+                env_work: 'prod',
+                env_channel: 'web',
+                env_language: 'en',
+                env_country: randomFrom(['US', 'CA', 'GB', 'FR']),
+                env_template: randomFrom(['homepage', 'product', 'category', 'checkout']),
+
+                page_type: randomFrom(['Homepage', 'product_list', 'product_detail', 'checkout']),
+                page_name: randomFrom(pageNames),
+                page_category_1: 'Furniture',
+                page_category_2: 'Vintage',
+                page_category_3: '',
+
+                user_id: randomUserId(),
+                user_email: 'user' + randomNumber(100, 999) + '@example.com',
+                user_type: randomFrom(['new', 'returning', 'guest']),
+                user_status: randomFrom(['logged_in', 'anonymous']),
+
+                tc_data_segmentID: segments.tc_data_segmentID,
+
+                product_id: 'SKU_' + randomNumber(10000, 99999),
+                product_name: productName,
+                product_price: productPrice,
+                product_category: randomFrom(['Chairs', 'Tables', 'Lighting', 'Storage', 'Decor']),
+                product_quantity: randomNumber(1, 3),
+                cart_value: productPrice * randomNumber(1, 3),
+                currency: 'USD'
+            };
+        }
+
+        function storeTcVars(data) {
+            if (typeof data !== 'object' || !data) {
+                console.error('[Commanders Act] Invalid tc_vars data.');
+                return;
+            }
+            try {
+                localStorage.setItem(CA_STORAGE_KEY, JSON.stringify(data));
+            } catch (error) {
+                console.error('[Commanders Act] Error storing tc_vars:', error);
+            }
+        }
+
+        function applyTcVars(data) {
+            let segmentJson = toSegmentJsonString(data.tc_data_segmentID);
+
+            if (!segmentJson) {
+                console.warn('[Commanders Act] Invalid tc_data_segmentID, regenerating tc_vars.');
+                data = generateTcVars();
+                storeTcVars(data);
+                segmentJson = data.tc_data_segmentID;
+            }
+
+            window.tc_vars = Object.assign({}, window.tc_vars || {}, data, {
+                tc_data_segmentID: segmentJson
+            });
+
+            console.log('[Commanders Act] tc_data_segmentID type:', typeof window.tc_vars.tc_data_segmentID);
+            console.log('[Commanders Act] tc_data_segmentID value:', window.tc_vars.tc_data_segmentID);
+        }
+
+        (function initCommandersActDataLayer() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('reset') === '1') {
+                localStorage.removeItem('_commandersActVars');
+                localStorage.removeItem('_commandersActVars_v2');
+                localStorage.removeItem('_commandersActVars_v3');
+                localStorage.removeItem('_commandersActVars_v4');
+                localStorage.removeItem('_commandersActVars_v5');
+                localStorage.removeItem(CA_STORAGE_KEY);
+            }
+
+            let tcVarsData;
+            const existingData = localStorage.getItem(CA_STORAGE_KEY);
+
+            if (existingData) {
+                try {
+                    tcVarsData = JSON.parse(existingData);
+                    if (!isValidSegmentJsonString(tcVarsData.tc_data_segmentID)) {
+                        console.warn('[Commanders Act] Stored segment format invalid, regenerating.');
+                        tcVarsData = generateTcVars();
+                        storeTcVars(tcVarsData);
+                    }
+                } catch (error) {
+                    console.warn('[Commanders Act] Invalid stored tc_vars, regenerating.');
+                    tcVarsData = generateTcVars();
+                    storeTcVars(tcVarsData);
+                }
+            } else {
+                tcVarsData = generateTcVars();
+                storeTcVars(tcVarsData);
+            }
+
+            applyTcVars(tcVarsData);
+        })();
+    </script>
+        <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Commanders Act Random Integration | Wingify</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="../images/favicon.png" type="image/gif" />
+    <link rel="stylesheet" href="../css/carrotlayer.css">
+
+<!-- Start Wingify Async SmartCode -->
+<link rel="preconnect" href="https://edge.wingify.net"/>
+<script type='text/javascript'>
+      const params_id = new URLSearchParams(window.location.search);
+      const accId = parseInt(params_id.get("id"));
+      const accountId = accId || 736554;
+      window._wingify_code ||
+      (function () {
+      var w=window,
+      d=document;
+      var account_id=accountId,
+      version=2.2,
+      settings_tolerance=2000,
+      hide_element='body',
+      hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+/* DO NOT EDIT BELOW THIS LINE */
+var f=0, v;
+if(f=!1,v=d.currentScript,cc={},-1<d.URL.indexOf('__wingify_disable__')||w._wingify_code)return;try{var e=JSON.parse(localStorage.getItem('_wingify_'+account_id+'_config'));cc=e&&'object'==typeof e?e:{}}catch(e){}function r(t){try{return decodeURIComponent(t)}catch(e){return t}}var s=function(){var e={combination:[],combinationChoose:[],split:[],exclude:[],uuid:null,consent:null,optOut:null},t=d.cookie||'';if(!t)return e;for(var n,i,o=/(?:^|;\s*)(?:(_vis_opt_exp_(\d+)_combi=([^;]*))|(_vis_opt_exp_(\d+)_combi_choose=([^;]*))|(_vis_opt_exp_(\d+)_split=([^:;]*))|(_vis_opt_exp_(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]*))|(_wingify_global_opt_out=[^;]*)|(_wingify_uuid=([^;]*))|(_wingify_consent=([^;]*)))/g;null!==(n=o.exec(t));)try{n[1]?e.combination.push({id:n[2],value:r(n[3])}):n[4]?e.combinationChoose.push({id:n[5],value:r(n[6])}):n[7]?e.split.push({id:n[8],value:r(n[9])}):n[10]?e.exclude.push({id:n[11]}):n[12]?e.optOut=r(n[13]):n[14]?e.optOut=!0:n[15]?e.uuid=r(n[16]):n[17]&&(i=r(n[18]),e.consent=i&&3<=i.length?i.substring(0,3):null)}catch(e){}return e}();function i(){var e=function(){if(w.Wingify&&Array.isArray(w.Wingify))for(var e=0;e<w.Wingify.length;e++){var t=w.Wingify[e];if(Array.isArray(t)&&('setVisitorId'===t[0]||'setSessionId'===t[0]))return!0}return!1}(),t='a='+account_id+'&u='+encodeURIComponent(w._vis_opt_url||d.URL)+'&vn='+version+'&ph=1'+('undefined'!=typeof platform?'&p='+platform:'')+'&st='+w.performance.now();e||((n=function(){var e,t=[],n={},i=w.Wingify&&w.Wingify.appliedCampaigns||{};for(e in i){var o=i[e]&&i[e].v;o&&(t.push(e+'-'+o+'-1'),n[e]=!0)}if(s&&s.combination)for(var r=0;r<s.combination.length;r++){var a=s.combination[r];n[a.id]||t.push(a.id+'-'+a.value)}return t.join('|')}())&&(t+='&c='+n),(n=function(){var e=[],t={};if(s&&s.combinationChoose)for(var n=0;n<s.combinationChoose.length;n++){var i=s.combinationChoose[n];e.push(i.id+'-'+i.value),t[i.id]=!0}if(s&&s.split)for(var o=0;o<s.split.length;o++)t[(i=s.split[o]).id]||e.push(i.id+'-'+i.value);return e.join('|')}())&&(t+='&cc='+n),(n=function(){var e={},t=[];if(w.Wingify&&Array.isArray(w.Wingify))for(var n=0;n<w.Wingify.length;n++){var i=w.Wingify[n];if(Array.isArray(i)&&'setVariation'===i[0]&&i[1]&&Array.isArray(i[1]))for(var o=0;o<i[1].length;o++){var r,a=i[1][o];a&&'object'==typeof a&&(r=a.e,a=a.v,r&&a&&(e[r]=a))}}for(r in e)t.push(r+'-'+e[r]);return t.join('|')}())&&(t+='&sv='+n)),s&&s.optOut&&(t+='&o='+s.optOut);var n=function(){var e=[],t={};if(s&&s.exclude)for(var n=0;n<s.exclude.length;n++){var i=s.exclude[n];t[i.id]||(e.push(i.id),t[i.id]=!0)}return e.join('|')}();return n&&(t+='&e='+n),s&&s.uuid&&(t+='&id='+s.uuid),s&&s.consent&&(t+='&consent='+s.consent),w.name&&-1<w.name.indexOf('_vis_preview')&&(t+='&pM=true'),w.Wingify&&w.Wingify.ed&&(t+='&ed='+w.Wingify.ed),t}code={script:v,nonce:v&&v.nonce,library_tolerance:function(){return'undefined'!=typeof library_tolerance?library_tolerance:void 0},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':'string'==typeof cc.hE?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){var t;f||(f=!0,(t=d.getElementById('_vis_opt_path_hides'))&&t.parentNode.removeChild(t),e&&((new Image).src='https://edge.wingify.net/ee.gif?a='+account_id+e))},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript',e.src?t.src=e.src:t.text=e.text,v&&t.setAttribute('nonce',v.nonce),d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){t=t||{};var n=new XMLHttpRequest;n.open('GET',e,!0),n.withCredentials=!t.dSC,n.responseType=t.responseType||'text',n.onload=function(){if(t.onloadCb)return t.onloadCb(n,e);200===n.status?_wingify_code.addScript({text:n.responseText}):_wingify_code.finish('&e=loading_failure:'+e)},n.onerror=function(){if(t.onerrorCb)return t.onerrorCb(e);_wingify_code.finish('&e=loading_failure:'+e)},n.send()},init:function(){var e,t=this.settings_tolerance();w._settings_timer=setTimeout(function(){_wingify_code.finish()},t),'body'!==this.hide_element()?(n=d.createElement('style'),e=(t=this.hide_element())?t+this.hide_element_style():'',t=d.getElementsByTagName('head')[0],n.setAttribute('id','_vis_opt_path_hides'),v&&n.setAttribute('nonce',v.nonce),n.setAttribute('type','text/css'),n.styleSheet?n.styleSheet.cssText=e:n.appendChild(d.createTextNode(e)),t.appendChild(n)):(n=d.getElementsByTagName('head')[0],(e=d.createElement('div')).style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;',e.setAttribute('id','_vis_opt_path_hides'),e.classList.add('_vis_hide_layer'),n.parentNode.insertBefore(e,n.nextSibling));var n='https://edge.wingify.net/j.php?'+i();-1!==w.location.search.indexOf('_wingify_xhr')?this.addScript({src:n}):this.load(n+'&x=true',{l:1})}};w._wingify_code=code;code.init();})();
+</script>
+<!-- End Wingify Async SmartCode -->
+</head>
+
+<body>
+    <div class="banner_section">
+        <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "44178869",
+                    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                    region: "na1"
+                });
+            </script>
+            <div class="image-section">
+                <img src="../images/banner.hanu.png" alt="Hanu">
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

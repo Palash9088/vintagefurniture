@@ -469,6 +469,12 @@ window.PAGE_MANIFEST = {
     "category": "marketing_automation"
   },
   {
+    "url": "codewingify/commandersact.html",
+    "name": "codewingify / commandersact",
+    "environment": "codewingify",
+    "category": "cdp_identity"
+  },
+  {
     "url": "codewingify/contact.html",
     "name": "codewingify / contact",
     "environment": "codewingify",
@@ -823,6 +829,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "commandersact.html",
+    "name": "commandersact",
+    "environment": "vwo",
+    "category": "cdp_identity"
+  },
+  {
     "url": "contact.html",
     "name": "contact",
     "environment": "vwo",
@@ -1141,6 +1153,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "smartcode3/commandersact.html",
+    "name": "smartcode3 / commandersact",
+    "environment": "smartcode3",
+    "category": "cdp_identity"
+  },
+  {
     "url": "smartcode3/datalayersetup.html",
     "name": "smartcode3 / datalayersetup",
     "environment": "smartcode3",
@@ -1373,6 +1391,12 @@ window.PAGE_MANIFEST = {
     "name": "smartcode3wingify / clevertap",
     "environment": "smartcode3wingify",
     "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3wingify/commandersact.html",
+    "name": "smartcode3wingify / commandersact",
+    "environment": "smartcode3wingify",
+    "category": "cdp_identity"
   },
   {
     "url": "smartcode3wingify/contact.html",
