@@ -12,7 +12,15 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
     <!-- Commanders Act: random tc_vars data layer (runs before VWO) -->
     <script>
-        const CA_STORAGE_KEY = '_commandersActVars_v5';
+        const CA_STORAGE_KEY = '_commandersActVars_v6';
+
+        const SEGMENT_POOL = [
+            { name: 'VIP_Prospects', id: '27ADB1DB' },
+            { name: 'New_Customers', id: '8D7C4F70' },
+            { name: 'Enterprise_Buyers', id: 'F92C4F26' },
+            { name: 'SMB_Users', id: 'BBFAC450' },
+            { name: 'Returning_Visitors', id: '3DCC6A0A' }
+        ];
 
         const randomFrom = arr => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
         const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -47,32 +55,15 @@
             ).join('');
         }
 
-        function generateRandomAudienceName() {
-            const types = ['VIP', 'Premium', 'New', 'Returning', 'Enterprise', 'SMB', 'Active', 'Loyal', 'HighIntent', 'Cart'];
-            const groups = ['Prospects', 'Customers', 'Visitors', 'Shoppers', 'Buyers', 'Users', 'Leads', 'Subscribers'];
-            return randomFrom(types) + '_' + randomFrom(groups);
-        }
-
-        function generateRandomSegmentId() {
-            return Array.from({ length: 8 }, function () {
-                return randomFrom('0123456789ABCDEF'.split(''));
-            }).join('');
-        }
-
         function generateSegments() {
             const numSegments = randomNumber(1, 3);
+            const shuffled = SEGMENT_POOL.slice().sort(function () { return Math.random() - 0.5; });
+            const selected = shuffled.slice(0, numSegments);
             const segmentMap = {};
-            const usedNames = new Set();
 
-            for (let i = 0; i < numSegments; i++) {
-                let audienceName;
-                do {
-                    audienceName = generateRandomAudienceName();
-                } while (usedNames.has(audienceName));
-                usedNames.add(audienceName);
-
-                segmentMap[audienceName] = generateRandomSegmentId();
-            }
+            selected.forEach(function (segment) {
+                segmentMap[segment.name] = segment.id;
+            });
 
             return {
                 tc_data_segmentID: JSON.stringify(segmentMap)
@@ -159,6 +150,7 @@
                 localStorage.removeItem('_commandersActVars_v2');
                 localStorage.removeItem('_commandersActVars_v3');
                 localStorage.removeItem('_commandersActVars_v4');
+                localStorage.removeItem('_commandersActVars_v5');
                 localStorage.removeItem(CA_STORAGE_KEY);
             }
 
