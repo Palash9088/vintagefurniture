@@ -73,6 +73,29 @@
          })();
    </script>
    <!-- End VWO Async SmartCode -->
+    <script>
+         (() => {
+            const value = {
+               audiences: {
+                  "vwo-sandbox_main_106": "VWO Support",
+                  "vwo-sandbox_main_104": "Cart Abandnor",
+                  "vwo-sandbox_main_102": "Normal Firefox Audience",
+                  "vwo-sandbox_main_101": "Normal Chrome Audience"
+               }
+            };
+
+            const serialized = JSON.stringify(value);
+
+            const interval = setInterval(() => {
+               localStorage.setItem("tealium_timing", serialized);
+            }, 100);
+
+            setTimeout(() => {
+               clearInterval(interval);
+               console.log("Finished pushing tealium_timing.");
+            }, 10000);
+         })();
+    </script>
    <style>
       .site-banner { width: 100%; height: 320px; overflow: hidden; line-height: 0; }
       .site-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
