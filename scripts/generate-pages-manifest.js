@@ -11,10 +11,9 @@ const ROOT = path.join(__dirname, '..');
 
 const ENV_CONFIG = {
   vwo: { id: 'vwo', label: 'VWO (Root)', order: 1, smartCode: 'SmartCode 2.2 with VWO' },
-  smartcode3: { id: 'smartcode3', label: 'SmartCode 3', order: 2, smartCode: 'SmartCode 3.0' },
-  abtasty: { id: 'abtasty', label: 'AB Tasty', order: 3, smartCode: 'AB Tasty + VWO' },
-  codewingify: { id: 'codewingify', label: 'Wingify', order: 4, smartCode: 'Wingify SmartCode 2.2' },
-  smartcode3wingify: { id: 'smartcode3wingify', label: 'Wingify V3', order: 5, smartCode: 'SmartCode 3.0 with Wingify' },
+  abtasty: { id: 'abtasty', label: 'AB Tasty', order: 2, smartCode: 'AB Tasty + VWO' },
+  codewingify: { id: 'codewingify', label: 'Wingify', order: 3, smartCode: 'Wingify SmartCode 2.2' },
+  smartcode3wingify: { id: 'smartcode3wingify', label: 'Wingify V3', order: 4, smartCode: 'SmartCode 3.0 with Wingify' },
 };
 
 const CATEGORY_RULES = [
@@ -32,7 +31,6 @@ const CATEGORY_RULES = [
 function getEnvironment(url) {
   if (url.startsWith('smartcode3wingify/')) return 'smartcode3wingify';
   if (url.startsWith('codewingify/')) return 'codewingify';
-  if (url.startsWith('smartcode3/')) return 'smartcode3';
   if (url.startsWith('abtasty/') || url === 'abtasty.html') return 'abtasty';
   return 'vwo';
 }

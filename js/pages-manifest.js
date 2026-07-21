@@ -11,27 +11,21 @@ window.PAGE_MANIFEST = {
     "smartCode": "SmartCode 2.2 with VWO"
   },
   {
-    "id": "smartcode3",
-    "label": "SmartCode 3",
-    "order": 2,
-    "smartCode": "SmartCode 3.0"
-  },
-  {
     "id": "abtasty",
     "label": "AB Tasty",
-    "order": 3,
+    "order": 2,
     "smartCode": "AB Tasty + VWO"
   },
   {
     "id": "codewingify",
     "label": "Wingify",
-    "order": 4,
+    "order": 3,
     "smartCode": "Wingify SmartCode 2.2"
   },
   {
     "id": "smartcode3wingify",
     "label": "Wingify V3",
-    "order": 5,
+    "order": 4,
     "smartCode": "SmartCode 3.0 with Wingify"
   }
 ],
@@ -853,6 +847,12 @@ window.PAGE_MANIFEST = {
     "category": "tag_managers"
   },
   {
+    "url": "datalayertesting.html",
+    "name": "datalayertesting",
+    "environment": "vwo",
+    "category": "tag_managers"
+  },
+  {
     "url": "demandbase.html",
     "name": "demandbase",
     "environment": "vwo",
@@ -1117,162 +1117,6 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
-    "url": "smartcode3/6sense.html",
-    "name": "smartcode3 / 6sense",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/adobe-adc.html",
-    "name": "smartcode3 / adobe-adc",
-    "environment": "smartcode3",
-    "category": "adobe"
-  },
-  {
-    "url": "smartcode3/albacross.html",
-    "name": "smartcode3 / albacross",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/amplitude.html",
-    "name": "smartcode3 / amplitude",
-    "environment": "smartcode3",
-    "category": "product_analytics"
-  },
-  {
-    "url": "smartcode3/braze.html",
-    "name": "smartcode3 / braze",
-    "environment": "smartcode3",
-    "category": "marketing_automation"
-  },
-  {
-    "url": "smartcode3/clearbit.html",
-    "name": "smartcode3 / clearbit",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/commandersact.html",
-    "name": "smartcode3 / commandersact",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/datalayersetup.html",
-    "name": "smartcode3 / datalayersetup",
-    "environment": "smartcode3",
-    "category": "tag_managers"
-  },
-  {
-    "url": "smartcode3/demandbase.html",
-    "name": "smartcode3 / demandbase",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/eulerian.html",
-    "name": "smartcode3 / eulerian",
-    "environment": "smartcode3",
-    "category": "matomo_privacy"
-  },
-  {
-    "url": "smartcode3/gtagsetup.html",
-    "name": "smartcode3 / gtagsetup",
-    "environment": "smartcode3",
-    "category": "tag_managers"
-  },
-  {
-    "url": "smartcode3/gtm.html",
-    "name": "smartcode3 / gtm",
-    "environment": "smartcode3",
-    "category": "tag_managers"
-  },
-  {
-    "url": "smartcode3/heap.html",
-    "name": "smartcode3 / heap",
-    "environment": "smartcode3",
-    "category": "product_analytics"
-  },
-  {
-    "url": "smartcode3/hubspot.html",
-    "name": "smartcode3 / hubspot",
-    "environment": "smartcode3",
-    "category": "marketing_automation"
-  },
-  {
-    "url": "smartcode3/kissmetrics.html",
-    "name": "smartcode3 / kissmetrics",
-    "environment": "smartcode3",
-    "category": "product_analytics"
-  },
-  {
-    "url": "smartcode3/klaviyo.html",
-    "name": "smartcode3 / klaviyo",
-    "environment": "smartcode3",
-    "category": "marketing_automation"
-  },
-  {
-    "url": "smartcode3/lytics.html",
-    "name": "smartcode3 / lytics",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/mixpanel.html",
-    "name": "smartcode3 / mixpanel",
-    "environment": "smartcode3",
-    "category": "product_analytics"
-  },
-  {
-    "url": "smartcode3/moengage.html",
-    "name": "smartcode3 / moengage",
-    "environment": "smartcode3",
-    "category": "marketing_automation"
-  },
-  {
-    "url": "smartcode3/mparticle.html",
-    "name": "smartcode3 / mparticle",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/piano.html",
-    "name": "smartcode3 / piano",
-    "environment": "smartcode3",
-    "category": "session_replay"
-  },
-  {
-    "url": "smartcode3/rudderstack.html",
-    "name": "smartcode3 / rudderstack",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/segmentpush.html",
-    "name": "smartcode3 / segmentpush",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
-    "url": "smartcode3/tealium.html",
-    "name": "smartcode3 / tealium",
-    "environment": "smartcode3",
-    "category": "tag_managers"
-  },
-  {
-    "url": "smartcode3/woopra.html",
-    "name": "smartcode3 / woopra",
-    "environment": "smartcode3",
-    "category": "other"
-  },
-  {
-    "url": "smartcode3/zoominfo.html",
-    "name": "smartcode3 / zoominfo",
-    "environment": "smartcode3",
-    "category": "cdp_identity"
-  },
-  {
     "url": "smartcode3wingify/6sense.html",
     "name": "smartcode3wingify / 6sense",
     "environment": "smartcode3wingify",
@@ -1413,6 +1257,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "smartcode3wingify/datalayersetup.html",
     "name": "smartcode3wingify / datalayersetup",
+    "environment": "smartcode3wingify",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3wingify/datalayertesting.html",
+    "name": "smartcode3wingify / datalayertesting",
     "environment": "smartcode3wingify",
     "category": "tag_managers"
   },

@@ -4,7 +4,6 @@
 (function () {
   const ENV_COLORS = {
     vwo: { bg: '#e8f4fd', border: '#1a73e8', badge: '#1a73e8' },
-    smartcode3: { bg: '#eef7ee', border: '#2e7d32', badge: '#2e7d32' },
     abtasty: { bg: '#fff3e0', border: '#ef6c00', badge: '#ef6c00' },
     codewingify: { bg: '#f3e8ff', border: '#7b1fa2', badge: '#7b1fa2' },
     smartcode3wingify: { bg: '#fce4ec', border: '#c2185b', badge: '#c2185b' },
