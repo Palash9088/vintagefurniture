@@ -89,16 +89,10 @@
          };
       }
 
-      const visitorInfo = generateVisitorInfo();
-      storeVisitorInfo(visitorInfo);
-
-      const repeatInterval = setInterval(function () {
+      // Set once and keep stable — do not overwrite existing visitor info
+      if (!localStorage.getItem('_ziVisitorInfo')) {
          storeVisitorInfo(generateVisitorInfo());
-      }, 10);
-
-      setTimeout(function () {
-         clearInterval(repeatInterval);
-      }, 10000);
+      }
    </script>
    <script>
       window[
