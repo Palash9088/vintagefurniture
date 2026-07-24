@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script type="text/javascript">
+      function getDelayFromURL() {
+         const params = new URLSearchParams(window.location.search);
+         const delayParam = params.get("delay");
+         const delay = parseInt(delayParam, 10);
+         return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+      }
+
+      var delay = getDelayFromURL();
+      console.log("[mParticle] Using delay of", delay, "ms");
+
+      setTimeout(function () {
+         console.log("[mParticle] Starting script load after", delay, "ms delay");
+         // Configures the SDK. Note the settings below for isDevelopmentMode
+         // and logLevel.
+         window.mParticle = {
+            config: {
+               isDevelopmentMode: true,
+               logLevel: "none"
+            },
+         };
+         (
+            function (t) { window.mParticle = window.mParticle || {}; window.mParticle.EventType = { Unknown: 0, Navigation: 1, Location: 2, Search: 3, Transaction: 4, UserContent: 5, UserPreference: 6, Social: 7, Other: 8 }; window.mParticle.eCommerce = { Cart: {} }; window.mParticle.Identity = {}; window.mParticle.config = window.mParticle.config || {}; window.mParticle.config.rq = []; window.mParticle.config.snippetVersion = 2.3; window.mParticle.ready = function (t) { window.mParticle.config.rq.push(t) }; var e = ["endSession", "logError", "logBaseEvent", "logEvent", "logForm", "logLink", "logPageView", "setSessionAttribute", "setAppName", "setAppVersion", "setOptOut", "setPosition", "startNewSession", "startTrackingLocation", "stopTrackingLocation"]; var o = ["setCurrencyCode", "logCheckout"]; var i = ["identify", "login", "logout", "modify"]; e.forEach(function (t) { window.mParticle[t] = n(t) }); o.forEach(function (t) { window.mParticle.eCommerce[t] = n(t, "eCommerce") }); i.forEach(function (t) { window.mParticle.Identity[t] = n(t, "Identity") }); function n(e, o) { return function () { if (o) { e = o + "." + e } var t = Array.prototype.slice.call(arguments); t.unshift(e); window.mParticle.config.rq.push(t) } } var dpId, dpV, config = window.mParticle.config, env = config.isDevelopmentMode ? 1 : 0, dbUrl = "?env=" + env, dataPlan = window.mParticle.config.dataPlan; dataPlan && (dpId = dataPlan.planId, dpV = dataPlan.planVersion, dpId && (dpV && (dpV < 1 || dpV > 1e3) && (dpV = null), dbUrl += "&plan_id=" + dpId + (dpV ? "&plan_version=" + dpV : ""))); var mp = document.createElement("script"); mp.type = "text/javascript"; mp.async = true; mp.src = ("https://jssdkcdns.mparticle.com/js/v2/" + t + "/mparticle.js" + dbUrl); var c = document.getElementsByTagName("script")[0]; c.parentNode.insertBefore(mp, c) }
+         )
+            // Insert your API key below
+            ("us1-4224dcfd02172147be19662ef87125f0");
+      }, delay);
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>mParticle Integration | Wingify</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+   <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+   <style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
+   </style>
+   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
+
+<body class="sc3-page-body">
+      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+
+
+      <body>
+<!-- HubSpot Form -->
+   <div class="hs-form-wrap">
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+         hbspt.forms.create({
+            portalId: "44178869",
+            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+            region: "na1"
+         });
+      </script>
+   </div>
+         <!-- Only keep essential JavaScript -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="../js/smartcode3-banner.js" defer></script>
+</body>
+      <!-- Javascript files-->
+      <style>
+         .identify-user {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         .identify-user h1 {
+            font-size: 24px;
+            font-weight: bold;
+         }
+
+         .identify-user p {
+            font-size: 16px;
+            margin-bottom: 10px;
+         }
+
+         .identify-user button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #1f6fc5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+         }
+
+         .identify-user button:hover {
+            background-color: #0056b3;
+         }
+
+         /* END: ed8c6549bwf9 */
+      </style>
+      <!-- Only keep essential JavaScript -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script type="text/javascript">
+      (function () {
+         var didInit = false;
+         function initMunchkin() {
+            if (didInit === false) {
+               didInit = true;
+               Munchkin.init('007-HHD-895');
+            }
+         }
+         var s = document.createElement('script');
+         s.type = 'text/javascript';
+         s.async = true;
+         s.src = '//munchkin.marketo.net/munchkin.js';
+         s.onreadystatechange = function () {
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+               initMunchkin();
+            }
+         };
+         s.onload = initMunchkin;
+         document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+   </script>
+   <!-- Marketo Form -->
+   <script src="//research.vwo.com/js/forms2/js/forms2.min.js"></script>
+   <form id="mktoForm_1694"></form>
+   <script>
+      MktoForms2.loadForm("//research.vwo.com", "007-HHD-895", 1694);
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Marketo Integration | Wingify</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- fevicon -->
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="css/carrotlayer.css">
+   media="screen">
+   <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode -->   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
+
+<body class="sc3-page-body">
+      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+
+      <div class="banner_section">
+         <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1"
+               });
+            </script>
+            </div>
+      </div>
+      <!-- Only keep essential JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+         <script src="../js/smartcode3-banner.js" defer></script>
+</body>
+
+</html>

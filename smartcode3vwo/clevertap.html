@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+
+    <!-- Clevertap Code -->
+    <script type="text/javascript">
+        var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [] };
+        // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+        clevertap.account.push({ "id": "TEST-K99-W66-467Z" }, "in1");
+        clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
+        clevertap.privacy.push({ useIP: true }); //set the flag to true, if the user agrees to share their IP data
+        (function () {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript';
+            wzrk.async = true;
+            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wzrk, s);
+        })();
+
+    </script>
+
+    
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>CleverTap Integration | Wingify</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- fevicon -->
+    <link rel="icon" href="./images/favicon.png" type="image/gif" />
+    <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode -->   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
+
+<body class="sc3-page-body">
+      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+    <div class="banner_section">
+        <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+                hbspt.forms.create({
+                    portalId: "44178869",
+                    formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                    region: "na1"
+                });
+            </script>
+            </div>
+    </div>
+    <div class="container" style="padding: 24px 16px;">
+        <h2>CleverTap Demo Events</h2>
+        <p>Click the buttons to send demo events with properties to CleverTap.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+            <button id="ct-pageview-debug" style="padding: 10px 16px;">Start Debugging</button> 
+            <button id="ct-identify" style="padding: 10px 16px;">Identify Random User</button>
+            <button id="ct-view" style="padding: 10px 16px;">Track Product View</button>
+            <button id="ct-cart" style="padding: 10px 16px;">Track Add to Cart</button>
+            <button id="ct-checkout" style="padding: 10px 16px;">Track Checkout Started</button>
+        </div>
+    </div>
+    <script>
+        // Helpers to keep event payloads consistent across clicks
+        const randomId = () => Math.random().toString(16).slice(2, 8).toUpperCase();
+        const baseProps = () => ({
+            page: window.location.pathname,
+            timestamp: Date.now()
+        });
+        const randomFrom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        // Generate random profile data for identify
+        function randomProfile() {
+            const firstNames = ['Jack', 'Ava', 'Liam', 'Mia', 'Noah', 'Zoe'];
+            const lastNames = ['Montana', 'Smith', 'Johnson', 'Lee', 'Garcia', 'Khan'];
+            const name = `${randomFrom(firstNames)} ${randomFrom(lastNames)}`;
+            const identity = Math.floor(Math.random() * 9_000_000) + 1_000_000;
+            const email = name.toLowerCase().replace(/ /g, '.') + '@wingify.com';
+            const phone = '+1' + Math.floor(1000000000 + Math.random() * 9000000000);
+
+            return {
+                "Site": {
+                    "Name": name,
+                    "Identity": identity,
+                    "Email": email,
+                    "Phone": phone,
+                    "Gender": Math.random() > 0.5 ? 'M' : 'F',
+                    "DOB": new Date(),
+                    "MSG-email": Math.random() > 0.5,
+                    "MSG-push": true,
+                    "MSG-sms": true,
+                    "MSG-whatsapp": true
+                }
+            };
+        }
+
+        function pushCleverTapEvent(name, props) {
+            if (!window.clevertap || !clevertap.event) {
+                console.warn('CleverTap not ready');
+                return;
+            }
+            clevertap.event.push(name, { ...baseProps(), ...props });
+        }
+
+        // Safe binding helper to avoid null reference errors
+        function bindClick(id, handler) {
+            const el = document.getElementById(id);
+            if (!el) {
+                console.warn('Button not found for handler:', id);
+                return;
+            }
+            el.addEventListener('click', handler);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const productId = 'SKU-' + randomId();
+            // Reusable page-view debug trigger
+            const sendPageViewDebug = function () {
+                if (clevertap.setLogLevel) {
+                    clevertap.setLogLevel(3); // debug verbosity
+                }
+                pushCleverTapEvent('Page Viewed', {
+                    referrer: document.referrer || 'direct',
+                    hash: window.location.hash || '',
+                    debug: true
+                });
+            };
+
+            // Fire once on load
+            sendPageViewDebug();
+
+            bindClick('ct-view', function () {
+                pushCleverTapEvent('product_viewed', {
+                    product_id: productId,
+                    name: 'Vintage Chair',
+                    category: 'Furniture',
+                    price: 129.99,
+                    currency: 'USD'
+                });
+            });
+
+            bindClick('ct-cart', function () {
+                pushCleverTapEvent('add_to_cart', {
+                    product_id: productId,
+                    quantity: 1,
+                    cart_value: 129.99,
+                    currency: 'USD'
+                });
+            });
+
+            bindClick('ct-checkout', function () {
+                pushCleverTapEvent('checkout_started', {
+                    cart_items: 1,
+                    order_value: 129.99,
+                    currency: 'USD',
+                    coupon_applied: false
+                });
+            });
+
+            bindClick('ct-pageview-debug', sendPageViewDebug);
+
+            bindClick('ct-identify', function () {
+                if (!clevertap.onUserLogin) {
+                    console.warn('CleverTap not ready for identity');
+                    return;
+                }
+                const profile = randomProfile();
+                clevertap.onUserLogin.push(profile);
+                console.log('CleverTap identity pushed', profile);
+            });
+        });
+    </script>
+    <!-- Only keep essential JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="../js/smartcode3-banner.js" defer></script>
+</body>
+
+</html>

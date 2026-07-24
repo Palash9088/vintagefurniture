@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wingify V3 Integration Hub | Local Index</title>
+</head>
+
+<body>
+    <script src="../js/pages-manifest.js"></script>
+    <script src="../js/index-hub.js"></script>
+    <script>
+        IndexHub.init({
+            scope: 'smartcode3wingify',
+            title: 'Wingify V3 Integration Hub',
+            subtitle: 'Local index for Wingify V3 integration fixtures. Enter an account ID to append ?id= to every fixture link.',
+            smartCode: 'SmartCode 3.0 with Wingify',
+            masterIndexUrl: '../index.html',
+            useAccountParams: true
+        });
+    </script>
+</body>
+
+</html>

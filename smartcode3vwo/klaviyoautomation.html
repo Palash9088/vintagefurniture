@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode --><!-- create _learnq ASAP so pushes don't fail before Klaviyo library loads -->
+  <script>window._learnq = window._learnq || [];</script>
+
+  <!-- Klaviyo delayed loader: delay can be set via ?delay=ms -->
+  <!-- <script>
+    function getDelayFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const delayParam = params.get("delay");
+      const delay = parseInt(delayParam, 10);
+      return !isNaN(delay) && delay >= 0 ? delay : Math.floor(Math.random() * 15000);
+    }
+
+    var delay = getDelayFromURL();
+    console.log("[Klaviyo] Using delay of", delay, "ms");
+
+    setTimeout(function () {
+      console.log("[Klaviyo] Starting script load after", delay, "ms delay");
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VrcMRY';
+      document.head.appendChild(script);
+    }, delay);
+  </script> -->
+<script
+  async type="text/javascript" src="//static.klaviyo.com/onsite/js/SYXXmM/klaviyo.js"
+
+  !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+></script>
+
+   
+   <title>Klaviyo Automation | Wingify</title>
+   <link rel="stylesheet" href="../css/smartcode3-banner.css">
+</head>
+
+<body class="sc3-page-body">
+      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+  <!-- GTM noscript (optional) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG9D677" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="banner_section">
+    <div class="container">
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+        hbspt.forms.create({
+          portalId: "44178869",
+          formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+          region: "na1"
+        });
+      </script>
+      </div>
+  </div>
+
+  <!-- Identify button (kept for manual trigger) -->
+  <div style="padding:16px;">
+    <button id="identifyUserBtn" type="button">Identify User with random email</button>
+  </div>
+
+  <!-- Only keep essential JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+ 
+  <!-- Klaviyo identify utility and autorun -->
+<!--  <script>
+    // Utility: create a random email using current time
+    function generateRandomEmail() {
+      const timestamp = Date.now(); // current time (ms)
+      return "KlaviyoUser" + timestamp + "@vwo.com";
+    }
+
+    // Identify function
+    function identifyRandomUser() {
+      // Ensure Klaviyo (_learnq) exists
+      window._learnq = window._learnq || [];
+
+      const randomEmail = generateRandomEmail();
+
+      // Klaviyo identify call - NO uuid now
+      window._learnq.push(['identify', {
+        '$email': randomEmail
+      }]);
+
+      console.log("Identified user:", { email: randomEmail, time: new Date().toISOString() });
+    }
+
+    // Run when DOM is ready: bind click and autorun (once per session)
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById("identifyUserBtn");
+      if (btn) {
+        btn.addEventListener("click", identifyRandomUser);
+      }
+
+      // Autorun once per session (remove this guard if you want it on every load)
+      if (!sessionStorage.getItem('kl_identified')) {
+        identifyRandomUser();
+        sessionStorage.setItem('kl_identified', '1');
+      }
+    });
+  </script> -->
+
+      <script src="../js/smartcode3-banner.js" defer></script>
+</body>
+
+</html>

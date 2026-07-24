@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script>(function (w, d, s, l, i) {
+         w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+               new Date().getTime(), event: 'gtm.js'
+         }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+               'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
+   <script>window._nQc = "89788923";</script>
+   <script async src="https://serve.albacross.com/track.js"></script>
+   <!--     <script type="text/javascript">
+      (function (a, l, b, c, r, s) {
+      (_nQa = c), (r = a.createElement(l)), (s = a.getElementsByTagName(l)[0]);
+      r.async = 1;
+      r.src = l.src = ('https:' == a.location.protocol ? 'https://' : 'http://') + b;
+      s.parentNode.insertBefore(r, s);
+      })(document, 'script', 'serve.albacross.com/reveal.js', '4b19915b-76d8-4c11-bd59-26dae269b18a');
+      </script> -->
+   <script>
+      function generateCompanyInfo() {
+         const industries = [
+            { code: "96", category: "Information Technology and Services" },
+            { code: "62.01", category: "Computer programming activities" },
+            { code: "82.99", category: "Other business support service activities" },
+            { code: "70.22", category: "Business and management consultancy" },
+            { code: "71.12", category: "Engineering services" }
+         ];
+
+         const countries = ["US", "IN", "GB", "DE", "FR"];
+         const cities = {
+            US: ["New York", "San Francisco", "Chicago", "Los Angeles", "Austin"],
+            IN: ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai"],
+            GB: ["London", "Manchester", "Birmingham", "Edinburgh", "Liverpool"],
+            DE: ["Berlin", "Munich", "Hamburg", "Frankfurt", "Stuttgart"],
+            FR: ["Paris", "Lyon", "Marseille", "Toulouse", "Nice"]
+         };
+
+         const companyNames = [
+            "CyberTech Solutions", "InnovateX Systems", "NextGen Software", "CloudSync Technologies",
+            "AlphaData Solutions", "BlueWave Consulting", "Quantum IT Services", "Visionary Labs",
+            "Stratos AI", "CodeCrafters Inc."
+         ];
+
+         const country = countries[Math.floor(Math.random() * countries.length)];
+         const city = cities[country][Math.floor(Math.random() * cities[country].length)];
+         const industry = industries[Math.floor(Math.random() * industries.length)];
+         const companyName = companyNames[Math.floor(Math.random() * companyNames.length)];
+         const foundedYear = Math.floor(Math.random() * (2024 - 1950) + 1950);
+         const employeeFrom = Math.floor(Math.random() * 200) + 50;
+         const employeeTo = employeeFrom + Math.floor(Math.random() * 800);
+         const revenueFrom = Math.floor(Math.random() * 50000000) + 1000000;
+         const revenueTo = revenueFrom + Math.floor(Math.random() * 50000000);
+
+         return {
+            "company": {
+               "name": companyName,
+               "country": country,
+               "number": `FI${Math.floor(Math.random() * 100000000)}`,
+               "url": `www.${companyName.replace(/\s+/g, '').toLowerCase()}.com`,
+               "description": `${companyName} is a leading provider of ${industry.category}, helping businesses optimize performance through advanced technology solutions. Trusted by global enterprises for innovative digital transformations.`,
+               "founded_year": foundedYear,
+               "address": {
+                  "city": city,
+                  "state": "State " + Math.floor(Math.random() * 50),
+                  "zip_code": `${Math.floor(Math.random() * 90000) + 10000}`,
+                  "address": `${Math.floor(Math.random() * 1000)} Business Street`
+               },
+               "linkedin_url": `https://www.linkedin.com/company/${companyName.replace(/\s+/g, '').toLowerCase()}`,
+               "employees": {
+                  "from": employeeFrom,
+                  "to": employeeTo,
+                  "range": `${employeeFrom}-${employeeTo}`
+               },
+               "financial_report": {
+                  "from": revenueFrom,
+                  "to": revenueTo,
+                  "currency": "EUR",
+                  "range": `${(revenueFrom / 1000000).toFixed(1)}M-${(revenueTo / 1000000).toFixed(1)}M`
+               },
+               "nace_code": industry,
+               "linkedin_industry_code": industry
+            }
+         };
+      }
+
+      window.AlbacrossReveal = generateCompanyInfo();
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Albacross Random Integration | Wingify</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <!-- fevicon -->
+   <link rel="icon" href="./images/favicon.png" type="image/gif" />
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="css/carrotlayer.css">
+
+   <!-- Start VWO Async SmartCode -->
+<!-- Start Wingify Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!--End Wingify Async SmartCode -->   
+   <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
+
+<body class="sc3-page-body">
+      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
+         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
+         <div class="sc3-banner__overlay"></div>
+         <div class="sc3-banner__content">
+            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
+            <h2 class="sc3-banner__title">Integration Test Lab</h2>
+            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
+            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+         </div>
+         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </div>
+
+      <div class="banner_section">
+         <div class="container">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1"
+               });
+            </script>
+            </div>
+      </div>
+      <!-- Only keep essential JavaScript -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+         <script src="../js/smartcode3-banner.js" defer></script>
+</body>
+
+</html>
