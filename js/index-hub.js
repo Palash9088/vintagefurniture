@@ -4,12 +4,14 @@
 (function () {
   const ENV_COLORS = {
     vwo: { bg: '#e8f4fd', border: '#1a73e8', badge: '#1a73e8' },
+    smartcode3vwo: { bg: '#e0f7f4', border: '#00897b', badge: '#00897b' },
     abtasty: { bg: '#fff3e0', border: '#ef6c00', badge: '#ef6c00' },
     codewingify: { bg: '#f3e8ff', border: '#7b1fa2', badge: '#7b1fa2' },
     smartcode3wingify: { bg: '#fce4ec', border: '#c2185b', badge: '#c2185b' },
   };
 
   const ENV_INDEX_URLS = {
+    smartcode3vwo: 'smartcode3vwo/index.html',
     codewingify: 'codewingify/index.html',
     smartcode3wingify: 'smartcode3wingify/index.html',
   };

@@ -11,21 +11,27 @@ window.PAGE_MANIFEST = {
     "smartCode": "SmartCode 2.2 with VWO"
   },
   {
+    "id": "smartcode3vwo",
+    "label": "VWO V3",
+    "order": 2,
+    "smartCode": "SmartCode 3.0 with VWO"
+  },
+  {
     "id": "abtasty",
     "label": "AB Tasty",
-    "order": 2,
+    "order": 3,
     "smartCode": "AB Tasty + VWO"
   },
   {
     "id": "codewingify",
     "label": "Wingify",
-    "order": 3,
+    "order": 4,
     "smartCode": "Wingify SmartCode 2.2"
   },
   {
     "id": "smartcode3wingify",
     "label": "Wingify V3",
-    "order": 4,
+    "order": 5,
     "smartCode": "SmartCode 3.0 with Wingify"
   }
 ],
@@ -1114,6 +1120,492 @@ window.PAGE_MANIFEST = {
     "url": "segmentvwotesting.html",
     "name": "segmentvwotesting",
     "environment": "vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/6sense.html",
+    "name": "smartcode3vwo / 6sense",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/6senserandom.html",
+    "name": "smartcode3vwo / 6senserandom",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/abtasty.html",
+    "name": "smartcode3vwo / abtasty",
+    "environment": "smartcode3vwo",
+    "category": "utility"
+  },
+  {
+    "url": "smartcode3vwo/adobe.html",
+    "name": "smartcode3vwo / adobe",
+    "environment": "smartcode3vwo",
+    "category": "adobe"
+  },
+  {
+    "url": "smartcode3vwo/adobe-adc.html",
+    "name": "smartcode3vwo / adobe-adc",
+    "environment": "smartcode3vwo",
+    "category": "adobe"
+  },
+  {
+    "url": "smartcode3vwo/adobe-aep.html",
+    "name": "smartcode3vwo / adobe-aep",
+    "environment": "smartcode3vwo",
+    "category": "adobe"
+  },
+  {
+    "url": "smartcode3vwo/air360.html",
+    "name": "smartcode3vwo / air360",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/albacross.html",
+    "name": "smartcode3vwo / albacross",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/albacross1.html",
+    "name": "smartcode3vwo / albacross1",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/albacrossrandom.html",
+    "name": "smartcode3vwo / albacrossrandom",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/amplitude.html",
+    "name": "smartcode3vwo / amplitude",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/bodytag.html",
+    "name": "smartcode3vwo / bodytag",
+    "environment": "smartcode3vwo",
+    "category": "test_edge"
+  },
+  {
+    "url": "smartcode3vwo/both.html",
+    "name": "smartcode3vwo / both",
+    "environment": "smartcode3vwo",
+    "category": "test_edge"
+  },
+  {
+    "url": "smartcode3vwo/braze.html",
+    "name": "smartcode3vwo / braze",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/carrotlayersetup.html",
+    "name": "smartcode3vwo / carrotlayersetup",
+    "environment": "smartcode3vwo",
+    "category": "other"
+  },
+  {
+    "url": "smartcode3vwo/clarity.html",
+    "name": "smartcode3vwo / clarity",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/clearbit.html",
+    "name": "smartcode3vwo / clearbit",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/clearbit1.html",
+    "name": "smartcode3vwo / clearbit1",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/clearbitrandom.html",
+    "name": "smartcode3vwo / clearbitrandom",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/clevertap.html",
+    "name": "smartcode3vwo / clevertap",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/commandersact.html",
+    "name": "smartcode3vwo / commandersact",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/contact.html",
+    "name": "smartcode3vwo / contact",
+    "environment": "smartcode3vwo",
+    "category": "utility"
+  },
+  {
+    "url": "smartcode3vwo/contentsquare.html",
+    "name": "smartcode3vwo / contentsquare",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/datalayersetup.html",
+    "name": "smartcode3vwo / datalayersetup",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/datalayertesting.html",
+    "name": "smartcode3vwo / datalayertesting",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/demandbase.html",
+    "name": "smartcode3vwo / demandbase",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/demandbaserandom.html",
+    "name": "smartcode3vwo / demandbaserandom",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/eulerian.html",
+    "name": "smartcode3vwo / eulerian",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/eulerianold.html",
+    "name": "smartcode3vwo / eulerianold",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/eventbasedgtm.html",
+    "name": "smartcode3vwo / eventbasedgtm",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/eventjourney.html",
+    "name": "smartcode3vwo / eventjourney",
+    "environment": "smartcode3vwo",
+    "category": "test_edge"
+  },
+  {
+    "url": "smartcode3vwo/factorsai.html",
+    "name": "smartcode3vwo / factorsai",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/fullstory.html",
+    "name": "smartcode3vwo / fullstory",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/fullstorycargo.html",
+    "name": "smartcode3vwo / fullstorycargo",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/fullstorysandbox.html",
+    "name": "smartcode3vwo / fullstorysandbox",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/ga4viagtm.html",
+    "name": "smartcode3vwo / ga4viagtm",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/glassbox.html",
+    "name": "smartcode3vwo / glassbox",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/gtagecom.html",
+    "name": "smartcode3vwo / gtagecom",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/gtagsetup.html",
+    "name": "smartcode3vwo / gtagsetup",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/gtm.html",
+    "name": "smartcode3vwo / gtm",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/gtmwithcookie.html",
+    "name": "smartcode3vwo / gtmwithcookie",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/gtmwithoutsmartcode.html",
+    "name": "smartcode3vwo / gtmwithoutsmartcode",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/heap.html",
+    "name": "smartcode3vwo / heap",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/hotjar.html",
+    "name": "smartcode3vwo / hotjar",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/hubspot.html",
+    "name": "smartcode3vwo / hubspot",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/hubspottest.html",
+    "name": "smartcode3vwo / hubspottest",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/kissmetrics.html",
+    "name": "smartcode3vwo / kissmetrics",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/klaviyo.html",
+    "name": "smartcode3vwo / klaviyo",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/klaviyoautomation.html",
+    "name": "smartcode3vwo / klaviyoautomation",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/lytics.html",
+    "name": "smartcode3vwo / lytics",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/marketo.html",
+    "name": "smartcode3vwo / marketo",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/matomo.html",
+    "name": "smartcode3vwo / matomo",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/matomocloudfree.html",
+    "name": "smartcode3vwo / matomocloudfree",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/matomovwo.html",
+    "name": "smartcode3vwo / matomovwo",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/mixpanel.html",
+    "name": "smartcode3vwo / mixpanel",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/mixpanelintegrations.html",
+    "name": "smartcode3vwo / mixpanelintegrations",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/moengage.html",
+    "name": "smartcode3vwo / moengage",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
+  },
+  {
+    "url": "smartcode3vwo/mouseflow.html",
+    "name": "smartcode3vwo / mouseflow",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/mparticle.html",
+    "name": "smartcode3vwo / mparticle",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/mparticlewithoutvwo.html",
+    "name": "smartcode3vwo / mparticlewithoutvwo",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/pendoanalytics.html",
+    "name": "smartcode3vwo / pendoanalytics",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/piano.html",
+    "name": "smartcode3vwo / piano",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/piwik.html",
+    "name": "smartcode3vwo / piwik",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/quin.html",
+    "name": "smartcode3vwo / quin",
+    "environment": "smartcode3vwo",
+    "category": "utility"
+  },
+  {
+    "url": "smartcode3vwo/rudderstack.html",
+    "name": "smartcode3vwo / rudderstack",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/rudderstackwithoutvwo.html",
+    "name": "smartcode3vwo / rudderstackwithoutvwo",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/segmentpush.html",
+    "name": "smartcode3vwo / segmentpush",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/segmentpush2.html",
+    "name": "smartcode3vwo / segmentpush2",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/segmentvwotesting.html",
+    "name": "smartcode3vwo / segmentvwotesting",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/snowplowv2.html",
+    "name": "smartcode3vwo / snowplowv2",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/snowplowv3.html",
+    "name": "smartcode3vwo / snowplowv3",
+    "environment": "smartcode3vwo",
+    "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/tealium.html",
+    "name": "smartcode3vwo / tealium",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/tealiumtag.html",
+    "name": "smartcode3vwo / tealiumtag",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/tealiumwithoutvwo.html",
+    "name": "smartcode3vwo / tealiumwithoutvwo",
+    "environment": "smartcode3vwo",
+    "category": "tag_managers"
+  },
+  {
+    "url": "smartcode3vwo/timezonecalc.html",
+    "name": "smartcode3vwo / timezonecalc",
+    "environment": "smartcode3vwo",
+    "category": "test_edge"
+  },
+  {
+    "url": "smartcode3vwo/vwosupporthubspot.html",
+    "name": "smartcode3vwo / vwosupporthubspot",
+    "environment": "smartcode3vwo",
+    "category": "utility"
+  },
+  {
+    "url": "smartcode3vwo/woopra.html",
+    "name": "smartcode3vwo / woopra",
+    "environment": "smartcode3vwo",
+    "category": "other"
+  },
+  {
+    "url": "smartcode3vwo/zeotap.html",
+    "name": "smartcode3vwo / zeotap",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/zoominfo.html",
+    "name": "smartcode3vwo / zoominfo",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/zoominfo1.html",
+    "name": "smartcode3vwo / zoominfo1",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/zoominforandom.html",
+    "name": "smartcode3vwo / zoominforandom",
+    "environment": "smartcode3vwo",
     "category": "cdp_identity"
   },
   {
