@@ -153,17 +153,24 @@ if(f=!1,v=d.currentScript,cc={},-1<d.URL.indexOf('__wingify_disable__')||w._wing
             eventData.ecommerce = {
                transaction_id: "T_" + Math.floor(Math.random() * 10000),
                value: 55.00,
+               shipping: 5.00,
+               tax: 4.40,
                currency: "USD",
+               coupon: "VINTAGE10",
+               paymentMethod: "Credit Card",
+               shippingMethod: "Standard Shipping",
                items: [{
                   item_id: "SKU_12345",
                   item_name: "Vintage Chair",
                   price: 30.00,
-                  quantity: 1
+                  quantity: 1,
+                  productCategory: "Furniture"
                }, {
                   item_id: "SKU_67890",
                   item_name: "Antique Lamp",
                   price: 25.00,
-                  quantity: 1
+                  quantity: 1,
+                  productCategory: "Lighting"
                }]
             };
          } else if (eventName === 'view_item') {
