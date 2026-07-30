@@ -11,13 +11,13 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-KG9D677');</script>
     <script>
-        var reveal_organizations;
+        var reveal_organization;
         var stopFlag = false; // Define and initialize stopFlag
 
         // Function to set vwo_organization and vwo_demandbase_organization repeatedly every 10 milliseconds
         function setVWO() {
             // Set initial data for both variables
-            reveal_organizations = {
+            reveal_organization = {
                 "ip": "138.199.43.12",
                 "domain": "blockswap.xyz",
                 "type": "company",
@@ -161,7 +161,7 @@
             var intervalId = setInterval(function () {
                 if (!stopFlag) {
                     // Copy data using Object.assign() to avoid reference sharing
-                    reveal_organizations = Object.assign({}, reveal_organizations);
+                    reveal_organization = Object.assign({}, reveal_organization);
                 } else {
                     clearInterval(intervalId);
                 }
