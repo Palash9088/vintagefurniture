@@ -25,7 +25,7 @@ const CATEGORY_RULES = [
   { id: 'marketing_automation', label: 'Marketing Automation', test: (n) => /^(hubspot|marketo|klaviyo|braze|clevertap|moengage|abthubspot|abtklaviyo|abtsfmc)/.test(n) },
   { id: 'adobe', label: 'Adobe Stack', test: (n) => /^adobe/.test(n) },
   { id: 'matomo_privacy', label: 'Matomo & Privacy Analytics', test: (n) => /^(matomo|piwik|snowplow|abtmatomo|abtpiwik|abteulerian|eulerian)/.test(n) },
-  { id: 'test_edge', label: 'Test & Edge Cases', test: (n) => /(random|withoutvwo|bodytag|both|timezonecalc|eventjourney|hubspottest|segmentvwotesting|segmentpush2|gtmwithoutsmartcode|gtmwithcookie)/.test(n) },
+  { id: 'test_edge', label: 'Test & Edge Cases', test: (n) => /(random|withoutvwo|bodytag|both|timezonecalc|eventjourney|hubspottest|segmentvwotesting|segmentpush2|gtmwithoutsmartcode|gtmwithcookie|abtall)/.test(n) },
   { id: 'utility', label: 'Utility', test: (n) => /^(contact|carrotlayer|vwosupporthubspot|quin|abtasty)$/.test(n) },
 ];
 

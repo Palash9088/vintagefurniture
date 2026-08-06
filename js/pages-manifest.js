@@ -109,6 +109,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "abtasty/abtall.html",
+    "name": "abtasty / abtall",
+    "environment": "abtasty",
+    "category": "test_edge"
+  },
+  {
     "url": "abtasty/abtamplitude.html",
     "name": "abtasty / abtamplitude",
     "environment": "abtasty",
