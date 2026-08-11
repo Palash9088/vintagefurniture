@@ -181,6 +181,44 @@
         border-radius: 8px;
         font-size: 0.875rem;
       }
+      .hub-path-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 220px;
+        flex: 1 1 260px;
+      }
+      .hub-path-wrap label {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--hub-muted);
+        white-space: nowrap;
+      }
+      #hubPathInput {
+        flex: 1 1 auto;
+        min-width: 160px;
+        padding: 0.5rem 0.625rem;
+        border: 1px solid #d0d5dd;
+        border-radius: 8px;
+        font-size: 0.8125rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+      .hub-path-hint {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0.5rem auto 0;
+        font-size: 0.8125rem;
+        color: var(--hub-muted);
+      }
+      .hub-path-hint code {
+        background: #eef2ff;
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+        font-size: 0.8em;
+      }
+      .hub-path-hint a {
+        color: var(--hub-accent);
+      }
       .hub-btn {
         display: inline-flex;
         align-items: center;
@@ -504,10 +542,14 @@
   function initAccountParams(options) {
     const params = new URLSearchParams(window.location.search);
     const storageKey = `hub-account-id-${options.scope || 'global'}`;
+    const pathStorageKey = `hub-path-${options.scope || 'global'}`;
     hubState.accountId = params.get('id') || sessionStorage.getItem(storageKey) || '';
-    hubState.path = params.get('path') || 'tag';
+    hubState.path = params.get('path') || sessionStorage.getItem(pathStorageKey) || 'tag';
     if (hubState.accountId) {
       sessionStorage.setItem(storageKey, hubState.accountId);
+    }
+    if (hubState.path && hubState.path !== 'tag') {
+      sessionStorage.setItem(pathStorageKey, hubState.path);
     }
   }
 
@@ -612,6 +654,15 @@
       ? `<div class="hub-account-wrap">
            <label for="hubAccountIdInput">Account ID</label>
            <input type="text" id="hubAccountIdInput" placeholder="e.g. 718597" value="${hubState.accountId}" inputmode="numeric">
+         </div>
+         <div class="hub-path-wrap">
+           <label for="hubPathInput">Path</label>
+           <input type="text" id="hubPathInput" placeholder="tag" value="${hubState.path === 'tag' ? '' : hubState.path}" list="hubPathPresets" spellcheck="false">
+           <datalist id="hubPathPresets">
+             <option value="tag"></option>
+             <option value="cloud-run-test/final"></option>
+           </datalist>
+           <button type="button" class="hub-btn" id="hubTestAppPathBtn" title="Set path=cloud-run-test/final">Test app path</button>
          </div>`
       : '';
 
@@ -641,6 +692,7 @@
           <button type="button" class="hub-btn" id="hubToggleCategories">Collapse all</button>
           ${masterLink}
         </div>
+        ${options.useAccountParams ? `<p class="hub-path-hint">For test app builds, set Path to <code>cloud-run-test/final</code> (or click <strong>Test app path</strong>). Example page: <a href="datalayersetup.html">datalayersetup.html</a>.</p>` : ''}
       </div>
       ${jumpNav ? `<nav class="hub-jump-nav" aria-label="Quick navigation">${jumpNav}</nav>` : ''}
       <main class="hub-main" id="hubMain">
@@ -663,31 +715,77 @@
     });
   }
 
+  function syncHubQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    if (hubState.accountId) {
+      params.set('id', hubState.accountId);
+    } else {
+      params.delete('id');
+    }
+    if (hubState.path && hubState.path !== 'tag') {
+      params.set('path', hubState.path);
+    } else {
+      params.delete('path');
+    }
+    const query = params.toString();
+    const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState(null, '', nextUrl);
+  }
+
   function bindAccountId(options) {
     const input = document.getElementById('hubAccountIdInput');
-    if (!input || !options.useAccountParams) return;
+    const pathInput = document.getElementById('hubPathInput');
+    const testAppBtn = document.getElementById('hubTestAppPathBtn');
+    if (!options.useAccountParams) return;
 
     const storageKey = `hub-account-id-${options.scope || 'global'}`;
+    const pathStorageKey = `hub-path-${options.scope || 'global'}`;
 
-    input.addEventListener('input', () => {
-      hubState.accountId = input.value.trim();
-      if (hubState.accountId) {
-        sessionStorage.setItem(storageKey, hubState.accountId);
+    if (input) {
+      input.addEventListener('input', () => {
+        hubState.accountId = input.value.trim();
+        if (hubState.accountId) {
+          sessionStorage.setItem(storageKey, hubState.accountId);
+        } else {
+          sessionStorage.removeItem(storageKey);
+        }
+        updateCardLinks();
+        syncHubQueryParams();
+      });
+    }
+
+    function applyPath(nextPath) {
+      const normalized = (nextPath || '').trim().replace(/^\/+|\/+$/g, '');
+      hubState.path = normalized || 'tag';
+      if (pathInput && document.activeElement !== pathInput) {
+        pathInput.value = hubState.path === 'tag' ? '' : hubState.path;
+      } else if (pathInput && !pathInput.value.trim() && hubState.path === 'tag') {
+        pathInput.value = '';
+      }
+      if (hubState.path !== 'tag') {
+        sessionStorage.setItem(pathStorageKey, hubState.path);
       } else {
-        sessionStorage.removeItem(storageKey);
+        sessionStorage.removeItem(pathStorageKey);
       }
       updateCardLinks();
+      syncHubQueryParams();
+    }
 
-      const params = new URLSearchParams(window.location.search);
-      if (hubState.accountId) {
-        params.set('id', hubState.accountId);
-      } else {
-        params.delete('id');
-      }
-      const query = params.toString();
-      const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
-      window.history.replaceState(null, '', nextUrl);
-    });
+    if (pathInput) {
+      pathInput.addEventListener('input', () => {
+        applyPath(pathInput.value);
+      });
+      pathInput.addEventListener('change', () => {
+        applyPath(pathInput.value);
+      });
+    }
+
+    if (testAppBtn) {
+      testAppBtn.addEventListener('click', () => {
+        if (pathInput) pathInput.value = 'cloud-run-test/final';
+        applyPath('cloud-run-test/final');
+      });
+    }
   }
 
   function bindCategoryToggle() {
