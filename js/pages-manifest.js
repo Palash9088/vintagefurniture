@@ -238,7 +238,7 @@ window.PAGE_MANIFEST = {
     "url": "abtasty/abtsfmc.html",
     "name": "abtasty / abtsfmc",
     "environment": "abtasty",
-    "category": "other"
+    "category": "marketing_automation"
   },
   {
     "url": "abtasty/abttealium.html",
@@ -763,6 +763,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "codewingify/sfmc.html",
+    "name": "codewingify / sfmc",
+    "environment": "codewingify",
+    "category": "marketing_automation"
+  },
+  {
     "url": "codewingify/snowplowv2.html",
     "name": "codewingify / snowplowv2",
     "environment": "codewingify",
@@ -1127,6 +1133,12 @@ window.PAGE_MANIFEST = {
     "name": "segmentvwotesting",
     "environment": "vwo",
     "category": "cdp_identity"
+  },
+  {
+    "url": "sfmc.html",
+    "name": "sfmc",
+    "environment": "vwo",
+    "category": "marketing_automation"
   },
   {
     "url": "smartcode3vwo/6sense.html",
@@ -1541,6 +1553,12 @@ window.PAGE_MANIFEST = {
     "name": "smartcode3vwo / segmentvwotesting",
     "environment": "smartcode3vwo",
     "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3vwo/sfmc.html",
+    "name": "smartcode3vwo / sfmc",
+    "environment": "smartcode3vwo",
+    "category": "marketing_automation"
   },
   {
     "url": "smartcode3vwo/snowplowv2.html",
@@ -2027,6 +2045,12 @@ window.PAGE_MANIFEST = {
     "name": "smartcode3wingify / segmentvwotesting",
     "environment": "smartcode3wingify",
     "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3wingify/sfmc.html",
+    "name": "smartcode3wingify / sfmc",
+    "environment": "smartcode3wingify",
+    "category": "marketing_automation"
   },
   {
     "url": "smartcode3wingify/snowplowv2.html",
