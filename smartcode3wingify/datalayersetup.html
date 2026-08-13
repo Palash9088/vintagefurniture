@@ -83,7 +83,14 @@
   document.head.appendChild(script);
 })();
 </script>
-<!--End Wingify Async SmartCode --><style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
+<!--End Wingify Async SmartCode -->
+<script>
+window.addEventListener('abtasty_executedCampaign', (event) => {
+  console.log(event.detail);
+  // do something...
+});
+</script>
+<style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
    </style>
    
    <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
