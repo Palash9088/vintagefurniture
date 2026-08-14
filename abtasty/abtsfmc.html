@@ -65,6 +65,7 @@
 
   <!-- basic -->
   <meta charset="utf-8">
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,6 +151,18 @@
         margin: 0 auto;
       }
     }
+
+    .sf-web-to-lead {
+      max-width: 500px;
+      margin: 24px auto 48px;
+      padding: 0 20px;
+    }
+
+    .sf-web-to-lead label {
+      display: inline-block;
+      min-width: 90px;
+      margin: 6px 8px 6px 0;
+    }
   </style>
   <!-- VWO SmartCode not included (AB Tasty page) -->
 </head>
@@ -216,6 +229,21 @@
         </div>
       </div>
     </div>
+
+  <!-- Salesforce Web-to-Lead -->
+  <div class="sf-web-to-lead">
+    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DAW00000QoNaL" method="POST">
+      <input type=hidden name="oid" value="00DAW00000QoNaL">
+      <input type=hidden name="retURL" value="https://palash9088.github.io/vintagefurniture/abtasty/abtsfmc.html">
+      <label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+      <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+      <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+      <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+      <label for="city">City</label><input  id="city" maxlength="40" name="city" size="20" type="text" /><br>
+      <input type="hidden"  id="lead_source" name="lead_source" value="Web" /><br>
+      <input type="submit" name="submit">
+    </form>
+  </div>
 
   <script>
     window.dataLayer = window.dataLayer || [];
