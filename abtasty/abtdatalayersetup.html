@@ -134,7 +134,7 @@
       }
     }
   </style>
-   <!-- Start VWO Async SmartCode -->
+   <!-- Start VWO Async SmartCode 
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
    <script type='text/javascript' id='vwoCode'>
       const params_id = new URLSearchParams(window.location.search);
@@ -154,6 +154,27 @@
          })();
    </script>
    <!-- End VWO Async SmartCode -->
+   <!-- Start Wingify Async V3.0 SmartCode -->
+   <script>
+   (function () {
+     const params = new URLSearchParams(window.location.search);
+
+     const accountId = params.get('id');
+     const path = params.get('path') || 'tag';
+
+     if (!accountId) {
+       console.warn('Wingify account id missing in URL');
+       return;
+     }
+
+     const script = document.createElement('script');
+     script.src = `https://edge.wingify.net/${path}/${accountId}.js`;
+     script.async = true;
+
+     document.head.appendChild(script);
+   })();
+   </script>
+   <!-- End Wingify Async SmartCode -->
 </head>
 
 
