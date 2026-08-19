@@ -253,6 +253,12 @@ window.PAGE_MANIFEST = {
     "category": "other"
   },
   {
+    "url": "abtasty/heapdev.html",
+    "name": "abtasty / heapdev",
+    "environment": "abtasty",
+    "category": "product_analytics"
+  },
+  {
     "url": "adobe.html",
     "name": "adobe",
     "environment": "vwo",
@@ -603,6 +609,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "codewingify/heap.html",
     "name": "codewingify / heap",
+    "environment": "codewingify",
+    "category": "product_analytics"
+  },
+  {
+    "url": "codewingify/heapdev.html",
+    "name": "codewingify / heapdev",
     "environment": "codewingify",
     "category": "product_analytics"
   },
@@ -975,6 +987,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "heap.html",
     "name": "heap",
+    "environment": "vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "heapdev.html",
+    "name": "heapdev",
     "environment": "vwo",
     "category": "product_analytics"
   },
@@ -1395,6 +1413,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "smartcode3vwo/heap.html",
     "name": "smartcode3vwo / heap",
+    "environment": "smartcode3vwo",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3vwo/heapdev.html",
+    "name": "smartcode3vwo / heapdev",
     "environment": "smartcode3vwo",
     "category": "product_analytics"
   },
@@ -1887,6 +1911,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "smartcode3wingify/heap.html",
     "name": "smartcode3wingify / heap",
+    "environment": "smartcode3wingify",
+    "category": "product_analytics"
+  },
+  {
+    "url": "smartcode3wingify/heapdev.html",
+    "name": "smartcode3wingify / heapdev",
     "environment": "smartcode3wingify",
     "category": "product_analytics"
   },
