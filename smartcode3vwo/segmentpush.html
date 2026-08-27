@@ -35,6 +35,50 @@
    </script>
    <!-- Segment code end -->
 
+
+   </script>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Segment Push Integration | VWO</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <!-- fevicon -->
+   <link rel="icon" href="../images/favicon.png" type="image/gif" />
+
+   <!-- CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+   <!-- Start VWO Async SmartCode -->
+<!-- Start VWO Async V3.0 SmartCode -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+
+  const accountId = params.get('id');
+  const path = params.get('path') || 'tag';
+
+  if (!accountId) {
+    console.warn('VWO account id missing in URL');
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
+  script.async = true;
+
+  document.head.appendChild(script);
+})();
+</script>
+<!-- End VWO Async SmartCode -->
+
    <!-- Visitor Sync Code -->
    <script>
       (function (w, ls) {
@@ -124,49 +168,7 @@
       });
    </script>
    <!-- Visitor Sync Code end -->
-
-   </script>
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-   <!-- site metas -->
-   <title>Segment Push Integration | VWO</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
-
-   <!-- fevicon -->
-   <link rel="icon" href="../images/favicon.png" type="image/gif" />
-
-   <!-- CSS -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-   <!-- Start VWO Async SmartCode -->
-<!-- Start VWO Async V3.0 SmartCode -->
-<script>
-(function () {
-  const params = new URLSearchParams(window.location.search);
-
-  const accountId = params.get('id');
-  const path = params.get('path') || 'tag';
-
-  if (!accountId) {
-    console.warn('VWO account id missing in URL');
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.src = `https://dev.visualwebsiteoptimizer.com/${path}/${accountId}.js`;
-  script.async = true;
-
-  document.head.appendChild(script);
-})();
-</script>
-<!-- End VWO Async SmartCode --><style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
+<style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
    </style>
    
    <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
