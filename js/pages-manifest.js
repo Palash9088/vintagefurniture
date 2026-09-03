@@ -97,6 +97,12 @@ window.PAGE_MANIFEST = {
     "category": "utility"
   },
   {
+    "url": "abtasty/abt-vwo-legacy-account.html",
+    "name": "abtasty / abt-vwo-legacy-account",
+    "environment": "abtasty",
+    "category": "test_edge"
+  },
+  {
     "url": "abtasty/abtadvalo.html",
     "name": "abtasty / abtadvalo",
     "environment": "abtasty",
