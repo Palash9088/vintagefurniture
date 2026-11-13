@@ -37,18 +37,12 @@
 
   <!-- Quantum Metrics Script -->
   <script type="text/javascript">
-    console.log("[Quantum Metrics] Using delay of", delay, "ms");
-    setTimeout(function () {
-      console.log("[Quantum Metrics] Starting script load after", delay, "ms delay");
-      (function () {
-        var qtm = document.createElement('script');
-        qtm.type = 'text/javascript';
-        qtm.async = true;
-        qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-vintagefurniture.js';
-        var d = document.getElementsByTagName('script')[0];
-        (!d) ? document.write('<s' + 'cript src="' + qtm.src + '" type="text/jav' + 'ascript"></s' + 'cript>') : d.parentNode.insertBefore(qtm, d);
-      })();
-    }, delay);
+    (function() {
+      var script = document.createElement('script');
+      script.async = false;
+      script.src = 'https://cdn.quantummetric.com/network-interceptor/quantum-wingify.js';
+      document.head.appendChild(script);
+    })();
   </script>
 
   <!-- basic -->

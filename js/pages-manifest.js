@@ -118,7 +118,7 @@ window.PAGE_MANIFEST = {
     "url": "abtasty/abtall.html",
     "name": "abtasty / abtall",
     "environment": "abtasty",
-    "category": "test_edge"
+    "category": "other"
   },
   {
     "url": "abtasty/abtamplitude.html",
@@ -217,6 +217,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "abtasty/abtnitish.html",
+    "name": "abtasty / abtnitish",
+    "environment": "abtasty",
+    "category": "other"
+  },
+  {
     "url": "abtasty/abtpiano.html",
     "name": "abtasty / abtpiano",
     "environment": "abtasty",
@@ -232,7 +238,7 @@ window.PAGE_MANIFEST = {
     "url": "abtasty/abtquantummetrics.html",
     "name": "abtasty / abtquantummetrics",
     "environment": "abtasty",
-    "category": "other"
+    "category": "session_replay"
   },
   {
     "url": "abtasty/abtsegmentpush.html",
@@ -259,10 +265,22 @@ window.PAGE_MANIFEST = {
     "category": "other"
   },
   {
+    "url": "abtasty/fullmigration.html",
+    "name": "abtasty / fullmigration",
+    "environment": "abtasty",
+    "category": "other"
+  },
+  {
     "url": "abtasty/heapdev.html",
     "name": "abtasty / heapdev",
     "environment": "abtasty",
     "category": "product_analytics"
+  },
+  {
+    "url": "abtasty/hybridcombinedmode.html",
+    "name": "abtasty / hybridcombinedmode",
+    "environment": "abtasty",
+    "category": "other"
   },
   {
     "url": "adobe.html",
@@ -745,6 +763,12 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
+    "url": "codewingify/quantummetrics.html",
+    "name": "codewingify / quantummetrics",
+    "environment": "codewingify",
+    "category": "session_replay"
+  },
+  {
     "url": "codewingify/quin.html",
     "name": "codewingify / quin",
     "environment": "codewingify",
@@ -1121,6 +1145,12 @@ window.PAGE_MANIFEST = {
     "name": "piwik",
     "environment": "vwo",
     "category": "matomo_privacy"
+  },
+  {
+    "url": "quantummetrics.html",
+    "name": "quantummetrics",
+    "environment": "vwo",
+    "category": "session_replay"
   },
   {
     "url": "quin.html",
@@ -1547,6 +1577,12 @@ window.PAGE_MANIFEST = {
     "name": "smartcode3vwo / piwik",
     "environment": "smartcode3vwo",
     "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3vwo/quantummetrics.html",
+    "name": "smartcode3vwo / quantummetrics",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
   },
   {
     "url": "smartcode3vwo/quin.html",
@@ -2045,6 +2081,12 @@ window.PAGE_MANIFEST = {
     "name": "smartcode3wingify / piwik",
     "environment": "smartcode3wingify",
     "category": "matomo_privacy"
+  },
+  {
+    "url": "smartcode3wingify/quantummetrics.html",
+    "name": "smartcode3wingify / quantummetrics",
+    "environment": "smartcode3wingify",
+    "category": "session_replay"
   },
   {
     "url": "smartcode3wingify/quin.html",
