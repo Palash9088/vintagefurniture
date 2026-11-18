@@ -35,14 +35,16 @@
     }, delay);
   </script>
 
-  <!-- Quantum Metrics Script -->
+  <!-- Quantum Metrics Interceptor -->
   <script type="text/javascript">
-    (function() {
+    console.log("[Quantum Metrics Interceptor] Using delay of", delay, "ms");
+    setTimeout(function () {
+      console.log("[Quantum Metrics Interceptor] Starting script load after", delay, "ms delay");
       var script = document.createElement('script');
       script.async = false;
       script.src = 'https://cdn.quantummetric.com/network-interceptor/quantum-wingify.js';
       document.head.appendChild(script);
-    })();
+    }, delay);
   </script>
 
   <!-- basic -->
@@ -52,7 +54,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <!-- site metas -->
-  <title>Quantum Metrics | AB Tasty</title>
+  <title>Quantum Metrics Interceptor | AB Tasty</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">

@@ -235,8 +235,8 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
-    "url": "abtasty/abtquantummetrics.html",
-    "name": "abtasty / abtquantummetrics",
+    "url": "abtasty/abtquantummetricinterceptor.html",
+    "name": "abtasty / abtquantummetricinterceptor",
     "environment": "abtasty",
     "category": "session_replay"
   },
@@ -763,8 +763,14 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
-    "url": "codewingify/quantummetrics.html",
-    "name": "codewingify / quantummetrics",
+    "url": "codewingify/quantummetric.html",
+    "name": "codewingify / quantummetric",
+    "environment": "codewingify",
+    "category": "session_replay"
+  },
+  {
+    "url": "codewingify/quantummetricinterceptor.html",
+    "name": "codewingify / quantummetricinterceptor",
     "environment": "codewingify",
     "category": "session_replay"
   },
@@ -1147,8 +1153,14 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
-    "url": "quantummetrics.html",
-    "name": "quantummetrics",
+    "url": "quantummetric.html",
+    "name": "quantummetric",
+    "environment": "vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "quantummetricinterceptor.html",
+    "name": "quantummetricinterceptor",
     "environment": "vwo",
     "category": "session_replay"
   },
@@ -1579,8 +1591,14 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
-    "url": "smartcode3vwo/quantummetrics.html",
-    "name": "smartcode3vwo / quantummetrics",
+    "url": "smartcode3vwo/quantummetric.html",
+    "name": "smartcode3vwo / quantummetric",
+    "environment": "smartcode3vwo",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3vwo/quantummetricinterceptor.html",
+    "name": "smartcode3vwo / quantummetricinterceptor",
     "environment": "smartcode3vwo",
     "category": "session_replay"
   },
@@ -2083,8 +2101,14 @@ window.PAGE_MANIFEST = {
     "category": "matomo_privacy"
   },
   {
-    "url": "smartcode3wingify/quantummetrics.html",
-    "name": "smartcode3wingify / quantummetrics",
+    "url": "smartcode3wingify/quantummetric.html",
+    "name": "smartcode3wingify / quantummetric",
+    "environment": "smartcode3wingify",
+    "category": "session_replay"
+  },
+  {
+    "url": "smartcode3wingify/quantummetricinterceptor.html",
+    "name": "smartcode3wingify / quantummetricinterceptor",
     "environment": "smartcode3wingify",
     "category": "session_replay"
   },
