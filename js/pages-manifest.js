@@ -505,6 +505,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "codewingify/clearbitstatic.html",
+    "name": "codewingify / clearbitstatic",
+    "environment": "codewingify",
+    "category": "cdp_identity"
+  },
+  {
     "url": "codewingify/clevertap.html",
     "name": "codewingify / clevertap",
     "environment": "codewingify",
@@ -1327,6 +1333,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "smartcode3vwo/clearbitstatic.html",
+    "name": "smartcode3vwo / clearbitstatic",
+    "environment": "smartcode3vwo",
+    "category": "cdp_identity"
+  },
+  {
     "url": "smartcode3vwo/clevertap.html",
     "name": "smartcode3vwo / clevertap",
     "environment": "smartcode3vwo",
@@ -1833,6 +1845,12 @@ window.PAGE_MANIFEST = {
   {
     "url": "smartcode3wingify/clearbitrandom.html",
     "name": "smartcode3wingify / clearbitrandom",
+    "environment": "smartcode3wingify",
+    "category": "cdp_identity"
+  },
+  {
+    "url": "smartcode3wingify/clearbitstatic.html",
+    "name": "smartcode3wingify / clearbitstatic",
     "environment": "smartcode3wingify",
     "category": "cdp_identity"
   },
