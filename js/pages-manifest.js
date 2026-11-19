@@ -379,6 +379,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "clearbitstatic.html",
+    "name": "clearbitstatic",
+    "environment": "vwo",
+    "category": "cdp_identity"
+  },
+  {
     "url": "clevertap.html",
     "name": "clevertap",
     "environment": "vwo",
