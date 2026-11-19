@@ -152,7 +152,7 @@
                 const techCats = getRandomElement(techCategories);
                 const isPublic = getRandomElement(companyTypes) === "public";
 
-                window.reveal_organization = {
+                window.clearbit_reveal = {
                     "ip": getRandomIP(),
                     "domain": domain,
                     "type": "company",
@@ -279,7 +279,7 @@
         var params = new URLSearchParams(window.location.search);
         var delay = params.get("delay");
         var script = document.createElement("script");
-        script.src = "https://reveal.clearbit.com/v1/companies/reveal?variable=reveal_organization&authorization=pk_dc61eb5d5cfe266b3c705262030b6bf6";
+        script.src = "https://reveal.clearbit.com/v1/companies/reveal?variable=clearbit_reveal&authorization=pk_dc61eb5d5cfe266b3c705262030b6bf6";
         var event = new CustomEvent("ClearBitAdded", {
             detail: "ClearBitAdded"
         });
