@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Put the shared Hanushree front on every root fixture page.
+"""Put the shared Hanushree front on fixture pages.
 
-Leaves index.html and every <head> script alone. Page-specific body tools stay.
-Edit css/hanushree.css and js/hanushree-front.js for look and events.
+Root pages and the copies in smartcode3vwo, smartcode3wingify, codewingify,
+and abtasty. Leaves index.html, ecom, and every <head> script alone.
+Page-specific body tools stay. Edit css/hanushree.css and js/hanushree-front.js
+for look and events.
 """
 import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {"index.html"}
+FOLDERS = ("smartcode3vwo", "smartcode3wingify", "codewingify", "abtasty")
 DEFAULT_PORTAL = "44178869"
 DEFAULT_FORM = "d913a33a-71c4-4f8d-9e53-baff8487a900"
 LINKS = """   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,8 +64,10 @@ def extract_shared(page):
     return shell.group(1)
 
 
-def shell_for(portal, form_id, shell):
+def shell_for(portal, form_id, shell, prefix):
     out = shell.replace(DEFAULT_PORTAL, portal).replace(DEFAULT_FORM, form_id)
+    if prefix:
+        out = out.replace('src="images/', 'src="%simages/' % prefix)
     return out
 
 
@@ -110,24 +115,26 @@ def tidy(body):
     return body
 
 
-def ensure_links(head):
+def ensure_links(head, prefix):
     if "css/hanushree.css" not in head:
-        head = head.replace("</head>", LINKS + "</head>", 1)
+        links = LINKS.replace('href="css/', 'href="%scss/' % prefix)
+        head = head.replace("</head>", "\n" + links + "</head>", 1)
     return head
 
 
-def ensure_script(body, tail):
+def ensure_script(body, tail, prefix):
     if "js/hanushree-front.js" not in body and "js/hanushree-front.js" not in tail:
-        tail = tail.replace("</body>", SCRIPT_TAG + "</body>", 1)
+        tag = SCRIPT_TAG.replace('src="js/', 'src="%sjs/' % prefix)
+        tail = tail.replace("</body>", tag + "</body>", 1)
     return tail
 
 
-def transform(name, text, shell):
+def transform(name, text, shell, prefix=""):
     body_at = re.search(r"<body\b[^>]*>", text, re.I)
     end_body = text.lower().rfind("</body>")
     if not body_at or end_body == -1:
         return text
-    head = ensure_links(text[: body_at.end()])
+    head = ensure_links(text[: body_at.end()], prefix)
     body = text[body_at.end() : end_body]
     tail = text[end_body:]
     if 'class="hj"' in body:
@@ -135,13 +142,13 @@ def transform(name, text, shell):
         style = re.search(r"\n[ \t]*<style>\s*\.hs-form-wrap \{.*?</style>\n", head, re.S)
         if style and ".hj {" in style.group(0):
             head = head.replace(style.group(0), "\n", 1)
-        return head + tidy(body) + ensure_script(body, tail)
+        return head + tidy(body) + ensure_script(body, tail, prefix)
     portal, form_id = form_ids(body)
     body = strip_old_chrome(body)
-    piece = shell_for(portal, form_id, shell)
+    piece = shell_for(portal, form_id, shell, prefix)
     if piece not in body:
         body = "\n" + piece + "\n" + body.lstrip()
-    return head + tidy(body) + ensure_script(body, tail)
+    return head + tidy(body) + ensure_script(body, tail, prefix)
 
 
 def main():
@@ -149,18 +156,29 @@ def main():
     source = open(source_path, encoding="utf-8").read()
     shell = extract_shared(source)
     changed = []
+    targets = []
     for name in sorted(os.listdir(ROOT)):
-        if not name.endswith(".html") or name in SKIP:
+        if name.endswith(".html") and name not in SKIP:
+            path = os.path.join(ROOT, name)
+            if os.path.isfile(path):
+                targets.append((path, ""))
+    for folder in FOLDERS:
+        folder_path = os.path.join(ROOT, folder)
+        if not os.path.isdir(folder_path):
             continue
-        path = os.path.join(ROOT, name)
-        if not os.path.isfile(path):
-            continue
+        for name in sorted(os.listdir(folder_path)):
+            if not name.endswith(".html") or name in SKIP:
+                continue
+            path = os.path.join(folder_path, name)
+            if os.path.isfile(path):
+                targets.append((path, "../"))
+    for path, prefix in targets:
         original = open(path, encoding="utf-8").read()
-        updated = transform(name, original, shell)
+        updated = transform(os.path.basename(path), original, shell, prefix)
         if updated != original:
             with open(path, "w", encoding="utf-8") as handle:
                 handle.write(updated)
-            changed.append(name)
+            changed.append(os.path.relpath(path, ROOT))
     print("updated", len(changed))
     for name in changed:
         print(name)

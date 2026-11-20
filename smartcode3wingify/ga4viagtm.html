@@ -69,38 +69,152 @@
 </script>
 <!--End Wingify Async SmartCode --><style>.hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
    </style>
-   
-   <link rel="stylesheet" href="../css/smartcode3-banner.css"></head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../css/hanushree.css">
+</head>
 
 <body class="sc3-page-body">
-      <div class="sc3-banner sc3-banner--hanu" id="sc3Banner">
-         <img src="../images/banner.hanu.png" alt="Hanushree Jewelers" class="sc3-banner__img" width="2048" height="1152" decoding="async">
-         <div class="sc3-banner__overlay"></div>
-         <div class="sc3-banner__content">
-            <span class="sc3-banner__badge">SmartCode 3.0 with Wingify</span>
-            <h2 class="sc3-banner__title">Integration Test Lab</h2>
-            <p class="sc3-banner__hint">Click the bouncing dot to score!</p>
-            <div class="sc3-banner__score">Score: <span id="sc3Score">0</span></div>
+<div class="hj">
+      <p class="hj-announce">Gold jewellery, shown for display</p>
+      <header class="hj-header">
+         <div class="hj-header-inner">
+            <button type="button" class="hj-logo" data-track="home">Hanushree <em>Jewellers</em></button>
+            <nav class="hj-nav" aria-label="Primary">
+               <button type="button" data-track="home">Home</button>
+               <button type="button" data-track="shop">Shop</button>
+               <button type="button" data-track="list:Necklaces">Necklaces</button>
+               <button type="button" data-track="list:Bangles">Bangles</button>
+               <button type="button" data-track="list:Earrings">Earrings</button>
+               <button type="button" data-track="list:Pendants">Pendants</button>
+               <button type="button" data-track="checkout">Checkout</button>
+               <button type="button" data-track="contact" aria-expanded="false" aria-controls="contact-panel">Contact us</button>
+            </nav>
+            <button type="button" class="hj-cart" data-track="cart">Cart <span class="hj-count">0</span></button>
          </div>
-         <button type="button" class="sc3-target" id="sc3Target" aria-label="Click the moving target"></button>
+      </header>
+      <div id="contact-panel" class="hj-contact">
+         <div class="hs-form-wrap">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1",
+                  onFormReady: function () {
+                     var panel = document.getElementById('contact-panel');
+                     if (!panel.classList.contains('is-open')) panel.classList.add('is-closed');
+                  }
+               });
+            </script>
+         </div>
       </div>
-      <div class="sc3-path-note" role="note">
-         <strong>Test app:</strong> use <code>path=cloud-run-test/final</code> in the URL query params.
-      </div>
-<!-- HubSpot Form -->
-   <div class="hs-form-wrap">
-      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-      <script>
-         hbspt.forms.create({
-            portalId: "44178869",
-            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-            region: "na1"
-         });
-      </script>
+      <main class="hj-main">
+         <aside class="hj-testapp" role="note">
+            <p class="hj-eyebrow">Test app</p>
+            <p>Use <code>path=cloud-run-test/final</code> in the URL query params.</p>
+            <p class="hj-testapp-line"><span>Example</span> <a href="?id=YOUR_ACCOUNT_ID&amp;path=cloud-run-test/final"><code>?id=YOUR_ACCOUNT_ID&amp;path=cloud-run-test/final</code></a></p>
+            <p class="hj-testapp-line"><span>Full URL</span> <a href="https://palash9088.github.io/vintagefurniture/smartcode3wingify/ga4viagtm.html?id=YOUR_ACCOUNT_ID&amp;path=cloud-run-test/final"><code>https://palash9088.github.io/vintagefurniture/smartcode3wingify/ga4viagtm.html<wbr>?id=YOUR_ACCOUNT_ID&amp;path=cloud-run-test/final</code></a></p>
+         </aside>
+
+         <section class="hj-hero">
+            <div>
+               <p class="hj-eyebrow">Hanushree Jewellers</p>
+               <h1>Gold with a steady hand.</h1>
+               <p class="hj-lede">Necklaces, bangles, earrings, and pendants from the showroom. Weights are marked where the piece was weighed.</p>
+               <div class="hj-hero-actions">
+                  <button type="button" data-track="shop">Shop the collection</button>
+                  <button type="button" class="hj-ghost" data-track="list:Necklaces">Necklaces</button>
+               </div>
+            </div>
+            <div class="hj-frame">
+               <img src="../images/hanushree/necklace-floral.jpg" alt="Floral gold necklace">
+               <p>Floral necklace</p>
+            </div>
+         </section>
+         <div class="hj-cats" aria-label="Categories">
+            <button type="button" data-track="list:Necklaces"><span>01</span>Necklaces</button>
+            <button type="button" data-track="list:Bangles"><span>02</span>Bangles</button>
+            <button type="button" data-track="list:Earrings"><span>03</span>Earrings</button>
+            <button type="button" data-track="list:Pendants"><span>04</span>Pendants</button>
+            <button type="button" data-track="list:Gold"><span>05</span>Gold</button>
+         </div>
+         <h2>The collection</h2>
+         <div class="hj-grid">
+            <article class="hj-card">
+               <img src="../images/hanushree/necklace-30g.jpg" alt="Gold necklace, 30 grams">
+               <h2>Temple necklace</h2>
+               <p>30 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/necklace-27g.jpg" alt="Gold necklace, 27.400 grams">
+               <h2>Peacock necklace</h2>
+               <p>27.400 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/pendant-temple.jpg" alt="Gold temple pendant">
+               <h2>Temple pendant</h2>
+               <p>Showroom piece</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/pendant-coin.jpg" alt="Gold coin pendant">
+               <h2>Coin pendant</h2>
+               <p>Showroom piece</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/bangles-engraved.jpg" alt="Engraved gold bangles">
+               <h2>Engraved bangles</h2>
+               <p>Pair</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/bangles-stone.jpg" alt="Gold bangles with stones">
+               <h2>Stone bangles</h2>
+               <p>Pair</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/earrings-chandbali.jpg" alt="Chandbali earrings, 8.840 grams">
+               <h2>Chandbali earrings</h2>
+               <p>8.840 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/earrings-paisley.jpg" alt="Paisley earrings, 6.070 grams">
+               <h2>Paisley earrings</h2>
+               <p>6.070 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/earrings-floral.jpg" alt="Floral earrings, 6.840 grams">
+               <h2>Floral earrings</h2>
+               <p>6.840 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="../images/hanushree/gold-bar-50g.jpg" alt="50 gram fine gold bar">
+               <h2>Fine gold bar</h2>
+               <p>50 grams · 99.50</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+         </div>
+      </main>
+      <footer class="hj-footer">
+         <p class="hj-logo">Hanushree <em>Jewellers</em></p>
+         <p>A display front. Nothing here is for sale from this page.</p>
+         <nav aria-label="Footer">
+            <button type="button" data-track="shop">Shop</button>
+            <button type="button" data-track="cart">Cart</button>
+         </nav>
+      </footer>
    </div>
-      <!-- Only keep essential JavaScript -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-         <script src="../js/smartcode3-banner.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/hanushree-front.js"></script>
 </body>
 
 </html>
