@@ -12,6 +12,18 @@
     ['payment', function (value) { return value === 'upi' || value === 'card' || value === 'cod'; }, 'Choose a payment method.']
   ];
 
+  function randomOrderId() {
+    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const bytes = new Uint8Array(8);
+    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(bytes);
+    else {
+      for (let i = 0; i < bytes.length; i += 1) bytes[i] = Math.floor(Math.random() * 256);
+    }
+    let id = 'LO';
+    for (let i = 0; i < bytes.length; i += 1) id += alphabet[bytes[i] % alphabet.length];
+    return id;
+  }
+
   function updateCartCount() {
     const count = E.store.count();
     const badge = document.querySelector('[data-cart-count]');
@@ -161,7 +173,7 @@
     }
     const totals = E.store.totals();
     const order = {
-      id: 'LO' + Date.now().toString(36).toUpperCase(),
+      id: randomOrderId(),
       createdAt: new Date().toISOString(),
       items: lines.map(function (line) {
         return {

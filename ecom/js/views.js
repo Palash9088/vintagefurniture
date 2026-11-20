@@ -143,31 +143,61 @@
       '<aside class="summary"><h2>Summary</h2><p><span>Subtotal</span><span>' + E.formatINR(totals.subtotal) + '</span></p><p><span>Shipping</span><span>' + (totals.shipping === 0 ? 'Complimentary' : E.formatINR(totals.shipping)) + '</span></p><p class="total"><span>Total</span><span>' + E.formatINR(totals.total) + '</span></p><p class="muted">' + shipNote + ' GST is included.</p><a class="btn" href="#/checkout">Checkout</a></aside></div>';
   }
 
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function randomDigits(count) {
+    let out = '';
+    while (out.length < count) out += Math.floor(Math.random() * 10);
+    return out;
+  }
+
+  function sampleCustomer() {
+    const first = pick(['Meera', 'Arjun', 'Kabir', 'Ananya', 'Rahul', 'Diya', 'Vikram', 'Sana']);
+    const last = pick(['Nair', 'Shah', 'Iyer', 'Kapoor', 'Das', 'Menon', 'Reddy', 'Gill']);
+    const streets = ['Chapel Road', 'Fort Lane', 'Marine Drive', 'Park Street', 'Residency Road'];
+    const cities = ['Kochi', 'Jaipur', 'Mumbai', 'Pune', 'Bengaluru', 'Kolkata'];
+    return {
+      name: first + ' ' + last,
+      email: (first + '.' + last).toLowerCase() + randomDigits(3) + '@example.com',
+      phone: String(6 + Math.floor(Math.random() * 4)) + randomDigits(9),
+      address: (1 + Math.floor(Math.random() * 180)) + ' ' + pick(streets),
+      city: pick(cities),
+      pin: String(1 + Math.floor(Math.random() * 8)) + randomDigits(5),
+      state: pick(STATES),
+      payment: pick(PAYMENTS).id
+    };
+  }
+
   function checkout(track) {
     const lines = E.store.detailed();
     const totals = E.store.totals();
     if (!lines.length) return emptyState('Nothing to check out', 'Add a piece and the form will be here.', '#/shop', 'Browse the shop');
     if (track) E.analytics.beginCheckout(lines, totals);
+    const sample = sampleCustomer();
     const options = STATES.map(function (state) {
-      return '<option value="' + E.esc(state) + '">' + E.esc(state) + '</option>';
+      const selected = state === sample.state ? ' selected' : '';
+      return '<option value="' + E.esc(state) + '"' + selected + '>' + E.esc(state) + '</option>';
     }).join('');
-    const payments = PAYMENTS.map(function (method, index) {
-      return '<label class="pay"><input type="radio" name="payment" value="' + method.id + '"' + (index === 0 ? ' checked' : '') + '> ' + method.label + '</label>';
+    const payments = PAYMENTS.map(function (method) {
+      const checked = method.id === sample.payment ? ' checked' : '';
+      return '<label class="pay"><input type="radio" name="payment" value="' + method.id + '"' + checked + '> ' + method.label + '</label>';
     }).join('');
     const preview = lines.map(function (line) {
       return '<p><span>' + E.esc(line.product.name) + ' × ' + line.qty + '</span><span>' + E.formatINR(line.lineTotal) + '</span></p>';
     }).join('');
     return '<section class="page-head"><p class="eyebrow">Checkout</p><h1>Delivery</h1><p>Demo checkout. Nothing is charged or sent to a server.</p></section>' +
       '<div class="split"><form id="checkout-form" class="stack" novalidate>' +
-        field('name', 'Full name', '<input name="name" autocomplete="name" required>') +
-        field('email', 'Email', '<input name="email" type="email" autocomplete="email" required>') +
-        field('phone', 'Mobile', '<input name="phone" inputmode="numeric" autocomplete="tel" maxlength="10" required>') +
-        field('address', 'Address', '<input name="address" autocomplete="street-address" required>') +
+        field('name', 'Full name', '<input name="name" autocomplete="name" required value="' + E.esc(sample.name) + '">') +
+        field('email', 'Email', '<input name="email" type="email" autocomplete="email" required value="' + E.esc(sample.email) + '">') +
+        field('phone', 'Mobile', '<input name="phone" inputmode="numeric" autocomplete="tel" maxlength="10" required value="' + E.esc(sample.phone) + '">') +
+        field('address', 'Address', '<input name="address" autocomplete="street-address" required value="' + E.esc(sample.address) + '">') +
         '<div class="field-row">' +
-          field('city', 'City', '<input name="city" autocomplete="address-level2" required>') +
-          field('pin', 'PIN code', '<input name="pin" inputmode="numeric" autocomplete="postal-code" maxlength="6" required>') +
+          field('city', 'City', '<input name="city" autocomplete="address-level2" required value="' + E.esc(sample.city) + '">') +
+          field('pin', 'PIN code', '<input name="pin" inputmode="numeric" autocomplete="postal-code" maxlength="6" required value="' + E.esc(sample.pin) + '">') +
         '</div>' +
-        field('state', 'State', '<select name="state" required><option value="">Choose a state</option>' + options + '</select>') +
+        field('state', 'State', '<select name="state" required>' + options + '</select>') +
         '<fieldset class="pays"><legend>Payment</legend>' + payments + '<small class="err" data-for="payment"></small></fieldset>' +
         '<p class="form-error" data-form-error hidden>Check the highlighted fields.</p>' +
         '<button class="btn" type="submit">Place order</button></form>' +
