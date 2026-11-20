@@ -51,7 +51,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>Data Layer Setup | VWO</title>
+   <title>Hanushree Jewellers</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -61,6 +61,9 @@
 
    <!-- CSS -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
    <!-- Start VWO Async SmartCode -->
    <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
@@ -83,28 +86,315 @@
    </script>
    <!-- End VWO Async SmartCode -->
    <style>
-      .site-banner { width: 100%; height: 320px; overflow: hidden; line-height: 0; }
-      .site-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
       .hs-form-wrap { max-width: 500px; margin: 36px auto 48px; padding: 0 20px; }
+      .hj {
+         --paper: #f3efe6;
+         --ink: #1c1915;
+         --muted: #5c564e;
+         --line: #d8d0c3;
+         --walnut: #6e3b2a;
+         --brass: #8d6a38;
+         --moss: #243f36;
+         --white: #fbf8f3;
+         --serif: "Fraunces", Palatino, Georgia, serif;
+         --sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+         margin: 0;
+         background:
+            radial-gradient(1200px 500px at 10% -10%, rgba(157, 122, 70, 0.16), transparent 50%),
+            var(--paper);
+         color: var(--ink);
+         font-family: var(--sans);
+         font-size: 1.02rem;
+         line-height: 1.5;
+      }
+      .hj * { box-sizing: border-box; }
+      .hj h1, .hj h2, .hj .hj-logo {
+         font-family: var(--serif);
+         font-weight: 520;
+         letter-spacing: -0.03em;
+         line-height: 1.05;
+      }
+      .hj h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin: 0 0 0.4em; }
+      .hj h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0 0 0.35em; }
+      .hj p { margin: 0; }
+      .hj-announce {
+         margin: 0;
+         background: var(--moss);
+         color: #f4efe4;
+         text-align: center;
+         letter-spacing: 0.12em;
+         text-transform: uppercase;
+         font-size: 0.74rem;
+         padding: 0.55rem 1rem;
+      }
+      .hj-header {
+         position: sticky;
+         top: 0;
+         z-index: 20;
+         background: rgba(243, 239, 230, 0.92);
+         border-bottom: 1px solid var(--line);
+      }
+      .hj-header-inner, .hj-main, .hj-footer {
+         width: min(1120px, calc(100% - 2rem));
+         margin-inline: auto;
+      }
+      .hj-header-inner {
+         display: flex;
+         flex-wrap: wrap;
+         align-items: center;
+         gap: 0.75rem 1.1rem;
+         padding: 0.85rem 0;
+      }
+      .hj-logo { font-size: 1.55rem; background: none; border: 0; padding: 0; color: var(--ink); }
+      .hj-logo em { font-style: italic; color: var(--walnut); }
+      .hj-nav { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+      .hj-nav button, .hj-cats button, .hj-card button, .hj-hero-actions button, .hj-footer button {
+         font: inherit;
+         cursor: pointer;
+         color: var(--ink);
+         background: transparent;
+         border: 0;
+         border-radius: 999px;
+         padding: 0.35rem 0.7rem;
+      }
+      .hj-contact {
+         width: min(1120px, calc(100% - 2rem));
+         margin: 0 auto;
+         background: #fbf8f3;
+         border: 1px solid #d8d0c3;
+         border-top: 0;
+         padding: 0.25rem 1.25rem 0.75rem;
+      }
+      .hj-contact.is-closed { display: none; }
+      .hj-cart { margin-left: auto; }
+      .hj-count {
+         display: inline-grid;
+         place-items: center;
+         min-width: 1.45rem;
+         height: 1.45rem;
+         margin-left: 0.35rem;
+         border-radius: 999px;
+         background: var(--walnut);
+         color: #f7f1e6;
+         font-size: 0.75rem;
+      }
+      .hj-main { padding: 1.5rem 0 3rem; }
+      .hj-hero {
+         display: grid;
+         grid-template-columns: 1.1fr 0.9fr;
+         gap: 2rem;
+         align-items: end;
+      }
+      .hj-eyebrow {
+         letter-spacing: 0.14em;
+         text-transform: uppercase;
+         font-size: 0.75rem;
+         color: var(--brass);
+         margin-bottom: 0.7rem;
+      }
+      .hj-lede { font-size: 1.15rem; max-width: 38rem; color: var(--muted); }
+      .hj-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
+      .hj-hero-actions button, .hj-card button {
+         background: var(--walnut);
+         color: #f8f3ea;
+         padding: 0.8rem 1.15rem;
+      }
+      .hj-hero-actions button.hj-ghost {
+         background: transparent;
+         color: var(--ink);
+         box-shadow: inset 0 0 0 1px var(--ink);
+      }
+      .hj-frame {
+         background: var(--white);
+         border: 1px solid var(--line);
+         box-shadow: 0 18px 40px rgba(48, 32, 18, 0.08);
+         padding: 1rem 1rem 0.8rem;
+      }
+      .hj-frame img, .hj-card img {
+         width: 100%;
+         height: 420px;
+         object-fit: cover;
+         display: block;
+      }
+      .hj-frame p, .hj-card p { margin-top: 0.7rem; color: var(--muted); font-size: 0.92rem; }
+      .hj-cats {
+         display: grid;
+         grid-template-columns: repeat(5, 1fr);
+         border-top: 1px solid var(--line);
+         border-bottom: 1px solid var(--line);
+         margin: 1.5rem 0 2rem;
+      }
+      .hj-cats button {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 0.35rem;
+         padding: 1.1rem 0.8rem;
+         border-radius: 0;
+         font-family: var(--serif);
+         font-size: 1.35rem;
+         text-align: left;
+      }
+      .hj-cats button span { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--brass); }
+      .hj-cats button + button { box-shadow: inset 1px 0 0 var(--line); }
+      .hj-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 1.25rem;
+      }
+      .hj-card { display: flex; flex-direction: column; gap: 0.75rem; }
+      .hj-card img { height: 280px; background: var(--white); border: 1px solid var(--line); }
+      .hj-card h2 { font-size: 1.45rem; }
+      .hj-footer {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 1rem 2rem;
+         justify-content: space-between;
+         border-top: 1px solid var(--line);
+         padding: 1.5rem 0 2rem;
+         color: var(--muted);
+      }
+      @media (max-width: 900px) {
+         .hj-hero, .hj-grid, .hj-cats { grid-template-columns: 1fr 1fr; }
+         .hj-cats button + button { box-shadow: none; }
+         .hj-frame img { height: 280px; }
+      }
+      @media (max-width: 640px) {
+         .hj-hero, .hj-grid, .hj-cats { grid-template-columns: 1fr; }
+      }
    </style>
 </head>
 
 <body>
-      <!-- Banner -->
-   <div class="site-banner" style="width:100%;height:320px;overflow:hidden;line-height:0;">
-      <img src="images/banner.hanu.png" alt="Vintage Furniture" style="width:100%;height:100%;object-fit:cover;display:block;">
-   </div>
-
-   <!-- HubSpot Form -->
-   <div class="hs-form-wrap">
-      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-      <script>
-         hbspt.forms.create({
-            portalId: "44178869",
-            formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
-            region: "na1"
-         });
-      </script>
+   <div class="hj">
+      <p class="hj-announce">Gold jewellery, shown for display</p>
+      <header class="hj-header">
+         <div class="hj-header-inner">
+            <button type="button" class="hj-logo" data-track="home">Hanushree <em>Jewellers</em></button>
+            <nav class="hj-nav" aria-label="Primary">
+               <button type="button" data-track="home">Home</button>
+               <button type="button" data-track="shop">Shop</button>
+               <button type="button" data-track="list:Necklaces">Necklaces</button>
+               <button type="button" data-track="list:Bangles">Bangles</button>
+               <button type="button" data-track="list:Earrings">Earrings</button>
+               <button type="button" data-track="list:Pendants">Pendants</button>
+               <button type="button" data-track="checkout">Checkout</button>
+               <button type="button" data-track="contact" aria-expanded="false" aria-controls="contact-panel">Contact us</button>
+            </nav>
+            <button type="button" class="hj-cart" data-track="cart">Cart <span class="hj-count">0</span></button>
+         </div>
+      </header>
+      <div id="contact-panel" class="hj-contact">
+         <div class="hs-form-wrap">
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+               hbspt.forms.create({
+                  portalId: "44178869",
+                  formId: "d913a33a-71c4-4f8d-9e53-baff8487a900",
+                  region: "na1",
+                  onFormReady: function () {
+                     var panel = document.getElementById('contact-panel');
+                     if (!panel.classList.contains('is-open')) panel.classList.add('is-closed');
+                  }
+               });
+            </script>
+         </div>
+      </div>
+      <main class="hj-main">
+         <section class="hj-hero">
+            <div>
+               <p class="hj-eyebrow">Hanushree Jewellers</p>
+               <h1>Gold with a steady hand.</h1>
+               <p class="hj-lede">Necklaces, bangles, earrings, and pendants from the showroom. Weights are marked where the piece was weighed.</p>
+               <div class="hj-hero-actions">
+                  <button type="button" data-track="shop">Shop the collection</button>
+                  <button type="button" class="hj-ghost" data-track="list:Necklaces">Necklaces</button>
+               </div>
+            </div>
+            <div class="hj-frame">
+               <img src="images/hanushree/necklace-floral.jpg" alt="Floral gold necklace">
+               <p>Floral necklace</p>
+            </div>
+         </section>
+         <div class="hj-cats" aria-label="Categories">
+            <button type="button" data-track="list:Necklaces"><span>01</span>Necklaces</button>
+            <button type="button" data-track="list:Bangles"><span>02</span>Bangles</button>
+            <button type="button" data-track="list:Earrings"><span>03</span>Earrings</button>
+            <button type="button" data-track="list:Pendants"><span>04</span>Pendants</button>
+            <button type="button" data-track="list:Gold"><span>05</span>Gold</button>
+         </div>
+         <h2>The collection</h2>
+         <div class="hj-grid">
+            <article class="hj-card">
+               <img src="images/hanushree/necklace-30g.jpg" alt="Gold necklace, 30 grams">
+               <h2>Temple necklace</h2>
+               <p>30 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/necklace-27g.jpg" alt="Gold necklace, 27.400 grams">
+               <h2>Peacock necklace</h2>
+               <p>27.400 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/pendant-temple.jpg" alt="Gold temple pendant">
+               <h2>Temple pendant</h2>
+               <p>Showroom piece</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/pendant-coin.jpg" alt="Gold coin pendant">
+               <h2>Coin pendant</h2>
+               <p>Showroom piece</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/bangles-engraved.jpg" alt="Engraved gold bangles">
+               <h2>Engraved bangles</h2>
+               <p>Pair</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/bangles-stone.jpg" alt="Gold bangles with stones">
+               <h2>Stone bangles</h2>
+               <p>Pair</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/earrings-chandbali.jpg" alt="Chandbali earrings, 8.840 grams">
+               <h2>Chandbali earrings</h2>
+               <p>8.840 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/earrings-paisley.jpg" alt="Paisley earrings, 6.070 grams">
+               <h2>Paisley earrings</h2>
+               <p>6.070 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/earrings-floral.jpg" alt="Floral earrings, 6.840 grams">
+               <h2>Floral earrings</h2>
+               <p>6.840 grams</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+            <article class="hj-card">
+               <img src="images/hanushree/gold-bar-50g.jpg" alt="50 gram fine gold bar">
+               <h2>Fine gold bar</h2>
+               <p>50 grams · 99.50</p>
+               <button type="button" data-track="item">View</button>
+            </article>
+         </div>
+      </main>
+      <footer class="hj-footer">
+         <p class="hj-logo">Hanushree <em>Jewellers</em></p>
+         <p>A display front. Nothing here is for sale from this page.</p>
+         <nav aria-label="Footer">
+            <button type="button" data-track="shop">Shop</button>
+            <button type="button" data-track="cart">Cart</button>
+         </nav>
+      </footer>
    </div>
 
    <!-- DataLayer Demo Section -->
@@ -128,6 +418,128 @@
    <script>
       // Ensure dataLayer exists
       window.dataLayer = window.dataLayer || [];
+
+      var PIECES = [
+         { id: 'HJ-NCK-030', name: 'Temple necklace', category: 'Necklaces' },
+         { id: 'HJ-NCK-027', name: 'Peacock necklace', category: 'Necklaces' },
+         { id: 'HJ-PND-TMP', name: 'Temple pendant', category: 'Pendants' },
+         { id: 'HJ-PND-COIN', name: 'Coin pendant', category: 'Pendants' },
+         { id: 'HJ-BNG-ENG', name: 'Engraved bangles', category: 'Bangles' },
+         { id: 'HJ-BNG-STN', name: 'Stone bangles', category: 'Bangles' },
+         { id: 'HJ-ERG-CHN', name: 'Chandbali earrings', category: 'Earrings' },
+         { id: 'HJ-ERG-PSY', name: 'Paisley earrings', category: 'Earrings' },
+         { id: 'HJ-ERG-FLR', name: 'Floral earrings', category: 'Earrings' },
+         { id: 'HJ-GLD-050', name: 'Fine gold bar', category: 'Gold' }
+      ];
+
+      document.querySelectorAll('.hj-card').forEach(function (card, index) {
+         var button = card.querySelector('button[data-track="item"]');
+         if (button && PIECES[index]) button.setAttribute('data-id', PIECES[index].id);
+      });
+
+      function pieceItem(piece, index) {
+         var item = {
+            item_id: piece.id,
+            item_name: piece.name,
+            item_category: piece.category,
+            quantity: 1
+         };
+         if (typeof index === 'number') item.index = index;
+         return item;
+      }
+
+      function pushEcommerce(eventName, ecommerce) {
+         window.dataLayer.push({ ecommerce: null });
+         window.dataLayer.push({ event: eventName, ecommerce: ecommerce });
+      }
+
+      function piecesIn(category) {
+         return PIECES.filter(function (piece) { return piece.category === category; });
+      }
+
+      document.querySelector('.hj').addEventListener('click', function (event) {
+         if (event.target.closest('#contact-panel')) return;
+         var button = event.target.closest('button[data-track]');
+         if (!button || !event.currentTarget.contains(button)) return;
+         var track = button.getAttribute('data-track');
+
+         if (track === 'contact') {
+            var panel = document.getElementById('contact-panel');
+            var willOpen = panel.classList.contains('is-closed');
+            panel.classList.toggle('is-closed', !willOpen);
+            panel.classList.toggle('is-open', willOpen);
+            button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            window.dataLayer.push({
+               event: 'contact_us',
+               form_id: 'd913a33a-71c4-4f8d-9e53-baff8487a900',
+               form_name: 'Contact us',
+               form_open: willOpen
+            });
+            return;
+         }
+
+         if (track === 'home') {
+            window.dataLayer.push({
+               event: 'page_view',
+               page_title: 'Home',
+               page_path: location.pathname + location.search
+            });
+            return;
+         }
+
+         if (track === 'shop') {
+            pushEcommerce('view_item_list', {
+               item_list_name: 'Shop',
+               currency: 'INR',
+               items: PIECES.map(pieceItem)
+            });
+            return;
+         }
+
+         if (track.indexOf('list:') === 0) {
+            var listName = track.slice(5);
+            pushEcommerce('view_item_list', {
+               item_list_name: listName,
+               currency: 'INR',
+               items: piecesIn(listName).map(pieceItem)
+            });
+            return;
+         }
+
+         if (track === 'cart') {
+            pushEcommerce('view_cart', {
+               currency: 'INR',
+               value: 0,
+               items: []
+            });
+            return;
+         }
+
+         if (track === 'checkout') {
+            pushEcommerce('begin_checkout', {
+               currency: 'INR',
+               value: 0,
+               items: []
+            });
+            return;
+         }
+
+         if (track === 'item') {
+            var piece = PIECES.filter(function (entry) {
+               return entry.id === button.getAttribute('data-id');
+            })[0];
+            if (!piece) return;
+            pushEcommerce('select_item', {
+               item_list_name: piece.category,
+               currency: 'INR',
+               items: [pieceItem(piece)]
+            });
+            pushEcommerce('view_item', {
+               currency: 'INR',
+               items: [pieceItem(piece)]
+            });
+         }
+      });
 
       function pushDemoEvent(eventName) {
          var eventData = {
