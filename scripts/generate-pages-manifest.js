@@ -52,6 +52,7 @@ function getCategory(url) {
 }
 
 function getDisplayName(url) {
+  if (url === 'ecom/index.html') return 'ecom / lumen-oak';
   const parts = url.split('/');
   const file = parts.pop().replace('.html', '');
   if (parts.length === 0) return file;
@@ -65,6 +66,7 @@ const raw = execSync(
 );
 
 const files = raw.trim().split('\n').filter(Boolean);
+if (!files.includes('ecom/index.html')) files.push('ecom/index.html');
 
 const pages = files.map((url) => ({
   url,

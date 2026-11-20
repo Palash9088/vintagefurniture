@@ -943,6 +943,12 @@ window.PAGE_MANIFEST = {
     "category": "cdp_identity"
   },
   {
+    "url": "ecom/index.html",
+    "name": "ecom / lumen-oak",
+    "environment": "vwo",
+    "category": "other"
+  },
+  {
     "url": "eulerian.html",
     "name": "eulerian",
     "environment": "vwo",
