@@ -35,7 +35,7 @@
     pageView: function (title) {
       queue().push({
         event: 'page_view',
-        page_path: location.pathname + location.search + location.hash,
+        page_path: location.pathname + location.search,
         page_title: title
       });
     },

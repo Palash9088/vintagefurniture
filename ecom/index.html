@@ -4,6 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumen & Oak</title>
+  <script>
+    (function () {
+      var path = location.pathname;
+      var at = path.indexOf('/ecom/');
+      var base;
+      if (at !== -1) base = path.slice(0, at + '/ecom/'.length);
+      else if (/\/ecom$/.test(path)) base = path + '/';
+      else {
+        path = path.replace(/\/index\.html$/, '/');
+        path = path.replace(/\/product\/[^/]+\/?$/, '/');
+        path = path.replace(/\/order\/[^/]+\/?$/, '/');
+        path = path.replace(/\/(shop|cart|checkout)\/?$/, '/');
+        base = path.endsWith('/') ? path : path + '/';
+      }
+      window.EcomBase = base || '/';
+      var el = document.createElement('base');
+      el.href = window.EcomBase;
+      document.head.appendChild(el);
+    })();
+  </script>
   <meta name="description" content="Lumen & Oak is a vintage furniture showroom. Shop seating, tables, lighting, storage, and decor, priced in rupees.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23243f36' width='32' height='32' rx='4'/%3E%3Cpath fill='%23f3efe6' d='M16 5c2 4 2 7 0 10 4-1 7-1 10 1-4 2-6 5-6 9h-3c0-4-2-7-6-9 3-2 6-2 10-1-2-3-2-6 0-10z'/%3E%3C/svg%3E">
   <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PPJHV42"></script>
@@ -41,15 +61,15 @@
   <p class="announce">Complimentary shipping on orders over ₹25,000</p>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="#/" data-nav="home">Lumen <em>&</em> Oak</a>
+      <a class="logo" href="./" data-nav="home">Lumen <em>&</em> Oak</a>
       <nav class="nav" aria-label="Primary">
-        <a href="#/shop" data-nav="shop">Shop</a>
-        <a href="#/shop?category=seating">Seating</a>
-        <a href="#/shop?category=tables">Tables</a>
-        <a href="#/shop?category=lighting">Lighting</a>
-        <a href="#/shop?category=storage">Storage</a>
+        <a href="shop" data-nav="shop">Shop</a>
+        <a href="shop?category=seating">Seating</a>
+        <a href="shop?category=tables">Tables</a>
+        <a href="shop?category=lighting">Lighting</a>
+        <a href="shop?category=storage">Storage</a>
       </nav>
-      <a class="cart-link" href="#/cart" data-nav="cart">Cart <span class="cart-count" data-cart-count>0</span></a>
+      <a class="cart-link" href="cart" data-nav="cart">Cart <span class="cart-count" data-cart-count>0</span></a>
     </div>
   </header>
   <main id="main" tabindex="-1"></main>
@@ -63,9 +83,9 @@
       <p>A demo showroom. Orders are confirmed in this browser and are not fulfilled.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="#/shop">Shop</a>
-      <a href="#/shop?category=decor">Decor</a>
-      <a href="#/cart">Cart</a>
+      <a href="shop">Shop</a>
+      <a href="shop?category=decor">Decor</a>
+      <a href="cart">Cart</a>
     </nav>
   </footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

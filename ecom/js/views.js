@@ -24,8 +24,12 @@
     return '<div class="art" style="background:' + product.tone + ';color:' + product.accent + '"' + named + '>' + E.art(product.scene) + '</div>';
   }
 
+  function link(path, updates) {
+    return E.esc(E.router.href(path, updates));
+  }
+
   function productCard(product, listName) {
-    const href = '#/product/' + E.esc(product.id);
+    const href = link('/product/' + encodeURIComponent(product.id));
     const select = ' data-select-item="' + E.esc(product.id) + '" data-list-name="' + E.esc(listName) + '"';
     const action = product.stock < 1
       ? '<p class="sold">Sold out</p>'
@@ -46,7 +50,7 @@
 
   function home() {
     const categories = E.categories.map(function (category, index) {
-      return '<a class="cat" href="#/shop?category=' + category.id + '"><span>0' + (index + 1) + '</span>' + E.esc(category.label) + '</a>';
+      return '<a class="cat" href="' + link('/shop', { category: category.id }) + '"><span>0' + (index + 1) + '</span>' + E.esc(category.label) + '</a>';
     }).join('');
     const featured = E.featured().map(function (product) { return productCard(product, 'Featured'); }).join('');
     return '<section class="hero">' +
@@ -54,7 +58,7 @@
         '<p class="eyebrow">Fort Kochi showroom</p>' +
         '<h1>Furniture with a past. Rooms with a future.</h1>' +
         '<p class="lede">Restored teak, cane, brass, and marble, priced in rupees and ready to ship across India. Every price includes GST.</p>' +
-        '<div class="hero-actions"><a class="btn" href="#/shop">Shop the collection</a><a class="btn btn-ghost" href="#/shop?category=seating">Seating</a></div>' +
+        '<div class="hero-actions"><a class="btn" href="' + link('/shop') + '">Shop the collection</a><a class="btn btn-ghost" href="' + link('/shop', { category: 'seating' }) + '">Seating</a></div>' +
       '</div>' +
       '<div class="hero-frame">' + artBlock(E.byId('malabar-teak-sofa'), 'Malabar Teak Sofa') + '<p>Malabar Teak Sofa · ' + E.formatINR(78000) + '</p></div>' +
     '</section>' +
@@ -75,7 +79,7 @@
     if (track) E.analytics.viewItemList(listName, products);
 
     function hrefFor(updates) {
-      return '#' + E.router.shopHash(updates);
+      return link('/shop', updates);
     }
 
     const pills = '<a class="pill' + (currentCategory ? '' : ' is-on') + '" href="' + hrefFor({ category: '' }) + '">All</a>' +
@@ -96,7 +100,7 @@
 
     const grid = products.length
       ? '<div class="grid">' + products.map(function (product) { return productCard(product, listName); }).join('') + '</div>'
-      : '<div class="empty compact"><h2>Nothing matches</h2><p>Try another room, or clear the search.</p><a class="btn" href="#/shop">Clear filters</a></div>';
+      : '<div class="empty compact"><h2>Nothing matches</h2><p>Try another room, or clear the search.</p><a class="btn" href="' + link('/shop') + '">Clear filters</a></div>';
 
     return '<section class="page-head"><p class="eyebrow">The collection</p><h1>' + E.esc(listName === 'Shop' ? 'Shop' : listName) + '</h1><p>' + products.length + (products.length === 1 ? ' piece' : ' pieces') + ' · prices include GST</p></section>' +
       '<div class="toolbar"><div class="pills" role="tablist" aria-label="Categories">' + pills + '</div>' +
@@ -114,7 +118,7 @@
     const buy = item.stock < 1
       ? '<p class="sold">Sold out.</p>'
       : '<div class="buy"><div class="qty-field"><span id="qty-label">Quantity</span><div class="stepper" data-qty-control><button type="button" data-qty-step="-1" aria-label="Decrease quantity" disabled>−</button><input data-qty type="number" min="1" max="' + maxQty + '" value="1" inputmode="numeric" aria-labelledby="qty-label"><button type="button" data-qty-step="1" aria-label="Increase quantity"' + (maxQty <= 1 ? ' disabled' : '') + '>+</button></div></div><button class="btn" type="button" data-add="' + E.esc(item.id) + '">Add to cart</button></div>';
-    return '<p class="crumbs"><a href="#/">Home</a> / <a href="#/shop?category=' + item.category + '">' + E.esc(E.categoryLabel(item.category)) + '</a> / <span>' + E.esc(item.name) + '</span></p>' +
+    return '<p class="crumbs"><a href="' + link('/') + '">Home</a> / <a href="' + link('/shop', { category: item.category }) + '">' + E.esc(E.categoryLabel(item.category)) + '</a> / <span>' + E.esc(item.name) + '</span></p>' +
       '<article class="pdp">' +
         artBlock(item) +
         '<div><p class="eyebrow">' + E.esc(item.origin) + ' · ' + E.esc(item.sku) + '</p><h1>' + E.esc(item.name) + '</h1><p class="price price-lg">' + E.formatINR(item.price) + '</p><p class="gst">Inclusive of GST. ' + E.esc(stockNote) + '.</p><p class="lede">' + E.esc(item.blurb) + '</p>' + buy +
@@ -125,14 +129,14 @@
   function cart(track) {
     const lines = E.store.detailed();
     const totals = E.store.totals();
-    if (!lines.length) return emptyState('Your cart is empty', 'The showroom is still open.', '#/shop', 'Browse the shop');
+    if (!lines.length) return emptyState('Your cart is empty', 'The showroom is still open.', link('/shop'), 'Browse the shop');
     if (track) E.analytics.viewCart(lines, totals);
     const rows = lines.map(function (line) {
       const product = line.product;
       const max = Math.min(10, product.stock);
       return '<article class="line">' +
-        '<a class="line-art" href="#/product/' + E.esc(product.id) + '" aria-label="' + E.esc(product.name) + '">' + artBlock(product) + '</a>' +
-        '<div><p class="eyebrow">' + E.esc(product.origin) + '</p><h2><a href="#/product/' + E.esc(product.id) + '">' + E.esc(product.name) + '</a></h2><p class="muted">' + E.esc(product.sku) + '</p><button type="button" class="text-btn" data-remove="' + E.esc(product.id) + '">Remove</button></div>' +
+        '<a class="line-art" href="' + link('/product/' + encodeURIComponent(product.id)) + '" aria-label="' + E.esc(product.name) + '">' + artBlock(product) + '</a>' +
+        '<div><p class="eyebrow">' + E.esc(product.origin) + '</p><h2><a href="' + link('/product/' + encodeURIComponent(product.id)) + '">' + E.esc(product.name) + '</a></h2><p class="muted">' + E.esc(product.sku) + '</p><button type="button" class="text-btn" data-remove="' + E.esc(product.id) + '">Remove</button></div>' +
         '<div class="stepper"><button type="button" data-qty-delta="-1" data-id="' + E.esc(product.id) + '" aria-label="Decrease quantity of ' + E.esc(product.name) + '"' + (line.qty <= 1 ? ' disabled' : '') + '>−</button><span>' + line.qty + '</span><button type="button" data-qty-delta="1" data-id="' + E.esc(product.id) + '" aria-label="Increase quantity of ' + E.esc(product.name) + '"' + (line.qty >= max ? ' disabled' : '') + '>+</button></div>' +
         '<p class="price">' + E.formatINR(line.lineTotal) + '</p></article>';
     }).join('');
@@ -141,7 +145,7 @@
       ? 'Complimentary shipping is applied.'
       : 'Add ' + E.formatINR(remain) + ' more for complimentary shipping.';
     return '<section class="page-head"><p class="eyebrow">Cart</p><h1>Your selection</h1></section><div class="split"><div class="lines">' + rows + '</div>' +
-      '<aside class="summary"><h2>Summary</h2><p><span>Subtotal</span><span>' + E.formatINR(totals.subtotal) + '</span></p><p><span>Shipping</span><span>' + (totals.shipping === 0 ? 'Complimentary' : E.formatINR(totals.shipping)) + '</span></p><p class="total"><span>Total</span><span>' + E.formatINR(totals.total) + '</span></p><p class="muted">' + shipNote + ' GST is included.</p><a class="btn" href="#/checkout">Checkout</a></aside></div>';
+      '<aside class="summary"><h2>Summary</h2><p><span>Subtotal</span><span>' + E.formatINR(totals.subtotal) + '</span></p><p><span>Shipping</span><span>' + (totals.shipping === 0 ? 'Complimentary' : E.formatINR(totals.shipping)) + '</span></p><p class="total"><span>Total</span><span>' + E.formatINR(totals.total) + '</span></p><p class="muted">' + shipNote + ' GST is included.</p><a class="btn" href="' + link('/checkout') + '">Checkout</a></aside></div>';
   }
 
   function pick(list) {
@@ -174,7 +178,7 @@
   function checkout(track) {
     const lines = E.store.detailed();
     const totals = E.store.totals();
-    if (!lines.length) return emptyState('Nothing to check out', 'Add a piece and the form will be here.', '#/shop', 'Browse the shop');
+    if (!lines.length) return emptyState('Nothing to check out', 'Add a piece and the form will be here.', link('/shop'), 'Browse the shop');
     if (track) E.analytics.beginCheckout(lines, totals);
     const sample = sampleCustomer();
     const options = STATES.map(function (state) {
@@ -202,7 +206,7 @@
         '<fieldset class="pays"><legend>Payment</legend>' + payments + '<small class="err" data-for="payment"></small></fieldset>' +
         '<p class="form-error" data-form-error hidden>Check the highlighted fields.</p>' +
         '<button class="btn" type="submit">Place order</button></form>' +
-        '<aside class="summary"><h2>Order</h2>' + preview + '<p><span>Shipping</span><span>' + (totals.shipping === 0 ? 'Complimentary' : E.formatINR(totals.shipping)) + '</span></p><p class="total"><span>To pay</span><span>' + E.formatINR(totals.total) + '</span></p><a href="#/cart">Back to cart</a></aside></div>';
+        '<aside class="summary"><h2>Order</h2>' + preview + '<p><span>Shipping</span><span>' + (totals.shipping === 0 ? 'Complimentary' : E.formatINR(totals.shipping)) + '</span></p><p class="total"><span>To pay</span><span>' + E.formatINR(totals.total) + '</span></p><a href="' + link('/cart') + '">Back to cart</a></aside></div>';
   }
 
   function field(name, label, control) {
@@ -221,11 +225,11 @@
     return '<section class="confirm"><p class="eyebrow">Order placed</p><h1>' + E.esc(placed.id) + '</h1><p class="lede">Thank you, ' + E.esc(customer.name) + '. This is a demo confirmation from ' + E.esc(when) + '. Nothing was charged.</p>' +
       '<div class="summary"><h2>Deliver to</h2><p>' + E.esc(customer.address) + ', ' + E.esc(customer.city) + ', ' + E.esc(customer.state) + ' ' + E.esc(customer.pin) + '</p><p>' + E.esc(customer.email) + ' · ' + E.esc(customer.phone) + '</p><p>Payment: ' + E.esc(payment ? payment.label : placed.payment) + ' (not charged)</p>' + rows +
       '<p><span>Shipping</span><span>' + (placed.shipping === 0 ? 'Complimentary' : E.formatINR(placed.shipping)) + '</span></p><p class="total"><span>Total</span><span>' + E.formatINR(placed.total) + '</span></p></div>' +
-      '<a class="btn" href="#/shop">Continue shopping</a></section>';
+      '<a class="btn" href="' + link('/shop') + '">Continue shopping</a></section>';
   }
 
   function missing(copy) {
-    return emptyState('Not in the showroom', copy, '#/shop', 'Back to the shop');
+    return emptyState('Not in the showroom', copy, link('/shop'), 'Back to the shop');
   }
 
   function renderRoute(route, track) {
