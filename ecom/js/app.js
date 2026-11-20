@@ -61,7 +61,44 @@
     updateCartCount();
   }
 
+  function syncQtyButtons(input) {
+    const control = input.closest('[data-qty-control]');
+    if (!control) return;
+    const min = Number(input.min) || 1;
+    const max = Number(input.max) || 10;
+    const current = Math.floor(Number(input.value));
+    const down = control.querySelector('[data-qty-step="-1"]');
+    const up = control.querySelector('[data-qty-step="1"]');
+    if (down) down.disabled = !Number.isFinite(current) || current <= min;
+    if (up) up.disabled = Number.isFinite(current) && current >= max;
+  }
+
+  function clampQty(input) {
+    const min = Number(input.min) || 1;
+    const max = Number(input.max) || 10;
+    let next = Math.floor(Number(input.value));
+    if (!Number.isFinite(next)) next = min;
+    next = Math.min(max, Math.max(min, next));
+    input.value = String(next);
+    syncQtyButtons(input);
+  }
+
   function onClick(event) {
+    const localStep = event.target.closest('[data-qty-step]');
+    if (localStep) {
+      const control = localStep.closest('[data-qty-control]');
+      const input = control && control.querySelector('[data-qty]');
+      if (!input) return;
+      const min = Number(input.min) || 1;
+      const max = Number(input.max) || 10;
+      const current = Math.floor(Number(input.value));
+      const start = Number.isFinite(current) ? current : min;
+      const next = Math.min(max, Math.max(min, start + Number(localStep.getAttribute('data-qty-step'))));
+      input.value = String(next);
+      syncQtyButtons(input);
+      return;
+    }
+
     const select = event.target.closest('[data-select-item]');
     if (select) {
       const product = E.byId(select.getAttribute('data-select-item'));
@@ -109,6 +146,7 @@
   }
 
   function onChange(event) {
+    if (event.target.matches('[data-qty]')) clampQty(event.target);
     if (!event.target.matches('[data-sort]')) return;
     const value = event.target.value === 'featured' ? '' : event.target.value;
     location.hash = E.router.shopHash({ sort: value });
@@ -213,6 +251,9 @@
     document.addEventListener('click', onClick);
     document.addEventListener('submit', onSubmit);
     document.addEventListener('change', onChange);
+    document.addEventListener('input', function (event) {
+      if (event.target.matches('[data-qty]')) syncQtyButtons(event.target);
+    });
     E.router.start(show);
     updateCartCount();
   }

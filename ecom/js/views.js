@@ -110,9 +110,10 @@
     if (track) E.analytics.viewItem(item);
     const stockNote = item.stock < 1 ? 'Sold out' : (item.stock <= 2 ? 'Only ' + item.stock + ' left' : item.stock + ' available');
     const related = E.related(item).map(function (other) { return productCard(other, 'Related'); }).join('');
+    const maxQty = Math.min(10, item.stock);
     const buy = item.stock < 1
       ? '<p class="sold">Sold out.</p>'
-      : '<div class="buy"><label>Quantity <input data-qty type="number" min="1" max="' + Math.min(10, item.stock) + '" value="1"></label><button class="btn" type="button" data-add="' + E.esc(item.id) + '">Add to cart</button></div>';
+      : '<div class="buy"><div class="qty-field"><span id="qty-label">Quantity</span><div class="stepper" data-qty-control><button type="button" data-qty-step="-1" aria-label="Decrease quantity" disabled>−</button><input data-qty type="number" min="1" max="' + maxQty + '" value="1" inputmode="numeric" aria-labelledby="qty-label"><button type="button" data-qty-step="1" aria-label="Increase quantity"' + (maxQty <= 1 ? ' disabled' : '') + '>+</button></div></div><button class="btn" type="button" data-add="' + E.esc(item.id) + '">Add to cart</button></div>';
     return '<p class="crumbs"><a href="#/">Home</a> / <a href="#/shop?category=' + item.category + '">' + E.esc(E.categoryLabel(item.category)) + '</a> / <span>' + E.esc(item.name) + '</span></p>' +
       '<article class="pdp">' +
         artBlock(item) +

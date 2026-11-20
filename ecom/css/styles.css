@@ -143,7 +143,8 @@ main { padding: 1.5rem 0 4rem; outline: none; }
   margin-bottom: 0.7rem;
 }
 .lede { font-size: 1.15rem; max-width: 38rem; color: var(--muted); }
-.hero-actions, .buy { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin-top: 1.4rem; }
+.hero-actions, .buy { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 1.4rem; }
+.qty-field { display: flex; align-items: center; gap: 0.7rem; }
 .hero-frame {
   background: var(--white);
   border: 1px solid var(--line);
@@ -273,7 +274,21 @@ select { border-radius: 8px; }
 .facts div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--line); }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; }
-.buy input { width: 5rem; }
+.buy .stepper input {
+  width: 2.4rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.buy .stepper input::-webkit-outer-spin-button,
+.buy .stepper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .split { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 1.5rem; align-items: start; }
 .lines { display: grid; gap: 1rem; }
